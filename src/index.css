@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 207 60% 8%;
+    --foreground: 0 0% 100%;
+    --card: 207 50% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 207 50% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 183 100% 50%;
+    --primary-foreground: 207 60% 8%;
+    --secondary: 207 40% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 207 30% 20%;
+    --muted-foreground: 207 20% 60%;
+    --accent: 43 100% 50%;
+    --accent-foreground: 207 60% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 207 30% 20%;
+    --input: 207 30% 20%;
+    --ring: 183 100% 50%;
+    --radius: 0.625rem;
+    --sidebar-background: 207 50% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 183 100% 50%;
+    --sidebar-primary-foreground: 207 60% 8%;
+    --sidebar-accent: 207 40% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 207 30% 20%;
+    --sidebar-ring: 183 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-kwar-deep text-white font-body antialiased;
+    background-color: #0A1929;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+  
+  code, pre {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00F0FF 0%, #FFB800 100%);
+  }
+  
+  .text-gradient-electric {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00F0FF 0%, #00c8d4 100%);
+  }
+  
+  .glow-electric {
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+  }
+  
+  .glow-gold {
+    filter: drop-shadow(0 0 10px rgba(255, 184, 0, 0.5));
+  }
+  
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl;
+  }
+  
+  .card-glass-hover {
+    @apply card-glass transition-all duration-300 hover:bg-white/10 hover:border-kwar-electric/30 hover:shadow-glow;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-kwar-electric text-kwar-deep font-semibold rounded-lg transition-all duration-300;
+    @apply hover:bg-kwar-electric/90 hover:shadow-glow hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent border border-kwar-electric text-kwar-electric font-semibold rounded-lg transition-all duration-300;
+    @apply hover:bg-kwar-electric/10 hover:shadow-glow;
+  }
+  
+  .btn-gold {
+    @apply px-6 py-3 bg-kwar-gold text-kwar-deep font-semibold rounded-lg transition-all duration-300;
+    @apply hover:bg-kwar-gold/90 hover:shadow-glow-gold hover:scale-105;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20;
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .neural-line {
+    @apply absolute bg-gradient-to-r from-kwar-electric/0 via-kwar-electric/50 to-kwar-electric/0;
+    height: 1px;
+  }
+  
+  .neural-node {
+    @apply absolute w-2 h-2 rounded-full bg-kwar-electric;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+}
