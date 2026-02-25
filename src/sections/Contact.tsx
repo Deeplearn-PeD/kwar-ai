@@ -21,13 +21,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Telefone',
-    value: '+55 (11) 0000-0000',
+    value: '+55 (21) 0000-0000',
     href: 'tel:+551100000000',
   },
   {
     icon: MapPin,
     label: 'Localização',
-    value: 'São Paulo, SP - Brasil',
+    value: 'Rio de Janeiro, RJ - Brasil',
     href: '#',
   },
 ];
