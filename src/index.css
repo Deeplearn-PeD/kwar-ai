@@ -122,6 +122,12 @@
     @apply absolute w-2 h-2 rounded-full bg-kwar-electric;
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
   }
+  
+  .text-glow-teal {
+    text-shadow: 0 0 10px rgba(0, 212, 200, 0.5),
+                 0 0 20px rgba(0, 212, 200, 0.3),
+                 0 0 30px rgba(0, 212, 200, 0.2);
+  }
 }
 
 @layer utilities {
