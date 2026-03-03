@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NeuralSun } from '@/components/NeuralSun';
-import { ArrowRight, Sparkles, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
