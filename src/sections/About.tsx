@@ -5,25 +5,25 @@ const pillars = [
   {
     icon: RefreshCw,
     title: 'Renovação',
-    description: 'Cada dia é um ciclo. Nossos modelos aprendem continuamente e se adaptam às estações.',
+    description: 'Modelos que aprendem continuamente com novos dados, ajustando-se a mudanças ambientais, comportamentais e epidemiológicas.',
     color: 'kwar-electric',
   },
   {
     icon: Lightbulb,
-    title: 'Claridade',
-    description: 'Dashboards intuitivos, insights acionáveis, sem jargon técnico desnecessário.',
+    title: 'Clareza',
+    description: 'Análises complexas traduzidas em inteligência acionável — para que decisões estratégicas sejam tomadas com segurança.',
     color: 'kwar-gold',
   },
   {
     icon: Target,
     title: 'Ciclicidade',
-    description: 'Doenças têm sazonalidade. Nós mapeamos os ciclos com precisão.',
+    description: 'Doenças seguem padrões sazonais e dinâmicas previsíveis. Mapeamos esses ciclos com rigor estatístico.',
     color: 'kwar-purple',
   },
   {
     icon: Eye,
     title: 'Antecipação',
-    description: 'Alertas com 14-21 dias de antecedência, não quando já é tarde.',
+    description: 'Identificamos sinais precoces de risco e emitimos alertas com antecedência — quando ainda há tempo para agir.',
     color: 'kwar-green',
   },
 ];
@@ -80,23 +80,42 @@ export function About() {
 
             <div className="space-y-4 text-kwar-gray leading-relaxed">
               <p>
-                Há mais de 500 anos, os povos Tupi observavam o céu. Para eles,{' '}
-                <span className="text-kwar-gold font-medium">Kuaray</span> — o Sol — não era
-                apenas luz. Era renovação, ciclo, a promessa de que cada escuridão termina.
+                Muito antes de existirem algoritmos, os povos Tupi já entendiam algo essencial:
+                 o futuro deixa sinais no presente. Para eles,{' '}
+                <span className="text-kwar-gold font-medium">Kuaray</span> — o sol — não era apenas luz, mas ciclo. O amanhecer
+                 não era surpresa; era consequência de padrões observados com atenção.
               </p>
+              
               <p>
-                Os xamãs lia os sinais: o vento antes da chuva, o comportamento dos animais,
-                as folhas que mudavam de cor. Eles não tinham algoritmos, mas tinham{' '}
-                <span className="text-kwar-electric font-medium">padrões</span>. A sabedoria
-                de que o futuro deixa rastros no presente.
+                Os xamãs não adivinhavam. Eles reconheciam indícios. 
+                Antes da chuva, o vento mudava. Antes da escassez, os movimentos se alteravam. Antes da doença se espalhar, o ambiente já indicava desequilíbrio. Havia sinais — e havia quem soubesse lê-los.
               </p>
+              
+              <p className="text-white/80 leading-relaxed">
+                A <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI </span> 
+                nasce dessa mesma lógica. 
+                É uma luz estratégica para decisões em saúde pública.
+              </p>
+
               <p>
-                Em 2025, a <span className="text-white font-semibold">KWAR-AI</span> nasceu
-                da mesma intuição. Agora, os sinais são dados: buscas no Google, atendimentos
-                de emergência, variações de temperatura e umidade.
+                Epidemias não começam quando viram notícia. 
+                Elas se formam silenciosamente, deixando rastros em dados 
+                ambientais, epidemiológicos e comportamentais. O que parece 
+                ruído isolado pode revelar tendência quando analisado em 
+                conjunto. Nosso trabalho é identificar essas convergências 
+                antes que se tornem crises.
+               </p>
+              <p>
+                Dessa mesma lógica nasce a <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>,
+                com uma convicção simples: surtos anunciam sua própria chegada. 
+                Inteligência epidemiológica é a capacidade de reconhecer esse 
+                anúncio a tempo de agir.
               </p>
-              <p className="text-white font-medium italic border-l-2 border-kwar-electric pl-4">
-                "O sol nasce para todos. Mas quem tem KWAR-AI vê a luz 21 dias antes."
+             <p className="text-white font-medium border-l-2 border-kwar-electric pl-4">
+                O sol nasce para todos. Mas a{" "}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>
+                 {" "}
+                reconhece os sinais antes do amanhecer.
               </p>
             </div>
           </div>
@@ -122,25 +141,27 @@ export function About() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-white text-center mb-4">
-                  O Xamã Moderno
+                  Sabedoria Ancestral. Inteligência Científica.
                 </h3>
                 
                 <p className="text-kwar-gray text-center text-sm leading-relaxed mb-6">
-                  A KWAR-AI é o xamã moderno que usa estatística. Ela não lê folhas de coca.
-                  Lê bases de dados. E diz: "O sol vai nascer mais quente na Zona Norte.
-                  Prepare-se."
+                  A <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>
+                 {" "}
+                  une a lógica ancestral de observar sinais ao rigor da modelagem estatística e da ciência de dados.
+                  Não interpreta presságios — analisa dados ambientais, epidemiológicos e comportamentais para transformar indícios em decisões antecipadas e responsáveis.
                 </p>
 
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10">
                     <div className="w-2 h-2 rounded-full bg-kwar-electric animate-pulse" />
-                    <span className="text-xs text-kwar-electric">Tecnologia + Sabedoria Ancestral</span>
+                    <span className="text-xs text-kwar-electric">Inteligência Epidemiológica</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
 
         {/* Four Pillars */}
         <div
@@ -153,7 +174,7 @@ export function About() {
               Os Quatro Pilares
             </h3>
             <p className="text-kwar-gray max-w-2xl mx-auto">
-              Nossa filosofia baseada nos ciclos da natureza e na precisão da tecnologia
+              Nossa filosofia une ciclos da natureza à precisão da modelagem científica.
             </p>
           </div>
 

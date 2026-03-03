@@ -54,50 +54,25 @@ export function Hero() {
 
             {/* Main Title */}
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
-              Ilumine o{' '}
-              <span className="text-gradient">futuro</span>
-              <br />
-              da saúde pública
+              <span className="text-yellow-300 relative">
+                <span className="absolute inset-0 blur-lg opacity-70 text-yellow-400">
+                     Luz Estratégica
+                </span>
+                 <span className="relative">Luz Estratégica</span> 
+              </span>             
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-kwar-gray max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              Antecipe surtos de doenças com até{' '}
-              <span className="text-kwar-electric font-semibold">21 dias</span> de
-              antecedência. Tecnologia de ponta com raiz brasileira.
+            <p className="text-base sm:text-lg lg:text-3xl text-white/90 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-12">
+               Transformamos dados em decisões rápidas e seguras para{' '}
+              <span className="text-kwar-electric font-semibold">
+               Saúde Pública
+              </span>.
             </p>
 
+            
             {/* Stats */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mb-10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-kwar-electric/10 flex items-center justify-center">
-                  <TrendingUp className="w-5 h-5 text-kwar-electric" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">87%</p>
-                  <p className="text-xs text-kwar-gray">Precisão</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-kwar-gold/10 flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-kwar-gold" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">21</p>
-                  <p className="text-xs text-kwar-gray">Dias de Alerta</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-kwar-purple/10 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-kwar-purple" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">IA</p>
-                  <p className="text-xs text-kwar-gray">Preditiva</p>
-                </div>
-              </div>
-            </div>
-
+            
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
