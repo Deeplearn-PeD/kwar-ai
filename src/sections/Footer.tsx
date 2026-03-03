@@ -4,7 +4,6 @@ const footerLinks = {
   produtos: [
     { label: 'API de Saúde', href: '#products' },
     { label: 'Curso de IA', href: '#products' },
-    { label: 'Plataforma', href: '#pricing' },
   ],
   empresa: [
     { label: 'Sobre Nós', href: '#about' },
