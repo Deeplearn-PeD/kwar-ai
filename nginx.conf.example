@@ -1,0 +1,48 @@
+# Nginx configuration for Kwar-AI
+# Place this in your nginx sites-available or include in your main config
+
+server {
+    listen 80;
+    listen 443 ssl http2;
+    server_name kwar-ai.com.br www.kwar-ai.com.br;
+
+    root /var/www/kwar-ai/dist;
+    index index.html;
+
+    # Correct MIME types for JavaScript modules
+    types {
+        application/javascript js mjs;
+        text/css css;
+        application/json json;
+        application/wasm wasm;
+    }
+
+    # Enable gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_proxied expired no-cache no-store private auth;
+    gzip_types application/javascript text/css text/html text/xml application/json application/wasm;
+
+    # Cache static assets
+    location ~* \.(mjs|js|css|svg|png|jpg|jpeg|gif|json|wasm)$ {
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        add_header X-Content-Type-Options "nosniff";
+    }
+
+    # SPA fallback - serve index.html for all routes
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Content-Type-Options "nosniff" always;
+
+    # Disable access to hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
