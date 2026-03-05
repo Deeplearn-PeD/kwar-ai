@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
-
-const navLinks = [
-  { label: 'Início', href: '#hero' },
-  { label: 'Sobre', href: '#about' },
-  { label: 'Produtos', href: '#products' },
-  { label: 'Como Funciona', href: '#how-it-works' },
-  { label: 'Contato', href: '#contact' },
-];
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Navbar() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: t('navbar.home'), href: '#hero' },
+    { label: t('navbar.about'), href: '#about' },
+    { label: t('navbar.products'), href: '#products' },
+    { label: t('navbar.howItWorks'), href: '#how-it-works' },
+    { label: t('navbar.contact'), href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,12 +84,13 @@ export function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <button
               onClick={() => scrollToSection('#contact')}
               className="btn-primary text-sm"
             >
-              Fale Conosco
+              {t('common.contactUs')}
             </button>
           </div>
 
@@ -120,11 +124,14 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <div className="pt-3 pb-2 border-b border-white/5">
+            <LanguageSwitcher />
+          </div>
           <button
             onClick={() => scrollToSection('#contact')}
             className="btn-primary w-full mt-4 text-sm"
           >
-            Fale Conosco
+            {t('common.contactUs')}
           </button>
         </div>
       </div>

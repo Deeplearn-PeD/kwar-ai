@@ -1,0 +1,335 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "learnMore": "Learn More",
+    "contact": "Contact",
+    "contactUs": "Contact Us",
+    "seeMore": "See More",
+    "required": "required"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "howItWorks": "How It Works",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Brazilian-Origin Epidemiological Intelligence",
+    "title": "Strategic Light",
+    "subtitle": "We transform data into fast and secure decisions for",
+    "subtitleHighlight": "Public Health",
+    "cta": {
+      "products": "Explore Our Products",
+      "learnMore": "Learn More"
+    },
+    "floatingCards": {
+      "activeMonitoring": "Active Monitoring",
+      "neuralNetwork": "Neural Network Online"
+    },
+    "scrollIndicator": "Scroll to explore"
+  },
+  "about": {
+    "badge": "Our Origin",
+    "title": "The Prophecy of the",
+    "titleHighlight": "Dawn",
+    "story": {
+      "paragraph1": "Long before algorithms existed, the Tupi peoples understood something essential: the future leaves signs in the present. For them,",
+      "kuaray": "Kuaray",
+      "kuaraySuffix": "— the sun — was not just light, but cycle. Dawn was not a surprise; it was a consequence of patterns observed with attention.",
+      "paragraph2": "Shamans didn't guess. They recognized signs. Before the rain, the wind changed. Before scarcity, movements altered. Before disease spread, the environment already indicated imbalance. There were signs — and there were those who knew how to read them.",
+      "paragraph3": "The",
+      "kwarAi": "Kwar-AI",
+      "kwarAiSuffix": "is born from this same logic. It's a strategic light for public health decisions.",
+      "paragraph4": "Epidemics don't begin when they become news. They form silently, leaving traces in environmental, epidemiological, and behavioral data. What seems like isolated noise can reveal trends when analyzed together. Our work is to identify these convergences before they become crises.",
+      "paragraph5": "From this same logic comes the",
+      "paragraph5Suffix": ", with a simple conviction: outbreaks announce their own arrival. Epidemiological intelligence is the ability to recognize this announcement in time to act.",
+      "quote": "The sun rises for everyone. But",
+      "quoteSuffix": "recognizes the signs before dawn."
+    },
+    "card": {
+      "title": "Ancestral Wisdom. Scientific Intelligence.",
+      "description": "The",
+      "descriptionSuffix": "combines the ancestral logic of observing signs with the rigor of statistical modeling and data science. It doesn't interpret omens — it analyzes environmental, epidemiological, and behavioral data to transform indications into anticipated and responsible decisions.",
+      "badge": "Epidemiological Intelligence"
+    },
+    "pillars": {
+      "title": "The Four Pillars",
+      "subtitle": "Our philosophy unites nature's cycles with the precision of scientific modeling.",
+      "renewal": {
+        "title": "Renewal",
+        "description": "Models that continuously learn from new data, adapting to environmental, behavioral, and epidemiological changes."
+      },
+      "clarity": {
+        "title": "Clarity",
+        "description": "Complex analyses translated into actionable intelligence — so strategic decisions can be made safely."
+      },
+      "cyclicity": {
+        "title": "Cyclicity",
+        "description": "Diseases follow seasonal patterns and predictable dynamics. We map these cycles with statistical rigor."
+      },
+      "anticipation": {
+        "title": "Anticipation",
+        "description": "We identify early warning signs and issue alerts in advance — when there's still time to act."
+      }
+    },
+    "mission": {
+      "title": "Our Promise",
+      "managers": {
+        "title": "For Managers",
+        "quote": "You don't need to guess. You need data that anticipates."
+      },
+      "doctors": {
+        "title": "For Doctors",
+        "quote": "Know where the next wave will hit before it arrives."
+      },
+      "society": {
+        "title": "For Society",
+        "quote": "Prevention is light. Reaction is darkness."
+      }
+    }
+  },
+  "products": {
+    "badge": "Our Products",
+    "title": "Our",
+    "titleHighlight": "Solutions",
+    "subtitle": "From AI assistant to specialized training, we offer tools to transform data into strategic decisions.",
+    "tabs": {
+      "epidbot": "EpidBot",
+      "training": "Training"
+    },
+    "epidbot": {
+      "title": "EPIDBOT",
+      "subtitle": "AI Assistant for Epidemiological Analysis",
+      "description": "An AI assistant developed by Kwar-AI to make public health data analysis accessible, structured, and strategic. Ask questions in natural language and receive analyses based on official data.",
+      "features": {
+        "naturalLanguage": {
+          "title": "Natural Language",
+          "description": "Queries in Portuguese, English, and Spanish."
+        },
+        "datasusDownload": {
+          "title": "DATASUS Download",
+          "description": "Automated download of public databases via PySUS."
+        },
+        "duckdbAnalysis": {
+          "title": "DuckDB Analysis",
+          "description": "SQL and statistical analysis with DuckDB."
+        },
+        "visualizations": {
+          "title": "Visualizations",
+          "description": "Automatically generated charts and maps."
+        },
+        "localData": {
+          "title": "Local Data",
+          "description": "Upload and integration of local and restricted data."
+        },
+        "knowledgeBase": {
+          "title": "Knowledge Base",
+          "description": "Integrated technical knowledge base."
+        }
+      },
+      "capabilities": {
+        "title": "What EpidBot delivers",
+        "items": [
+          "Epidemiological data analysis with AI",
+          "Integration with public databases (DATASUS, SINAN)",
+          "Automatic generation of charts and maps",
+          "Upload and analysis of local data",
+          "Natural language queries",
+          "Specialized technical knowledge base"
+        ]
+      },
+      "chatMock": {
+        "userQuestion": "Show the evolution of dengue cases in São Paulo in the last 6 months",
+        "botResponse": "Analyzing SINAN/DATASUS data...",
+        "totalCases": "Total cases",
+        "placeholder": "Type your query..."
+      },
+      "stats": {
+        "languages": "Languages",
+        "pysus": "Integrated",
+        "availability": "Available"
+      }
+    },
+    "training": {
+      "individual": {
+        "title": "Individual Training (Online)",
+        "subtitle": "For autonomous professionals",
+        "badges": {
+          "duration": "40h of content",
+          "format": "Live online",
+          "certification": "Kwar-AI Certification"
+        },
+        "features": [
+          "Complete AI course applied to public health",
+          "Access to EpidBot platform during the course",
+          "Didactic material included",
+          "Technical support during the period",
+          "Start upon class formation"
+        ],
+        "bonus": "Includes 3 months of EpidBot access after the course",
+        "price": "Upon request",
+        "priceDetail": "installment up to 12x",
+        "cta": "Register for the next class",
+        "note": "Minimum 20 registrations to open a class"
+      },
+      "institutional": {
+        "title": "Institutional Training",
+        "subtitle": "For health departments, hospitals, and institutions",
+        "features": [
+          "Closed classes for your institution",
+          "Content adapted to local reality",
+          "Use of institution's own data",
+          "Online or hybrid format",
+          "Customized proposal"
+        ],
+        "bonus": "On-site training available",
+        "price": "Upon request",
+        "priceDetail": "customized proposal",
+        "cta": "Request institutional proposal",
+        "highlighted": "RECOMMENDED"
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "How It Works",
+    "title": "From raw data to",
+    "titleHighlight": "intelligent decisions",
+    "subtitle": "Our process transforms millions of data points into actionable insights in four steps.",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "Data Collection",
+        "description": "We gather data from multiple sources: climate, Google searches, emergency care, disease notifications, and socioeconomic determinants."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Neural Processing",
+        "description": "Our AI models analyze historical patterns and identify correlations invisible to the human eye."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Alert Generation",
+        "description": "System classifies the scenario and generates early warnings 14-21 days in advance."
+      },
+      "step4": {
+        "number": "04",
+        "title": "Preventive Action",
+        "description": "Managers receive actionable recommendations for resource allocation and preventive actions."
+      },
+      "stageLabel": "STAGE"
+    },
+    "audience": {
+      "title": "Who Is It For",
+      "subtitle": "Our solutions are designed for different profiles in the health ecosystem",
+      "managers": {
+        "title": "Public Managers",
+        "description": "Municipal and state health departments that need to allocate resources efficiently."
+      },
+      "professionals": {
+        "title": "Health Professionals",
+        "description": "Doctors, nurses, and surveillance teams on the front lines."
+      },
+      "platforms": {
+        "title": "Health Platforms",
+        "description": "Applications and systems that need intelligent data for their users."
+      },
+      "research": {
+        "title": "Research Institutions",
+        "description": "Universities and research centers studying epidemiology and public health."
+      }
+    }
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Let's",
+    "titleHighlight": "talk",
+    "subtitle": "Get in touch to learn more about our solutions or schedule a demonstration. We're ready to illuminate the future of public health with you.",
+    "info": {
+      "title": "Contact Information",
+      "email": {
+        "label": "Email",
+        "value": "contato@kwar-ai.com.br"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+55 (21) 0000-0000"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Rio de Janeiro, RJ - Brazil"
+      },
+      "social": {
+        "title": "Social Media",
+        "linkedin": "LinkedIn",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "quote": "The sun rises for everyone. But those with KWAR-AI see the light 21 days earlier.",
+    "quoteAuthor": "Kwar-AI Manifesto",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "organization": "Organization",
+      "organizationPlaceholder": "Institution name",
+      "interest": "Interest",
+      "interestPlaceholder": "Select an option",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your needs...",
+      "submit": "Send Message",
+      "privacy": "By submitting, you agree to our privacy policy and LGPD.",
+      "interestOptions": {
+        "apiPartner": "Health API - Partner Plan",
+        "apiEnterprise": "Health API - Enterprise Plan",
+        "courseClosed": "AI Course - Closed Class",
+        "courseOpen": "AI Course - Open Class",
+        "platform": "Platform Subscription",
+        "partnership": "Strategic Partnership",
+        "other": "Other Subject"
+      },
+      "success": {
+        "title": "Message Sent!",
+        "message": "Thank you for contacting us. We'll get back to you soon."
+      }
+    }
+  },
+  "footer": {
+    "description": "Brazilian-origin epidemiological intelligence. We anticipate disease outbreaks up to 21 days in advance, combining climate, behavioral, and health data.",
+    "madeWith": "Made with",
+    "inBrazil": "in Brazil",
+    "links": {
+      "products": {
+        "title": "Products",
+        "apiHealth": "Health API",
+        "aiCourse": "AI Course"
+      },
+      "company": {
+        "title": "Company",
+        "about": "About Us",
+        "howItWorks": "How It Works",
+        "contact": "Contact"
+      },
+      "resources": {
+        "title": "Resources",
+        "apiDocs": "API Documentation",
+        "blog": "Blog",
+        "cases": "Cases"
+      },
+      "legal": {
+        "terms": "Terms of Use",
+        "privacy": "Privacy",
+        "lgpd": "LGPD"
+      }
+    },
+    "copyright": "© {{year}} Kwar-AI. All rights reserved.",
+    "slogan": {
+      "line1": "Illuminate the future.",
+      "line2": "The dawn of data."
+    }
+  }
+}

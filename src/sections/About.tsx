@@ -1,36 +1,38 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sun, Brain, Target, Lightbulb, RefreshCw, Eye } from 'lucide-react';
 
-const pillars = [
-  {
-    icon: RefreshCw,
-    title: 'Renovação',
-    description: 'Modelos que aprendem continuamente com novos dados, ajustando-se a mudanças ambientais, comportamentais e epidemiológicas.',
-    color: 'kwar-electric',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Clareza',
-    description: 'Análises complexas traduzidas em inteligência acionável — para que decisões estratégicas sejam tomadas com segurança.',
-    color: 'kwar-gold',
-  },
-  {
-    icon: Target,
-    title: 'Ciclicidade',
-    description: 'Doenças seguem padrões sazonais e dinâmicas previsíveis. Mapeamos esses ciclos com rigor estatístico.',
-    color: 'kwar-purple',
-  },
-  {
-    icon: Eye,
-    title: 'Antecipação',
-    description: 'Identificamos sinais precoces de risco e emitimos alertas com antecedência — quando ainda há tempo para agir.',
-    color: 'kwar-green',
-  },
-];
-
 export function About() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const pillars = [
+    {
+      icon: RefreshCw,
+      title: t('about.pillars.renewal.title'),
+      description: t('about.pillars.renewal.description'),
+      color: 'kwar-electric',
+    },
+    {
+      icon: Lightbulb,
+      title: t('about.pillars.clarity.title'),
+      description: t('about.pillars.clarity.description'),
+      color: 'kwar-gold',
+    },
+    {
+      icon: Target,
+      title: t('about.pillars.cyclicity.title'),
+      description: t('about.pillars.cyclicity.description'),
+      color: 'kwar-purple',
+    },
+    {
+      icon: Eye,
+      title: t('about.pillars.anticipation.title'),
+      description: t('about.pillars.anticipation.description'),
+      color: 'kwar-green',
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,52 +72,41 @@ export function About() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
               <Sun className="w-4 h-4 text-kwar-gold" />
-              <span className="text-sm font-medium text-kwar-gold">Nossa Origem</span>
+              <span className="text-sm font-medium text-kwar-gold">{t('about.badge')}</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              A Profecia do
-              <span className="text-gradient block">Amanhecer</span>
+              {t('about.title')}
+              <span className="text-gradient block">{t('about.titleHighlight')}</span>
             </h2>
 
             <div className="space-y-4 text-kwar-gray leading-relaxed">
               <p>
-                Muito antes de existirem algoritmos, os povos Tupi já entendiam algo essencial:
-                 o futuro deixa sinais no presente. Para eles,{' '}
-                <span className="text-kwar-gold font-medium">Kuaray</span> — o sol — não era apenas luz, mas ciclo. O amanhecer
-                 não era surpresa; era consequência de padrões observados com atenção.
+                {t('about.story.paragraph1')}{' '}
+                <span className="text-kwar-gold font-medium">{t('about.story.kuaray')}</span>{t('about.story.kuaraySuffix')}
               </p>
               
               <p>
-                Os xamãs não adivinhavam. Eles reconheciam indícios. 
-                Antes da chuva, o vento mudava. Antes da escassez, os movimentos se alteravam. Antes da doença se espalhar, o ambiente já indicava desequilíbrio. Havia sinais — e havia quem soubesse lê-los.
+                {t('about.story.paragraph2')}
               </p>
               
               <p className="text-white/80 leading-relaxed">
-                A <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI </span> 
-                nasce dessa mesma lógica. 
-                É uma luz estratégica para decisões em saúde pública.
+                {t('about.story.paragraph3')}{' '}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')} </span> 
+                {t('about.story.kwarAiSuffix')}
               </p>
 
               <p>
-                Epidemias não começam quando viram notícia. 
-                Elas se formam silenciosamente, deixando rastros em dados 
-                ambientais, epidemiológicos e comportamentais. O que parece 
-                ruído isolado pode revelar tendência quando analisado em 
-                conjunto. Nosso trabalho é identificar essas convergências 
-                antes que se tornem crises.
+                {t('about.story.paragraph4')}
                </p>
               <p>
-                Dessa mesma lógica nasce a <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>,
-                com uma convicção simples: surtos anunciam sua própria chegada. 
-                Inteligência epidemiológica é a capacidade de reconhecer esse 
-                anúncio a tempo de agir.
+                {t('about.story.paragraph5')}{' '}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')}</span>,{t('about.story.paragraph5Suffix')}
               </p>
              <p className="text-white font-medium border-l-2 border-kwar-electric pl-4">
-                O sol nasce para todos. Mas a{" "}
-                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>
-                 {" "}
-                reconhece os sinais antes do amanhecer.
+                {t('about.story.quote')}{" "}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')}</span>
+                {" "}{t('about.story.quoteSuffix')}
               </p>
             </div>
           </div>
@@ -141,20 +132,20 @@ export function About() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-white text-center mb-4">
-                  Sabedoria Ancestral. Inteligência Científica.
+                  {t('about.card.title')}
                 </h3>
                 
                 <p className="text-kwar-gray text-center text-sm leading-relaxed mb-6">
-                  A <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> Kwar-AI</span>
+                  {t('about.card.description')}{' '}
+                  <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')}</span>
                  {" "}
-                  une a lógica ancestral de observar sinais ao rigor da modelagem estatística e da ciência de dados.
-                  Não interpreta presságios — analisa dados ambientais, epidemiológicos e comportamentais para transformar indícios em decisões antecipadas e responsáveis.
+                  {t('about.card.descriptionSuffix')}
                 </p>
 
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10">
                     <div className="w-2 h-2 rounded-full bg-kwar-electric animate-pulse" />
-                    <span className="text-xs text-kwar-electric">Inteligência Epidemiológica</span>
+                    <span className="text-xs text-kwar-electric">{t('about.card.badge')}</span>
                   </div>
                 </div>
               </div>
@@ -171,10 +162,10 @@ export function About() {
         >
           <div className="text-center mb-12">
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
-              Os Quatro Pilares
+              {t('about.pillars.title')}
             </h3>
             <p className="text-kwar-gray max-w-2xl mx-auto">
-              Nossa filosofia une ciclos da natureza à precisão da modelagem científica.
+              {t('about.pillars.subtitle')}
             </p>
           </div>
 
@@ -208,26 +199,26 @@ export function About() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-kwar-electric via-kwar-gold to-kwar-electric" />
             
             <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-6">
-              Nossa Promessa
+              {t('about.mission.title')}
             </h3>
             
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div>
-                <p className="text-kwar-electric font-semibold mb-2">Para Gestores</p>
+                <p className="text-kwar-electric font-semibold mb-2">{t('about.mission.managers.title')}</p>
                 <p className="text-sm text-kwar-gray">
-                  "Você não precisa adivinhar. Você precisa de dados que antecipam."
+                  "{t('about.mission.managers.quote')}"
                 </p>
               </div>
               <div>
-                <p className="text-kwar-gold font-semibold mb-2">Para Médicos</p>
+                <p className="text-kwar-gold font-semibold mb-2">{t('about.mission.doctors.title')}</p>
                 <p className="text-sm text-kwar-gray">
-                  "Saiba onde a próxima onda vai bater antes dela chegar."
+                  "{t('about.mission.doctors.quote')}"
                 </p>
               </div>
               <div>
-                <p className="text-kwar-green font-semibold mb-2">Para a Sociedade</p>
+                <p className="text-kwar-green font-semibold mb-2">{t('about.mission.society.title')}</p>
                 <p className="text-sm text-kwar-gray">
-                  "Prevenção é luz. Reação é escuridão."
+                  "{t('about.mission.society.quote')}"
                 </p>
               </div>
             </div>

@@ -1,64 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, Brain, AlertTriangle, TrendingUp, Users, Building2, Stethoscope, Globe } from 'lucide-react';
 
-const steps = [
-  {
-    number: '01',
-    icon: Search,
-    title: 'Coleta de Dados',
-    description: 'Reunimos dados de múltiplas fontes: clima, buscas no Google, atendimentos de emergência, notificações de doenças e determinantes socioeconômicos.',
-    color: 'kwar-electric',
-  },
-  {
-    number: '02',
-    icon: Brain,
-    title: 'Processamento Neural',
-    description: 'Nossos modelos de IA analisam padrões históricos e identificam correlações invisíveis ao olho humano.',
-    color: 'kwar-purple',
-  },
-  {
-    number: '03',
-    icon: AlertTriangle,
-    title: 'Geração de Alertas',
-    description: 'Sistema classifica o cenário e gera alertas precoces com 14-21 dias de antecedência.',
-    color: 'kwar-amber',
-  },
-  {
-    number: '04',
-    icon: TrendingUp,
-    title: 'Ação Preventiva',
-    description: 'Gestores recebem recomendações acionáveis para alocação de recursos e ações preventivas.',
-    color: 'kwar-green',
-  },
-];
-
-const targetAudience = [
-  {
-    icon: Building2,
-    title: 'Gestores Públicos',
-    description: 'Secretarias municipais e estaduais de saúde que precisam alocar recursos de forma eficiente.',
-  },
-  {
-    icon: Stethoscope,
-    title: 'Profissionais de Saúde',
-    description: 'Médicos, enfermeiros e equipes de vigilância que atuam na linha de frente.',
-  },
-  {
-    icon: Users,
-    title: 'Plataformas de Saúde',
-    description: 'Aplicativos e sistemas que precisam de dados inteligentes para seus usuários.',
-  },
-  {
-    icon: Globe,
-    title: 'Instituições de Pesquisa',
-    description: 'Universidades e centros de pesquisa que estudam epidemiologia e saúde pública.',
-  },
-];
-
 export function HowItWorks() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const steps = [
+    {
+      number: t('howItWorks.steps.step1.number'),
+      icon: Search,
+      title: t('howItWorks.steps.step1.title'),
+      description: t('howItWorks.steps.step1.description'),
+      color: 'kwar-electric',
+    },
+    {
+      number: t('howItWorks.steps.step2.number'),
+      icon: Brain,
+      title: t('howItWorks.steps.step2.title'),
+      description: t('howItWorks.steps.step2.description'),
+      color: 'kwar-purple',
+    },
+    {
+      number: t('howItWorks.steps.step3.number'),
+      icon: AlertTriangle,
+      title: t('howItWorks.steps.step3.title'),
+      description: t('howItWorks.steps.step3.description'),
+      color: 'kwar-amber',
+    },
+    {
+      number: t('howItWorks.steps.step4.number'),
+      icon: TrendingUp,
+      title: t('howItWorks.steps.step4.title'),
+      description: t('howItWorks.steps.step4.description'),
+      color: 'kwar-green',
+    },
+  ];
+
+  const targetAudience = [
+    {
+      icon: Building2,
+      title: t('howItWorks.audience.managers.title'),
+      description: t('howItWorks.audience.managers.description'),
+    },
+    {
+      icon: Stethoscope,
+      title: t('howItWorks.audience.professionals.title'),
+      description: t('howItWorks.audience.professionals.description'),
+    },
+    {
+      icon: Users,
+      title: t('howItWorks.audience.platforms.title'),
+      description: t('howItWorks.audience.platforms.description'),
+    },
+    {
+      icon: Globe,
+      title: t('howItWorks.audience.research.title'),
+      description: t('howItWorks.audience.research.description'),
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -108,16 +110,16 @@ export function HowItWorks() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-purple/10 border border-kwar-purple/30 mb-6">
             <Brain className="w-4 h-4 text-kwar-purple" />
-            <span className="text-sm font-medium text-kwar-purple">Como Funciona</span>
+            <span className="text-sm font-medium text-kwar-purple">{t('howItWorks.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            De dados brutos a{' '}
-            <span className="text-gradient">decisões inteligentes</span>
+            {t('howItWorks.title')}{' '}
+            <span className="text-gradient">{t('howItWorks.titleHighlight')}</span>
           </h2>
 
           <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            Nosso processo transforma milhões de dados em insights acionáveis em quatro etapas.
+            {t('howItWorks.subtitle')}
           </p>
         </div>
 
@@ -193,7 +195,7 @@ export function HowItWorks() {
                     <span
                       className={`text-sm font-mono text-${steps[activeStep].color}`}
                     >
-                      ETAPA {steps[activeStep].number}
+                      {t('howItWorks.steps.stageLabel')} {steps[activeStep].number}
                     </span>
                     <h4 className="text-2xl font-bold text-white">{steps[activeStep].title}</h4>
                   </div>
@@ -230,10 +232,10 @@ export function HowItWorks() {
         >
           <div className="text-center mb-12">
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
-              Para Quem É
+              {t('howItWorks.audience.title')}
             </h3>
             <p className="text-kwar-gray max-w-2xl mx-auto">
-              Nossas soluções são projetadas para diferentes perfis no ecossistema de saúde
+              {t('howItWorks.audience.subtitle')}
             </p>
           </div>
 

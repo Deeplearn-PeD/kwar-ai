@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NeuralSun } from '@/components/NeuralSun';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function Hero() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -48,7 +50,7 @@ export function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
               <Sparkles className="w-4 h-4 text-kwar-electric" />
               <span className="text-sm font-medium text-kwar-electric">
-                Inteligência Epidemiológica de Origem Brasileira
+                {t('hero.badge')}
               </span>
             </div>
 
@@ -56,22 +58,20 @@ export function Hero() {
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
               <span className="text-yellow-300 relative">
                 <span className="absolute inset-0 blur-lg opacity-70 text-yellow-400">
-                     Luz Estratégica
+                     {t('hero.title')}
                 </span>
-                 <span className="relative">Luz Estratégica</span> 
+                 <span className="relative">{t('hero.title')}</span> 
               </span>             
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg lg:text-3xl text-white/90 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-12">
-               Transformamos dados em decisões rápidas e seguras para{' '}
+               {t('hero.subtitle')}{' '}
               <span className="text-kwar-electric font-semibold">
-               Saúde Pública
+               {t('hero.subtitleHighlight')}
               </span>.
             </p>
 
-            
-            {/* Stats */}
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -79,14 +79,14 @@ export function Hero() {
                 onClick={() => scrollToSection('#products')}
                 className="btn-primary group flex items-center justify-center gap-2"
               >
-                Conheça Nossos Produtos
+                {t('hero.cta.products')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </button>
               <button
                 onClick={() => scrollToSection('#about')}
                 className="btn-secondary"
               >
-                Saiba Mais
+                {t('hero.cta.learnMore')}
               </button>
             </div>
           </div>
@@ -116,7 +116,7 @@ export function Hero() {
               >
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-kwar-green animate-pulse" />
-                  <span className="text-xs text-kwar-gray">Monitoramento Ativo</span>
+                  <span className="text-xs text-kwar-gray">{t('hero.floatingCards.activeMonitoring')}</span>
                 </div>
               </div>
 
@@ -127,7 +127,7 @@ export function Hero() {
               >
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-kwar-electric animate-pulse" />
-                  <span className="text-xs text-kwar-gray">Rede Neural Online</span>
+                  <span className="text-xs text-kwar-gray">{t('hero.floatingCards.neuralNetwork')}</span>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export function Hero() {
           }`}
         >
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-kwar-gray">Role para explorar</span>
+            <span className="text-xs text-kwar-gray">{t('hero.scrollIndicator')}</span>
             <div className="w-6 h-10 rounded-full border-2 border-kwar-electric/30 flex justify-center pt-2">
               <div className="w-1.5 h-3 bg-kwar-electric rounded-full animate-bounce" />
             </div>

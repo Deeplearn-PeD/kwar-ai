@@ -1,0 +1,335 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "learnMore": "Saiba Mais",
+    "contact": "Contato",
+    "contactUs": "Fale Conosco",
+    "seeMore": "Ver Mais",
+    "required": "obrigatório"
+  },
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "products": "Produtos",
+    "howItWorks": "Como Funciona",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "Inteligência Epidemiológica de Origem Brasileira",
+    "title": "Luz Estratégica",
+    "subtitle": "Transformamos dados em decisões rápidas e seguras para",
+    "subtitleHighlight": "Saúde Pública",
+    "cta": {
+      "products": "Conheça Nossos Produtos",
+      "learnMore": "Saiba Mais"
+    },
+    "floatingCards": {
+      "activeMonitoring": "Monitoramento Ativo",
+      "neuralNetwork": "Rede Neural Online"
+    },
+    "scrollIndicator": "Role para explorar"
+  },
+  "about": {
+    "badge": "Nossa Origem",
+    "title": "A Profecia do",
+    "titleHighlight": "Amanhecer",
+    "story": {
+      "paragraph1": "Muito antes de existirem algoritmos, os povos Tupi já entendiam algo essencial: o futuro deixa sinais no presente. Para eles,",
+      "kuaray": "Kuaray",
+      "kuaraySuffix": "— o sol — não era apenas luz, mas ciclo. O amanhecer não era surpresa; era consequência de padrões observados com atenção.",
+      "paragraph2": "Os xamãs não adivinhavam. Eles reconheciam indícios. Antes da chuva, o vento mudava. Antes da escassez, os movimentos se alteravam. Antes da doença se espalhar, o ambiente já indicava desequilíbrio. Havia sinais — e havia quem soubesse lê-los.",
+      "paragraph3": "A",
+      "kwarAi": "Kwar-AI",
+      "kwarAiSuffix": "nasce dessa mesma lógica. É uma luz estratégica para decisões em saúde pública.",
+      "paragraph4": "Epidemias não começam quando viram notícia. Elas se formam silenciosamente, deixando rastros em dados ambientais, epidemiológicos e comportamentais. O que parece ruído isolado pode revelar tendência quando analisado em conjunto. Nosso trabalho é identificar essas convergências antes que se tornem crises.",
+      "paragraph5": "Dessa mesma lógica nasce a",
+      "paragraph5Suffix": ", com uma convicção simples: surtos anunciam sua própria chegada. Inteligência epidemiológica é a capacidade de reconhecer esse anúncio a tempo de agir.",
+      "quote": "O sol nasce para todos. Mas a",
+      "quoteSuffix": "reconhece os sinais antes do amanhecer."
+    },
+    "card": {
+      "title": "Sabedoria Ancestral. Inteligência Científica.",
+      "description": "A",
+      "descriptionSuffix": "une a lógica ancestral de observar sinais ao rigor da modelagem estatística e da ciência de dados. Não interpreta presságios — analisa dados ambientais, epidemiológicos e comportamentais para transformar indícios em decisões antecipadas e responsáveis.",
+      "badge": "Inteligência Epidemiológica"
+    },
+    "pillars": {
+      "title": "Os Quatro Pilares",
+      "subtitle": "Nossa filosofia une ciclos da natureza à precisão da modelagem científica.",
+      "renewal": {
+        "title": "Renovação",
+        "description": "Modelos que aprendem continuamente com novos dados, ajustando-se a mudanças ambientais, comportamentais e epidemiológicas."
+      },
+      "clarity": {
+        "title": "Clareza",
+        "description": "Análises complexas traduzidas em inteligência acionável — para que decisões estratégicas sejam tomadas com segurança."
+      },
+      "cyclicity": {
+        "title": "Ciclicidade",
+        "description": "Doenças seguem padrões sazonais e dinâmicas previsíveis. Mapeamos esses ciclos com rigor estatístico."
+      },
+      "anticipation": {
+        "title": "Antecipação",
+        "description": "Identificamos sinais precoces de risco e emitimos alertas com antecedência — quando ainda há tempo para agir."
+      }
+    },
+    "mission": {
+      "title": "Nossa Promessa",
+      "managers": {
+        "title": "Para Gestores",
+        "quote": "Você não precisa adivinhar. Você precisa de dados que antecipam."
+      },
+      "doctors": {
+        "title": "Para Médicos",
+        "quote": "Saiba onde a próxima onda vai bater antes dela chegar."
+      },
+      "society": {
+        "title": "Para a Sociedade",
+        "quote": "Prevenção é luz. Reação é escuridão."
+      }
+    }
+  },
+  "products": {
+    "badge": "Nossos Produtos",
+    "title": "Nossas",
+    "titleHighlight": "Soluções",
+    "subtitle": "Do assistente de IA à capacitação especializada, oferecemos ferramentas para transformar dados em decisões estratégicas.",
+    "tabs": {
+      "epidbot": "EpidBot",
+      "training": "Capacitação"
+    },
+    "epidbot": {
+      "title": "EPIDBOT",
+      "subtitle": "Assistente de IA para Análise Epidemiológica",
+      "description": "Um assistente de IA desenvolvido pela Kwar-AI para tornar a análise de dados em saúde pública acessível, estruturada e estratégica. Faça perguntas em linguagem natural e receba análises baseadas em dados oficiais.",
+      "features": {
+        "naturalLanguage": {
+          "title": "Linguagem Natural",
+          "description": "Consultas em português, inglês e espanhol."
+        },
+        "datasusDownload": {
+          "title": "Download DATASUS",
+          "description": "Download automatizado de bases públicas via PySUS."
+        },
+        "duckdbAnalysis": {
+          "title": "Análise DuckDB",
+          "description": "SQL e análise estatística com DuckDB."
+        },
+        "visualizations": {
+          "title": "Visualizações",
+          "description": "Gráficos e mapas gerados automaticamente."
+        },
+        "localData": {
+          "title": "Dados Locais",
+          "description": "Upload e integração de dados locais e restritos."
+        },
+        "knowledgeBase": {
+          "title": "Knowledge Base",
+          "description": "Base de conhecimento técnico integrada."
+        }
+      },
+      "capabilities": {
+        "title": "O que o EpidBot entrega",
+        "items": [
+          "Análise de dados epidemiológicos com IA",
+          "Integração com bases públicas (DATASUS, SINAN)",
+          "Geração automática de gráficos e mapas",
+          "Upload e análise de dados locais",
+          "Consultas em linguagem natural",
+          "Base de conhecimento técnico especializado"
+        ]
+      },
+      "chatMock": {
+        "userQuestion": "Mostre a evolução de casos de dengue em São Paulo nos últimos 6 meses",
+        "botResponse": "Analisando dados do SINAN/DATASUS...",
+        "totalCases": "Total de casos",
+        "placeholder": "Digite sua consulta..."
+      },
+      "stats": {
+        "languages": "Idiomas",
+        "pysus": "Integrado",
+        "availability": "Disponível"
+      }
+    },
+    "training": {
+      "individual": {
+        "title": "Formação Individual (Online)",
+        "subtitle": "Para profissionais autônomos",
+        "badges": {
+          "duration": "40h de conteúdo",
+          "format": "Online ao vivo",
+          "certification": "Certificação Kwar-AI"
+        },
+        "features": [
+          "Curso completo de IA aplicada à saúde pública",
+          "Acesso à plataforma EpidBot durante o curso",
+          "Material didático incluso",
+          "Suporte técnico durante o período",
+          "Início mediante formação de turma"
+        ],
+        "bonus": "Inclui 3 meses de acesso ao EpidBot após o curso",
+        "price": "Sob consulta",
+        "priceDetail": "parcele em até 12x",
+        "cta": "Inscrever-se na próxima turma",
+        "note": "Mínimo de 20 inscritos para abertura de turma"
+      },
+      "institutional": {
+        "title": "Formação Institucional",
+        "subtitle": "Para secretarias, hospitais e instituições",
+        "features": [
+          "Turmas fechadas para sua instituição",
+          "Conteúdo adaptado à realidade local",
+          "Uso de dados da própria instituição",
+          "Modalidade online ou híbrida",
+          "Proposta personalizada"
+        ],
+        "bonus": "Treinamento in-loco disponível",
+        "price": "Sob consulta",
+        "priceDetail": "proposta personalizada",
+        "cta": "Solicitar proposta institucional",
+        "highlighted": "RECOMENDADO"
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "Como Funciona",
+    "title": "De dados brutos a",
+    "titleHighlight": "decisões inteligentes",
+    "subtitle": "Nosso processo transforma milhões de dados em insights acionáveis em quatro etapas.",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "Coleta de Dados",
+        "description": "Reunimos dados de múltiplas fontes: clima, buscas no Google, atendimentos de emergência, notificações de doenças e determinantes socioeconômicos."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Processamento Neural",
+        "description": "Nossos modelos de IA analisam padrões históricos e identificam correlações invisíveis ao olho humano."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Geração de Alertas",
+        "description": "Sistema classifica o cenário e gera alertas precoces com 14-21 dias de antecedência."
+      },
+      "step4": {
+        "number": "04",
+        "title": "Ação Preventiva",
+        "description": "Gestores recebem recomendações acionáveis para alocação de recursos e ações preventivas."
+      },
+      "stageLabel": "ETAPA"
+    },
+    "audience": {
+      "title": "Para Quem É",
+      "subtitle": "Nossas soluções são projetadas para diferentes perfis no ecossistema de saúde",
+      "managers": {
+        "title": "Gestores Públicos",
+        "description": "Secretarias municipais e estaduais de saúde que precisam alocar recursos de forma eficiente."
+      },
+      "professionals": {
+        "title": "Profissionais de Saúde",
+        "description": "Médicos, enfermeiros e equipes de vigilância que atuam na linha de frente."
+      },
+      "platforms": {
+        "title": "Plataformas de Saúde",
+        "description": "Aplicativos e sistemas que precisam de dados inteligentes para seus usuários."
+      },
+      "research": {
+        "title": "Instituições de Pesquisa",
+        "description": "Universidades e centros de pesquisa que estudam epidemiologia e saúde pública."
+      }
+    }
+  },
+  "contact": {
+    "badge": "Contato",
+    "title": "Vamos",
+    "titleHighlight": "conversar",
+    "subtitle": "Entre em contato para saber mais sobre nossas soluções ou agendar uma demonstração. Estamos prontos para iluminar o futuro da saúde pública junto com você.",
+    "info": {
+      "title": "Informações de Contato",
+      "email": {
+        "label": "Email",
+        "value": "contato@kwar-ai.com.br"
+      },
+      "phone": {
+        "label": "Telefone",
+        "value": "+55 (21) 0000-0000"
+      },
+      "location": {
+        "label": "Localização",
+        "value": "Rio de Janeiro, RJ - Brasil"
+      },
+      "social": {
+        "title": "Redes Sociais",
+        "linkedin": "LinkedIn",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "quote": "O sol nasce para todos. Mas quem tem KWAR-AI vê a luz 21 dias antes.",
+    "quoteAuthor": "Manifesto Kwar-AI",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Seu nome completo",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "organization": "Organização",
+      "organizationPlaceholder": "Nome da instituição",
+      "interest": "Interesse",
+      "interestPlaceholder": "Selecione uma opção",
+      "message": "Mensagem",
+      "messagePlaceholder": "Conte-nos sobre suas necessidades...",
+      "submit": "Enviar Mensagem",
+      "privacy": "Ao enviar, você concorda com nossa política de privacidade e LGPD.",
+      "interestOptions": {
+        "apiPartner": "API de Saúde - Plano Partner",
+        "apiEnterprise": "API de Saúde - Plano Enterprise",
+        "courseClosed": "Curso de IA - Turma Fechada",
+        "courseOpen": "Curso de IA - Turma Aberta",
+        "platform": "Assinatura da Plataforma",
+        "partnership": "Parceria Estratégica",
+        "other": "Outro Assunto"
+      },
+      "success": {
+        "title": "Mensagem Enviada!",
+        "message": "Agradecemos seu contato. Retornaremos em breve."
+      }
+    }
+  },
+  "footer": {
+    "description": "Inteligência epidemiológica de origem brasileira. Antecipamos surtos de doenças com até 21 dias de antecedência, combinando dados climáticos, comportamentais e de saúde.",
+    "madeWith": "Feito com",
+    "inBrazil": "no Brasil",
+    "links": {
+      "products": {
+        "title": "Produtos",
+        "apiHealth": "API de Saúde",
+        "aiCourse": "Curso de IA"
+      },
+      "company": {
+        "title": "Empresa",
+        "about": "Sobre Nós",
+        "howItWorks": "Como Funciona",
+        "contact": "Contato"
+      },
+      "resources": {
+        "title": "Recursos",
+        "apiDocs": "Documentação API",
+        "blog": "Blog",
+        "cases": "Cases"
+      },
+      "legal": {
+        "terms": "Termos de Uso",
+        "privacy": "Privacidade",
+        "lgpd": "LGPD"
+      }
+    },
+    "copyright": "© {{year}} Kwar-AI. Todos os direitos reservados.",
+    "slogan": {
+      "line1": "Ilumine o futuro.",
+      "line2": "O amanhecer dos dados."
+    }
+  }
+}

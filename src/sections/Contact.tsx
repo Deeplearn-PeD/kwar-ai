@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Send, Linkedin, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,51 +12,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'contato@kwar-ai.com.br',
-    href: 'mailto:contato@kwar-ai.com.br',
-  },
-  {
-    icon: Phone,
-    label: 'Telefone',
-    value: '+55 (21) 0000-0000',
-    href: 'tel:+551100000000',
-  },
-  {
-    icon: MapPin,
-    label: 'Localização',
-    value: 'Rio de Janeiro, RJ - Brasil',
-    href: '#',
-  },
-];
-
-const socialLinks = [
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/company/kwar-ai',
-  },
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    href: 'https://wa.me/551100000000',
-  },
-];
-
-const interestOptions = [
-  { value: 'api-partner', label: 'API de Saúde - Plano Partner' },
-  { value: 'api-enterprise', label: 'API de Saúde - Plano Enterprise' },
-  { value: 'course-closed', label: 'Curso de IA - Turma Fechada' },
-  { value: 'course-open', label: 'Curso de IA - Turma Aberta' },
-  { value: 'platform', label: 'Assinatura da Plataforma' },
-  { value: 'partnership', label: 'Parceria Estratégica' },
-  { value: 'other', label: 'Outro Assunto' },
-];
-
 export function Contact() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -66,6 +24,50 @@ export function Contact() {
     message: '',
   });
   const sectionRef = useRef<HTMLElement>(null);
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: t('contact.info.email.label'),
+      value: t('contact.info.email.value'),
+      href: 'mailto:contato@kwar-ai.com.br',
+    },
+    {
+      icon: Phone,
+      label: t('contact.info.phone.label'),
+      value: t('contact.info.phone.value'),
+      href: 'tel:+551100000000',
+    },
+    {
+      icon: MapPin,
+      label: t('contact.info.location.label'),
+      value: t('contact.info.location.value'),
+      href: '#',
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: Linkedin,
+      label: t('contact.info.social.linkedin'),
+      href: 'https://linkedin.com/company/kwar-ai',
+    },
+    {
+      icon: MessageCircle,
+      label: t('contact.info.social.whatsapp'),
+      href: 'https://wa.me/551100000000',
+    },
+  ];
+
+  const interestOptions = [
+    { value: 'api-partner', label: t('contact.form.interestOptions.apiPartner') },
+    { value: 'api-enterprise', label: t('contact.form.interestOptions.apiEnterprise') },
+    { value: 'course-closed', label: t('contact.form.interestOptions.courseClosed') },
+    { value: 'course-open', label: t('contact.form.interestOptions.courseOpen') },
+    { value: 'platform', label: t('contact.form.interestOptions.platform') },
+    { value: 'partnership', label: t('contact.form.interestOptions.partnership') },
+    { value: 'other', label: t('contact.form.interestOptions.other') },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -121,17 +123,16 @@ export function Contact() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <Mail className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">Contato</span>
+            <span className="text-sm font-medium text-kwar-electric">{t('contact.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Vamos{' '}
-            <span className="text-gradient">conversar</span>
+            {t('contact.title')}{' '}
+            <span className="text-gradient">{t('contact.titleHighlight')}</span>
           </h2>
 
           <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            Entre em contato para saber mais sobre nossas soluções ou agendar uma demonstração.
-            Estamos prontos para iluminar o futuro da saúde pública junto com você.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -143,7 +144,7 @@ export function Contact() {
             }`}
           >
             <div className="card-glass p-8 h-full">
-              <h3 className="text-xl font-bold text-white mb-6">Informações de Contato</h3>
+              <h3 className="text-xl font-bold text-white mb-6">{t('contact.info.title')}</h3>
 
               <div className="space-y-6 mb-8">
                 {contactInfo.map((item) => (
@@ -166,7 +167,7 @@ export function Contact() {
               </div>
 
               <div className="border-t border-white/10 pt-6">
-                <h4 className="text-white font-semibold mb-4">Redes Sociais</h4>
+                <h4 className="text-white font-semibold mb-4">{t('contact.info.social.title')}</h4>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <a
@@ -185,9 +186,9 @@ export function Contact() {
               {/* Quote */}
               <div className="mt-8 p-6 rounded-xl bg-kwar-electric/5 border border-kwar-electric/20">
                 <p className="text-white italic text-sm leading-relaxed mb-4">
-                  "O sol nasce para todos. Mas quem tem KWAR-AI vê a luz 21 dias antes."
+                  "{t('contact.quote')}"
                 </p>
-                <p className="text-kwar-electric text-xs">— Manifesto Kwar-AI</p>
+                <p className="text-kwar-electric text-xs">— {t('contact.quoteAuthor')}</p>
               </div>
             </div>
           </div>
@@ -200,13 +201,13 @@ export function Contact() {
           >
             <div className="card-glass p-8">
               {isSubmitted ? (
-                <div className="h-full flex flex-col items-center justify-center py-12 text-center">
+                 <div className="h-full flex flex-col items-center justify-center py-12 text-center">
                   <div className="w-16 h-16 rounded-full bg-kwar-green/20 flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-8 h-8 text-kwar-green" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Mensagem Enviada!</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">{t('contact.form.success.title')}</h3>
                   <p className="text-kwar-gray">
-                    Agradecemos seu contato. Retornaremos em breve.
+                    {t('contact.form.success.message')}
                   </p>
                 </div>
               ) : (
@@ -214,11 +215,11 @@ export function Contact() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-white">
-                        Nome <span className="text-kwar-red">*</span>
+                        {t('contact.form.name')} <span className="text-kwar-red">*</span>
                       </Label>
                       <Input
                         id="name"
-                        placeholder="Seu nome completo"
+                        placeholder={t('contact.form.namePlaceholder')}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
@@ -228,12 +229,12 @@ export function Contact() {
 
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-white">
-                        Email <span className="text-kwar-red">*</span>
+                        {t('contact.form.email')} <span className="text-kwar-red">*</span>
                       </Label>
                       <Input
                         id="email"
                         type="email"
-                        placeholder="seu@email.com"
+                        placeholder={t('contact.form.emailPlaceholder')}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
@@ -245,11 +246,11 @@ export function Contact() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="organization" className="text-white">
-                        Organização
+                        {t('contact.form.organization')}
                       </Label>
                       <Input
                         id="organization"
-                        placeholder="Nome da instituição"
+                        placeholder={t('contact.form.organizationPlaceholder')}
                         value={formData.organization}
                         onChange={(e) =>
                           setFormData({ ...formData, organization: e.target.value })
@@ -260,7 +261,7 @@ export function Contact() {
 
                     <div className="space-y-2">
                       <Label htmlFor="interest" className="text-white">
-                        Interesse <span className="text-kwar-red">*</span>
+                        {t('contact.form.interest')} <span className="text-kwar-red">*</span>
                       </Label>
                       <Select
                         value={formData.interest}
@@ -268,7 +269,7 @@ export function Contact() {
                         required
                       >
                         <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-kwar-electric">
-                          <SelectValue placeholder="Selecione uma opção" />
+                          <SelectValue placeholder={t('contact.form.interestPlaceholder')} />
                         </SelectTrigger>
                         <SelectContent className="bg-kwar-deep border-white/10">
                           {interestOptions.map((option) => (
@@ -287,11 +288,11 @@ export function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-white">
-                      Mensagem <span className="text-kwar-red">*</span>
+                      {t('contact.form.message')} <span className="text-kwar-red">*</span>
                     </Label>
                     <Textarea
                       id="message"
-                      placeholder="Conte-nos sobre suas necessidades..."
+                      placeholder={t('contact.form.messagePlaceholder')}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
@@ -304,12 +305,12 @@ export function Contact() {
                     type="submit"
                     className="w-full btn-primary flex items-center justify-center gap-2 group"
                   >
-                    Enviar Mensagem
+                    {t('contact.form.submit')}
                     <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </button>
 
                   <p className="text-xs text-kwar-gray text-center">
-                    Ao enviar, você concorda com nossa política de privacidade e LGPD.
+                    {t('contact.form.privacy')}
                   </p>
                 </form>
               )}

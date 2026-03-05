@@ -1,28 +1,9 @@
 import { Heart, ExternalLink } from 'lucide-react';
-
-const footerLinks = {
-  produtos: [
-    { label: 'API de Saúde', href: '#products' },
-    { label: 'Curso de IA', href: '#products' },
-  ],
-  empresa: [
-    { label: 'Sobre Nós', href: '#about' },
-    { label: 'Como Funciona', href: '#how-it-works' },
-    { label: 'Contato', href: '#contact' },
-  ],
-  recursos: [
-    { label: 'Documentação API', href: '#' },
-    { label: 'Blog', href: '#' },
-    { label: 'Cases', href: '#' },
-  ],
-  legal: [
-    { label: 'Termos de Uso', href: '#' },
-    { label: 'Privacidade', href: '#' },
-    { label: 'LGPD', href: '#' },
-  ],
-};
+import { useTranslation } from 'react-i18next';
 
 export function Footer() {
+  const { t } = useTranslation();
+  
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
       const element = document.querySelector(href);
@@ -30,6 +11,28 @@ export function Footer() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  };
+
+  const footerLinks = {
+    produtos: [
+      { label: t('footer.links.products.apiHealth'), href: '#products' },
+      { label: t('footer.links.products.aiCourse'), href: '#products' },
+    ],
+    empresa: [
+      { label: t('footer.links.company.about'), href: '#about' },
+      { label: t('footer.links.company.howItWorks'), href: '#how-it-works' },
+      { label: t('footer.links.company.contact'), href: '#contact' },
+    ],
+    recursos: [
+      { label: t('footer.links.resources.apiDocs'), href: '#' },
+      { label: t('footer.links.resources.blog'), href: '#' },
+      { label: t('footer.links.resources.cases'), href: '#' },
+    ],
+    legal: [
+      { label: t('footer.links.legal.terms'), href: '#' },
+      { label: t('footer.links.legal.privacy'), href: '#' },
+      { label: t('footer.links.legal.lgpd'), href: '#' },
+    ],
   };
 
   return (
@@ -53,20 +56,18 @@ export function Footer() {
               </span>
             </a>
             <p className="text-kwar-gray text-sm leading-relaxed mb-6 max-w-sm">
-              Inteligência epidemiológica de origem brasileira. Antecipamos surtos de doenças
-              com até 21 dias de antecedência, combinando dados climáticos, comportamentais
-              e de saúde.
+              {t('footer.description')}
             </p>
             <div className="flex items-center gap-2 text-sm text-kwar-gray">
-              <span>Feito com</span>
+              <span>{t('footer.madeWith')}</span>
               <Heart className="w-4 h-4 text-kwar-red fill-kwar-red" />
-              <span>no Brasil</span>
+              <span>{t('footer.inBrazil')}</span>
             </div>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Produtos</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.links.products.title')}</h4>
             <ul className="space-y-2">
               {footerLinks.produtos.map((link) => (
                 <li key={link.label}>
@@ -86,7 +87,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Empresa</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.links.company.title')}</h4>
             <ul className="space-y-2">
               {footerLinks.empresa.map((link) => (
                 <li key={link.label}>
@@ -106,7 +107,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Recursos</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.links.resources.title')}</h4>
             <ul className="space-y-2">
               {footerLinks.recursos.map((link) => (
                 <li key={link.label}>
@@ -126,7 +127,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-kwar-gray text-sm">
-            © {new Date().getFullYear()} Kwar-AI. Todos os direitos reservados.
+            {t('footer.copyright', { year: new Date().getFullYear() })}
           </p>
 
           <div className="flex items-center gap-6">
@@ -145,10 +146,10 @@ export function Footer() {
         {/* Slogan */}
         <div className="mt-12 text-center">
           <p className="font-display text-2xl lg:text-3xl font-bold text-gradient">
-            Ilumine o futuro.
+            {t('footer.slogan.line1')}
           </p>
           <p className="text-kwar-gray text-sm mt-2">
-            O amanhecer dos dados.
+            {t('footer.slogan.line2')}
           </p>
         </div>
       </div>

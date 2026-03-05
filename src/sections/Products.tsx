@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   GraduationCap,
   MessageCircle,
@@ -18,98 +19,8 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const epidbotFeatures = [
-  {
-    icon: MessageCircle,
-    title: 'Linguagem Natural',
-    description: 'Consultas em português, inglês e espanhol.',
-  },
-  {
-    icon: Download,
-    title: 'Download DATASUS',
-    description: 'Download automatizado de bases públicas via PySUS.',
-  },
-  {
-    icon: Database,
-    title: 'Análise DuckDB',
-    description: 'SQL e análise estatística com DuckDB.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Visualizações',
-    description: 'Gráficos e mapas gerados automaticamente.',
-  },
-  {
-    icon: Upload,
-    title: 'Dados Locais',
-    description: 'Upload e integração de dados locais e restritos.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Knowledge Base',
-    description: 'Base de conhecimento técnico integrada.',
-  },
-];
-
-const epidbotCapabilities = [
-  'Análise de dados epidemiológicos com IA',
-  'Integração com bases públicas (DATASUS, SINAN)',
-  'Geração automática de gráficos e mapas',
-  'Upload e análise de dados locais',
-  'Consultas em linguagem natural',
-  'Base de conhecimento técnico especializado',
-];
-
-const trainingModalities = [
-  {
-    type: 'individual',
-    icon: GraduationCap,
-    color: 'kwar-electric',
-    title: 'Formação Individual (Online)',
-    subtitle: 'Para profissionais autônomos',
-    badges: [
-      { icon: Clock, text: '40h de conteúdo' },
-      { icon: Monitor, text: 'Online ao vivo' },
-      { icon: Award, text: 'Certificação Kwar-AI' },
-    ],
-    features: [
-      'Curso completo de IA aplicada à saúde pública',
-      'Acesso à plataforma EpidBot durante o curso',
-      'Material didático incluso',
-      'Suporte técnico durante o período',
-      'Início mediante formação de turma',
-    ],
-    bonus: 'Inclui 3 meses de acesso ao EpidBot após o curso',
-    price: 'Sob consulta',
-    priceDetail: 'parcele em até 12x',
-    cta: 'Inscrever-se na próxima turma',
-    note: 'Mínimo de 20 inscritos para abertura de turma',
-    highlighted: false,
-  },
-  {
-    type: 'institucional',
-    icon: Building2,
-    color: 'kwar-gold',
-    title: 'Formação Institucional',
-    subtitle: 'Para secretarias, hospitais e instituições',
-    badges: [],
-    features: [
-      'Turmas fechadas para sua instituição',
-      'Conteúdo adaptado à realidade local',
-      'Uso de dados da própria instituição',
-      'Modalidade online ou híbrida',
-      'Proposta personalizada',
-    ],
-    bonus: 'Treinamento in-loco disponível',
-    price: 'Sob consulta',
-    priceDetail: 'proposta personalizada',
-    cta: 'Solicitar proposta institucional',
-    note: '',
-    highlighted: true,
-  },
-];
-
 export function Products() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   
@@ -117,6 +28,97 @@ export function Products() {
   const CHARS = '01アイウエオカキクケコABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const [displayText, setDisplayText] = useState(' '.repeat(TARGET_TEXT.length));
   const [isDecoding, setIsDecoding] = useState(true);
+
+  const epidbotFeatures = [
+    {
+      icon: MessageCircle,
+      title: t('products.epidbot.features.naturalLanguage.title'),
+      description: t('products.epidbot.features.naturalLanguage.description'),
+    },
+    {
+      icon: Download,
+      title: t('products.epidbot.features.datasusDownload.title'),
+      description: t('products.epidbot.features.datasusDownload.description'),
+    },
+    {
+      icon: Database,
+      title: t('products.epidbot.features.duckdbAnalysis.title'),
+      description: t('products.epidbot.features.duckdbAnalysis.description'),
+    },
+    {
+      icon: BarChart3,
+      title: t('products.epidbot.features.visualizations.title'),
+      description: t('products.epidbot.features.visualizations.description'),
+    },
+    {
+      icon: Upload,
+      title: t('products.epidbot.features.localData.title'),
+      description: t('products.epidbot.features.localData.description'),
+    },
+    {
+      icon: BookOpen,
+      title: t('products.epidbot.features.knowledgeBase.title'),
+      description: t('products.epidbot.features.knowledgeBase.description'),
+    },
+  ];
+
+  const epidbotCapabilities = [
+    t('products.epidbot.capabilities.items.0'),
+    t('products.epidbot.capabilities.items.1'),
+    t('products.epidbot.capabilities.items.2'),
+    t('products.epidbot.capabilities.items.3'),
+    t('products.epidbot.capabilities.items.4'),
+    t('products.epidbot.capabilities.items.5'),
+  ];
+
+  const trainingModalities = [
+    {
+      type: 'individual',
+      icon: GraduationCap,
+      color: 'kwar-electric',
+      title: t('products.training.individual.title'),
+      subtitle: t('products.training.individual.subtitle'),
+      badges: [
+        { icon: Clock, text: t('products.training.individual.badges.duration') },
+        { icon: Monitor, text: t('products.training.individual.badges.format') },
+        { icon: Award, text: t('products.training.individual.badges.certification') },
+      ],
+      features: [
+        t('products.training.individual.features.0'),
+        t('products.training.individual.features.1'),
+        t('products.training.individual.features.2'),
+        t('products.training.individual.features.3'),
+        t('products.training.individual.features.4'),
+      ],
+      bonus: t('products.training.individual.bonus'),
+      price: t('products.training.individual.price'),
+      priceDetail: t('products.training.individual.priceDetail'),
+      cta: t('products.training.individual.cta'),
+      note: t('products.training.individual.note'),
+      highlighted: false,
+    },
+    {
+      type: 'institutional',
+      icon: Building2,
+      color: 'kwar-gold',
+      title: t('products.training.institutional.title'),
+      subtitle: t('products.training.institutional.subtitle'),
+      badges: [],
+      features: [
+        t('products.training.institutional.features.0'),
+        t('products.training.institutional.features.1'),
+        t('products.training.institutional.features.2'),
+        t('products.training.institutional.features.3'),
+        t('products.training.institutional.features.4'),
+      ],
+      bonus: t('products.training.institutional.bonus'),
+      price: t('products.training.institutional.price'),
+      priceDetail: t('products.training.institutional.priceDetail'),
+      cta: t('products.training.institutional.cta'),
+      note: '',
+      highlighted: true,
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -189,17 +191,16 @@ export function Products() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <Sparkles className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">Nossos Produtos</span>
+            <span className="text-sm font-medium text-kwar-electric">{t('products.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Nossas{' '}
-            <span className="text-gradient">Soluções</span>
+            {t('products.title')}{' '}
+            <span className="text-gradient">{t('products.titleHighlight')}</span>
           </h2>
 
           <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            Do assistente de IA à capacitação especializada, oferecemos ferramentas para
-            transformar dados em decisões estratégicas.
+            {t('products.subtitle')}
           </p>
         </div>
 
@@ -216,14 +217,14 @@ export function Products() {
                 className="data-[state=active]:bg-kwar-electric data-[state=active]:text-kwar-deep"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
-                EpidBot
+                {t('products.tabs.epidbot')}
               </TabsTrigger>
               <TabsTrigger
                 value="training"
                 className="data-[state=active]:bg-kwar-gold data-[state=active]:text-kwar-deep"
               >
                 <GraduationCap className="w-4 h-4 mr-2" />
-                Capacitação
+                {t('products.tabs.training')}
               </TabsTrigger>
             </TabsList>
 
@@ -236,16 +237,14 @@ export function Products() {
                     {displayText}
                   </span>
                 </h1>
-                <p className="text-kwar-gray text-lg">Assistente de IA para Análise Epidemiológica</p>
+                <p className="text-kwar-gray text-lg">{t('products.epidbot.subtitle')}</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 {/* Left - Info */}
                 <div>
                   <p className="text-kwar-gray mb-8 leading-relaxed text-lg">
-                    Um assistente de IA desenvolvido pela Kwar-AI para tornar a análise de dados
-                    em saúde pública acessível, estruturada e estratégica. Faça perguntas em linguagem
-                    natural e receba análises baseadas em dados oficiais.
+                    {t('products.epidbot.description')}
                   </p>
 
                   {/* Features Grid */}
@@ -263,7 +262,7 @@ export function Products() {
                   <div className="card-glass p-6">
                     <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-kwar-electric" />
-                      O que o EpidBot entrega
+                      {t('products.epidbot.capabilities.title')}
                     </h4>
                     <ul className="space-y-2">
                       {epidbotCapabilities.map((cap) => (
@@ -309,7 +308,7 @@ export function Products() {
                           </div>
                           <div className="bg-white/10 rounded-lg rounded-tl-none p-3 max-w-[80%]">
                             <p className="text-white/80 text-sm">
-                              Mostre a evolução de casos de dengue em São Paulo nos últimos 6 meses
+                              {t('products.epidbot.chatMock.userQuestion')}
                             </p>
                           </div>
                         </div>
@@ -317,11 +316,11 @@ export function Products() {
                         <div className="flex gap-3 justify-end">
                           <div className="bg-kwar-electric/20 rounded-lg rounded-tr-none p-3 max-w-[80%]">
                             <p className="text-white text-sm">
-                              Analisando dados do SINAN/DATASUS...
+                              {t('products.epidbot.chatMock.botResponse')}
                             </p>
                             <div className="mt-3 p-3 bg-white/5 rounded-lg">
                               <div className="flex items-center justify-between mb-2">
-                                <span className="text-white/60 text-xs">Total de casos</span>
+                                <span className="text-white/60 text-xs">{t('products.epidbot.chatMock.totalCases')}</span>
                                 <span className="text-kwar-electric font-mono">45.892</span>
                               </div>
                               <div className="h-16 flex items-end gap-1">
@@ -344,7 +343,7 @@ export function Products() {
                       <div className="mt-6 pt-4 border-t border-white/10">
                         <div className="flex items-center gap-3 p-3 rounded-full bg-white/5 border border-white/10">
                           <div className="w-2 h-2 rounded-full bg-kwar-electric animate-pulse" />
-                          <span className="text-white/40 text-sm">Digite sua consulta...</span>
+                          <span className="text-white/40 text-sm">{t('products.epidbot.chatMock.placeholder')}</span>
                         </div>
                       </div>
                     </div>
@@ -354,15 +353,15 @@ export function Products() {
                   <div className="grid grid-cols-3 gap-4 mt-6">
                     <div className="card-glass p-4 text-center">
                       <p className="text-2xl font-bold text-kwar-electric">3</p>
-                      <p className="text-xs text-kwar-gray">Idiomas</p>
+                      <p className="text-xs text-kwar-gray">{t('products.epidbot.stats.languages')}</p>
                     </div>
                     <div className="card-glass p-4 text-center">
                       <p className="text-2xl font-bold text-kwar-gold">PySUS</p>
-                      <p className="text-xs text-kwar-gray">Integrado</p>
+                      <p className="text-xs text-kwar-gray">{t('products.epidbot.stats.pysus')}</p>
                     </div>
                     <div className="card-glass p-4 text-center">
                       <p className="text-2xl font-bold text-kwar-green">24/7</p>
-                      <p className="text-xs text-kwar-gray">Disponível</p>
+                      <p className="text-xs text-kwar-gray">{t('products.epidbot.stats.availability')}</p>
                     </div>
                   </div>
                 </div>
@@ -384,7 +383,7 @@ export function Products() {
                     {modality.highlighted && (
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                         <span className="px-4 py-1 bg-kwar-gold text-kwar-deep text-xs font-bold rounded-full">
-                          RECOMENDADO
+                          {t('products.training.institutional.highlighted')}
                         </span>
                       </div>
                     )}
