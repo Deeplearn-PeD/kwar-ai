@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NeuralSun } from '@/components/NeuralSun';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { NeuralSun } from '@/components/NeuralSun';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -56,37 +56,33 @@ export function Hero() {
 
             {/* Main Title */}
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
-              <span className="text-yellow-300 relative">
-                <span className="absolute inset-0 blur-lg opacity-70 text-yellow-400">
-                     {t('hero.title')}
-                </span>
-                 <span className="relative">{t('hero.title')}</span> 
-              </span>             
+              {t('hero.title')}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg lg:text-3xl text-white/90 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-12">
-               {t('hero.subtitle')}{' '}
-              <span className="text-kwar-electric font-semibold">
-               {t('hero.subtitleHighlight')}
-              </span>.
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-4">
+              <span dangerouslySetInnerHTML={{ __html: t('hero.subtitle') }} />
             </p>
 
+            <p className="text-sm text-kwar-gold mb-8 max-w-xl mx-auto lg:mx-0">
+                {t('hero.additionalLine')}
+            </p>
+            
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
-                onClick={() => scrollToSection('#products')}
+                onClick={() => scrollToSection('#epidbot')}
                 className="btn-primary group flex items-center justify-center gap-2"
               >
-                {t('hero.cta.products')}
+                {t('hero.cta.epidbot')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </button>
               <button
                 onClick={() => scrollToSection('#about')}
                 className="btn-secondary"
               >
-                {t('hero.cta.learnMore')}
+                {t('hero.cta.about')}
               </button>
             </div>
           </div>

@@ -18,62 +18,65 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Brazilian-Origin Epidemiological Intelligence",
-    "title": "Strategic Light",
-    "subtitle": "We transform data into fast and secure decisions for",
-    "subtitleHighlight": "Public Health",
+    "badge": "Kwar-AI",
+    "title": "Health Intelligence",
+    "subtitle": "Kwar-AI develops solutions that connect epidemiology, data science and artificial intelligence to support faster and more informed public health decisions.",
+    "additionalLine": "Among our solutions is EpidBot, an AI assistant for health data analysis in natural language.",
     "cta": {
-      "products": "Explore Our Products",
+      "epidbot": "Meet EpidBot",
+      "about": "About Kwar-AI",
+      "products": "Our Products",
+      "demo": "Request Demo",
       "learnMore": "Learn More"
     },
     "floatingCards": {
       "activeMonitoring": "Active Monitoring",
-      "neuralNetwork": "Neural Network Online"
+      "neuralNetwork": "Online Neural Network"
     },
     "scrollIndicator": "Scroll to explore"
   },
   "about": {
-    "badge": "Our Origin",
-    "title": "The Prophecy of the",
-    "titleHighlight": "Dawn",
+    "badge": "OUR ORIGIN",
+    "title": "The",
+    "titleHighlight": "Dawn Prophecy",
     "story": {
-      "paragraph1": "Long before algorithms existed, the Tupi peoples understood something essential: the future leaves signs in the present. For them,",
+      "paragraph1": "Long before algorithms existed, the Tupi people already understood something essential: the future leaves signs in the present. For them,",
       "kuaray": "Kuaray",
-      "kuaraySuffix": "— the sun — was not just light, but cycle. Dawn was not a surprise; it was a consequence of patterns observed with attention.",
-      "paragraph2": "Shamans didn't guess. They recognized signs. Before the rain, the wind changed. Before scarcity, movements altered. Before disease spread, the environment already indicated imbalance. There were signs — and there were those who knew how to read them.",
+      "kuaraySuffix": " — the sun — was not just light, but cycle. Dawn was not a surprise; it was a consequence of patterns observed with attention.",
+      "paragraph2": "The shamans didn't guess. They recognized signs. Before the rain, the wind changed. Before scarcity, movements altered. Before disease spread, the environment already indicated imbalance. There were signs — and there were those who knew how to read them.",
       "paragraph3": "The",
       "kwarAi": "Kwar-AI",
-      "kwarAiSuffix": "is born from this same logic. It's a strategic light for public health decisions.",
-      "paragraph4": "Epidemics don't begin when they become news. They form silently, leaving traces in environmental, epidemiological, and behavioral data. What seems like isolated noise can reveal trends when analyzed together. Our work is to identify these convergences before they become crises.",
-      "paragraph5": "From this same logic comes the",
+      "kwarAiSuffix": "is born from this same logic. It is a strategic light for public health decisions.",
+      "paragraph4": "Epidemics don't start when they become news. They form silently, leaving traces in environmental, epidemiological and behavioral data. What seems like isolated noise can reveal a trend when analyzed together. Our work is to identify these convergences before they become crises.",
+      "paragraph5": "From this same logic arises",
       "paragraph5Suffix": ", with a simple conviction: outbreaks announce their own arrival. Epidemiological intelligence is the ability to recognize this announcement in time to act.",
       "quote": "The sun rises for everyone. But",
       "quoteSuffix": "recognizes the signs before dawn."
     },
     "card": {
       "title": "Ancestral Wisdom. Scientific Intelligence.",
-      "description": "The",
-      "descriptionSuffix": "combines the ancestral logic of observing signs with the rigor of statistical modeling and data science. It doesn't interpret omens — it analyzes environmental, epidemiological, and behavioral data to transform indications into anticipated and responsible decisions.",
+      "description": "",
+      "descriptionSuffix": "combines the ancestral logic of observing signs with the rigor of statistical modeling and data science. It doesn't interpret omens — it analyzes environmental, epidemiological and behavioral data to turn signs into anticipatory and responsible decisions.",
       "badge": "Epidemiological Intelligence"
     },
     "pillars": {
-      "title": "The Four Pillars",
-      "subtitle": "Our philosophy unites nature's cycles with the precision of scientific modeling.",
+      "title": "Our Pillars",
+      "subtitle": "The philosophy that guides our work.",
       "renewal": {
         "title": "Renewal",
-        "description": "Models that continuously learn from new data, adapting to environmental, behavioral, and epidemiological changes."
+        "description": "Models that continuously learn from new data, adapting to environmental, behavioral and epidemiological changes."
       },
       "clarity": {
         "title": "Clarity",
-        "description": "Complex analyses translated into actionable intelligence — so strategic decisions can be made safely."
+        "description": "Complex analyzes translated into actionable intelligence — so strategic decisions are made with confidence."
       },
       "cyclicity": {
         "title": "Cyclicity",
-        "description": "Diseases follow seasonal patterns and predictable dynamics. We map these cycles with statistical rigor."
+        "description": "Diseases follow seasonal and predictable dynamics. We map these cycles with statistical rigor."
       },
       "anticipation": {
         "title": "Anticipation",
-        "description": "We identify early warning signs and issue alerts in advance — when there's still time to act."
+        "description": "We identify early risk signals and issue alerts in advance — when there's still time to act."
       }
     },
     "mission": {
@@ -92,162 +95,301 @@
       }
     }
   },
-  "products": {
-    "badge": "Our Products",
-    "title": "Our",
-    "titleHighlight": "Solutions",
-    "subtitle": "From AI assistant to specialized training, we offer tools to transform data into strategic decisions.",
-    "tabs": {
-      "epidbot": "EpidBot",
-      "training": "Training"
-    },
-    "epidbot": {
-      "title": "EPIDBOT",
-      "subtitle": "AI Assistant for Epidemiological Analysis",
-      "description": "An AI assistant developed by Kwar-AI to make public health data analysis accessible, structured, and strategic. Ask questions in natural language and receive analyses based on official data.",
-      "features": {
-        "naturalLanguage": {
-          "title": "Natural Language",
-          "description": "Queries in Portuguese, English, and Spanish."
-        },
-        "datasusDownload": {
-          "title": "DATASUS Download",
-          "description": "Automated download of public databases via PySUS."
-        },
-        "duckdbAnalysis": {
-          "title": "DuckDB Analysis",
-          "description": "SQL and statistical analysis with DuckDB."
-        },
-        "visualizations": {
-          "title": "Visualizations",
-          "description": "Automatically generated charts and maps."
-        },
-        "localData": {
-          "title": "Local Data",
-          "description": "Upload and integration of local and restricted data."
-        },
-        "knowledgeBase": {
-          "title": "Knowledge Base",
-          "description": "Integrated technical knowledge base."
-        }
+  "clarezaDados": {
+    "badge": "THE CHALLENGE",
+    "title": "Data exists.",
+    "titleHighlight": "Clarity doesn't.",
+    "subtitle": "Public databases grow every year. Systems accumulate notifications, hospitalizations, deaths and environmental indicators. But turning that volume into actionable understanding still requires time, technical team and infrastructure.",
+    "problems": {
+      "fragmentation": {
+        "title": "Data Fragmentation",
+        "description": "Information dispersed across multiple systems and incompatible formats"
       },
-      "capabilities": {
-        "title": "What EpidBot delivers",
-        "items": [
-          "Epidemiological data analysis with AI",
-          "Integration with public databases (DATASUS, SINAN)",
-          "Automatic generation of charts and maps",
-          "Upload and analysis of local data",
-          "Natural language queries",
-          "Specialized technical knowledge base"
-        ]
+      "technical": {
+        "title": "Technical Complexity",
+        "description": "Statistical analysis requires specialized programming knowledge"
       },
-      "chatMock": {
-        "userQuestion": "Show the evolution of dengue cases in São Paulo in the last 6 months",
-        "botResponse": "Analyzing SINAN/DATASUS data...",
-        "totalCases": "Total cases",
-        "placeholder": "Type your query..."
+      "team": {
+        "title": "Lack of Team",
+        "description": "Shortage of professionals skilled in health data analysis"
       },
-      "stats": {
-        "languages": "Languages",
-        "pysus": "Integrated",
-        "availability": "Available"
+      "time": {
+        "title": "Response Time",
+        "description": "Delay between data collection and generating actionable insights"
       }
     },
-    "training": {
-      "individual": {
-        "title": "Individual Training (Online)",
-        "subtitle": "For autonomous professionals",
-        "badges": {
-          "duration": "40h of content",
-          "format": "Live online",
-          "certification": "Kwar-AI Certification"
-        },
-        "features": [
-          "Complete AI course applied to public health",
-          "Access to EpidBot platform during the course",
-          "Didactic material included",
-          "Technical support during the period",
-          "Start upon class formation"
-        ],
-        "bonus": "Includes 3 months of EpidBot access after the course",
-        "price": "Upon request",
-        "priceDetail": "installment up to 12x",
-        "cta": "Register for the next class",
-        "note": "Minimum 20 registrations to open a class"
+    "quote": "More data doesn't mean more clarity.",
+    "quoteSub": "The difference is in how you analyze it."
+  },
+  "paraQuem": {
+    "badge": "FOR WHO",
+    "title": "Designed for those working with public health",
+    "cards": {
+      "healthDepartments": {
+        "title": "Health Departments",
+        "description": "Risk anticipation and technical support for strategic decisions."
       },
-      "institutional": {
-        "title": "Institutional Training",
-        "subtitle": "For health departments, hospitals, and institutions",
-        "features": [
-          "Closed classes for your institution",
-          "Content adapted to local reality",
-          "Use of institution's own data",
-          "Online or hybrid format",
-          "Customized proposal"
-        ],
-        "bonus": "On-site training available",
-        "price": "Upon request",
-        "priceDetail": "customized proposal",
-        "cta": "Request institutional proposal",
-        "highlighted": "RECOMMENDED"
+      "researchers": {
+        "title": "Researchers",
+        "description": "Quick exploration of national databases and structured analyzes."
+      },
+      "journalists": {
+        "title": "Journalists",
+        "description": "Interpretation of public data with precision and context."
+      },
+      "hospitals": {
+        "title": "Hospitals",
+        "description": "Integrated analysis of care and epidemiological data."
       }
     }
   },
-  "howItWorks": {
-    "badge": "How It Works",
-    "title": "From raw data to",
-    "titleHighlight": "intelligent decisions",
-    "subtitle": "Our process transforms millions of data points into actionable insights in four steps.",
-    "steps": {
-      "step1": {
-        "number": "01",
-        "title": "Data Collection",
-        "description": "We gather data from multiple sources: climate, Google searches, emergency care, disease notifications, and socioeconomic determinants."
+  "quemUtiliza": {
+    "badge": "AUDIENCES",
+    "title": "Who uses EpidBot",
+    "items": {
+      "healthDepartments": {
+        "title": "Health Departments",
+        "benefit": "Risk anticipation"
       },
-      "step2": {
-        "number": "02",
-        "title": "Neural Processing",
-        "description": "Our AI models analyze historical patterns and identify correlations invisible to the human eye."
+      "researchers": {
+        "title": "Researchers",
+        "benefit": "Database exploration"
       },
-      "step3": {
-        "number": "03",
-        "title": "Alert Generation",
-        "description": "System classifies the scenario and generates early warnings 14-21 days in advance."
+      "journalists": {
+        "title": "Journalists",
+        "benefit": "Accurate data"
       },
-      "step4": {
-        "number": "04",
-        "title": "Preventive Action",
-        "description": "Managers receive actionable recommendations for resource allocation and preventive actions."
+      "hospitals": {
+        "title": "Hospitals",
+        "benefit": "Integrated analysis"
       },
-      "stageLabel": "STAGE"
-    },
-    "audience": {
-      "title": "Who Is It For",
-      "subtitle": "Our solutions are designed for different profiles in the health ecosystem",
-      "managers": {
-        "title": "Public Managers",
-        "description": "Municipal and state health departments that need to allocate resources efficiently."
+      "teachers": {
+        "title": "Teachers",
+        "benefit": "Applied teaching"
       },
-      "professionals": {
-        "title": "Health Professionals",
-        "description": "Doctors, nurses, and surveillance teams on the front lines."
-      },
-      "platforms": {
-        "title": "Health Platforms",
-        "description": "Applications and systems that need intelligent data for their users."
-      },
-      "research": {
-        "title": "Research Institutions",
-        "description": "Universities and research centers studying epidemiology and public health."
+      "students": {
+        "title": "Students",
+        "benefit": "Case studies"
       }
     }
+  },
+  "epidBot": {
+    "badge": "MAIN PRODUCT",
+    "title": "EpidBot",
+    "subtitle": "Epidemiological intelligence in natural language.",
+    "description": "EpidBot is an artificial intelligence assistant designed to explore epidemiological data using natural language.\n\nYou ask questions as you would to an analyst — and the system automatically generates analyzes, summaries and insights.\n\nNo programming knowledge or complex data analysis tools required.",
+    "cta": "Meet EpidBot",
+    "aiBadge": "AI Powered",
+    "naturalLanguage": "Natural Language",
+    "integratesWith": "Integrates with",
+    "datasus": "DATASUS / PySUS",
+    "basedOn": "Based on",
+    "statistical": "Statistical Modeling"
+  },
+  "epidBotParaQuem": {
+    "badge": "FOR WHO",
+    "title": "Who is EpidBot for",
+    "subtitle": "Designed for professionals and institutions working with health data.",
+    "items": {
+      "healthDepartments": {
+        "title": "Health Departments",
+        "description": "Support for analyzes and technical reports for strategic decisions."
+      },
+      "surveillance": {
+        "title": "Epidemiological Surveillance",
+        "description": "Synthesis of signals and trends in real time."
+      },
+      "researchers": {
+        "title": "Researchers and Epidemiologists",
+        "description": "Hypothesis exploration with structured data."
+      },
+      "hospitals": {
+        "title": "Hospitals and Health Networks",
+        "description": "Support for scenario reading and risk analysis."
+      },
+      "journalists": {
+        "title": "Science and Health Journalists",
+        "description": "Interpretation of public data with precision and context."
+      },
+      "students": {
+        "title": "Students and Graduate Studies",
+        "description": "Tool for studies and academic research."
+      },
+      "international": {
+        "title": "International Organizations",
+        "description": "Comparative analysis between different regions and countries."
+      },
+      "labs": {
+        "title": "Labs & Data Analysts",
+        "description": "Use of EpidBot for indicator monitoring, dashboard building and analytical report generation."
+      }
+    }
+  },
+  "epidBotBeneficios": {
+    "badge": "WHAT IT ENABLES",
+    "title": "What EpidBot enables",
+    "subtitle": "Features designed to transform how you work with data.",
+    "cta": "Request Demo",
+    "items": {
+      "conversational": {
+        "title": "Explore data in natural language",
+        "description": "Ask questions as you would to an experienced analyst."
+      },
+      "synthesis": {
+        "title": "Generate automatic summaries and reports",
+        "description": "Create bulletins, technical notes and structured documents."
+      },
+      "patterns": {
+        "title": "Identify patterns and trends",
+        "description": "Discover hidden insights in complex data."
+      },
+      "integration": {
+        "title": "Integrate multiple databases",
+        "description": "Combine data from different sources into a single analysis."
+      },
+      "decision": {
+        "title": "Support decision making",
+        "description": "Get clarity and speed for assertive decisions."
+      },
+      "visualization": {
+        "title": "Produce interpretable visualizations",
+        "description": "Charts and maps that facilitate understanding."
+      },
+      "hypotheses": {
+        "title": "Explore scenarios and hypotheses",
+        "description": "Test different scenarios quickly."
+      },
+      "time": {
+        "title": "Reduce analysis time",
+        "description": "Automate tasks that used to take hours."
+      }
+    }
+  },
+  "linguagemNatural": {
+    "badge": "MAIN FEATURE",
+    "title": "Natural Language",
+    "description": "Ask questions in Portuguese, English or Spanish and receive structured analyzes based on official data and statistical models.",
+    "badges": {
+      "pt": "PT / EN / ES",
+      "datasus": "DATASUS",
+      "statistics": "Statistics",
+      "maps": "Maps"
+    },
+    "chatExample": "Show the evolution of dengue cases in São Paulo in the last 6 months",
+    "chatResponse": "Analyzing SINAN/DATASUS data...",
+    "totalCases": "Total cases",
+    "placeholder": "Enter your query..."
+  },
+  "baseCientifica": {
+    "badge": "SCIENTIFIC BASE",
+    "title": "Scientific base and integrated projects",
+    "description": "EpidBot is born from the accumulated experience in projects like PySUS, Infodengue and Mosqlimate, integrating statistical modeling, epidemiological surveillance and applied data science.",
+    "projects": ["PySUS", "Infodengue", "Mosqlimate"]
+  },
+  "capacitacao": {
+    "badge": "TRAINING",
+    "title": "AI training applied to health",
+    "description": "Beyond technological solutions, we offer training programs for technical teams and institutions that want to apply AI in real surveillance and decision-making contexts.",
+    "comingSoon": "Pilot classes and details coming soon.",
+    "cta": "I want to participate / Talk to the team",
+    "audiences": {
+      "surveillance": {
+        "title": "Epidemiological surveillance teams",
+        "description": "Professionals working on disease monitoring."
+      },
+      "analysts": {
+        "title": "Health data analysts",
+        "description": "People working with health data analysis."
+      },
+      "researchers": {
+        "title": "Researchers and graduate studies",
+        "description": "Academics who need tools for studies."
+      },
+      "managers": {
+        "title": "Managers and coordinators",
+        "description": "Professionals who make data-driven decisions."
+      }
+    },
+    "formacao": {
+      "badge": "TRAINING",
+      "title": "AI training applied to health data analysis",
+      "subtitle": "Training programs developed for professionals and institutions working with epidemiological surveillance, data analysis and public health information production.",
+      "description": "Kwar-AI offers training programs in artificial intelligence applied to epidemiological data analysis, technical report production and organization of large volumes of health information.",
+      "description2": "Courses are oriented towards practical application in institutional contexts, enabling teams to use modern AI tools to accelerate analyses, interpret databases and support decision-making processes.",
+      "topicsTitle": "Topics covered include:",
+      "topics": {
+        "topic1": "Use of AI for analysis and synthesis of epidemiological reports",
+        "topic2": "Exploration of health databases (DATASUS, SINAN and other public sources)",
+        "topic3": "Assisted generation of reports and technical notes",
+        "topic4": "Extraction and organization of data from documents and spreadsheets",
+        "topic5": "Creation of AI assistants for health information query and analysis",
+        "topic6": "EpidBot usage training"
+      },
+      "cta": {
+        "title": "New class coming soon",
+        "description": "We are preparing new cohorts for the AI training program applied to health data analysis.",
+        "button": "Join waitlist"
+      },
+      "target": {
+        "title": "Target audience",
+        "item1": "Epidemiological surveillance teams",
+        "item2": "Health data analysts",
+        "item3": "Researchers and epidemiologists",
+        "item4": "Health department professionals",
+        "item5": "Report and institutional intelligence teams"
+      }
+    }
+  },
+  "equipe": {
+    "badge": "TEAM",
+    "title": "Who leads Kwar-AI",
+    "subtitle": "A team with solid scientific foundation and experience in epidemiological modeling.",
+    "relatedTo": "Related projects:",
+    "projects": ["PySUS", "Infodengue", "Mosqlimate"],
+    "members": {
+      "flavio": {
+        "name": "Flávio Codeço Coelho",
+        "role": "Co-founder & CTO",
+        "bio": "Professor at FGV EMAp, creator of PySUS and collaborator on projects like Infodengue and Mosqlimate. Specialist in mathematical modeling of epidemics."
+      },
+      "joyce": {
+        "name": "Joyce Figueiró Braga",
+        "role": "Co-founder & CSO",
+        "bio": "PhD candidate in Applied Mathematics and Data Science. Works at the interface between epidemiological modeling, product strategy and training."
+      },
+      "fabiana": {
+        "name": "Fabiana Ganem",
+        "role": "Co-founder & Head of Research",
+        "bio": "Postdoctoral researcher at FGV EMAp. Works in epidemiological surveillance, statistical modeling and arbovirus prediction."
+      }
+    }
+  },
+  "equipeRede": {
+    "badge": "TEAM & NETWORK",
+    "title": "Team and Collaboration Network",
+    "subtitle": "Kwar-AI is led by a founding core and operates in collaboration with a multidisciplinary network.",
+    "description": "Today, Kwar-AI is driven by a founding team with solid scientific and technological foundation. To develop and apply solutions in public health, we work with researchers, developers and partner institutions in Brazil and abroad.",
+    "areas": [
+      { "title": "Epidemiology & Surveillance", "desc": "Integration with health systems and indicators." },
+      { "title": "Modeling & Statistics", "desc": "Quantitative methods for inference and prediction." },
+      { "title": "Data Engineering", "desc": "Pipelines, integration and data quality." },
+      { "title": "Product & UX", "desc": "Clear interface for real-world use." },
+      { "title": "Infra & Security", "desc": "Sensitive data with best practices and access control." },
+      { "title": "Institutional Partnerships", "desc": "Implementation and support in different contexts." }
+    ],
+    "credibilidade": "Related to projects and initiatives: PySUS • Mosqlimate • InfoDengue"
+  },
+  "ctaFinal": {
+    "title": "Ready to transform data into clarity?",
+    "subtitle": "Request a personalized demonstration",
+    "primary": "Request Demo",
+    "secondary": "Talk to Kwar-AI"
   },
   "contact": {
     "badge": "Contact",
     "title": "Let's",
     "titleHighlight": "talk",
-    "subtitle": "Get in touch to learn more about our solutions or schedule a demonstration. We're ready to illuminate the future of public health with you.",
+    "subtitle": "Contact us to learn more about our solutions or schedule a demonstration. We are ready to illuminate the future of public health with you.",
     "info": {
       "title": "Contact Information",
       "email": {
@@ -263,7 +405,7 @@
         "value": "Rio de Janeiro, RJ - Brazil"
       },
       "social": {
-        "title": "Social Media",
+        "title": "Social Networks",
         "linkedin": "LinkedIn",
         "whatsapp": "WhatsApp"
       }
@@ -282,7 +424,7 @@
       "message": "Message",
       "messagePlaceholder": "Tell us about your needs...",
       "submit": "Send Message",
-      "privacy": "By submitting, you agree to our privacy policy and LGPD.",
+      "privacy": "By sending, you agree to our privacy policy and LGPD.",
       "interestOptions": {
         "apiPartner": "Health API - Partner Plan",
         "apiEnterprise": "Health API - Enterprise Plan",
@@ -294,12 +436,12 @@
       },
       "success": {
         "title": "Message Sent!",
-        "message": "Thank you for contacting us. We'll get back to you soon."
+        "message": "Thank you for contacting us. We will return shortly."
       }
     }
   },
   "footer": {
-    "description": "Brazilian-origin epidemiological intelligence. We anticipate disease outbreaks up to 21 days in advance, combining climate, behavioral, and health data.",
+    "description": "Epidemiological intelligence of Brazilian origin. We anticipate disease outbreaks up to 21 days in advance, combining climate, behavioral and health data.",
     "madeWith": "Made with",
     "inBrazil": "in Brazil",
     "links": {

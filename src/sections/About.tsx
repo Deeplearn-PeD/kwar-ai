@@ -187,43 +187,6 @@ export function About() {
             ))}
           </div>
         </div>
-
-        {/* Mission Statement */}
-        <div
-          className={`mt-24 text-center transition-all duration-1000 delay-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="card-glass p-8 lg:p-12 max-w-4xl mx-auto relative overflow-hidden">
-            {/* Decorative gradient */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-kwar-electric via-kwar-gold to-kwar-electric" />
-            
-            <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-6">
-              {t('about.mission.title')}
-            </h3>
-            
-            <div className="grid md:grid-cols-3 gap-6 text-left">
-              <div>
-                <p className="text-kwar-electric font-semibold mb-2">{t('about.mission.managers.title')}</p>
-                <p className="text-sm text-kwar-gray">
-                  "{t('about.mission.managers.quote')}"
-                </p>
-              </div>
-              <div>
-                <p className="text-kwar-gold font-semibold mb-2">{t('about.mission.doctors.title')}</p>
-                <p className="text-sm text-kwar-gray">
-                  "{t('about.mission.doctors.quote')}"
-                </p>
-              </div>
-              <div>
-                <p className="text-kwar-green font-semibold mb-2">{t('about.mission.society.title')}</p>
-                <p className="text-sm text-kwar-gray">
-                  "{t('about.mission.society.quote')}"
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
