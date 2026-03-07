@@ -422,16 +422,17 @@
       "interest": "Interest",
       "interestPlaceholder": "Select an option",
       "message": "Message",
-      "messagePlaceholder": "Tell us about your needs...",
+      "messagePlaceholder": "Briefly tell us how Kwar-AI can help your organization.",
       "submit": "Send Message",
       "privacy": "By sending, you agree to our privacy policy and LGPD.",
       "interestOptions": {
-        "apiPartner": "Health API - Partner Plan",
-        "apiEnterprise": "Health API - Enterprise Plan",
-        "courseClosed": "AI Course - Closed Class",
-        "courseOpen": "AI Course - Open Class",
-        "platform": "Platform Subscription",
-        "partnership": "Strategic Partnership",
+        "epidbotDemo": "EpidBot Demo",
+        "aiSolutions": "AI Solutions for Health",
+        "courses": "Courses & Training",
+        "research": "Research Projects",
+        "partnerships": "Institutional Partnerships",
+        "consulting": "Data & Modeling Consulting",
+        "press": "Press / Communications",
         "other": "Other Subject"
       },
       "success": {
@@ -441,26 +442,27 @@
     }
   },
   "footer": {
-    "description": "Epidemiological intelligence of Brazilian origin. We anticipate disease outbreaks up to 21 days in advance, combining climate, behavioral and health data.",
-    "madeWith": "Made with",
-    "inBrazil": "in Brazil",
+    "description": "Health intelligence that integrates environmental, epidemiological and behavioral data to support early decisions in public health surveillance.",
+    "madeWith": "Made in",
+    "inBrazil": "Brazil.",
     "links": {
       "products": {
-        "title": "Products",
-        "apiHealth": "Health API",
-        "aiCourse": "AI Course"
+        "title": "Solutions",
+        "epidbot": "EpidBot",
+        "courses": "Courses & Training",
+        "aiSolutions": "AI Solutions for Health"
       },
       "company": {
         "title": "Company",
-        "about": "About Us",
-        "howItWorks": "How It Works",
+        "about": "Our Story",
+        "team": "Team",
         "contact": "Contact"
       },
       "resources": {
-        "title": "Resources",
-        "apiDocs": "API Documentation",
-        "blog": "Blog",
-        "cases": "Cases"
+        "title": "Projects",
+        "infoDengue": "InfoDengue",
+        "mosqlimate": "Mosqlimate",
+        "pysus": "PySUS"
       },
       "legal": {
         "terms": "Terms of Use",
@@ -468,10 +470,9 @@
         "lgpd": "LGPD"
       }
     },
-    "copyright": "© {{year}} Kwar-AI. All rights reserved.",
+    "copyright": "© {{year}} Kwar-AI",
     "slogan": {
-      "line1": "Illuminate the future.",
-      "line2": "The dawn of data."
+      "line1": "To anticipate is to protect."
     }
   }
 }
