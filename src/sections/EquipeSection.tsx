@@ -7,9 +7,6 @@ export function EquipeSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const projectsRaw = t('equipe.projects', { returnObjects: true }) as unknown;
-  const projects = Array.isArray(projectsRaw) ? (projectsRaw as string[]) : [];
-
   const members = [
     {
       name: t('equipe.members.flavio.name'),
@@ -115,25 +112,6 @@ export function EquipeSection() {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Scientific projects */}
-        <div
-          className={`mt-16 text-center transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <p className="text-kwar-gray mb-4">{t('equipe.relatedTo')}</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {projects.map((project, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-kwar-gray text-sm"
-              >
-                {project}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

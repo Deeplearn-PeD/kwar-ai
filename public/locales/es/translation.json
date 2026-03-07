@@ -12,9 +12,9 @@
   },
   "navbar": {
     "home": "Inicio",
-    "about": "Sobre",
-    "products": "Productos",
-    "howItWorks": "Cómo Funciona",
+    "about": "Nuestra Historia",
+    "epidbot": "EpidBot",
+    "cursos": "Cursos y Capacitación",
     "contact": "Contacto"
   },
   "hero": {

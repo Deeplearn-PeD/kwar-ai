@@ -36,7 +36,7 @@ export function Contact() {
       icon: Phone,
       label: t('contact.info.phone.label'),
       value: t('contact.info.phone.value'),
-      href: 'tel:+551100000000',
+      href: 'tel:+5531994981122',
     },
     {
       icon: MapPin,
@@ -55,7 +55,7 @@ export function Contact() {
     {
       icon: MessageCircle,
       label: t('contact.info.social.whatsapp'),
-      href: 'https://wa.me/551100000000',
+      href: 'https://wa.me/5531994981122?text=Olá%21%20Estava%20no%20site%20da%20Kwar-AI%20e%20gostaria%20de%20mais%20informações',
     },
   ];
 

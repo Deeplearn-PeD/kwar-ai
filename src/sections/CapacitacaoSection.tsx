@@ -61,7 +61,7 @@ export function CapacitacaoSection() {
 
   return (
     <section
-      id="capacitacao"
+      id="cursos"
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
     >

@@ -17,7 +17,6 @@ export function Footer() {
     produtos: [
       { label: t('footer.links.products.epidbot'), href: '#epidbot' },
       { label: t('footer.links.products.courses'), href: '#cursos' },
-      { label: t('footer.links.products.aiSolutions'), href: '#products' },
     ],
     empresa: [
       { label: t('footer.links.company.about'), href: '#about' },

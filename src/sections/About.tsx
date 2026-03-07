@@ -77,7 +77,6 @@ export function About() {
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               {t('about.title')}
-              <span className="text-gradient block">{t('about.titleHighlight')}</span>
             </h2>
 
             <div className="space-y-4 text-kwar-gray leading-relaxed">
@@ -92,8 +91,7 @@ export function About() {
               
               <p className="text-white/80 leading-relaxed">
                 {t('about.story.paragraph3')}{' '}
-                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')} </span> 
-                {t('about.story.kwarAiSuffix')}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]">{t('about.story.kwarAi')}</span>{t('about.story.kwarAiSuffix')}
               </p>
 
               <p>
@@ -101,11 +99,11 @@ export function About() {
                </p>
               <p>
                 {t('about.story.paragraph5')}{' '}
-                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')}</span>,{t('about.story.paragraph5Suffix')}
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]">{t('about.story.kwarAi2')}</span>{t('about.story.paragraph5Suffix')}
               </p>
-             <p className="text-white font-medium border-l-2 border-kwar-electric pl-4">
+              <p className="text-white font-medium border-l-2 border-kwar-electric pl-4">
                 {t('about.story.quote')}{" "}
-                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]"> {t('about.story.kwarAi')}</span>
+                <span className="bg-gradient-to-r from-[#F7DC6F] to-[#F5C842] bg-clip-text text-transparent font-semibold tracking-wide drop-shadow-[0_0_8px_rgba(245,200,66,0.4)]">{t('about.story.kwarAi3')}</span>
                 {" "}{t('about.story.quoteSuffix')}
               </p>
             </div>
