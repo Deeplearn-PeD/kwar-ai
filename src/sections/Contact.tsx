@@ -36,7 +36,7 @@ export function Contact() {
       icon: Phone,
       label: t('contact.info.phone.label'),
       value: t('contact.info.phone.value'),
-      href: 'tel:+551100000000',
+      href: 'tel:+5531994981122',
     },
     {
       icon: MapPin,
@@ -55,17 +55,18 @@ export function Contact() {
     {
       icon: MessageCircle,
       label: t('contact.info.social.whatsapp'),
-      href: 'https://wa.me/551100000000',
+      href: 'https://wa.me/5531994981122?text=Olá%21%20Estava%20no%20site%20da%20Kwar-AI%20e%20gostaria%20de%20mais%20informações',
     },
   ];
 
   const interestOptions = [
-    { value: 'api-partner', label: t('contact.form.interestOptions.apiPartner') },
-    { value: 'api-enterprise', label: t('contact.form.interestOptions.apiEnterprise') },
-    { value: 'course-closed', label: t('contact.form.interestOptions.courseClosed') },
-    { value: 'course-open', label: t('contact.form.interestOptions.courseOpen') },
-    { value: 'platform', label: t('contact.form.interestOptions.platform') },
-    { value: 'partnership', label: t('contact.form.interestOptions.partnership') },
+    { value: 'epidbot-demo', label: t('contact.form.interestOptions.epidbotDemo') },
+    { value: 'ai-solutions', label: t('contact.form.interestOptions.aiSolutions') },
+    { value: 'courses', label: t('contact.form.interestOptions.courses') },
+    { value: 'research', label: t('contact.form.interestOptions.research') },
+    { value: 'partnerships', label: t('contact.form.interestOptions.partnerships') },
+    { value: 'consulting', label: t('contact.form.interestOptions.consulting') },
+    { value: 'press', label: t('contact.form.interestOptions.press') },
     { value: 'other', label: t('contact.form.interestOptions.other') },
   ];
 
@@ -87,20 +88,44 @@ export function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        organization: '',
-        interest: '',
-        message: '',
+    
+    const formPayload = {
+      access_key: 'ea48381c-1d61-40e6-9901-f91972740c3c',
+      name: formData.name,
+      email: formData.email,
+      organizacao: formData.organization,
+      interesse: formData.interest,
+      message: formData.message,
+      subject: 'Novo contato via site Kwar-AI',
+    };
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formPayload),
       });
-    }, 3000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            organization: '',
+            interest: '',
+            message: '',
+          });
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
@@ -182,14 +207,6 @@ export function Contact() {
                   ))}
                 </div>
               </div>
-
-              {/* Quote */}
-              <div className="mt-8 p-6 rounded-xl bg-kwar-electric/5 border border-kwar-electric/20">
-                <p className="text-white italic text-sm leading-relaxed mb-4">
-                  "{t('contact.quote')}"
-                </p>
-                <p className="text-kwar-electric text-xs">— {t('contact.quoteAuthor')}</p>
-              </div>
             </div>
           </div>
 
@@ -211,7 +228,11 @@ export function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+                  <input type="hidden" name="access_key" value="ea48381c-1d61-40e6-9901-f91972740c3c" />
+                  <input type="hidden" name="subject" value="Novo contato via site Kwar-AI" />
+                  <input type="hidden" name="organizacao" value={formData.organization} />
+                  <input type="hidden" name="interesse" value={formData.interest} />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-white">

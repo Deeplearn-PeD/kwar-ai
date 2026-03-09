@@ -89,17 +89,6 @@ export function EquipeRedeSection() {
             );
           })}
         </div>
-
-        {/* Credibility line */}
-        <div
-          className={`text-center transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <p className="font-mono text-xs text-white/40">
-            {t('equipeRede.credibilidade')}
-          </p>
-        </div>
       </div>
     </section>
   );

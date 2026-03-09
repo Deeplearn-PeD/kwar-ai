@@ -12,9 +12,9 @@
   },
   "navbar": {
     "home": "Início",
-    "about": "Sobre",
-    "products": "Produtos",
-    "howItWorks": "Como Funciona",
+    "about": "Nossa História",
+    "epidbot": "EpidBot",
+    "cursos": "Cursos e Capacitação",
     "contact": "Contato"
   },
   "hero": {
@@ -23,7 +23,7 @@
     "subtitle": "A Kwar-AI desenvolve soluções que conectam epidemiologia, ciência de dados e inteligência artificial para apoiar decisões mais rápidas e informadas em saúde pública.",
     "additionalLine": "Entre nossas soluções está o EpidBot, um assistente de IA para análise de dados em saúde em linguagem natural.",
     "cta": {
-      "epidbot": "Conheça o EpidBot",
+      "epidbot": "Conheça mais funcionalidades",
       "about": "Sobre a Kwar-AI",
       "products": "Nossos Produtos",
       "demo": "Solicitar demonstração",
@@ -36,22 +36,23 @@
     "scrollIndicator": "Role para explorar"
   },
   "about": {
-    "badge": "NOSSA ORIGEM",
-    "title": "A Profecia do",
-    "titleHighlight": "Amanhecer",
+    "badge": "NOSSA HISTÓRIA",
+    "title": "Nossa História",
     "story": {
-      "paragraph1": "Muito antes de existirem algoritmos, os povos Tupi já entendiam algo essencial: o futuro deixa sinais no presente. Para eles,",
+      "paragraph1": "Muito antes de existirem algoritmos, os povos Tupi já entendiam algo essencial: o futuro deixa sinais no presente. Para eles, Kuaray, o sol, não era apenas luz, mas ciclo. O amanhecer não era surpresa; era consequência de padrões observados com atenção.",
       "kuaray": "Kuaray",
-      "kuaraySuffix": " — o sol — não era apenas luz, mas ciclo. O amanhecer não era surpresa; era consequência de padrões observados com atenção.",
-      "paragraph2": "Os xamãs não adivinhavam. Eles reconheciam indícios. Antes da chuva, o vento mudava. Antes da escassez, os movimentos se alteravam. Antes da doença se espalhar, o ambiente já indicava desequilíbrio. Havia sinais — e havia quem soubesse lê-los.",
-      "paragraph3": "A",
+      "kuaraySuffix": "",
+      "paragraph2": "Os xamãs não adivinhavam. Eles reconheciam indícios. Antes da chuva, o vento mudava. Antes da escassez, os movimentos se alteravam. Antes da doença se espalhar, o ambiente já indicava desequilíbrio. Havia sinais e havia quem soubesse lê-los.",
+      "paragraph3": "A ",
       "kwarAi": "Kwar-AI",
-      "kwarAiSuffix": "nasce dessa mesma lógica. É uma luz estratégica para decisões em saúde pública.",
+      "kwarAiSuffix": " nasce dessa mesma lógica. É uma luz estratégica para decisões em saúde pública.",
       "paragraph4": "Epidemias não começam quando viram notícia. Elas se formam silenciosamente, deixando rastros em dados ambientais, epidemiológicos e comportamentais. O que parece ruído isolado pode revelar tendência quando analisado em conjunto. Nosso trabalho é identificar essas convergências antes que se tornem crises.",
-      "paragraph5": "Dessa mesma lógica nasce a",
-      "paragraph5Suffix": ", com uma convicção simples: surtos anunciam sua própria chegada. Inteligência epidemiológica é a capacidade de reconhecer esse anúncio a tempo de agir.",
-      "quote": "O sol nasce para todos. Mas a",
-      "quoteSuffix": "reconhece os sinais antes do amanhecer."
+      "paragraph5": "A ",
+      "kwarAi2": "Kwar-AI",
+      "paragraph5Suffix": " possui a convicção de que surtos anunciam sua própria chegada. Inteligência epidemiológica é a capacidade de reconhecer esse anúncio a tempo de agir.",
+      "quote": "O sol nasce para todos. Mas a ",
+      "kwarAi3": "Kwar-AI",
+      "quoteSuffix": " reconhece os sinais antes do amanhecer."
     },
     "card": {
       "title": "Sabedoria Ancestral. Inteligência Científica.",
@@ -174,11 +175,11 @@
     }
   },
   "epidBot": {
-    "badge": "PRODUTO PRINCIPAL",
+    "badge": "IA PARA INTELIGÊNCIA EM SAÚDE",
     "title": "EpidBot",
     "subtitle": "Inteligência epidemiológica em linguagem natural.",
     "description": "O EpidBot é um assistente de inteligência artificial projetado para explorar dados epidemiológicos usando linguagem natural.\n\nVocê faz perguntas como faria a um analista — e o sistema gera análises, sínteses e insights automaticamente.\n\nNão é necessário saber programar ou utilizar ferramentas complexas de análise de dados.",
-    "cta": "Conheça o EpidBot",
+    "cta": "Conheça mais funcionalidades",
     "aiBadge": "AI Powered",
     "naturalLanguage": "Linguagem Natural",
     "integratesWith": "Integra com",
@@ -187,7 +188,7 @@
     "statistical": "Modelagem Estatística"
   },
   "epidBotParaQuem": {
-    "badge": "PARA QUEM É",
+    "badge": "APLICAÇÕES DIRETAS",
     "title": "Para quem é o EpidBot",
     "subtitle": "Desenvolvido para profissionais e instituições que trabalham com dados de saúde.",
     "items": {
@@ -226,7 +227,7 @@
     }
   },
   "epidBotBeneficios": {
-    "badge": "O QUE PERMITE",
+    "badge": "IMPACTO PRÁTICO",
     "title": "O que o EpidBot permite",
     "subtitle": "Funcionalidades pensadas para transformar a forma como você trabalha com dados.",
     "cta": "Solicitar Demonstração",
@@ -266,7 +267,7 @@
     }
   },
   "linguagemNatural": {
-    "badge": "RECURSO PRINCIPAL",
+    "badge": "FUNCIONALIDADES",
     "title": "Linguagem Natural",
     "description": "Faça perguntas em português, inglês ou espanhol e receba análises estruturadas com base em dados oficiais e modelos estatísticos.",
     "badges": {
@@ -287,11 +288,11 @@
     "projects": ["PySUS", "Infodengue", "Mosqlimate"]
   },
   "capacitacao": {
-    "badge": "CAPACITAÇÃO",
+    "badge": "CURSOS E CAPACITAÇÃO",
     "title": "Capacitação em IA aplicada à saúde",
     "description": "Além de soluções tecnológicas, oferecemos programas de capacitação para equipes técnicas e instituições que desejam aplicar IA em contextos reais de vigilância e tomada de decisão.",
     "comingSoon": "Turmas piloto e detalhes em breve.",
-    "cta": "Quero participar / Falar com a equipe",
+    "cta": "Falar com a equipe e conhecer as opções disponíveis",
     "audiences": {
       "surveillance": {
         "title": "Equipes de vigilância epidemiológica",
@@ -341,7 +342,7 @@
     }
   },
   "equipe": {
-    "badge": "EQUIPE",
+    "badge": "NÚCLEO FUNDADOR",
     "title": "Quem lidera a Kwar-AI",
     "subtitle": "Um time com base científica sólida e experiência em modelagem epidemiológica.",
     "relatedTo": "Projetos relacionados:",
@@ -349,8 +350,8 @@
     "members": {
       "flavio": {
         "name": "Flávio Codeço Coelho",
-        "role": "Co-fundador & CTO",
-        "bio": "Professor da FGV EMAp, criador do PySUS e colaborador em projetos como Infodengue e Mosqlimate. Especialista em modelagem matemática de epidemias."
+        "role": "Co-fundador & CEO/CTO",
+        "bio": "Professor da FGV EMAp, criador do PySUS e coordenador dos projetos Infodengue e Mosqlimate. Especialista em modelagem matemática de epidemias."
       },
       "joyce": {
         "name": "Joyce Figueiró Braga",
@@ -365,7 +366,7 @@
     }
   },
   "equipeRede": {
-    "badge": "EQUIPE E REDE",
+    "badge": "REDE DE COLABORAÇÃO",
     "title": "Equipe e Rede de Colaboração",
     "subtitle": "A Kwar-AI é liderada por um núcleo fundador e opera em colaboração com uma rede multidisciplinar.",
     "description": "Hoje, a Kwar-AI é conduzida por um time fundador com base científica e tecnológica sólida. Para desenvolver e aplicar soluções em saúde pública, atuamos em colaboração com pesquisadores, desenvolvedores e instituições parceiras no Brasil e no exterior.",
@@ -397,8 +398,8 @@
         "value": "contato@kwar-ai.com.br"
       },
       "phone": {
-        "label": "Telefone",
-        "value": "+55 (21) 0000-0000"
+        "label": "WhatsApp",
+        "value": "(31) 99498-1122"
       },
       "location": {
         "label": "Localização",
@@ -422,17 +423,18 @@
       "interest": "Interesse",
       "interestPlaceholder": "Selecione uma opção",
       "message": "Mensagem",
-      "messagePlaceholder": "Conte-nos sobre suas necessidades...",
+      "messagePlaceholder": "Conte brevemente como a Kwar-AI pode ajudar sua organização.",
       "submit": "Enviar Mensagem",
       "privacy": "Ao enviar, você concorda com nossa política de privacidade e LGPD.",
       "interestOptions": {
-        "apiPartner": "API de Saúde - Plano Partner",
-        "apiEnterprise": "API de Saúde - Plano Enterprise",
-        "courseClosed": "Curso de IA - Turma Fechada",
-        "courseOpen": "Curso de IA - Turma Aberta",
-        "platform": "Assinatura da Plataforma",
-        "partnership": "Parceria Estratégica",
-        "other": "Outro Assunto"
+        "epidbotDemo": "Demonstração do EpidBot",
+        "aiSolutions": "Soluções de IA para Saúde",
+        "courses": "Cursos e Capacitação",
+        "research": "Projetos de Pesquisa",
+        "partnerships": "Parcerias Institucionais",
+        "consulting": "Consultoria em Dados e Modelagem",
+        "press": "Imprensa / Comunicação",
+        "other": "Outro assunto"
       },
       "success": {
         "title": "Mensagem Enviada!",
@@ -441,26 +443,27 @@
     }
   },
   "footer": {
-    "description": "Inteligência epidemiológica de origem brasileira. Antecipamos surtos de doenças com até 21 dias de antecedência, combinando dados climáticos, comportamentais e de saúde.",
-    "madeWith": "Feito com",
-    "inBrazil": "no Brasil",
+    "description": "Inteligência em saúde que integra dados ambientais, epidemiológicos e comportamentais para apoiar decisões antecipadas em vigilância e saúde pública.",
+    "madeWith": "Feito no",
+    "inBrazil": "Brasil",
     "links": {
       "products": {
-        "title": "Produtos",
-        "apiHealth": "API de Saúde",
-        "aiCourse": "Curso de IA"
+        "title": "Soluções",
+        "epidbot": "EpidBot",
+        "courses": "Cursos e Capacitação",
+        "aiSolutions": "Soluções em IA para Saúde"
       },
       "company": {
         "title": "Empresa",
-        "about": "Sobre Nós",
-        "howItWorks": "Como Funciona",
+        "about": "Nossa História",
+        "team": "Equipe",
         "contact": "Contato"
       },
       "resources": {
-        "title": "Recursos",
-        "apiDocs": "Documentação API",
-        "blog": "Blog",
-        "cases": "Cases"
+        "title": "Projetos",
+        "infoDengue": "InfoDengue",
+        "mosqlimate": "Mosqlimate",
+        "pysus": "PySUS"
       },
       "legal": {
         "terms": "Termos de Uso",
@@ -468,10 +471,9 @@
         "lgpd": "LGPD"
       }
     },
-    "copyright": "© {{year}} Kwar-AI. Todos os direitos reservados.",
+    "copyright": "© {{year}} Kwar-AI",
     "slogan": {
-      "line1": "Ilumine o futuro.",
-      "line2": "O amanhecer dos dados."
+      "line1": "Antecipar é proteger."
     }
   }
 }

@@ -11,7 +11,8 @@ export function Navbar() {
   const navLinks = [
     { label: t('navbar.home'), href: '#hero' },
     { label: t('navbar.about'), href: '#about' },
-    { label: t('navbar.products'), href: '#products' },
+    { label: t('navbar.epidbot'), href: '#epidbot' },
+    { label: t('navbar.cursos'), href: '#cursos' },
     { label: t('navbar.contact'), href: '#contact' },
   ];
 
