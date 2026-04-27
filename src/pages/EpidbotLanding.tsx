@@ -58,10 +58,10 @@ function LandingNavbar() {
   ];
 
   const navLinks = [
-    { label: t('epidbotLanding.nav.howItWorks'), href: '#how-it-works' },
+    { label: t('epidbotLanding.nav.howItWorks', { defaultValue: 'Como Funciona' }), href: '#steps' },
     { label: t('epidbotLanding.nav.demo'), href: '#demo' },
     { label: t('epidbotLanding.nav.pricing'), href: '#pricing' },
-    { label: t('epidbotLanding.nav.contact') || 'Contato', href: '#final-cta' },
+    { label: t('epidbotLanding.nav.contact', { defaultValue: 'Contato' }), href: '#final-cta' },
   ];
 
   return (
@@ -390,15 +390,15 @@ function WhatIsEpidbotSection() {
   const features = [
     {
       icon: MessageSquare,
-      title: t('epidbotLanding.whatis.features.language.title') || 'Faça perguntas em linguagem simples',
+      title: t('epidbotLanding.whatis.features.language.title', { defaultValue: 'Faça perguntas em linguagem simples' }),
     },
     {
       icon: BarChart3,
-      title: t('epidbotLanding.whatis.features.analysis.title') || 'Receba análises baseadas em dados reais',
+      title: t('epidbotLanding.whatis.features.analysis.title', { defaultValue: 'Receba análises baseadas em dados reais' }),
     },
     {
       icon: Shield,
-      title: t('epidbotLanding.whatis.features.decision.title') || 'Tome decisões com mais rapidez e segurança',
+      title: t('epidbotLanding.whatis.features.decision.title', { defaultValue: 'Tome decisões com mais rapidez e segurança' }),
     },
   ];
 
@@ -607,7 +607,7 @@ function DemoVideoSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <Play className="w-4 h-4 text-kwar-electric" />
             <span className="text-sm font-medium text-kwar-electric">
-              {t('epidbotLanding.demo.badge') || 'Demonstração'}
+              {t('epidbotLanding.demo.badge', { defaultValue: 'Demonstração' })}
             </span>
           </div>
           
@@ -616,7 +616,7 @@ function DemoVideoSection() {
           </h2>
           
           <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
-            {t('epidbotLanding.demo.subtitle') || 'Em poucos minutos, você entende como transformar dados em decisões.'}
+            {t('epidbotLanding.demo.subtitle', { defaultValue: 'Em poucos minutos, você entende como transformar dados em decisões.' })}
           </p>
         </div>
 
@@ -648,7 +648,7 @@ function DemoVideoSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          {t('epidbotLanding.demo.note') || 'Sem instalação. Sem equipe técnica. Direto ao ponto.'}
+          {t('epidbotLanding.demo.note', { defaultValue: 'Sem instalação. Sem equipe técnica. Direto ao ponto.' })}
         </p>
       </div>
     </section>
@@ -682,18 +682,18 @@ function HowItWorksSection() {
   const steps = [
     {
       number: '01',
-      title: t('epidbotLanding.steps.step1.title') || 'Você faz uma pergunta',
-      description: t('epidbotLanding.steps.step1.description') || 'Em linguagem natural, como faria a um analista experiente.',
+      title: t('epidbotLanding.steps.step1.title', { defaultValue: 'Você faz uma pergunta' }),
+      description: t('epidbotLanding.steps.step1.description', { defaultValue: 'Em linguagem natural, como faria a um analista experiente.' }),
     },
     {
       number: '02',
-      title: t('epidbotLanding.steps.step2.title') || 'O EpidBot analisa os dados',
-      description: t('epidbotLanding.steps.step2.description') || 'Processa informações de múltiplas fontes em segundos.',
+      title: t('epidbotLanding.steps.step2.title', { defaultValue: 'O EpidBot analisa os dados' }),
+      description: t('epidbotLanding.steps.step2.description', { defaultValue: 'Processa informações de múltiplas fontes em segundos.' }),
     },
     {
       number: '03',
-      title: t('epidbotLanding.steps.step3.title') || 'Você recebe uma resposta clara',
-      description: t('epidbotLanding.steps.step3.description') || 'Com insights acionáveis em minutos, não dias.',
+      title: t('epidbotLanding.steps.step3.title', { defaultValue: 'Você recebe uma resposta clara' }),
+      description: t('epidbotLanding.steps.step3.description', { defaultValue: 'Com insights acionáveis em minutos, não dias.' }),
     },
   ];
 
@@ -1317,9 +1317,9 @@ function LandingFooter() {
   };
 
   const links = [
-    { label: t('epidbotLanding.footer.links.product') || 'Produto', href: '#what-is' },
-    { label: t('epidbotLanding.footer.links.pricing') || 'Preços', href: '#pricing' },
-    { label: t('epidbotLanding.footer.links.contact') || 'Contato', href: '#final-cta' },
+    { label: t('epidbotLanding.footer.links.product', { defaultValue: 'Produto' }), href: '#what-is' },
+    { label: t('epidbotLanding.footer.links.pricing', { defaultValue: 'Preços' }), href: '#pricing' },
+    { label: t('epidbotLanding.footer.links.contact', { defaultValue: 'Contato' }), href: '#final-cta' },
   ];
 
   return (
@@ -1337,7 +1337,7 @@ function LandingFooter() {
               </span>
             </Link>
             <span className="text-kwar-gray text-sm">
-              © {currentYear} {t('epidbotLanding.footer.rights') || 'Todos os direitos reservados'}
+              © {currentYear} {t('epidbotLanding.footer.rights', { defaultValue: 'Todos os direitos reservados' })}
             </span>
           </div>
 
@@ -1356,7 +1356,7 @@ function LandingFooter() {
               to="/"
               className="text-kwar-electric hover:text-kwar-electric/80 transition-colors text-sm font-medium"
             >
-              {t('epidbotLanding.footer.mainSite') || 'Voltar ao Site Principal'}
+              {t('epidbotLanding.footer.mainSite', { defaultValue: 'Voltar ao Site Principal' })}
             </Link>
           </div>
         </div>
