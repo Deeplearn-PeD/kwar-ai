@@ -474,5 +474,114 @@
     "slogan": {
       "line1": "To anticipate is to protect."
     }
+  },
+  "epidbotLanding": {
+    "nav": {
+      "howItWorks": "How It Works",
+      "results": "Results",
+      "pricing": "Pricing",
+      "mainSite": "Main Site",
+      "cta": "Schedule Demo"
+    },
+    "hero": {
+      "badge": "For Health Departments",
+      "title": "The data arrives. The decision doesn't.",
+      "subtitle": "Your team is overwhelmed. And the problem won't wait.",
+      "ctaPrimary": "Find Solution",
+      "ctaSecondary": "See How It Works"
+    },
+    "problem": {
+      "badge": "We know it's not easy",
+      "title": "You try, but...",
+      "subtitle": "Being a health secretary in a small town means taking care of many things with few people.",
+      "items": {
+        "team": {
+          "title": "Your team is already at the limit",
+          "description": "You have 2 or 3 people doing the work of 10. Everyone is overwhelmed. And you still need to stop to gather data from many different places."
+        },
+        "surprise": {
+          "title": "The disease spreads and you only see it later",
+          "description": "When the report is finally ready, cases have already increased. The outbreak has already spread. And you're finding out too late where you should have acted before."
+        },
+        "money": {
+          "title": "You lose money by not planning",
+          "description": "Did you open beds you didn't need? Buy too many vaccines? Fail to buy what was missing? Without clear data, you waste resources your city doesn't have to spare."
+        }
+      }
+    },
+    "solution": {
+      "badge": "There's a better way",
+      "title": "Like having an extra analyst on your team",
+      "subtitle": "Except this one works 24 hours a day, never takes vacation, and is ready whenever you need it.",
+      "features": {
+        "fast": {
+          "title": "Answers right away",
+          "description": "Ask in the morning, know the answer before lunch. No more waiting days for a spreadsheet."
+        },
+        "clear": {
+          "title": "Know where the problem is",
+          "description": "Which neighborhood is getting worse? Which age group is most affected? You see clearly where you need to act, without guessing."
+        },
+        "confidence": {
+          "title": "Walk into meetings with confidence",
+          "description": "Have numbers to answer with. Show that you're on top of the situation. Earn respect from leadership."
+        }
+      }
+    },
+    "benefits": {
+      "title": "Benefits for the municipality",
+      "items": {
+        "time": {
+          "title": "Your team can breathe",
+          "description": "Stop wasting time manually gathering data. Focus on what really matters: taking care of the community."
+        },
+        "control": {
+          "title": "See the problem before it grows",
+          "description": "Detect when something is starting to get out of control. Act before it becomes a real outbreak."
+        },
+        "peace": {
+          "title": "Sleep better at night",
+          "description": "Know that you're keeping an eye on what's happening. Don't have that feeling that you forgot something important."
+        }
+      }
+    },
+    "pricing": {
+      "title": "How much does this help cost?",
+      "subtitle": "Less than you think.",
+      "note": "14-day free trial. Cancel anytime.",
+      "free": {
+        "name": "To Try Out",
+        "description": "See if it makes sense for you",
+        "cta": "Try Free"
+      },
+      "pro": {
+        "name": "For Daily Use",
+        "description": "For those who really need it",
+        "cta": "Start Using"
+      },
+      "enterprise": {
+        "name": "For Larger Departments",
+        "description": "When you need more",
+        "cta": "Talk to Us"
+      }
+    },
+    "final": {
+      "title": "The next outbreak may be coming. Your city needs quick help.",
+      "subtitle": "Let's talk?",
+      "form": {
+        "placeholder": "Your email",
+        "submit": "I Want to Talk"
+      },
+      "note": "Free demo. No commitment."
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "mainSite": "Back to Main Site",
+      "links": {
+        "product": "Product",
+        "pricing": "Pricing",
+        "contact": "Contact"
+      }
+    }
   }
 }

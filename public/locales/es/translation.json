@@ -474,5 +474,114 @@
     "slogan": {
       "line1": "Anticipar es proteger."
     }
+  },
+  "epidbotLanding": {
+    "nav": {
+      "howItWorks": "C�mo Funciona",
+      "results": "Resultados",
+      "pricing": "Precios",
+      "mainSite": "Sitio Principal",
+      "cta": "Agendar Demo"
+    },
+    "hero": {
+      "badge": "Para Secretarías de Salud",
+      "title": "Los datos llegan. La decisión no.",
+      "subtitle": "Su equipo está sobrecargado. Y el problema no espera.",
+      "ctaPrimary": "Encontrar Solución",
+      "ctaSecondary": "Ver Cómo Funciona"
+    },
+    "problem": {
+      "badge": "Sabemos que no es fácil",
+      "title": "Usted intenta, pero...",
+      "subtitle": "Ser secretario de salud en el interior exige cuidar de muchas cosas con poca gente.",
+      "items": {
+        "team": {
+          "title": "Su equipo ya está en el límite",
+          "description": "Tiene 2 o 3 personas haciendo el trabajo de 10. Todos están sobrecargados. Y todavía necesita parar para juntar datos de un montón de lugares diferentes."
+        },
+        "surprise": {
+          "title": "La enfermedad se propaga y usted solo ve después",
+          "description": "Cuando el informe está listo, los casos ya aumentaron. El brote ya se expandió. Y usted descubriendo tarde dónde debería haber actuado antes."
+        },
+        "money": {
+          "title": "Usted pierde dinero por no planificar",
+          "description": "¿Abrió camas que no necesitaba? ¿Compró vacunas de más? ¿Dejó de comprar lo que faltaba? Sin datos claros, usted desperdicia recursos que la ciudad no tiene sobrando."
+        }
+      }
+    },
+    "solution": {
+      "badge": "Hay una mejor manera",
+      "title": "Como tener un analista m�s en su equipo",
+      "subtitle": "Solo que trabaja 24 horas al d�a, no toma vacaciones, y est� listo cuando usted lo necesita.",
+      "features": {
+        "fast": {
+          "title": "Respuesta en el momento",
+          "description": "Pregunta en la ma�ana, sabe la respuesta antes del almuerzo. No necesita esperar d�as por una planilla."
+        },
+        "clear": {
+          "title": "Sabe d�nde est� el problema",
+          "description": "�En qu� barrio est� empeorando? �Qu� edad est� m�s afectada? Ve claro d�nde necesita actuar, sin adivinar."
+        },
+        "confidence": {
+          "title": "Llega seguro a la reuni�n",
+          "description": "Tiene n�meros para responder. Muestra que est� al tanto de la situaci�n. Gana respeto de la jefatura."
+        }
+      }
+    },
+    "benefits": {
+      "title": "Beneficios para el municipio",
+      "items": {
+        "time": {
+          "title": "Su equipo respira",
+          "description": "Deja de perder tiempo juntando datos a mano. Se enfoca en lo que realmente importa: cuidar a la poblaci�n."
+        },
+        "control": {
+          "title": "Ve el problema antes de que crezca",
+          "description": "Detecta cuando algo est� empezando a salirse de control. Act�a antes de que se convierta en brote de verdad."
+        },
+        "peace": {
+          "title": "Duerme m�s tranquilo",
+          "description": "Sabe que est� pendiente de lo que pasa. No tiene esa sensaci�n de que olvid� algo importante."
+        }
+      }
+    },
+    "pricing": {
+      "title": "�Cu�nto cuesta tener esta ayuda?",
+      "subtitle": "Menos de lo que imagina.",
+      "note": "Prueba 14 d�as gratis. Cancele cuando quiera.",
+      "free": {
+        "name": "Para Probar",
+        "description": "Vea si tiene sentido para usted",
+        "cta": "Probar Gratis"
+      },
+      "pro": {
+        "name": "Para Usar Diariamente",
+        "description": "Para quien realmente lo necesita",
+        "cta": "Empezar a Usar"
+      },
+      "enterprise": {
+        "name": "Para Secretar�as Grandes",
+        "description": "Cuando necesita m�s",
+        "cta": "Conversar con Nosotros"
+      }
+    },
+    "final": {
+      "title": "El próximo brote puede estar llegando. Su ciudad necesita ayuda rápida.",
+      "subtitle": "¿Conversamos?",
+      "form": {
+        "placeholder": "Su email",
+        "submit": "Quiero Conversar"
+      },
+      "note": "Demostraci�n gratuita. Sin compromiso."
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados",
+      "mainSite": "Volver al Sitio Principal",
+      "links": {
+        "product": "Producto",
+        "pricing": "Precios",
+        "contact": "Contacto"
+      }
+    }
   }
 }

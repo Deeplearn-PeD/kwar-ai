@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { NeuralBackground } from '@/components/NeuralBackground';
 import { Hero } from '@/sections/Hero';
@@ -14,10 +15,12 @@ import { EquipeSection } from '@/sections/EquipeSection';
 import { CTAFinalSection } from '@/sections/CTAFinalSection';
 import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
+import EpidbotLanding from '@/pages/EpidbotLanding';
 
-function App() {
+// HomePage component containing all existing sections
+function HomePage() {
   return (
-    <div className="relative min-h-screen bg-kwar-deep">
+    <>
       {/* Neural Background Animation */}
       <NeuralBackground />
       
@@ -68,7 +71,16 @@ function App() {
       
       {/* Footer */}
       <Footer />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/epidbot-landing" element={<EpidbotLanding />} />
+    </Routes>
   );
 }
 

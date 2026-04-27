@@ -475,5 +475,173 @@
     "slogan": {
       "line1": "Antecipar é proteger."
     }
+  },
+  "epidbotLanding": {
+    "nav": {
+      "howItWorks": "Como Funciona",
+      "demo": "Demo",
+      "pricing": "Preços",
+      "contact": "Contato",
+      "mainSite": "Site Principal",
+      "cta": "Agendar Demonstração"
+    },
+    "hero": {
+      "badge": "Para Secretarias de Saúde",
+      "titleLine1": "Os dados chegam.",
+      "titleLine2": "A decisão não.",
+      "subtitle": "Sua equipe está sobrecarregada. E o problema não espera.",
+      "ctaPrimary": "Agendar Demonstração",
+      "ctaSecondary": "Ver Demo"
+    },
+    "problem": {
+      "badge": "A gente sabe que não é fácil",
+      "title": "Você tenta, mas...",
+      "subtitle": "Ser secretário de saúde no interior é ter muita responsa e pouca gente para ajudar.",
+      "items": {
+        "team": {
+          "title": "Sua equipe já está no limite",
+          "description": "Você tem 2, 3 pessoas fazendo o trabalho de 10. Todo mundo sobrecarregado. E ainda precisa parar para juntar dado de um monte de lugar diferente."
+        },
+        "surprise": {
+          "title": "O surto cresce e você só vê depois",
+          "description": "Quando o relatório fica pronto, os casos já aumentaram. A dengue já se espalhou. E você descobrindo tarde demais onde deveria ter agido antes."
+        },
+        "meeting": {
+          "title": "Chega na reunião sem saber o que dizer",
+          "description": "O prefeito pergunta se está tudo sob controle. Você quer responder, mas não tem número na hora. Fica na defensiva. Parece que não sabe o que está fazendo."
+        }
+      }
+    },
+    "whatis": {
+      "badge": "A Solução",
+      "title": "Um analista epidemiológico, disponível quando você precisa",
+      "subtitle": "O EpidBot é um assistente de inteligência artificial que analisa dados de saúde pública e entrega respostas claras em minutos — sem precisar de equipe técnica.",
+      "features": {
+        "language": {
+          "title": "Faça perguntas em linguagem simples"
+        },
+        "analysis": {
+          "title": "Receba análises baseadas em dados reais"
+        },
+        "decision": {
+          "title": "Tome decisões com mais rapidez e segurança"
+        }
+      },
+      "chat": {
+        "user": "Existe risco de aumento de casos nas próximas semanas?",
+        "bot": "Analisando dados dos últimos 30 dias...",
+        "recommendation": "Recomendação: reforçar vigilância nos bairros X, Y e Z"
+      }
+    },
+    "does": {
+      "badge": "Funcionalidades",
+      "title": "Transforme dados em decisões, sem complicação",
+      "subtitle": "Chega de planilhas e relatórios demorados. O EpidBot responde o que você precisa saber, na hora que você precisa.",
+      "fast": {
+        "title": "Resposta em minutos",
+        "description": "Chega de esperar dias por relatórios. Respostas imediatas quando você precisa."
+      },
+      "location": {
+        "title": "Sabe onde está o problema",
+        "description": "Em qual bairro está piorando? Qual faixa etária está mais atingida? Você vê claro onde precisa agir."
+      },
+      "confidence": {
+        "title": "Chega seguro na reunião",
+        "description": "Tem número para responder. Mostra que está por dentro da situação. Ganha respeito da chefia."
+      }
+    },
+    "demo": {
+      "badge": "Demonstração",
+      "title": "Veja como o EpidBot funciona na prática",
+      "subtitle": "Em poucos minutos, você entende como transformar dados em decisões.",
+      "note": "Sem instalação. Sem equipe técnica. Direto ao ponto."
+    },
+    "steps": {
+      "title": "Como funciona na prática",
+      "step1": {
+        "title": "Você faz uma pergunta",
+        "description": "Em linguagem natural, como faria a um analista experiente."
+      },
+      "step2": {
+        "title": "O EpidBot analisa os dados",
+        "description": "Processa informações de múltiplas fontes em segundos."
+      },
+      "step3": {
+        "title": "Você recebe uma resposta clara",
+        "description": "Com insights acionáveis em minutos, não dias."
+      }
+    },
+    "credibility": {
+      "badge": "Tecnologia de Ponta",
+      "title": "Tecnologia desenvolvida pela Kwar-AI",
+      "subtitle": "Baseado em expertise em modelagem matemática e análise de dados aplicados à saúde pública.",
+      "tagline": "Inteligência Epidemiológica",
+      "points": {
+        "pysus": "Criadores do PySUS, biblioteca open-source para acesso a dados do DATASUS",
+        "infodengue": "Responsáveis pelo InfoDengue, sistema de alerta de arboviroses",
+        "mosqlimate": "Parceiros do Mosqlimate, plataforma de previsão de doenças"
+      }
+    },
+    "benefits": {
+      "title": "O que muda no seu dia a dia",
+      "items": {
+        "time": {
+          "title": "Sua equipe respira",
+          "description": "Para de perder tempo juntando dado na mão. Foca no que realmente importa: cuidar da população."
+        },
+        "control": {
+          "title": "Vê o problema antes de crescer",
+          "description": "Detecta quando algo está começando a sair do controle. Age antes que vire surto de verdade."
+        },
+        "peace": {
+          "title": "Dorme mais tranquilo",
+          "description": "Sabe que está de olho no que acontece. Não fica com aquela sensação de que esqueceu alguma coisa importante."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Quanto custa ter essa ajuda?",
+      "subtitle": "Menos do que você imagina.",
+      "note": "Teste 14 dias grátis. Cancele quando quiser.",
+      "popular": "Mais Popular",
+      "free": {
+        "name": "Free",
+        "price": "Grátis",
+        "description": "Para conhecer a ferramenta",
+        "cta": "Começar Grátis"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "R$ 297",
+        "description": "Para uso profissional",
+        "cta": "Assinar Pro"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Sob consulta",
+        "description": "Para secretarias e grandes instituições",
+        "cta": "Falar com Vendas"
+      }
+    },
+    "final": {
+      "title": "Quanto tempo você ainda vai tentar fazer tudo sozinho?",
+      "subtitle": "Sua equipe está pedindo arrego. E o próximo surto pode estar chegando. Vamos conversar?",
+      "form": {
+        "name": "Seu nome",
+        "email": "Seu email",
+        "organization": "Nome da secretaria ou município",
+        "submit": "Quero Conversar"
+      },
+      "note": "Demonstração gratuita. Sem compromisso."
+    },
+    "footer": {
+      "rights": "Todos os direitos reservados",
+      "mainSite": "Voltar ao Site Principal",
+      "links": {
+        "product": "Produto",
+        "pricing": "Preços",
+        "contact": "Contato"
+      }
+    }
   }
 }
