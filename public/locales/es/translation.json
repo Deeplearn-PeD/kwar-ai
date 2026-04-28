@@ -450,7 +450,8 @@
       "pricing": "Precios",
       "contact": "Contacto",
       "mainSite": "Sitio Principal",
-      "cta": "Agendar Demo"
+      "cta": "Agendar Demo",
+      "accessApp": "Acceder a EpidBot"
     },
     "hero": {
       "badge": "Para Secretarías de Salud",
@@ -458,7 +459,8 @@
       "titleLine2": "a que analices los datos.",
       "subtitle": "Su equipo está sobrecargado. Y el problema no espera.",
       "ctaPrimary": "Agendar Demostración",
-      "ctaSecondary": "Ver Demo"
+      "ctaSecondary": "Ver Demo",
+      "ctaApp": "Acceder a EpidBot"
     },
     "problem": {
       "badge": "Sabemos que no es fácil",
@@ -566,7 +568,7 @@
     },
     "credibility": {
       "badge": "Tecnología",
-      "title": "Desarrollado por Kwar-AI",
+      "title": "Desarrollado por",
       "description": "Tecnología basada en años de investigación y proyectos reales en salud pública en Brasil.",
       "cta": "Conozca Kwar-AI"
     },
@@ -632,7 +634,9 @@
         "organization": "Nombre de la secretaría o municipio",
         "submit": "Quiero Conversar"
       },
-      "note": "Respondemos en hasta 24 horas. Sin compromiso."
+      "note": "Respondemos en hasta 24 horas. Sin compromiso.",
+      "orAccess": "O acceda directamente a EpidBot:",
+      "accessApp": "Acceder a EpidBot"
     },
     "footer": {
       "rights": "Todos los derechos reservados",

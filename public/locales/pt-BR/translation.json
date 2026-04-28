@@ -449,7 +449,8 @@
       "pricing": "Preços",
       "contact": "Contato",
       "mainSite": "Site Principal",
-      "cta": "Agendar Demonstração"
+      "cta": "Agendar Demonstração",
+      "accessApp": "Acessar EpidBot"
     },
     "hero": {
       "badge": "Para Secretarias de Saúde",
@@ -520,7 +521,8 @@
       "badge": "Demonstração",
       "title": "Veja como o EpidBot funciona na prática",
       "subtitle": "Em poucos minutos, você entende como transformar dados em decisões.",
-      "note": "Sem instalação. Sem equipe técnica. Direto ao ponto."
+      "note": "Sem instalação. Sem equipe técnica. Direto ao ponto.",
+      "accessApp": "Experimente o EpidBot!"
     },
     "steps": {
       "title": "Como funciona na prática",
@@ -539,13 +541,13 @@
     },
     "credibility": {
       "badge": "Tecnologia de Ponta",
-      "title": "Tecnologia desenvolvida pela Kwar-AI",
+      "title": "Tecnologia desenvolvida pela",
       "subtitle": "Baseado em expertise em modelagem matemática e análise de dados aplicados à saúde pública.",
       "tagline": "Inteligência Epidemiológica",
       "points": {
         "pysus": "Criadores do PySUS, biblioteca open-source para acesso a dados do DATASUS",
-        "infodengue": "Responsáveis pelo InfoDengue, sistema de alerta de arboviroses",
-        "mosqlimate": "Parceiros do Mosqlimate, plataforma de previsão de doenças"
+        "infodengue": "Nosso CEO é um dos coordenadores do InfoDengue, sistema de alerta de arboviroses",
+        "mosqlimate": "Nosso CEO é o coordenador da plataforma  Mosqlimate, plataforma de previsão de doenças"
       }
     },
     "benefits": {

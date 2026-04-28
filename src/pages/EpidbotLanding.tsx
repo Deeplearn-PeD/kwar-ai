@@ -647,6 +647,24 @@ function DemoVideoSection() {
         >
           {t('epidbotLanding.demo.note', { defaultValue: 'Sem instalação. Sem equipe técnica. Direto ao ponto.' })}
         </p>
+
+        {/* Access App Button */}
+        <div
+          className={`text-center mt-8 transition-all duration-1000 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <Button
+            asChild
+            size="lg"
+            className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-10 py-6 text-lg group shadow-lg shadow-kwar-electric/25"
+          >
+            <a href="https://epidbot.kwar-ai.com.br" target="_blank" rel="noopener noreferrer">
+              {t('epidbotLanding.demo.accessApp', { defaultValue: 'Experimente o EpidBot!' })}
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
   );

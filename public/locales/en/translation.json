@@ -450,7 +450,8 @@
       "pricing": "Pricing",
       "contact": "Contact",
       "mainSite": "Main Site",
-      "cta": "Schedule Demo"
+      "cta": "Schedule Demo",
+      "accessApp": "Access EpidBot"
     },
     "hero": {
       "badge": "For Health Departments",
@@ -458,7 +459,8 @@
       "titleLine2": "for you to analyze the data.",
       "subtitle": "Your team is overwhelmed. And the problem won't wait.",
       "ctaPrimary": "Schedule Demo",
-      "ctaSecondary": "See Demo"
+      "ctaSecondary": "See Demo",
+      "ctaApp": "Access EpidBot"
     },
     "problem": {
       "badge": "We know it's not easy",
@@ -566,7 +568,7 @@
     },
     "credibility": {
       "badge": "Technology",
-      "title": "Developed by Kwar-AI",
+      "title": "Developed by",
       "description": "Technology based on years of research and real projects in public health in Brazil.",
       "cta": "Learn about Kwar-AI"
     },
@@ -632,7 +634,9 @@
         "organization": "Health department or municipality name",
         "submit": "I Want to Talk"
       },
-      "note": "We respond within 24 hours. No commitment."
+      "note": "We respond within 24 hours. No commitment.",
+      "orAccess": "Or access EpidBot directly:",
+      "accessApp": "Access EpidBot"
     },
     "footer": {
       "rights": "All rights reserved",
