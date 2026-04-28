@@ -7,13 +7,10 @@ import {
   Zap,
   TrendingUp,
   Check,
-  Sparkles,
   MessageSquare,
   Menu,
   X,
-  Wallet,
   Play,
-  Brain,
   BarChart3,
   Clock,
   Shield,
@@ -178,7 +175,6 @@ function LandingNavbar() {
 // HERO SECTION - MINIMALISTA E IMPACTANTE
 // ============================================================================
 function HeroSection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -256,7 +252,6 @@ function HeroSection() {
 // PROBLEM SECTION
 // ============================================================================
 function ProblemSection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -481,7 +476,6 @@ function WhatIsEpidbotSection() {
 // O QUE ELE FAZ NA PRATICA SECTION
 // ============================================================================
 function WhatItDoesSection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -859,7 +853,6 @@ function HowItWorksSection() {
 // BENEFITS SECTION
 // ============================================================================
 function BenefitsSection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -1005,7 +998,6 @@ function KwarAICredibilitySection() {
 // PRICING SECTION
 // ============================================================================
 function PricingSection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
