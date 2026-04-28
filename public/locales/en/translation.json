@@ -23,7 +23,7 @@
     "subtitle": "Kwar-AI develops solutions that connect epidemiology, data science and artificial intelligence to support faster and more informed public health decisions.",
     "additionalLine": "Among our solutions is EpidBot, an AI assistant for health data analysis in natural language.",
     "cta": {
-      "epidbot": "Meet EpidBot",
+      "epidbot": "Explore EpidBot Features",
       "about": "About Kwar-AI",
       "products": "Our Products",
       "demo": "Request Demo",
@@ -36,27 +36,29 @@
     "scrollIndicator": "Scroll to explore"
   },
   "about": {
-    "badge": "OUR ORIGIN",
-    "title": "The",
-    "titleHighlight": "Dawn Prophecy",
+    "badge": "OUR STORY",
+    "title": "Our Story",
+    "titleHighlight": "",
     "story": {
-      "paragraph1": "Long before algorithms existed, the Tupi people already understood something essential: the future leaves signs in the present. For them,",
+      "paragraph1": "Long before algorithms existed, the Tupi people already understood something essential: the future leaves signs in the present. For them, Kuaray, the sun, was not just light, but cycle. Dawn was not a surprise; it was a consequence of patterns observed with attention.",
       "kuaray": "Kuaray",
-      "kuaraySuffix": " — the sun — was not just light, but cycle. Dawn was not a surprise; it was a consequence of patterns observed with attention.",
+      "kuaraySuffix": "",
       "paragraph2": "The shamans didn't guess. They recognized signs. Before the rain, the wind changed. Before scarcity, movements altered. Before disease spread, the environment already indicated imbalance. There were signs — and there were those who knew how to read them.",
-      "paragraph3": "The",
+      "paragraph3": " ",
       "kwarAi": "Kwar-AI",
-      "kwarAiSuffix": "is born from this same logic. It is a strategic light for public health decisions.",
+      "kwarAiSuffix": " is born from this same logic. It is a strategic light for public health decisions.",
       "paragraph4": "Epidemics don't start when they become news. They form silently, leaving traces in environmental, epidemiological and behavioral data. What seems like isolated noise can reveal a trend when analyzed together. Our work is to identify these convergences before they become crises.",
-      "paragraph5": "From this same logic arises",
-      "paragraph5Suffix": ", with a simple conviction: outbreaks announce their own arrival. Epidemiological intelligence is the ability to recognize this announcement in time to act.",
-      "quote": "The sun rises for everyone. But",
-      "quoteSuffix": "recognizes the signs before dawn."
+      "paragraph5": " ",
+      "kwarAi2": "Kwar-AI",
+      "paragraph5Suffix": " has the conviction that outbreaks announce their own arrival. Epidemiological intelligence is the ability to recognize this announcement in time to act.",
+      "quote": "The sun rises for everyone. But the ",
+      "quoteSuffix": " recognizes the signs before dawn."
     },
     "card": {
       "title": "Ancestral Wisdom. Scientific Intelligence.",
-      "description": "",
-      "descriptionSuffix": "combines the ancestral logic of observing signs with the rigor of statistical modeling and data science. It doesn't interpret omens — it analyzes environmental, epidemiological and behavioral data to turn signs into anticipatory and responsible decisions.",
+      "description": " ",
+      "kwarAi": "Kwar-AI",
+      "descriptionSuffix": " combines the ancestral logic of observing signs with the rigor of statistical modeling and data science. It doesn't interpret omens — it analyzes environmental, epidemiological and behavioral data to turn signs into anticipatory and responsible decisions.",
       "badge": "Epidemiological Intelligence"
     },
     "pillars": {
@@ -174,11 +176,11 @@
     }
   },
   "epidBot": {
-    "badge": "MAIN PRODUCT",
+    "badge": "AI FOR HEALTH INTELLIGENCE",
     "title": "EpidBot",
     "subtitle": "Epidemiological intelligence in natural language.",
     "description": "EpidBot is an artificial intelligence assistant designed to explore epidemiological data using natural language.\n\nYou ask questions as you would to an analyst — and the system automatically generates analyzes, summaries and insights.\n\nNo programming knowledge or complex data analysis tools required.",
-    "cta": "Meet EpidBot",
+    "cta": "Explore EpidBot Features",
     "aiBadge": "AI Powered",
     "naturalLanguage": "Natural Language",
     "integratesWith": "Integrates with",
@@ -187,9 +189,9 @@
     "statistical": "Statistical Modeling"
   },
   "epidBotParaQuem": {
-    "badge": "FOR WHO",
+    "badge": "DIRECT APPLICATIONS",
     "title": "Who is EpidBot for",
-    "subtitle": "Designed for professionals and institutions working with health data.",
+    "subtitle": "Developed for professionals and institutions working with health data.",
     "items": {
       "healthDepartments": {
         "title": "Health Departments",
@@ -226,7 +228,7 @@
     }
   },
   "epidBotBeneficios": {
-    "badge": "WHAT IT ENABLES",
+    "badge": "PRACTICAL IMPACT",
     "title": "What EpidBot enables",
     "subtitle": "Features designed to transform how you work with data.",
     "cta": "Request Demo",
@@ -266,7 +268,7 @@
     }
   },
   "linguagemNatural": {
-    "badge": "MAIN FEATURE",
+    "badge": "FEATURES",
     "title": "Natural Language",
     "description": "Ask questions in Portuguese, English or Spanish and receive structured analyzes based on official data and statistical models.",
     "badges": {
@@ -283,15 +285,15 @@
   "baseCientifica": {
     "badge": "SCIENTIFIC BASE",
     "title": "Scientific base and integrated projects",
-    "description": "EpidBot is born from the accumulated experience in projects like PySUS, Infodengue and Mosqlimate, integrating statistical modeling, epidemiological surveillance and applied data science.",
-    "projects": ["PySUS", "Infodengue", "Mosqlimate"]
+    "description": "EpidBot is born from the accumulated experience in projects integrating statistical modeling, epidemiological surveillance and applied data science."
   },
   "capacitacao": {
     "badge": "TRAINING",
     "title": "AI training applied to health",
     "description": "Beyond technological solutions, we offer training programs for technical teams and institutions that want to apply AI in real surveillance and decision-making contexts.",
     "comingSoon": "Pilot classes and details coming soon.",
-    "cta": "I want to participate / Talk to the team",
+    "onDemand": "Training programs available on demand. Contact us to learn about options.",
+    "cta": "Talk to the team and learn about available options",
     "audiences": {
       "surveillance": {
         "title": "Epidemiological surveillance teams",
@@ -309,39 +311,10 @@
         "title": "Managers and coordinators",
         "description": "Professionals who make data-driven decisions."
       }
-    },
-    "formacao": {
-      "badge": "TRAINING",
-      "title": "AI training applied to health data analysis",
-      "subtitle": "Training programs developed for professionals and institutions working with epidemiological surveillance, data analysis and public health information production.",
-      "description": "Kwar-AI offers training programs in artificial intelligence applied to epidemiological data analysis, technical report production and organization of large volumes of health information.",
-      "description2": "Courses are oriented towards practical application in institutional contexts, enabling teams to use modern AI tools to accelerate analyses, interpret databases and support decision-making processes.",
-      "topicsTitle": "Topics covered include:",
-      "topics": {
-        "topic1": "Use of AI for analysis and synthesis of epidemiological reports",
-        "topic2": "Exploration of health databases (DATASUS, SINAN and other public sources)",
-        "topic3": "Assisted generation of reports and technical notes",
-        "topic4": "Extraction and organization of data from documents and spreadsheets",
-        "topic5": "Creation of AI assistants for health information query and analysis",
-        "topic6": "EpidBot usage training"
-      },
-      "cta": {
-        "title": "New class coming soon",
-        "description": "We are preparing new cohorts for the AI training program applied to health data analysis.",
-        "button": "Join waitlist"
-      },
-      "target": {
-        "title": "Target audience",
-        "item1": "Epidemiological surveillance teams",
-        "item2": "Health data analysts",
-        "item3": "Researchers and epidemiologists",
-        "item4": "Health department professionals",
-        "item5": "Report and institutional intelligence teams"
-      }
     }
   },
   "equipe": {
-    "badge": "TEAM",
+    "badge": "FOUNDING TEAM",
     "title": "Who leads Kwar-AI",
     "subtitle": "A team with solid scientific foundation and experience in epidemiological modeling.",
     "relatedTo": "Related projects:",
@@ -356,11 +329,6 @@
         "name": "Joyce Figueiró Braga",
         "role": "Co-founder & CSO",
         "bio": "PhD candidate in Applied Mathematics and Data Science. Works at the interface between epidemiological modeling, product strategy and training."
-      },
-      "fabiana": {
-        "name": "Fabiana Ganem",
-        "role": "Co-founder & Head of Research",
-        "bio": "Postdoctoral researcher at FGV EMAp. Works in epidemiological surveillance, statistical modeling and arbovirus prediction."
       }
     }
   },
@@ -397,8 +365,8 @@
         "value": "contato@kwar-ai.com.br"
       },
       "phone": {
-        "label": "Phone",
-        "value": "+55 (21) 0000-0000"
+        "label": "WhatsApp",
+        "value": "+55 (31) 99498-1122"
       },
       "location": {
         "label": "Location",
@@ -443,8 +411,8 @@
   },
   "footer": {
     "description": "Health intelligence that integrates environmental, epidemiological and behavioral data to support early decisions in public health surveillance.",
-    "madeWith": "Made in",
-    "inBrazil": "Brazil.",
+    "madeWith": "Made with",
+    "inBrazil": "in Brazil.",
     "links": {
       "products": {
         "title": "Solutions",
@@ -478,17 +446,19 @@
   "epidbotLanding": {
     "nav": {
       "howItWorks": "How It Works",
-      "results": "Results",
+      "demo": "Demo",
       "pricing": "Pricing",
+      "contact": "Contact",
       "mainSite": "Main Site",
       "cta": "Schedule Demo"
     },
     "hero": {
       "badge": "For Health Departments",
-      "title": "The data arrives. The decision doesn't.",
+      "titleLine1": "The outbreak won't wait",
+      "titleLine2": "for you to analyze the data.",
       "subtitle": "Your team is overwhelmed. And the problem won't wait.",
-      "ctaPrimary": "Find Solution",
-      "ctaSecondary": "See How It Works"
+      "ctaPrimary": "Schedule Demo",
+      "ctaSecondary": "See Demo"
     },
     "problem": {
       "badge": "We know it's not easy",
@@ -510,69 +480,159 @@
       }
     },
     "solution": {
-      "badge": "There's a better way",
-      "title": "Like having an extra analyst on your team",
-      "subtitle": "Except this one works 24 hours a day, never takes vacation, and is ready whenever you need it.",
+      "badge": "The Solution",
+      "title": "EpidBot: An epidemiological analyst available when you need it",
+      "subtitle": "Public health analysis in minutes, without technical complications.",
       "features": {
-        "fast": {
-          "title": "Answers right away",
-          "description": "Ask in the morning, know the answer before lunch. No more waiting days for a spreadsheet."
+        "language": {
+          "title": "Ask questions in simple language"
         },
-        "clear": {
-          "title": "Know where the problem is",
-          "description": "Which neighborhood is getting worse? Which age group is most affected? You see clearly where you need to act, without guessing."
+        "analysis": {
+          "title": "Get analysis based on real data"
         },
-        "confidence": {
-          "title": "Walk into meetings with confidence",
-          "description": "Have numbers to answer with. Show that you're on top of the situation. Earn respect from leadership."
+        "decision": {
+          "title": "Make decisions faster and more securely"
         }
+      }
+    },
+    "does": {
+      "badge": "What changes in your routine",
+      "title": "You stop chasing data",
+      "titleHighlight": "and start making assertive decisions.",
+      "subtitle": "No spreadsheets, no waiting days for reports. You get clear answers when you need them.",
+      "fast": {
+        "title": "You get answers right away",
+        "description": "Stop waiting days for reports. Ask a question and get analysis in minutes."
+      },
+      "location": {
+        "title": "You know exactly where to act",
+        "description": "Identify neighborhoods, regions or risk groups without having to build spreadsheets or cross data manually."
+      },
+      "confidence": {
+        "title": "You arrive prepared with clear data",
+        "description": "Have reliable numbers when accounting. More security in decisions, less improvisation."
+      }
+    },
+    "demo": {
+      "badge": "Demonstration",
+      "title": "See how EpidBot works in practice",
+      "subtitle": "In a few minutes, you understand how to transform data into decisions.",
+      "note": "No installation. No technical team. Straight to the point."
+    },
+    "steps": {
+      "badge": "Practical Example",
+      "title": "From question to decision in minutes",
+      "subtitle": "See how EpidBot transforms data into action plan",
+      "step1": {
+        "title": "You ask a question",
+        "description": "In natural language, as you would to an experienced analyst."
+      },
+      "step2": {
+        "title": "EpidBot analyzes the data",
+        "description": "Processes information from multiple sources in seconds."
+      },
+      "step3": {
+        "title": "You get a clear answer",
+        "description": "With actionable insights in minutes, not days."
+      },
+      "labels": {
+        "question": "Question",
+        "analysis": "Analysis",
+        "recommendation": "Recommendation"
+      },
+      "report": {
+        "title": "See what a complete report looks like",
+        "description": "Analysis, data and recommendations ready to present.",
+        "cta": "Download example report (PDF)"
       }
     },
     "benefits": {
-      "title": "Benefits for the municipality",
+      "title": "Work differently",
+      "subtitle": "Less rush, more results.",
       "items": {
         "time": {
-          "title": "Your team can breathe",
-          "description": "Stop wasting time manually gathering data. Focus on what really matters: taking care of the community."
+          "title": "Save time",
+          "description": "Analysis that took days now take minutes. Your team focuses on what really matters."
         },
         "control": {
-          "title": "See the problem before it grows",
-          "description": "Detect when something is starting to get out of control. Act before it becomes a real outbreak."
+          "title": "Act at the right time",
+          "description": "Identify risks before they become problems. Make decisions in advance, not in a rush."
         },
         "peace": {
-          "title": "Sleep better at night",
-          "description": "Know that you're keeping an eye on what's happening. Don't have that feeling that you forgot something important."
+          "title": "Have confidence",
+          "description": "Arrive at meetings with clear, grounded data. More credibility, less improvisation."
         }
       }
     },
+    "credibility": {
+      "badge": "Technology",
+      "title": "Developed by Kwar-AI",
+      "description": "Technology based on years of research and real projects in public health in Brazil.",
+      "cta": "Learn about Kwar-AI"
+    },
     "pricing": {
-      "title": "How much does this help cost?",
-      "subtitle": "Less than you think.",
-      "note": "14-day free trial. Cancel anytime.",
+      "title": "Smarter decisions",
+      "subtitle": "Clear data, fast analysis, concrete results.",
+      "promo": "Special launch conditions: enjoy reduced prices for the first 3 months while we evolve EpidBot together with our first users.",
+      "popular": "Most Popular",
       "free": {
-        "name": "To Try Out",
-        "description": "See if it makes sense for you",
-        "cta": "Try Free"
+        "name": "Free",
+        "description": "Try EpidBot and see how to transform data into insights",
+        "cta": "Start Free"
       },
       "pro": {
-        "name": "For Daily Use",
-        "description": "For those who really need it",
-        "cta": "Start Using"
+        "name": "Pro",
+        "description": "Ideal for frequent use and continuous analysis",
+        "cta": "Subscribe to Pro"
+      },
+      "proPlus": {
+        "name": "Pro+",
+        "description": "For teams and more advanced analysis",
+        "cta": "Subscribe to Pro+"
       },
       "enterprise": {
-        "name": "For Larger Departments",
-        "description": "When you need more",
-        "cta": "Talk to Us"
+        "name": "Enterprise",
+        "description": "Strategic solution for institutions and larger projects",
+        "note": "Customizations and special projects can be contracted separately",
+        "cta": "Talk to Specialist"
+      },
+      "features": {
+        "free": [
+          "Up to 5 analyses per month",
+          "Small data uploads",
+          "Basic responses",
+          "No report export"
+        ],
+        "pro": [
+          "Up to 100 analyses per month",
+          "Dataset uploads",
+          "Basic report generation",
+          "Analysis history"
+        ],
+        "proPlus": [
+          "Up to 300 analyses per month",
+          "Complete PDF reports",
+          "Better performance",
+          "Processing priority"
+        ],
+        "enterprise": [
+          "High volume of analyses (custom use)",
+          "Integration with local databases",
+          "Customizations on demand",
+          "Priority support"
+        ]
       }
     },
     "final": {
-      "title": "The next outbreak may be coming. Your city needs quick help.",
-      "subtitle": "Let's talk?",
+      "title": "Transform data into decisions",
+      "subtitle": "Talk to our team and discover how EpidBot can help.",
       "form": {
-        "placeholder": "Your email",
+        "name": "Your name",
+        "email": "Your email",
+        "organization": "Health department or municipality name",
         "submit": "I Want to Talk"
       },
-      "note": "Free demo. No commitment."
+      "note": "We respond within 24 hours. No commitment."
     },
     "footer": {
       "rights": "All rights reserved",

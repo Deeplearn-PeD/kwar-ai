@@ -20,12 +20,6 @@ export function EquipeSection() {
       bio: t('equipe.members.joyce.bio'),
       linkedin: 'https://linkedin.com/in/joycefigueiro',
     },
-    {
-      name: t('equipe.members.fabiana.name'),
-      role: t('equipe.members.fabiana.role'),
-      bio: t('equipe.members.fabiana.bio'),
-      linkedin: 'https://linkedin.com/in/fabianaganem',
-    },
   ];
 
   useEffect(() => {
@@ -75,7 +69,7 @@ export function EquipeSection() {
         </div>
 
         <div
-          className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
+          className={`grid md:grid-cols-2 gap-8 max-w-3xl mx-auto transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >

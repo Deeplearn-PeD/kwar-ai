@@ -175,6 +175,7 @@ function LandingNavbar() {
 // HERO SECTION - MINIMALISTA E IMPACTANTE
 // ============================================================================
 function HeroSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -217,7 +218,7 @@ function HeroSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            O surto não espera você analisar os dados.
+            {t('epidbotLanding.hero.titleLine1', { defaultValue: 'O surto não espera' })} {t('epidbotLanding.hero.titleLine2', { defaultValue: 'você analisar os dados.' })}
           </h1>
 
           {/* CTA Minimalista - Centralizado */}
@@ -231,7 +232,7 @@ function HeroSection() {
               size="lg"
               className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-12 py-8 text-xl group shadow-lg shadow-kwar-electric/25"
             >
-              E agora?
+              {t('epidbotLanding.hero.ctaButton', { defaultValue: 'E agora?' })}
               <ArrowRight className="w-6 h-6 ml-3 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
@@ -252,6 +253,7 @@ function HeroSection() {
 // PROBLEM SECTION
 // ============================================================================
 function ProblemSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -274,18 +276,18 @@ function ProblemSection() {
   const problems = [
     {
       icon: Users,
-      title: 'Sua equipe já está no limite',
-      description: 'Poucas pessoas tentando dar conta de tudo. Enquanto os dados se acumulam, o tempo para analisar só diminui.',
+      title: t('epidbotLanding.problem.items.team.title', { defaultValue: 'Sua equipe já está no limite' }),
+      description: t('epidbotLanding.problem.items.team.description', { defaultValue: 'Poucas pessoas tentando dar conta de tudo. Enquanto os dados se acumulam, o tempo para analisar só diminui.' }),
     },
     {
       icon: TrendingUp,
-      title: 'O problema cresce — e você descobre tarde demais',
-      description: 'Quando o relatório fica pronto, os casos já aumentaram. A decisão sempre chega depois do problema.',
+      title: t('epidbotLanding.problem.items.surprise.title', { defaultValue: 'O problema cresce — e você descobre tarde demais' }),
+      description: t('epidbotLanding.problem.items.surprise.description', { defaultValue: 'Quando o relatório fica pronto, os casos já aumentaram. A decisão sempre chega depois do problema.' }),
     },
     {
       icon: AlertCircle,
-      title: 'Na hora de prestar contas, faltam respostas',
-      description: 'Você precisa explicar a situação, mas os dados não estão organizados. E o tempo para analisar já acabou.',
+      title: t('epidbotLanding.problem.items.money.title', { defaultValue: 'Na hora de prestar contas, faltam respostas' }),
+      description: t('epidbotLanding.problem.items.money.description', { defaultValue: 'Você precisa explicar a situação, mas os dados não estão organizados. E o tempo para analisar já acabou.' }),
     },
   ];
 
@@ -304,17 +306,17 @@ function ProblemSection() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 mb-6">
               <AlertCircle className="w-4 h-4 text-red-400" />
               <span className="text-sm font-medium text-red-400">
-                O problema
+                {t('epidbotLanding.problem.badge', { defaultValue: 'O problema' })}
               </span>
             </div>
             
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-              <span className="block">Você está fazendo o possível.</span>
-              <span className="block">Mas não está sendo suficiente.</span>
+              <span className="block">{t('epidbotLanding.problem.title', { defaultValue: 'Você está fazendo o possível.' })}</span>
+              <span className="block">{t('epidbotLanding.problem.subtitle', { defaultValue: 'Mas não está sendo suficiente.' })}</span>
             </h2>
             
             <p className="text-lg text-kwar-gray mb-8">
-              Gerir saúde pública com pouca equipe não é fácil. Você precisa tomar decisões sem tempo e sem todas as respostas.
+              {t('epidbotLanding.problem.description', { defaultValue: 'Gerir saúde pública com pouca equipe não é fácil. Você precisa tomar decisões sem tempo e sem todas as respostas.' })}
             </p>
 
             {/* Imagem impactante */}
@@ -323,7 +325,7 @@ function ProblemSection() {
               <div className="relative card-glass p-4 rounded-2xl border-red-500/20">
                 <img
                   src="/images/problema.png"
-                  alt="Profissional de saúde afundado em planilhas e relatórios"
+                  alt={t('epidbotLanding.problem.imageAlt', { defaultValue: 'Profissional de saúde afundado em planilhas e relatórios' })}
                   className="w-full h-auto rounded-xl"
                 />
               </div>
@@ -411,16 +413,16 @@ function WhatIsEpidbotSection() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
               <span className="text-sm font-medium text-kwar-gold">
-                A solução
+                {t('epidbotLanding.solution.badge', { defaultValue: 'A solução' })}
               </span>
             </div>
             
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-              Um analista epidemiológico disponível quando você precisa
+              {t('epidbotLanding.solution.title', { defaultValue: 'EpidBot: Um analista epidemiológico disponível quando você precisa' })}
             </h2>
             
             <p className="text-lg text-kwar-gray mb-8">
-              Análises de saúde pública em minutos, sem complicação técnica.
+              {t('epidbotLanding.solution.subtitle', { defaultValue: 'Análises de saúde pública em minutos, sem complicação técnica.' })}
             </p>
 
             <div className="space-y-4">
@@ -476,6 +478,7 @@ function WhatIsEpidbotSection() {
 // O QUE ELE FAZ NA PRATICA SECTION
 // ============================================================================
 function WhatItDoesSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -498,18 +501,18 @@ function WhatItDoesSection() {
   const benefits = [
     {
       icon: Clock,
-      title: 'Você tem respostas na hora',
-      description: 'Pare de esperar dias por relatórios. Faça uma pergunta e receba a análise em minutos.',
+      title: t('epidbotLanding.does.fast.title', { defaultValue: 'Você tem respostas na hora' }),
+      description: t('epidbotLanding.does.fast.description', { defaultValue: 'Pare de esperar dias por relatórios. Faça uma pergunta e receba a análise em minutos.' }),
     },
     {
       icon: BarChart3,
-      title: 'Você sabe exatamente onde agir',
-      description: 'Identifique bairros, regiões ou grupos de risco sem precisar montar planilhas ou cruzar dados manualmente.',
+      title: t('epidbotLanding.does.location.title', { defaultValue: 'Você sabe exatamente onde agir' }),
+      description: t('epidbotLanding.does.location.description', { defaultValue: 'Identifique bairros, regiões ou grupos de risco sem precisar montar planilhas ou cruzar dados manualmente.' }),
     },
     {
       icon: Shield,
-      title: 'Você chega preparado e com dados claros',
-      description: 'Tenha números confiáveis na hora de prestar contas. Mais segurança nas decisões, menos improviso.',
+      title: t('epidbotLanding.does.confidence.title', { defaultValue: 'Você chega preparado e com dados claros' }),
+      description: t('epidbotLanding.does.confidence.description', { defaultValue: 'Tenha números confiáveis na hora de prestar contas. Mais segurança nas decisões, menos improviso.' }),
     },
   ];
 
@@ -526,19 +529,19 @@ function WhatItDoesSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <Zap className="w-4 h-4 text-kwar-electric" />
             <span className="text-sm font-medium text-kwar-electric">
-              O que muda na sua rotina
+              {t('epidbotLanding.does.badge', { defaultValue: 'O que muda na sua rotina' })}
             </span>
           </div>
           
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Você deixa de correr atrás dos dados
+            {t('epidbotLanding.does.title', { defaultValue: 'Você deixa de correr atrás dos dados' })}
           </h2>
           <p className="text-xl text-kwar-electric max-w-3xl mx-auto mb-6">
-            e passa a tomar decisões assertivas.
+            {t('epidbotLanding.does.titleHighlight', { defaultValue: 'e passa a tomar decisões assertivas.' })}
           </p>
           
           <p className="text-xl text-kwar-gray max-w-3xl mx-auto">
-            Sem planilhas, sem esperar dias por relatórios. Você tem respostas claras, na hora que precisa.
+            {t('epidbotLanding.does.subtitle', { defaultValue: 'Sem planilhas, sem esperar dias por relatórios. Você tem respostas claras, na hora que precisa.' })}
           </p>
         </div>
 
@@ -693,20 +696,20 @@ function HowItWorksSection() {
 
   const demoSteps = [
     {
-      label: 'Pergunta',
+      label: t('epidbotLanding.steps.labels.question', { defaultValue: 'Pergunta' }),
       image: '/images/prompt.png',
-      alt: 'Exemplo de pergunta feita ao EpidBot',
+      alt: t('epidbotLanding.steps.labels.questionAlt', { defaultValue: 'Exemplo de pergunta feita ao EpidBot' }),
     },
     {
-      label: 'Análise',
+      label: t('epidbotLanding.steps.labels.analysis', { defaultValue: 'Análise' }),
       image: '/images/analise.png',
-      alt: 'Análise dos dados pelo EpidBot',
+      alt: t('epidbotLanding.steps.labels.analysisAlt', { defaultValue: 'Análise dos dados pelo EpidBot' }),
       highlighted: true,
     },
     {
-      label: 'Recomendação',
+      label: t('epidbotLanding.steps.labels.recommendation', { defaultValue: 'Recomendação' }),
       image: '/images/recomendacao.png',
-      alt: 'Recomendações e plano de ação gerado',
+      alt: t('epidbotLanding.steps.labels.recommendationAlt', { defaultValue: 'Recomendações e plano de ação gerado' }),
     },
   ];
 
@@ -723,15 +726,15 @@ function HowItWorksSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <span className="text-sm font-medium text-kwar-electric">
-              Exemplo prático
+              {t('epidbotLanding.steps.badge', { defaultValue: 'Exemplo prático' })}
             </span>
           </div>
           
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            De pergunta a decisão em minutos
+            {t('epidbotLanding.steps.title', { defaultValue: 'De pergunta a decisão em minutos' })}
           </h2>
           <p className="text-lg text-kwar-gray max-w-2xl mx-auto">
-            Veja como o EpidBot transforma dados em plano de ação
+            {t('epidbotLanding.steps.subtitle', { defaultValue: 'Veja como o EpidBot transforma dados em plano de ação' })}
           </p>
         </div>
 
@@ -825,11 +828,11 @@ function HowItWorksSection() {
         >
           <div className="card-glass p-10 lg:p-12 rounded-2xl border-kwar-electric/20 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
-              Veja como é um relatório completo
+              {t('epidbotLanding.steps.report.title', { defaultValue: 'Veja como é um relatório completo' })}
             </h3>
             
             <p className="text-kwar-gray text-lg mb-8 max-w-xl mx-auto">
-              Análise, dados e recomendações prontos para apresentar.
+              {t('epidbotLanding.steps.report.description', { defaultValue: 'Análise, dados e recomendações prontos para apresentar.' })}
             </p>
             
             <Button
@@ -838,7 +841,7 @@ function HowItWorksSection() {
               className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 text-base group"
             >
               <a href="/files/relatorio-exemplo.pdf" target="_blank" rel="noopener noreferrer">
-                Baixar exemplo de relatório (PDF)
+                {t('epidbotLanding.steps.report.cta', { defaultValue: 'Baixar exemplo de relatório (PDF)' })}
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
@@ -853,6 +856,7 @@ function HowItWorksSection() {
 // BENEFITS SECTION
 // ============================================================================
 function BenefitsSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -875,18 +879,18 @@ function BenefitsSection() {
   const benefits = [
     {
       icon: Clock,
-      title: 'Ganhe tempo',
-      description: 'Análises que levavam dias agora levam minutos. Sua equipe foca no que realmente importa.',
+      title: t('epidbotLanding.benefits.items.time.title', { defaultValue: 'Ganhe tempo' }),
+      description: t('epidbotLanding.benefits.items.time.description', { defaultValue: 'Análises que levavam dias agora levam minutos. Sua equipe foca no que realmente importa.' }),
     },
     {
       icon: Target,
-      title: 'Aja no momento certo',
-      description: 'Identifique riscos antes que se tornem problemas. Tome decisões com antecedência, não na correria.',
+      title: t('epidbotLanding.benefits.items.control.title', { defaultValue: 'Aja no momento certo' }),
+      description: t('epidbotLanding.benefits.items.control.description', { defaultValue: 'Identifique riscos antes que se tornem problemas. Tome decisões com antecedência, não na correria.' }),
     },
     {
       icon: Award,
-      title: 'Tenha confiança',
-      description: 'Chegue às reuniões com dados claros e embasados. Mais credibilidade, menos improviso.',
+      title: t('epidbotLanding.benefits.items.peace.title', { defaultValue: 'Tenha confiança' }),
+      description: t('epidbotLanding.benefits.items.peace.description', { defaultValue: 'Chegue às reuniões com dados claros e embasados. Mais credibilidade, menos improviso.' }),
     },
   ];
 
@@ -901,10 +905,10 @@ function BenefitsSection() {
           }`}
         >
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Trabalhe de forma diferente
+            {t('epidbotLanding.benefits.title', { defaultValue: 'Trabalhe de forma diferente' })}
           </h2>
           <p className="text-xl sm:text-2xl text-kwar-gray max-w-2xl mx-auto">
-            Menos correria, mais resultado.
+            {t('epidbotLanding.benefits.subtitle', { defaultValue: 'Menos correria, mais resultado.' })}
           </p>
         </div>
 
@@ -934,6 +938,7 @@ function BenefitsSection() {
 // CREDIBILIDADE KWAR-AI SECTION - Simplificada e no final
 // ============================================================================
 function KwarAICredibilitySection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -971,11 +976,11 @@ function KwarAICredibilitySection() {
             />
             
             <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
-              Desenvolvido pela <span className="text-kwar-electric">Kwar-AI</span>
+              {t('epidbotLanding.credibility.title', { defaultValue: 'Desenvolvido pela' })} <span className="text-kwar-electric">Kwar-AI</span>
             </h3>
             
             <p className="text-kwar-gray mb-6 max-w-xl mx-auto">
-              Tecnologia baseada em anos de pesquisa e projetos reais em saúde pública no Brasil.
+              {t('epidbotLanding.credibility.description', { defaultValue: 'Tecnologia baseada em anos de pesquisa e projetos reais em saúde pública no Brasil.' })}
             </p>
 
             <a 
@@ -984,7 +989,7 @@ function KwarAICredibilitySection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-kwar-electric hover:text-kwar-electric/80 transition-colors font-medium"
             >
-              Conheça a Kwar-AI
+              {t('epidbotLanding.credibility.cta', { defaultValue: 'Conheça a Kwar-AI' })}
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -998,6 +1003,7 @@ function KwarAICredibilitySection() {
 // PRICING SECTION
 // ============================================================================
 function PricingSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -1101,10 +1107,10 @@ function PricingSection() {
           }`}
         >
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Decisões mais inteligentes
+            {t('epidbotLanding.pricing.title', { defaultValue: 'Decisões mais inteligentes' })}
           </h2>
           <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
-            Dados claros, análises rápidas, resultados concretos.
+            {t('epidbotLanding.pricing.subtitle', { defaultValue: 'Dados claros, análises rápidas, resultados concretos.' })}
           </p>
         </div>
 
@@ -1116,10 +1122,7 @@ function PricingSection() {
         >
           <div className="bg-kwar-gold/10 border border-kwar-gold/30 rounded-xl p-6 text-center max-w-4xl mx-auto">
             <p className="text-kwar-gold font-semibold text-lg">
-              Condições especiais de lançamento: aproveite valores reduzidos nos primeiros 3 meses
-            </p>
-            <p className="text-kwar-gray mt-2">
-              enquanto evoluímos o EpidBot junto com nossos primeiros usuários.
+              {t('epidbotLanding.pricing.promo', { defaultValue: 'Condições especiais de lançamento: aproveite valores reduzidos nos primeiros 3 meses enquanto evoluímos o EpidBot junto com nossos primeiros usuários.' })}
             </p>
           </div>
         </div>
@@ -1139,7 +1142,7 @@ function PricingSection() {
               {/* Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-kwar-electric text-kwar-deep text-sm font-bold rounded-full">
-                  Mais popular
+                  {t('epidbotLanding.pricing.popular', { defaultValue: 'Mais popular' })}
                 </div>
               )}
               
@@ -1206,6 +1209,7 @@ function PricingSection() {
 // FINAL CTA SECTION
 // ============================================================================
 function FinalCTASection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -1240,11 +1244,11 @@ function FinalCTASection() {
           }`}
         >
 <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Transforme dados em decisões
+            {t('epidbotLanding.final.title', { defaultValue: 'Transforme dados em decisões' })}
           </h2>
 
           <p className="text-xl text-kwar-gray mb-10">
-            Fale com nossa equipe e descubra como o EpidBot pode ajudar.
+            {t('epidbotLanding.final.subtitle', { defaultValue: 'Fale com nossa equipe e descubra como o EpidBot pode ajudar.' })}
           </p>
           
           {/* Web3Forms Integration */}
@@ -1256,21 +1260,21 @@ function FinalCTASection() {
               <Input
                 type="text"
                 name="name"
-                placeholder="Seu nome"
+                placeholder={t('epidbotLanding.final.form.namePlaceholder', { defaultValue: 'Seu nome' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
               />
               <Input
                 type="email"
                 name="email"
-                placeholder="Seu email"
+                placeholder={t('epidbotLanding.final.form.emailPlaceholder', { defaultValue: 'Seu email' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
               />
               <Input
                 type="text"
                 name="organization"
-                placeholder="Nome da secretaria ou município"
+                placeholder={t('epidbotLanding.final.form.organizationPlaceholder', { defaultValue: 'Nome da secretaria ou município' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
               />
@@ -1279,14 +1283,14 @@ function FinalCTASection() {
                 size="lg"
                 className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12"
               >
-                Quero Conversar
+                {t('epidbotLanding.final.form.submitButton', { defaultValue: 'Quero Conversar' })}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
           </form>
 
           <p className="text-kwar-gray text-sm mt-6">
-            Respondemos em até 24 horas. Sem compromisso.
+            {t('epidbotLanding.final.note', { defaultValue: 'Respondemos em até 24 horas. Sem compromisso.' })}
           </p>
         </div>
       </div>

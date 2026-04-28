@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ArrowRight, MessageCircle, Brain, Database, Sparkles } from 'lucide-react';
 
 export function EpidBotSection() {
@@ -68,13 +69,13 @@ export function EpidBotSection() {
               ))}
             </div>
 
-            <button
-              onClick={() => scrollToSection('#contact')}
+            <Link
+              to="/epidbot-landing"
               className="btn-primary inline-flex items-center gap-2 group"
             >
               {t('epidBot.cta')}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
 
           {/* Right - Image with floating animation */}

@@ -5,9 +5,6 @@ import { Hero } from '@/sections/Hero';
 import { About } from '@/sections/About';
 import { ClarezaDados } from '@/sections/ClarezaDados';
 import { EpidBotSection } from '@/sections/EpidBotSection';
-import { LinguagemNaturalSection } from '@/sections/LinguagemNaturalSection';
-import { EpidBotParaQuem } from '@/sections/EpidBotParaQuem';
-import { EpidBotBeneficios } from '@/sections/EpidBotBeneficios';
 import { BaseCientificaSection } from '@/sections/BaseCientificaSection';
 import { CapacitacaoSection } from '@/sections/CapacitacaoSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
@@ -38,19 +35,10 @@ function HomePage() {
         {/* 3) ClarezaDados */}
         <ClarezaDados />
         
-        {/* 3) EpidBotSection */}
+        {/* 4) EpidBotSection - Resumo com link para landing */}
         <EpidBotSection />
         
-        {/* 4) LinguagemNaturalSection (Kimi) */}
-        <LinguagemNaturalSection />
-        
-        {/* 5) EpidBotParaQuem */}
-        <EpidBotParaQuem />
-        
-        {/* 6) EpidBotBeneficios */}
-        <EpidBotBeneficios />
-        
-        {/* 7) BaseCientificaSection (Kimi) */}
+        {/* 5) BaseCientificaSection */}
         <BaseCientificaSection />
         
         {/* 8) CapacitacaoSection */}

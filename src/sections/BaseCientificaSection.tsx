@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Database, Shield, LineChart } from 'lucide-react';
 
 export function BaseCientificaSection() {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  const ICON_MAP = [Database, Shield, LineChart];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,13 +23,6 @@ export function BaseCientificaSection() {
 
     return () => observer.disconnect();
   }, []);
-
-  const projectsRaw = t('baseCientifica.projects', { returnObjects: true }) as unknown;
-  const projects = Array.isArray(projectsRaw) 
-    ? (projectsRaw as string[]) 
-    : typeof projectsRaw === 'string'
-      ? projectsRaw.split('•').map(s => s.trim()).filter(Boolean)
-      : [];
 
   return (
     <section
@@ -58,27 +48,9 @@ export function BaseCientificaSection() {
             {t('baseCientifica.title')}
           </h2>
 
-          <p className="text-kwar-gray text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+          <p className="text-kwar-gray text-lg leading-relaxed max-w-3xl mx-auto">
             {t('baseCientifica.description')}
           </p>
-
-          {/* Projetos */}
-          {/* Projetos */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {projects.map((project, index) => {
-              const IconComponent = ICON_MAP[index] || Database;
-
-              return (
-                <div
-                  key={`${project}-${index}`}
-                  className="flex items-center gap-3 px-6 py-4 rounded-xl"
-                >
-                  <IconComponent className="w-5 h-5" />
-                  <span>{project}</span>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>

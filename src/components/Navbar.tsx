@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Navbar() {
@@ -11,7 +12,6 @@ export function Navbar() {
   const navLinks = [
     { label: t('navbar.home'), href: '#hero' },
     { label: t('navbar.about'), href: '#about' },
-    { label: t('navbar.epidbot'), href: '#epidbot' },
     { label: t('navbar.cursos'), href: '#cursos' },
     { label: t('navbar.contact'), href: '#contact' },
   ];
@@ -81,6 +81,14 @@ export function Navbar() {
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-kwar-electric transition-all duration-300 group-hover:w-3/4" />
               </a>
             ))}
+            {/* EpidBot Link - goes to landing page */}
+            <Link
+              to="/epidbot-landing"
+              className="px-4 py-2 text-sm font-medium text-kwar-electric hover:text-kwar-gold transition-colors duration-300 relative group"
+            >
+              {t('navbar.epidbot')}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-kwar-electric transition-all duration-300 group-hover:w-3/4" />
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -124,6 +132,14 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          {/* EpidBot Mobile Link */}
+          <Link
+            to="/epidbot-landing"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 text-kwar-electric hover:text-kwar-gold transition-colors border-b border-white/5"
+          >
+            {t('navbar.epidbot')}
+          </Link>
           <div className="pt-3 pb-2 border-b border-white/5">
             <LanguageSwitcher />
           </div>

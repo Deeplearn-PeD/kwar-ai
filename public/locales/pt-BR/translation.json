@@ -284,14 +284,14 @@
   "baseCientifica": {
     "badge": "BASE CIENTÍFICA",
     "title": "Base científica e projetos integrados",
-    "description": "O EpidBot nasce da experiência acumulada em projetos como PySUS, Infodengue e Mosqlimate, integrando modelagem estatística, vigilância epidemiológica e ciência de dados aplicada.",
-    "projects": ["PySUS", "Infodengue", "Mosqlimate"]
+    "description": "O EpidBot nasce da experiência acumulada em projetos integrando modelagem estatística, vigilância epidemiológica e ciência de dados aplicada."
   },
   "capacitacao": {
     "badge": "CURSOS E CAPACITAÇÃO",
     "title": "Capacitação em IA aplicada à saúde",
     "description": "Além de soluções tecnológicas, oferecemos programas de capacitação para equipes técnicas e instituições que desejam aplicar IA em contextos reais de vigilância e tomada de decisão.",
     "comingSoon": "Turmas piloto e detalhes em breve.",
+    "onDemand": "Programas de capacitação disponíveis sob demanda. Entre em contato para conhecer as opções.",
     "cta": "Falar com a equipe e conhecer as opções disponíveis",
     "audiences": {
       "surveillance": {
@@ -309,35 +309,6 @@
       "managers": {
         "title": "Gestores e coordenações",
         "description": "Profissionais que tomam decisões baseadas em dados."
-      }
-    },
-    "formacao": {
-      "badge": "FORMAÇÃO",
-      "title": "Formação em IA aplicada à análise de dados em saúde",
-      "subtitle": "Programas de capacitação desenvolvidos para profissionais e instituições que trabalham com vigilância epidemiológica, análise de dados e produção de informação em saúde pública.",
-      "description": "A Kwar-AI oferece programas de formação em inteligência artificial aplicada à análise de dados epidemiológicos, produção de relatórios técnicos e organização de grandes volumes de informação em saúde.",
-      "description2": "Os cursos são orientados para aplicação prática em contextos institucionais, permitindo que equipes utilizem ferramentas modernas de IA para acelerar análises, interpretar bases de dados e apoiar processos de tomada de decisão.",
-      "topicsTitle": "Entre os temas abordados estão:",
-      "topics": {
-        "topic1": "Uso de IA para análise e síntese de relatórios epidemiológicos",
-        "topic2": "Exploração de bases de dados em saúde (DATASUS, SINAN e outras fontes públicas)",
-        "topic3": "Geração assistida de relatórios e notas técnicas",
-        "topic4": "Extração e organização de dados a partir de documentos e planilhas",
-        "topic5": "Criação de assistentes de IA para consulta e análise de informação em saúde",
-        "topic6": "Treinamento para uso do EpidBot"
-      },
-      "cta": {
-        "title": "Nova turma em breve",
-        "description": "Estamos preparando novas turmas do programa de formação em IA aplicada à análise de dados em saúde.",
-        "button": "Entrar na lista de espera"
-      },
-      "target": {
-        "title": "Público-alvo",
-        "item1": "Equipes de vigilância epidemiológica",
-        "item2": "Analistas de dados em saúde",
-        "item3": "Pesquisadores e epidemiologistas",
-        "item4": "Profissionais de secretarias de saúde",
-        "item5": "Equipes de relatórios e inteligência institucional"
       }
     }
   },
@@ -357,11 +328,6 @@
         "name": "Joyce Figueiró Braga",
         "role": "Co-fundadora & CSO",
         "bio": "Doutoranda em Matemática Aplicada e Ciência de Dados. Atua na interface entre modelagem epidemiológica, estratégia de produto e capacitação."
-      },
-      "fabiana": {
-        "name": "Fabiana Ganem",
-        "role": "Co-fundadora & Head de Pesquisa",
-        "bio": "Pesquisadora de pós-doutorado na FGV EMAp. Atua em vigilância epidemiológica, modelagem estatística e previsão de arboviroses."
       }
     }
   },

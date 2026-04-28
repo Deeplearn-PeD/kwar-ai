@@ -1,5 +1,6 @@
 import { Heart, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export function Footer() {
 
   const footerLinks = {
     produtos: [
-      { label: t('footer.links.products.epidbot'), href: '#epidbot' },
+      { label: t('footer.links.products.epidbot'), href: '/epidbot-landing', isLanding: true },
       { label: t('footer.links.products.courses'), href: '#cursos' },
     ],
     empresa: [
@@ -71,16 +72,25 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.produtos.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
-                    className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.isLanding ? (
+                    <Link
+                      to={link.href}
+                      className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                      }}
+                      className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

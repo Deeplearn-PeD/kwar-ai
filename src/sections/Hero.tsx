@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { NeuralSun } from '@/components/NeuralSun';
 
@@ -71,13 +72,13 @@ export function Hero() {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() => scrollToSection('#epidbot')}
+              <Link
+                to="/epidbot-landing"
                 className="btn-primary group flex items-center justify-center gap-2"
               >
                 {t('hero.cta.epidbot')}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </Link>
               <button
                 onClick={() => scrollToSection('#about')}
                 className="btn-secondary"
