@@ -459,8 +459,7 @@
       "titleLine2": "for you to analyze the data.",
       "subtitle": "Your team is overwhelmed. And the problem won't wait.",
       "ctaPrimary": "Schedule Demo",
-      "ctaSecondary": "See Demo",
-      "ctaApp": "Access EpidBot"
+      "ctaSecondary": "See Demo"
     },
     "problem": {
       "badge": "We know it's not easy",
@@ -519,7 +518,8 @@
       "badge": "Demonstration",
       "title": "See how EpidBot works in practice",
       "subtitle": "In a few minutes, you understand how to transform data into decisions.",
-      "note": "No installation. No technical team. Straight to the point."
+      "note": "No installation. No technical team. Straight to the point.",
+      "accessApp": "Try EpidBot!"
     },
     "steps": {
       "badge": "Practical Example",
@@ -634,9 +634,7 @@
         "organization": "Health department or municipality name",
         "submit": "I Want to Talk"
       },
-      "note": "We respond within 24 hours. No commitment.",
-      "orAccess": "Or access EpidBot directly:",
-      "accessApp": "Access EpidBot"
+      "note": "We respond within 24 hours. No commitment."
     },
     "footer": {
       "rights": "All rights reserved",

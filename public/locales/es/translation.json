@@ -459,8 +459,7 @@
       "titleLine2": "a que analices los datos.",
       "subtitle": "Su equipo está sobrecargado. Y el problema no espera.",
       "ctaPrimary": "Agendar Demostración",
-      "ctaSecondary": "Ver Demo",
-      "ctaApp": "Acceder a EpidBot"
+      "ctaSecondary": "Ver Demo"
     },
     "problem": {
       "badge": "Sabemos que no es fácil",
@@ -519,7 +518,8 @@
       "badge": "Demostración",
       "title": "Vea cómo funciona EpidBot en la práctica",
       "subtitle": "En pocos minutos, entiende cómo transformar datos en decisiones.",
-      "note": "Sin instalación. Sin equipo técnico. Directo al punto."
+      "note": "Sin instalación. Sin equipo técnico. Directo al punto.",
+      "accessApp": "¡Pruebe EpidBot!"
     },
     "steps": {
       "badge": "Ejemplo Práctico",
@@ -634,9 +634,7 @@
         "organization": "Nombre de la secretaría o municipio",
         "submit": "Quiero Conversar"
       },
-      "note": "Respondemos en hasta 24 horas. Sin compromiso.",
-      "orAccess": "O acceda directamente a EpidBot:",
-      "accessApp": "Acceder a EpidBot"
+      "note": "Respondemos en hasta 24 horas. Sin compromiso."
     },
     "footer": {
       "rights": "Todos los derechos reservados",
