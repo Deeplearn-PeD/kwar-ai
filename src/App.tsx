@@ -13,6 +13,7 @@ import { CTAFinalSection } from '@/sections/CTAFinalSection';
 import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
 import EpidbotLanding from '@/pages/EpidbotLanding';
+import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
 
 // HomePage component containing all existing sections
 function HomePage() {
@@ -68,6 +69,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
+      <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
     </Routes>
   );
 }

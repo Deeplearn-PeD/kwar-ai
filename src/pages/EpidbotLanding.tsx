@@ -1132,19 +1132,6 @@ function PricingSection() {
           </p>
         </div>
 
-        {/* Promo Banner */}
-        <div
-          className={`mb-12 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="bg-kwar-gold/10 border border-kwar-gold/30 rounded-xl p-6 text-center max-w-4xl mx-auto">
-            <p className="text-kwar-gold font-semibold text-lg">
-              {t('epidbotLanding.pricing.promo', { defaultValue: 'Condições especiais de lançamento: aproveite valores reduzidos nos primeiros 3 meses enquanto evoluímos o EpidBot junto com nossos primeiros usuários.' })}
-            </p>
-          </div>
-        </div>
-
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
@@ -1168,21 +1155,6 @@ function PricingSection() {
               <h3 className={`font-semibold text-xl mb-2 ${plan.enterprise ? 'text-kwar-gold' : 'text-white'}`}>
                 {plan.name}
               </h3>
-              
-              {/* Price */}
-              <div className="mb-2">
-                {plan.originalPrice && (
-                  <span className="text-kwar-gray line-through text-sm block mb-1">
-                    {plan.originalPrice}
-                  </span>
-                )}
-                <div className="flex items-baseline gap-1">
-                  <span className={`text-3xl font-bold ${plan.enterprise ? 'text-kwar-gold' : 'text-white'}`}>
-                    {plan.price}
-                  </span>
-                  <span className="text-kwar-gray">{plan.period}</span>
-                </div>
-              </div>
               
               {/* Description */}
               <p className="text-kwar-gray text-sm mb-4 min-h-[40px]">{plan.description}</p>
