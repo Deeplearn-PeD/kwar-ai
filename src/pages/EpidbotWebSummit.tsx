@@ -694,17 +694,17 @@ function TractionSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          {/* WHO EMRO */}
+          {/* World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO) */}
           <div className="group relative flex items-center gap-4 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-kwar-electric/15 transition-all duration-500">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center">
               <img
                 src="/images/who-emro.png"
-                alt="WHO EMRO"
+                alt="World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO)"
                 className="w-full h-full object-contain opacity-70 group-hover:opacity-90 transition-opacity"
               />
             </div>
             <div>
-              <h3 className="text-white font-semibold text-sm">WHO EMRO Ecosystem</h3>
+              <h3 className="text-white font-semibold text-sm">World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO)</h3>
               <p className="text-kwar-electric text-xs mt-0.5">Pilot initiative</p>
             </div>
           </div>
@@ -727,7 +727,7 @@ function TractionSection() {
 
         {/* Traction cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
-          {/* Card 1 — WHO EMRO Hero */}
+          {/* Card 1 — World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO) Hero */}
           <div
             className={`group relative p-7 rounded-2xl border border-kwar-electric/15 bg-kwar-electric/[0.03] backdrop-blur-sm transition-all duration-700 hover:border-kwar-electric/25 hover:bg-kwar-electric/[0.04] ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -738,12 +738,12 @@ function TractionSection() {
             <div className="w-12 h-12 rounded-xl border border-kwar-electric/20 bg-kwar-electric/5 flex items-center justify-center mb-6">
               <Globe className="w-6 h-6 text-kwar-electric" strokeWidth={1.5} />
             </div>
-            <h3 className="font-body text-xl text-white mb-0.5">WHO EMRO</h3>
-            <p className="text-white/70 text-sm mb-4">Pilot Ecosystem</p>
-            <div className="w-8 h-px bg-kwar-electric/30 mb-4" />
-            <p className="text-sm text-white/40 leading-relaxed">
-              Early pilot initiative connected to the WHO EMRO innovation and public health ecosystem.
-            </p>
+            <h3 className="font-body text-xl text-white mb-0.5">World Health Organization (WHO)</h3>
+              <p className="text-white/70 text-sm mb-4">Eastern Mediterranean Regional Office (EMRO)</p>
+              <div className="w-8 h-px bg-kwar-electric/30 mb-4" />
+              <p className="text-sm text-white/40 leading-relaxed">
+                Early pilot initiative connected to the World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO) innovation and public health ecosystem.
+              </p>
             <div className="mt-6">
               <span className="inline-block px-3 py-1.5 rounded-full border border-kwar-electric/20 text-[10px] text-kwar-electric/80 tracking-wider uppercase">
                 Public Health Innovation

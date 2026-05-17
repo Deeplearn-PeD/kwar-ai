@@ -56,11 +56,15 @@ export function EpidBotSection() {
               {t('epidBot.subtitle')}
             </p>
 
-            <div className="space-y-4 text-kwar-gray text-lg leading-relaxed mb-8">
+            <div className="space-y-4 text-kwar-gray text-lg leading-relaxed mb-6">
               {t('epidBot.description').split('\n\n').map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
             </div>
+
+            <p className="text-sm text-white/60 leading-relaxed mb-6">
+              EpidBot is already being validated by epidemiologists, surveillance professionals and public health researchers — including the <span className="text-kwar-electric">World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO)</span>.
+            </p>
 
             <Link
               to="/epidbot-landing"
