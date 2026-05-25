@@ -242,13 +242,13 @@ export function HubPage() {
               }`}
               style={{ transitionDelay: '100ms' }}
             >
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#050a10]">
                 <img
-                  src="/images/amanhecer.png"
+                  src="/images/kwar-ai.png"
                   alt=""
-                  className="w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-105 group-hover:opacity-40"
+                  className="w-3/4 h-3/4 object-contain opacity-15 transition-all duration-700 group-hover:scale-110 group-hover:opacity-20"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/60 to-[#050a10]/30" />
               </div>
               <div className="relative z-10 p-8 lg:p-10 min-h-[320px] flex flex-col justify-end">
                 <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
