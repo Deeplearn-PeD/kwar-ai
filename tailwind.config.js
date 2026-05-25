@@ -52,7 +52,7 @@ module.exports = {
         kwar: {
           electric: "#00F0FF",
           gold: "#FFB800",
-          deep: "#0A1929",
+          deep: "#050a10",
           gray: "#8A9AA8",
           white: "#FFFFFF",
           green: "#10B981",

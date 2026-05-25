@@ -446,19 +446,19 @@
   "equipe": {
     "badge": "NÚCLEO FUNDADOR",
     "title": "Quem lidera a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>",
-    "subtitle": "Um time com base científica sólida e experiência em modelagem epidemiológica.",
+    "subtitle": "Especialistas com experiência em pesquisa, modelagem epidemiológica e desenvolvimento de soluções aplicadas à saúde pública.",
     "relatedTo": "Projetos relacionados:",
-    "projects": ["PySUS", "Infodengue", "Mosqlimate"],
+    "projects": ["PySUS", "InfoDengue", "Mosqlimate"],
     "members": {
       "flavio": {
         "name": "Flávio Codeço Coelho",
         "role": "Co-fundador & CEO/CTO",
-        "bio": "Professor da FGV EMAp, criador do PySUS e coordenador dos projetos Infodengue e Mosqlimate. Especialista em modelagem matemática de epidemias."
+        "bio": "Professor da FGV EMAp • Criador do PySUS • Coordenador dos projetos InfoDengue e Mosqlimate.\n\nReferência em modelagem matemática de epidemias, ciência de dados e sistemas inteligentes para vigilância em saúde pública. Atua há mais de uma década no desenvolvimento de tecnologias e modelos aplicados ao monitoramento epidemiológico no Brasil."
       },
       "joyce": {
         "name": "Joyce Figueiró Braga",
         "role": "Co-fundadora & CSO",
-        "bio": "Doutoranda em Matemática Aplicada e Ciência de Dados. Atua na interface entre modelagem epidemiológica, estratégia de produto e capacitação."
+        "bio": "Doutoranda em Matemática Aplicada e Ciência de Dados na FGV EMAp • Estratégia de produto e IA aplicada à saúde pública.\n\nAtua na interseção entre inteligência artificial, modelagem epidemiológica e construção de produtos orientados a impacto real. Une visão analítica, comunicação estratégica e experiência em transformar conhecimento científico em soluções acessíveis e aplicáveis."
       }
     }
   },
@@ -480,6 +480,10 @@
   "ctaFinal": {
     "title": "Conheça o EpidBot apresentado no Web Summit Rio 2026",
     "subtitle": "Explore a visão, tecnologia e aplicações da <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> para inteligência epidemiológica.",
+    "impactBadge": "STARTUP DE IMPACTO",
+    "impactLabel": "WEB SUMMIT RIO 2026",
+    "impactDescription": "Selecionada entre startups que aplicam tecnologia para resolver desafios reais em saúde, educação, meio ambiente e inclusão social. O programa reconhece soluções com potencial de transformação social mensurável.",
+    "webSummitButton": "Web Summit Rio 2026",
     "button": "Ver apresentação"
   },
   "contact": {
@@ -581,8 +585,8 @@
     },
     "hero": {
       "badge": "Kwar-AI",
-      "titleLine1": "Transformamos dados em",
-      "titleHighlight": "decisão",
+      "titleLine1": "Transformamos",
+      "titleGradient": "dados em decisão",
       "subtitle": "A Kwar-AI leva inteligência artificial para o centro da vigilância epidemiológica. Ajudamos hospitais, pesquisadores e organizações globais de saúde a antecipar surtos, automatizar análises e transformar dados complexos em inteligência estratégica."
     },
     "cards": {

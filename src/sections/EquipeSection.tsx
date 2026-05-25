@@ -20,7 +20,7 @@ export function EquipeSection() {
       role: t('equipe.members.joyce.role'),
       bio: t('equipe.members.joyce.bio'),
       linkedin: 'https://www.linkedin.com/in/joycefbraga/',
-      photo: '/images/joyce.png',
+      photo: '/images/joyce 1.png',
     },
   ];
 
@@ -49,7 +49,7 @@ export function EquipeSection() {
       className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -57,9 +57,9 @@ export function EquipeSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <Sparkles className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">{t('equipe.badge')}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-gold" />
+            <span className="text-sm font-medium text-kwar-gold">{t('equipe.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -93,10 +93,10 @@ export function EquipeSection() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2"
                 >
-                  <h3 className="font-display text-xl text-white group-hover:text-kwar-electric transition-colors">
+                  <h3 className="font-display text-xl text-white group-hover:bg-gradient-to-r group-hover:from-kwar-electric group-hover:to-kwar-gold group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                     {member.name}
                   </h3>
-                  <Linkedin className="w-4 h-4 text-white/40 group-hover:text-kwar-electric transition-colors" />
+                  <Linkedin className="w-4 h-4 text-white/40 group-hover:text-kwar-gold transition-colors" />
                 </a>
               </div>
 
@@ -104,7 +104,7 @@ export function EquipeSection() {
                 {member.role}
               </p>
 
-              <p className="text-kwar-gray text-sm leading-relaxed text-center">
+              <p className="text-kwar-gray text-sm leading-relaxed text-center whitespace-pre-line">
                 {member.bio}
               </p>
             </div>

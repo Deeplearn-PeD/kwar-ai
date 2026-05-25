@@ -60,7 +60,7 @@ export function DesafioSection() {
     <section
       id="desafio"
       ref={sectionRef}
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Dark base matching image edge tone */}
       <div className="absolute inset-0 bg-[#050a10]" />
@@ -77,7 +77,7 @@ export function DesafioSection() {
       <div className="absolute inset-0 grid-bg opacity-[0.015]" />
 
       {/* Top border line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/10 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
@@ -89,9 +89,9 @@ export function DesafioSection() {
             }`}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 backdrop-blur-sm mb-10">
-              <Sparkles className="w-4 h-4 text-kwar-electric" />
-              <span className="text-sm font-medium text-kwar-electric">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 backdrop-blur-sm mb-10">
+              <Sparkles className="w-4 h-4 text-red-400" />
+              <span className="text-sm font-medium text-red-400">
                 {t('desafio.badge')}
               </span>
             </div>
@@ -152,7 +152,7 @@ export function DesafioSection() {
       </div>
 
       {/* Bottom border line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/10 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
     </section>
   );
 }

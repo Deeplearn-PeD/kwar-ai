@@ -37,8 +37,8 @@ export function EquipeRedeSection() {
       className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-purple/30 to-transparent" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-kwar-purple/5 rounded-full blur-[80px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-gold/30 to-transparent" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-kwar-gold/5 rounded-full blur-[80px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -46,9 +46,9 @@ export function EquipeRedeSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <Sparkles className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">{t('equipeRede.badge')}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-gold" />
+            <span className="text-sm font-medium text-kwar-gold">{t('equipeRede.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -75,10 +75,10 @@ export function EquipeRedeSection() {
             return (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-kwar-purple/30 transition-all duration-300"
+                className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-kwar-gold/30 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-kwar-purple/10 flex items-center justify-center mb-4">
-                  <IconComponent className="w-5 h-5 text-kwar-purple" />
+                <div className="w-10 h-10 rounded-lg bg-kwar-gold/10 flex items-center justify-center mb-4">
+                  <IconComponent className="w-5 h-5 text-kwar-gold" />
                 </div>
                 <h3 className="font-display text-sm text-white mb-2">
                   {area.title}

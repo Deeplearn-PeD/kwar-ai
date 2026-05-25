@@ -177,8 +177,8 @@ export function HubPage() {
             }`}
           >
             <span className="block">{t('hub.hero.titleLine1')}</span>
-            <span className="text-kwar-electric drop-shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-              {t('hub.hero.titleHighlight')}
+            <span className="bg-gradient-to-r from-kwar-electric via-cyan-200 via-yellow-200 to-kwar-gold bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+              {t('hub.hero.titleGradient')}
             </span>
           </h1>
 
@@ -209,13 +209,13 @@ export function HubPage() {
             <div className="flex flex-col lg:flex-row gap-5">
               {/* Municipal — 50% */}
               <div className="lg:w-1/2">
-                <Link to="/epidbot-landing" className="block group h-full">
+                <Link to="/epidbot-landing" target="_blank" rel="noopener noreferrer" className="block group h-full">
                   <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)] h-full">
                     <div className="absolute inset-0">
                       <img
                         src="/images/municipais.png"
                         alt=""
-                        className="w-full h-full object-cover opacity-35 transition-all duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/85 to-[#050a10]/50" />
                     </div>
@@ -242,7 +242,7 @@ export function HubPage() {
 
               {/* Kwar-AI — 50% */}
               <div className="lg:w-1/2">
-                <Link to="/" className="block group h-full">
+                <Link to="/" target="_blank" rel="noopener noreferrer" className="block group h-full">
                   <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-gold/20 hover:shadow-[0_0_40px_rgba(250,204,21,0.04)] h-full">
                     <div className="absolute inset-0 pointer-events-none">
                       <svg className="absolute inset-0 w-full h-full opacity-[0.06]" viewBox="0 0 500 500" preserveAspectRatio="none">
@@ -305,7 +305,7 @@ export function HubPage() {
                     <img
                       src={card.image}
                       alt=""
-                      className="w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/85 to-[#050a10]/50" />
                   </div>
@@ -342,7 +342,7 @@ export function HubPage() {
               }
 
               return (
-                <Link key={card.key} to={card.href} className="block">
+                <Link key={card.key} to={card.href} target="_blank" rel="noopener noreferrer" className="block">
                   {CardContent}
                 </Link>
               );

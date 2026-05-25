@@ -37,7 +37,7 @@ export function Footer() {
     <footer className="relative py-16 bg-[#050a10] overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-kwar-deep to-transparent" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-4 gap-12 mb-12">

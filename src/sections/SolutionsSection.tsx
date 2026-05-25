@@ -57,7 +57,7 @@ export function SolutionsSection() {
     <section
       id="solutions"
       ref={sectionRef}
-      className="relative py-28 lg:py-36 bg-[#050a10] overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       {/* Subtle ambient gradient */}
       <div
@@ -152,7 +152,7 @@ export function SolutionsSection() {
                 {/* Content */}
                 <div className="relative z-10 flex flex-col justify-end min-h-[300px] sm:min-h-[320px] p-6 lg:p-8">
                   {/* Title */}
-                  <h3 className="text-white font-semibold text-xl lg:text-2xl mb-2 leading-snug">
+                  <h3 className="text-white font-semibold text-xl lg:text-2xl mb-2 leading-snug group-hover:bg-gradient-to-r group-hover:from-kwar-electric group-hover:to-kwar-gold group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                     {title}
                   </h3>
 

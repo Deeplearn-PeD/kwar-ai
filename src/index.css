@@ -6,11 +6,11 @@
 
 @layer base {
   :root {
-    --background: 207 60% 8%;
+    --background: 207 60% 4%;
     --foreground: 0 0% 100%;
-    --card: 207 50% 10%;
+    --card: 207 50% 5%;
     --card-foreground: 0 0% 100%;
-    --popover: 207 50% 10%;
+    --popover: 207 50% 5%;
     --popover-foreground: 0 0% 100%;
     --primary: 183 100% 50%;
     --primary-foreground: 207 60% 8%;
@@ -26,7 +26,7 @@
     --input: 207 30% 20%;
     --ring: 183 100% 50%;
     --radius: 0.625rem;
-    --sidebar-background: 207 50% 8%;
+    --sidebar-background: 207 50% 4%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 183 100% 50%;
     --sidebar-primary-foreground: 207 60% 8%;
@@ -48,7 +48,7 @@
   
   body {
     @apply bg-kwar-deep text-white font-body antialiased;
-    background-color: #0A1929;
+    background-color: #050a10;
   }
   
   h1, h2, h3, h4, h5, h6 {

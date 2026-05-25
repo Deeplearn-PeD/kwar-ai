@@ -73,11 +73,8 @@ export function Hero() {
             }`}
           >
             <span className="block">{t('hero.titleLine1')}</span>
-            <span className="block">
-              {t('hero.titleLine2Part1')}{' '}
-              <span className="text-kwar-electric drop-shadow-[0_0_12px_rgba(0,240,255,0.25)]">
-                {t('hero.titleHighlight')}
-              </span>
+            <span className="block bg-gradient-to-r from-kwar-electric via-cyan-200 via-yellow-200 to-kwar-gold bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,240,255,0.25)]">
+              {t('hero.titleLine2Part1')} {t('hero.titleHighlight')}
             </span>
           </h1>
 

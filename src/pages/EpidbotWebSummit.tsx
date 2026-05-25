@@ -58,6 +58,11 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Force English on this page
+    i18n.changeLanguage('en');
+  }, [i18n]);
+
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -68,16 +73,6 @@ function Navbar() {
     if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
-  const languages = [
-    { code: 'en', label: 'EN' },
-    { code: 'pt-BR', label: 'PT' },
-    { code: 'es', label: 'ES' },
-  ];
 
   const navLinks = [
     { label: t('websummit.nav.problem'), href: '#problem' },
@@ -121,23 +116,6 @@ function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Language switcher */}
-            <div className="hidden sm:flex items-center gap-1">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => changeLanguage(lang.code)}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    i18n.language === lang.code
-                      ? 'text-kwar-electric bg-kwar-electric/10'
-                      : 'text-white/40 hover:text-white/70'
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-
             <Button
               onClick={() => scrollToSection('#contact')}
               size="sm"

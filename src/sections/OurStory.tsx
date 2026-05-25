@@ -52,7 +52,7 @@ export function OurStory() {
     <section
       id="our-story"
       ref={sectionRef}
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Background image — sunrise */}
       <div className="absolute inset-0 w-full h-full">
@@ -103,7 +103,7 @@ export function OurStory() {
       </div>
 
       {/* Top border line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/20 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end min-h-[600px]">
@@ -115,9 +115,9 @@ export function OurStory() {
             }`}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 backdrop-blur-sm mb-8">
-              <Sparkles className="w-4 h-4 text-kwar-electric" />
-              <span className="text-sm font-medium text-kwar-electric">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 backdrop-blur-sm mb-8">
+              <Sparkles className="w-4 h-4 text-kwar-gold" />
+              <span className="text-sm font-medium text-kwar-gold">
                 {t('ourStory.badge')}
               </span>
             </div>
@@ -204,7 +204,7 @@ export function OurStory() {
       </div>
 
       {/* Bottom border line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/20 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
     </section>
   );
 }
