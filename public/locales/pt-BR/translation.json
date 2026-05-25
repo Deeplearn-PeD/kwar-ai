@@ -575,31 +575,52 @@
   "hub": {
     "nav": {
       "home": "Início",
-      "solutions": "Soluções",
+      "platforms": "Plataformas",
       "mainSite": "Site Principal"
     },
     "hero": {
-      "badge": "Kwar-AI",
-      "title": "Inteligência artificial aplicada à saúde pública.",
-      "subtitle": "Explore nossas iniciativas, soluções e presença internacional em um único lugar."
+      "title": "Infraestrutura de IA para saúde pública moderna.",
+      "subtitle": "Explore plataformas de inteligência para municípios, hospitais, pesquisa e operações globais de saúde."
     },
     "cards": {
-      "about": {
-        "title": "Conheça a Kwar-AI",
-        "text": "Ciência, inteligência artificial e epidemiologia aplicadas à tomada de decisão em saúde pública.",
-        "cta": "Explorar"
+      "municipal": {
+        "category": "Plataforma",
+        "title": "Vigilância Municipal",
+        "description": "Monitoramento integrado de surtos, indicadores e risco operacional no nível local.",
+        "cta": "Acessar EpidBot"
+      },
+      "hospitals": {
+        "category": "Plataforma",
+        "title": "Hospitais e Laboratórios",
+        "description": "Inteligência epidemiológica e operacional para instituições de saúde.",
+        "cta": "Saiba mais"
+      },
+      "research": {
+        "category": "Plataforma",
+        "title": "Pesquisa & Universidades",
+        "description": "Análise integrada de dados epidemiológicos para acelerar a pesquisa.",
+        "cta": "Saiba mais"
+      },
+      "global": {
+        "category": "Plataforma",
+        "title": "Saúde Global",
+        "description": "Inteligência epidemiológica para agências globais de saúde e cooperação internacional.",
+        "cta": "Saiba mais"
       },
       "webSummit": {
-        "title": "Kwar-AI @ Web Summit Rio 2026",
-        "text": "Startup de impacto selecionada para apresentar soluções de inteligência epidemiológica no Web Summit Rio 2026.",
+        "category": "Evento",
+        "title": "Web Summit Rio 2026",
+        "description": "Startup de impacto apresentando soluções de inteligência epidemiológica.",
         "cta": "Ver apresentação"
       }
     },
-    "solutions": {
-      "badge": "Soluções",
-      "title": "Plataformas para operações modernas de saúde pública",
-      "subtitle": "Da vigilância municipal à inteligência global em saúde."
-    }
+    "credibility": {
+      "infoDengue": "InfoDengue",
+      "mosqlimate": "Mosqlimate",
+      "universities": "Universidades",
+      "research": "Pesquisa em Epidemiologia"
+    },
+    "manifesto": "Transformando dados em inteligência para saúde pública."
   },
   "epidbotLanding": {
     "nav": {

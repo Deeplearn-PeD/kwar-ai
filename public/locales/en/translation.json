@@ -576,31 +576,52 @@
   "hub": {
     "nav": {
       "home": "Home",
-      "solutions": "Solutions",
+      "platforms": "Platforms",
       "mainSite": "Main Site"
     },
     "hero": {
-      "badge": "Kwar-AI",
-      "title": "Artificial intelligence applied to public health.",
-      "subtitle": "Explore our initiatives, solutions and international presence in one place."
+      "title": "AI infrastructure for modern public health.",
+      "subtitle": "Explore intelligence platforms for municipalities, hospitals, research and global health operations."
     },
     "cards": {
-      "about": {
-        "title": "Meet Kwar-AI",
-        "text": "Science, artificial intelligence and epidemiology applied to decision-making in public health.",
-        "cta": "Explore"
+      "municipal": {
+        "category": "Platform",
+        "title": "Municipal Surveillance",
+        "description": "Integrated monitoring of outbreaks, indicators and operational risk at the local level.",
+        "cta": "Access EpidBot"
+      },
+      "hospitals": {
+        "category": "Platform",
+        "title": "Hospitals & Laboratories",
+        "description": "Epidemiological and operational intelligence for healthcare institutions.",
+        "cta": "Learn more"
+      },
+      "research": {
+        "category": "Platform",
+        "title": "Research & Universities",
+        "description": "Integrated epidemiological data analysis to accelerate research.",
+        "cta": "Learn more"
+      },
+      "global": {
+        "category": "Platform",
+        "title": "Global Health",
+        "description": "Epidemiological intelligence for global health agencies and international cooperation.",
+        "cta": "Learn more"
       },
       "webSummit": {
-        "title": "Kwar-AI @ Web Summit Rio 2026",
-        "text": "Selected impact startup to present epidemiological intelligence solutions at Web Summit Rio 2026.",
-        "cta": "View Presentation"
+        "category": "Event",
+        "title": "Web Summit Rio 2026",
+        "description": "Impact startup presenting epidemiological intelligence solutions.",
+        "cta": "View presentation"
       }
     },
-    "solutions": {
-      "badge": "Solutions",
-      "title": "Platforms for modern public health operations",
-      "subtitle": "From municipal surveillance to global health intelligence."
-    }
+    "credibility": {
+      "infoDengue": "InfoDengue",
+      "mosqlimate": "Mosqlimate",
+      "universities": "Universities",
+      "research": "Epidemiology research"
+    },
+    "manifesto": "Turning data into intelligence for public health."
   },
   "epidbotLanding": {
     "nav": {

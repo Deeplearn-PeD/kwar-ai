@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Menu, X, Sparkles, ExternalLink } from 'lucide-react';
+import { ArrowRight, Menu, X, ExternalLink } from 'lucide-react';
 import { Footer } from '@/sections/Footer';
 
 function useScrollReveal(threshold = 0.15) {
@@ -24,11 +24,12 @@ function useScrollReveal(threshold = 0.15) {
   return { ref: setRef, isVisible };
 }
 
-const solutionCards = [
-  { key: 'municipal', image: '/images/municipais.png', href: '/epidbot-landing', comingSoon: false },
-  { key: 'hospitals', image: '/images/hospitais.png', href: '#', comingSoon: true },
-  { key: 'research', image: '/images/pesquisa.png', href: '#', comingSoon: true },
-  { key: 'global', image: '/images/global.png', href: '#', comingSoon: true },
+const platformCards = [
+  { key: 'municipal', image: '/images/municipais.png', href: '/epidbot-landing', category: 'hub.cards.municipal', featured: true },
+  { key: 'hospitals', image: '/images/hospitais.png', href: '#', category: 'hub.cards.hospitals', comingSoon: true },
+  { key: 'research', image: '/images/pesquisa.png', href: '#', category: 'hub.cards.research', comingSoon: true },
+  { key: 'global', image: '/images/global.png', href: '#', category: 'hub.cards.global', comingSoon: true },
+  { key: 'webSummit', image: '/images/hero_websummit.png', href: '/epidbot-websummit', category: 'hub.cards.webSummit', isEvent: true },
 ];
 
 export function HubPage() {
@@ -37,8 +38,9 @@ export function HubPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const heroReveal = useScrollReveal(0.2);
-  const cardsReveal = useScrollReveal(0.15);
-  const solutionsReveal = useScrollReveal(0.15);
+  const cardsReveal = useScrollReveal(0.1);
+  const credibilityReveal = useScrollReveal(0.2);
+  const manifestoReveal = useScrollReveal(0.2);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -73,7 +75,7 @@ export function HubPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center gap-2.5 group">
-                <img
+              <img
                 src="/images/kwar-ai.png"
                 alt="Kwar-AI"
                 className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
@@ -91,10 +93,10 @@ export function HubPage() {
                 {t('hub.nav.home')}
               </button>
               <button
-                onClick={() => scrollToSection('#hub-solutions')}
+                onClick={() => scrollToSection('#hub-platforms')}
                 className="text-sm text-kwar-gray hover:text-white transition-colors"
               >
-                {t('hub.nav.solutions')}
+                {t('hub.nav.platforms')}
               </button>
               <Link
                 to="/"
@@ -120,10 +122,7 @@ export function HubPage() {
                   </button>
                 ))}
               </div>
-              <Link
-                to="/"
-                className="btn-primary text-sm"
-              >
+              <Link to="/" className="btn-primary text-sm">
                 {t('common.requestDemo')}
               </Link>
             </div>
@@ -150,10 +149,10 @@ export function HubPage() {
               {t('hub.nav.home')}
             </button>
             <button
-              onClick={() => scrollToSection('#hub-solutions')}
+              onClick={() => scrollToSection('#hub-platforms')}
               className="block w-full text-left py-2 text-kwar-gray hover:text-white transition-colors"
             >
-              {t('hub.nav.solutions')}
+              {t('hub.nav.platforms')}
             </button>
             <Link
               to="/"
@@ -192,34 +191,19 @@ export function HubPage() {
       <section
         id="hub-hero"
         ref={heroReveal.ref}
-        className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden"
+        className="relative pt-28 pb-16 lg:pt-36 lg:pb-20 overflow-hidden"
       >
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full blur-[140px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(0,120,255,0.03) 0%, transparent 60%)' }}
-        />
-
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 backdrop-blur-sm mb-8 transition-all duration-1000 ${
-              heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            <Sparkles className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">{t('hub.hero.badge')}</span>
-          </div>
-
           <h1
-            className={`font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white mb-6 leading-tight transition-all duration-1000 delay-100 ${
+            className={`font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-white mb-5 leading-tight transition-all duration-1000 ${
               heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}
           >
             {t('hub.hero.title')}
           </h1>
-
           <p
-            className={`text-lg text-white/50 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
+            className={`text-lg text-white/50 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-100 ${
               heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
@@ -228,170 +212,97 @@ export function HubPage() {
         </div>
       </section>
 
-      {/* ─── MAIN CARDS ─── */}
+      {/* ─── PLATFORMS ─── */}
       <section
+        id="hub-platforms"
         ref={cardsReveal.ref}
         className="pb-20 lg:pb-28"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-            {/* Card 1 — Conheça a Kwar-AI */}
-            <div
-              className={`group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-700 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)] ${
-                cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: '100ms' }}
-            >
-              <div className="absolute inset-0 bg-[#050a10]">
-                <img
-                  src="/images/kwar-ai.png"
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-contain opacity-50 transition-all duration-700 group-hover:scale-105 group-hover:opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/60 to-transparent" />
-              </div>
-              <div className="relative z-10 p-8 lg:p-10 min-h-[320px] flex flex-col justify-end">
-                <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
-                  {t('hub.cards.about.title')}
-                </h2>
-                <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
-                  {t('hub.cards.about.text')}
-                </p>
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-kwar-electric group-hover:gap-3 transition-all"
-                >
-                  {t('hub.cards.about.cta')}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2 — Web Summit Rio 2026 */}
-            <div
-              className={`group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-700 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)] ${
-                cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: '200ms' }}
-            >
-              <div className="absolute inset-0">
-                <img
-                  src="/images/hero_websummit.png"
-                  alt=""
-                  className="w-full h-full object-cover opacity-25 transition-all duration-700 group-hover:scale-105 group-hover:opacity-35"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/80 to-transparent" />
-              </div>
-              <div className="relative z-10 p-8 lg:p-10 min-h-[320px] flex flex-col justify-end">
-                <div className="flex items-center gap-3 mb-3">
+          {/* Featured card — Municipal */}
+          <div
+            className={`mb-6 transition-all duration-700 ${
+              cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <Link to="/epidbot-landing" className="block group">
+              <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)]">
+                <div className="absolute inset-0">
                   <img
-                    src="/images/RIO26_Impact badge.png"
-                    alt="Web Summit Impact Startup"
-                    className="h-7 w-auto object-contain opacity-80"
+                    src="/images/municipais.png"
+                    alt=""
+                    className="w-full h-full object-cover opacity-40 transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(90deg, rgba(5,10,16,0.92) 0%, rgba(5,10,16,0.80) 45%, rgba(5,10,16,0.50) 70%, rgba(5,10,16,0.30) 100%)',
+                    }}
                   />
                 </div>
-                <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
-                  {t('hub.cards.webSummit.title')}
-                </h2>
-                <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
-                  {t('hub.cards.webSummit.text')}
-                </p>
-                <Link
-                  to="/epidbot-websummit"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-kwar-electric group-hover:gap-3 transition-all"
-                >
-                  {t('hub.cards.webSummit.cta')}
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
+                <div className="relative z-10 p-8 lg:p-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                  <div className="max-w-lg">
+                    <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-kwar-electric/80 mb-3 block">
+                      {t('hub.cards.municipal.category')}
+                    </span>
+                    <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
+                      {t('hub.cards.municipal.title')}
+                    </h2>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      {t('hub.cards.municipal.description')}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-kwar-electric group-hover:gap-3 transition-all flex-shrink-0">
+                    {t('hub.cards.municipal.cta')}
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SOLUTIONS ─── */}
-      <section
-        id="hub-solutions"
-        ref={solutionsReveal.ref}
-        className="pb-24 lg:pb-32"
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 backdrop-blur-sm mb-6 transition-all duration-700 ${
-                solutionsReveal.isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Sparkles className="w-4 h-4 text-kwar-electric" />
-              <span className="text-sm font-medium text-kwar-electric">
-                {t('hub.solutions.badge')}
-              </span>
-            </div>
-            <h2
-              className={`font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white mb-4 leading-tight transition-all duration-1000 delay-100 ${
-                solutionsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ letterSpacing: '-0.02em', lineHeight: '1.15' }}
-            >
-              {t('hub.solutions.title')}
-            </h2>
-            <p
-              className={`text-base text-white/50 leading-relaxed transition-all duration-1000 delay-200 ${
-                solutionsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
-            >
-              {t('hub.solutions.subtitle')}
-            </p>
+            </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
-            {solutionCards.map((card, index) => {
-              const title = t(`solutions.cards.${card.key}.title`);
-              const description = t(`solutions.cards.${card.key}.description`);
+          {/* Standard cards grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {platformCards.slice(1).map((card, index) => {
+              const isComingSoon = card.comingSoon;
+              const isEvent = card.isEvent;
 
-              const CardInner = (
+              const CardContent = (
                 <div
-                  className={`group relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)] ${
-                    solutionsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  className={`group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 h-full ${
+                    cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
-                  style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                  style={{ transitionDelay: `${(index + 1) * 100}ms` }}
                 >
                   <div className="absolute inset-0">
                     <img
                       src={card.image}
-                      alt={title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      alt=""
+                      className="w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:scale-105"
                     />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: 'linear-gradient(to top, rgba(5,10,16,0.95) 0%, rgba(5,10,16,0.70) 40%, rgba(5,10,16,0.35) 70%, rgba(5,10,16,0.20) 100%)',
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: 'radial-gradient(ellipse at center, transparent 30%, rgba(5,10,16,0.4) 100%)',
-                      }}
-                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/85 to-[#050a10]/50" />
                   </div>
-                  <div className="absolute inset-0 rounded-2xl border border-white/[0.06] group-hover:border-kwar-electric/20 transition-colors duration-500 pointer-events-none" />
-                  <div className="relative z-10 flex flex-col justify-end min-h-[300px] sm:min-h-[320px] p-6 lg:p-8">
-                    <h3 className="text-white font-semibold text-xl lg:text-2xl mb-2 leading-snug">
-                      {title}
-                    </h3>
-                    <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-sm">
-                      {description}
-                    </p>
-                    <div>
-                      {card.comingSoon ? (
-                        <span className="text-[11px] text-white/30 tracking-wider uppercase">
+                  <div className="relative z-10 p-6 flex flex-col h-full min-h-[260px]">
+                    <div className="flex-1">
+                      <span className={`text-[10px] font-semibold tracking-[0.12em] uppercase mb-3 block ${isEvent ? 'text-kwar-gold/80' : 'text-kwar-electric/80'}`}>
+                        {t(`${card.category}.category`)}
+                      </span>
+                      <h3 className="font-display text-lg font-bold text-white mb-2">
+                        {t(`${card.category}.title`)}
+                      </h3>
+                      <p className="text-white/45 text-sm leading-relaxed">
+                        {t(`${card.category}.description`)}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-white/[0.06]">
+                      {isComingSoon ? (
+                        <span className="text-[10px] text-white/30 tracking-wider uppercase">
                           {t('solutions.comingSoon')}
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-2 text-xs text-kwar-electric group-hover:gap-3 transition-all">
-                          {t('common.learnMore')}
-                          <ArrowRight className="w-3.5 h-3.5" />
+                        <span className={`inline-flex items-center gap-2 text-xs font-medium group-hover:gap-3 transition-all ${isEvent ? 'text-kwar-gold' : 'text-kwar-electric'}`}>
+                          {t(`${card.category}.cta`)}
+                          {isEvent ? <ExternalLink className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
                         </span>
                       )}
                     </div>
@@ -399,20 +310,65 @@ export function HubPage() {
                 </div>
               );
 
-              if (card.comingSoon) {
-                return (
-                  <div key={card.key} className="cursor-default">
-                    {CardInner}
-                  </div>
-                );
+              if (isComingSoon) {
+                return <div key={card.key}>{CardContent}</div>;
               }
 
               return (
                 <Link key={card.key} to={card.href} className="block">
-                  {CardInner}
+                  {CardContent}
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CREDIBILITY ─── */}
+      <section
+        ref={credibilityReveal.ref}
+        className="pb-16 lg:pb-20"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className={`flex flex-wrap items-center justify-center gap-6 lg:gap-10 transition-all duration-1000 ${
+              credibilityReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            {[
+              { key: 'infoDengue', label: t('hub.credibility.infoDengue') },
+              { key: 'mosqlimate', label: t('hub.credibility.mosqlimate') },
+              { key: 'universities', label: t('hub.credibility.universities') },
+              { key: 'research', label: t('hub.credibility.research') },
+            ].map((item) => (
+              <div
+                key={item.key}
+                className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02]"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-kwar-electric/40" />
+                <span className="text-sm text-white/50">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── MANIFESTO ─── */}
+      <section
+        ref={manifestoReveal.ref}
+        className="pb-20 lg:pb-24"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div
+            className={`transition-all duration-1000 ${
+              manifestoReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent mx-auto mb-8" />
+            <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+              {t('hub.manifesto')}
+            </p>
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent mx-auto mt-8" />
           </div>
         </div>
       </section>
