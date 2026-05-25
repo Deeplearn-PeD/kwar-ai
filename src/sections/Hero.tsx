@@ -98,7 +98,7 @@ export function Hero() {
             }`}
           >
             <button
-              onClick={() => scrollToSection('#solutions')}
+              onClick={() => scrollToSection('#our-story')}
               className="btn-primary group inline-flex items-center justify-center gap-2"
             >
               {t('hero.cta.learnMore')}

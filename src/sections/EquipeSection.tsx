@@ -12,14 +12,14 @@ export function EquipeSection() {
       name: t('equipe.members.flavio.name'),
       role: t('equipe.members.flavio.role'),
       bio: t('equipe.members.flavio.bio'),
-      linkedin: 'https://linkedin.com/in/flaviocodeco',
+      linkedin: 'https://www.linkedin.com/in/fccoelho/',
       photo: '/images/flavio.png',
     },
     {
       name: t('equipe.members.joyce.name'),
       role: t('equipe.members.joyce.role'),
       bio: t('equipe.members.joyce.bio'),
-      linkedin: 'https://linkedin.com/in/joycefigueiro',
+      linkedin: 'https://www.linkedin.com/in/joycefbraga/',
       photo: '/images/joyce.png',
     },
   ];

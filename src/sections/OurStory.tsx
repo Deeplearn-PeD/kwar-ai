@@ -69,7 +69,7 @@ export function OurStory() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(90deg, rgba(5,10,20,0.92) 0%, rgba(5,10,20,0.80) 40%, rgba(5,10,20,0.45) 65%, rgba(5,10,20,0.25) 100%)',
+            'linear-gradient(90deg, rgba(5,10,20,0.88) 0%, rgba(5,10,20,0.65) 50%, rgba(5,10,20,0.30) 80%, rgba(5,10,20,0.10) 100%)',
         }}
       />
       {/* Bottom gradient for card legibility */}
@@ -77,7 +77,7 @@ export function OurStory() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to top, rgba(5,10,20,0.70) 0%, rgba(5,10,20,0.20) 35%, transparent 60%)',
+            'linear-gradient(to top, rgba(5,10,20,0.60) 0%, rgba(5,10,20,0.15) 40%, transparent 70%)',
         }}
       />
 

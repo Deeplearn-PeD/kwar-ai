@@ -16,7 +16,7 @@ export function Footer() {
 
   const footerLinks = {
     produtos: [
-      { label: t('footer.links.products.epidbot'), href: '/epidbot-landing', isLanding: true },
+      { label: t('footer.links.products.epidbot'), href: '#epidbot-visual' },
       { label: t('footer.links.products.solutions'), href: '#solutions' },
       { label: t('footer.links.products.webSummit'), href: '/epidbot-websummit', isLanding: true },
     ],

@@ -12,7 +12,7 @@ export function Navbar() {
   const navLinks = [
     { label: t('navbar.home'), href: '#hero' },
     { label: t('navbar.about'), href: '#our-story' },
-    { label: t('navbar.epidbot'), href: '/epidbot-landing', isRouter: true },
+    { label: t('navbar.epidbot'), href: '#epidbot-transition' },
     { label: t('navbar.solutions'), href: '#solutions' },
     { label: t('navbar.contact'), href: '#contact' },
   ];
@@ -68,17 +68,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) =>
-              link.isRouter ? (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="px-4 py-2 text-sm font-medium text-kwar-electric hover:text-kwar-gold transition-colors duration-300 relative group"
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-kwar-electric transition-all duration-300 group-hover:w-3/4" />
-                </Link>
-              ) : (
+            {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -91,8 +81,7 @@ export function Navbar() {
                   {link.label}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-kwar-electric transition-all duration-300 group-hover:w-3/4" />
                 </a>
-              )
-            )}
+              ))}
           </div>
 
           {/* CTA Buttons */}
@@ -129,17 +118,7 @@ export function Navbar() {
         }`}
       >
         <div className="bg-kwar-deep/95 backdrop-blur-xl border-t border-kwar-electric/20 px-4 py-4">
-          {navLinks.map((link) =>
-            link.isRouter ? (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-3 text-kwar-electric hover:text-kwar-gold transition-colors border-b border-white/5"
-              >
-                {link.label}
-              </Link>
-            ) : (
+          {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -151,8 +130,7 @@ export function Navbar() {
               >
                 {link.label}
               </a>
-            )
-          )}
+            ))}
           {/* Web Summit Mobile Link */}
           <Link
             to="/epidbot-websummit"
