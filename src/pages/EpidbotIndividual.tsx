@@ -680,7 +680,73 @@ function FAQ() {
 }
 
 // ============================================================
-// 8. FINAL CTA
+// 8. DISCOUNTS
+// ============================================================
+function Discounts() {
+  const discounts = [
+    {
+      audience: 'Estudante',
+      discount: '50%',
+      scope: 'no Pro',
+      condition: 'Com comprovante de matrícula',
+    },
+    {
+      audience: 'Servidor público SUS',
+      discount: '30%',
+      scope: 'no Pro/Pro Plus',
+      condition: 'Com comprovante',
+    },
+    {
+      audience: 'ONGs de saúde',
+      discount: '40%',
+      scope: 'no Pro/Pro Plus',
+      condition: 'Com comprovante',
+    },
+    {
+      audience: 'Early adopter (6 meses)',
+      discount: '30%',
+      scope: 'no anual',
+      condition: 'Primeiros 100 assinantes',
+    },
+  ];
+
+  return (
+    <section className="py-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <h3 className="font-display text-lg font-bold text-white text-center mb-6">
+          Descontos especiais
+        </h3>
+
+        <div className="rounded-xl border border-white/[0.06] overflow-hidden">
+          {/* Header */}
+          <div className="grid grid-cols-3 text-xs font-medium">
+            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Público</div>
+            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Desconto</div>
+            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Condição</div>
+          </div>
+
+          {/* Rows */}
+          {discounts.map((row, i) => (
+            <div
+              key={row.audience}
+              className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
+            >
+              <div className="p-3 sm:p-4 text-white/70">{row.audience}</div>
+              <div className="p-3 sm:p-4">
+                <span className="text-cyan-400 font-bold">{row.discount}</span>
+                <span className="text-white/50 text-xs ml-1">{row.scope}</span>
+              </div>
+              <div className="p-3 sm:p-4 text-white/40 text-xs sm:text-sm">{row.condition}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// 9. FINAL CTA
 // ============================================================
 function FinalCTA() {
   return (
@@ -762,6 +828,7 @@ export default function EpidbotIndividual() {
       <ComparisonTable />
       <InstitutionalCard />
       <FAQ />
+      <Discounts />
       <FinalCTA />
       <Footer />
     </div>
