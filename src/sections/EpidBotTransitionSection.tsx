@@ -29,8 +29,7 @@ export function EpidBotTransitionSection() {
     <section
       id="epidbot-transition"
       ref={sectionRef}
-      className="relative overflow-hidden"
-      style={{ minHeight: '420px', maxHeight: '520px' }}
+      className="relative overflow-hidden min-h-[280px] sm:min-h-[420px] max-h-[420px] sm:max-h-[520px]"
     >
       {/* Background Image — full width, no container */}
       <div className="absolute inset-0 w-full h-full">
@@ -58,7 +57,7 @@ export function EpidBotTransitionSection() {
       />
 
       {/* Content centered */}
-      <div className="relative z-10 flex items-center justify-center h-full min-h-[420px] max-h-[520px] px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 flex items-center justify-center h-full min-h-[280px] sm:min-h-[420px] max-h-[420px] sm:max-h-[520px] px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl">
           {/* Badge */}
           <div
