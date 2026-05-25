@@ -73,10 +73,10 @@ export function HubPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <img
+                <img
                 src="/images/kwar-ai.png"
                 alt="Kwar-AI"
-                className="w-9 h-9 object-contain transition-transform group-hover:scale-105"
+                className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
               />
               <span className="font-display font-bold text-xl tracking-wider text-white">
                 KWAR<span className="text-kwar-electric">-</span>AI
@@ -242,13 +242,13 @@ export function HubPage() {
               }`}
               style={{ transitionDelay: '100ms' }}
             >
-              <div className="absolute inset-0 flex items-center justify-center bg-[#050a10]">
+              <div className="absolute inset-0 bg-[#050a10]">
                 <img
                   src="/images/kwar-ai.png"
                   alt=""
-                  className="w-3/4 h-3/4 object-contain opacity-15 transition-all duration-700 group-hover:scale-110 group-hover:opacity-20"
+                  className="absolute inset-0 w-full h-full object-contain p-8 sm:p-12 lg:p-16 opacity-40 transition-all duration-700 group-hover:scale-105 group-hover:opacity-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/60 to-[#050a10]/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/40 to-transparent" />
               </div>
               <div className="relative z-10 p-8 lg:p-10 min-h-[320px] flex flex-col justify-end">
                 <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
