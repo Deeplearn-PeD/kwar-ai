@@ -687,7 +687,7 @@ function Discounts() {
     {
       audience: 'Estudante',
       discount: '50%',
-      scope: 'no Pro',
+      scope: 'no Pro/Pro Plus',
       condition: 'Com comprovante de matrícula',
     },
     {
@@ -701,12 +701,6 @@ function Discounts() {
       discount: '40%',
       scope: 'no Pro/Pro Plus',
       condition: 'Com comprovante',
-    },
-    {
-      audience: 'Early adopter (6 meses)',
-      discount: '30%',
-      scope: 'no anual',
-      condition: 'Primeiros 100 assinantes',
     },
   ];
 
