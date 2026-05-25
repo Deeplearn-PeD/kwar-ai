@@ -14,6 +14,7 @@ import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
 import EpidbotLanding from '@/pages/EpidbotLanding';
 import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
+import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
 function HomePage() {
@@ -70,6 +71,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
+      <Route path="/hub" element={<HubPage />} />
     </Routes>
   );
 }

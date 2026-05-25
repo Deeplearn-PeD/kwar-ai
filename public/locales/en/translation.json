@@ -573,6 +573,35 @@
       "line1": "Turning data into intelligence for public health."
     }
   },
+  "hub": {
+    "nav": {
+      "home": "Home",
+      "solutions": "Solutions",
+      "mainSite": "Main Site"
+    },
+    "hero": {
+      "badge": "Kwar-AI",
+      "title": "Artificial intelligence applied to public health.",
+      "subtitle": "Explore our initiatives, solutions and international presence in one place."
+    },
+    "cards": {
+      "about": {
+        "title": "Meet Kwar-AI",
+        "text": "Science, artificial intelligence and epidemiology applied to decision-making in public health.",
+        "cta": "Explore"
+      },
+      "webSummit": {
+        "title": "Kwar-AI @ Web Summit Rio 2026",
+        "text": "Selected impact startup to present epidemiological intelligence solutions at Web Summit Rio 2026.",
+        "cta": "View Presentation"
+      }
+    },
+    "solutions": {
+      "badge": "Solutions",
+      "title": "Platforms for modern public health operations",
+      "subtitle": "From municipal surveillance to global health intelligence."
+    }
+  },
   "epidbotLanding": {
     "nav": {
       "howItWorks": "How It Works",

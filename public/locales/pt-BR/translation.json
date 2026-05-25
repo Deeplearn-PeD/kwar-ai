@@ -572,6 +572,35 @@
       "line1": "Transformando dados em inteligência para saúde pública."
     }
   },
+  "hub": {
+    "nav": {
+      "home": "Início",
+      "solutions": "Soluções",
+      "mainSite": "Site Principal"
+    },
+    "hero": {
+      "badge": "Kwar-AI",
+      "title": "Inteligência artificial aplicada à saúde pública.",
+      "subtitle": "Explore nossas iniciativas, soluções e presença internacional em um único lugar."
+    },
+    "cards": {
+      "about": {
+        "title": "Conheça a Kwar-AI",
+        "text": "Ciência, inteligência artificial e epidemiologia aplicadas à tomada de decisão em saúde pública.",
+        "cta": "Explorar"
+      },
+      "webSummit": {
+        "title": "Kwar-AI @ Web Summit Rio 2026",
+        "text": "Startup de impacto selecionada para apresentar soluções de inteligência epidemiológica no Web Summit Rio 2026.",
+        "cta": "Ver apresentação"
+      }
+    },
+    "solutions": {
+      "badge": "Soluções",
+      "title": "Plataformas para operações modernas de saúde pública",
+      "subtitle": "Da vigilância municipal à inteligência global em saúde."
+    }
+  },
   "epidbotLanding": {
     "nav": {
       "howItWorks": "Como Funciona",
