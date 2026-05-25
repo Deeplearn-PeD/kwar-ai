@@ -1168,10 +1168,7 @@ function PricingSection() {
   const plans = [
     {
       name: 'Free',
-      price: 'Grátis',
-      period: '/mês',
       description: 'Experimente o EpidBot e veja como transformar dados em insights',
-      originalPrice: null,
       features: [
         'Até 5 análises por mês',
         'Upload de dados pequenos',
@@ -1183,9 +1180,6 @@ function PricingSection() {
     },
     {
       name: 'Pro',
-      price: 'R$ 297',
-      originalPrice: 'R$ 397',
-      period: '/mês',
       description: 'Ideal para uso frequente e análises contínuas',
       features: [
         'Até 100 análises por mês',
@@ -1193,14 +1187,11 @@ function PricingSection() {
         'Geração de relatórios básicos',
         'Histórico de análises',
       ],
-      cta: 'Assinar plano Pro',
+      cta: 'Tenho interesse',
       popular: true,
     },
     {
       name: 'Pro+',
-      price: 'R$ 697',
-      originalPrice: 'R$ 897',
-      period: '/mês',
       description: 'Para equipes e análises mais avançadas',
       features: [
         'Até 300 análises por mês',
@@ -1208,14 +1199,11 @@ function PricingSection() {
         'Melhor performance',
         'Prioridade no processamento',
       ],
-      cta: 'Assinar plano Pro+',
+      cta: 'Tenho interesse',
       popular: false,
     },
     {
       name: 'Enterprise',
-      price: 'R$ 997',
-      originalPrice: 'R$ 1.497',
-      period: '/mês',
       description: 'Solução estratégica para instituições e projetos maiores',
       features: [
         'Alto volume de análises (uso sob medida)',
@@ -1242,10 +1230,10 @@ function PricingSection() {
           }`}
         >
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            {t('epidbotLanding.pricing.title', { defaultValue: 'Decisões mais inteligentes' })}
+            {t('epidbotLanding.pricing.title', { defaultValue: 'O que está incluso' })}
           </h2>
           <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
-            {t('epidbotLanding.pricing.subtitle', { defaultValue: 'Dados claros, análises rápidas, resultados concretos.' })}
+            {t('epidbotLanding.pricing.subtitle', { defaultValue: 'Escolha o plano que melhor atende suas necessidades.' })}
           </p>
         </div>
 
