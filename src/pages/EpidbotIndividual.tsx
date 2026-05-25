@@ -1,910 +1,673 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight,
   Check,
-  Menu,
-  X,
-  ExternalLink,
-  Sparkles,
-  Zap,
-  Shield,
-  Globe,
-  Users,
-  GraduationCap,
-  Building2,
-  Microscope,
-  HeartPulse,
-  Search,
   ChevronDown,
-  Clock,
-  Database,
-  BarChart3,
-  Lock,
-  Layers,
-  Bell,
-  Code2,
-  Headphones,
-  MessageSquare,
+  ArrowRight,
+  X,
+  Zap,
+  Users,
+  LayoutDashboard,
   Map,
-  Award,
+  Building2,
+  Headphones,
+  BarChart3,
+  LineChart,
+  PieChart,
+  Activity,
+  Globe,
+  Database,
+  Shield,
+  Mail,
+  MessageSquare,
+  Code2,
+  Clock,
 } from 'lucide-react';
 
-function useScrollReveal(threshold = 0.15) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [ref, setRef] = useState<HTMLElement | null>(null);
-  useEffect(() => {
-    if (!ref) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold }
-    );
-    observer.observe(ref);
-    return () => observer.disconnect();
-  }, [ref, threshold]);
-  return { ref: setRef, isVisible };
-}
-
-const navLinks = [
-  { label: 'Início', href: '#hero' },
-  { label: 'Diferenciais', href: '#diferenciais' },
-  { label: 'Planos', href: '#planos' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contato', href: '#contato' },
-];
-
+// ============================================================
+// 1. NAVBAR
+// ============================================================
 function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-[#050a10]/90 backdrop-blur-xl border-b border-white/5'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <img
-              src="/images/kwar-ai.png"
-              alt="Kwar-AI"
-              className="w-9 h-9 object-contain transition-transform group-hover:scale-105"
-            />
-            <span className="font-display font-bold text-lg tracking-wider text-white">
-              KWAR<span className="text-kwar-electric">-</span>AI
-            </span>
+    <nav className="sticky top-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-xl border-b border-white/[0.04]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center">
+            <Zap className="w-4 h-4 text-white" />
+          </div>
+          <span className="font-display font-bold text-lg text-white">
+            Epid<span className="text-cyan-400">Bot</span>
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-4">
+          <Link
+            to="/"
+            className="hidden sm:inline-flex text-sm text-white/50 hover:text-white transition-colors"
+          >
+            Planos Institucionais
           </Link>
-
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm text-kwar-gray hover:text-white transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scrollToSection('#planos')}
-              className="btn-primary text-sm px-5 py-2.5 hidden sm:inline-flex items-center gap-2"
-            >
-              Começar grátis
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white"
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1.5">
+            <Users className="w-4 h-4" />
+            Entrar
+          </button>
+          <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+            Começar gratuitamente
+          </button>
         </div>
       </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#050a10]/98 border-b border-white/5">
-          <div className="px-4 py-5 space-y-3">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left py-2 text-white text-sm font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollToSection('#planos')}
-              className="w-full btn-primary text-sm text-center"
-            >
-              Começar grátis
-            </button>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }
 
-function HeroSection() {
-  const { ref, isVisible } = useScrollReveal(0.2);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
-
+// ============================================================
+// 2. HERO
+// ============================================================
+function Hero() {
   return (
-    <section
-      id="hero"
-      ref={ref}
-      className="relative min-h-[90dvh] flex items-center overflow-hidden"
-    >
-      {/* Background — grid + subtle glow */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div
-        className="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,240,255,0.06) 0%, transparent 70%)' }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(255,184,0,0.04) 0%, transparent 70%)' }}
-      />
+    <section className="relative pt-12 pb-8 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left */}
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-6">
+              <Zap className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="text-xs font-medium text-cyan-400 tracking-wide">
+                INTELIGÊNCIA EPIDEMIOLÓGICA PARA DECISÕES REAIS
+              </span>
+            </div>
 
-      {/* Parallax map texture */}
-      <div
-        className="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: 'url("/images/imagem para hero main.png")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transform: `translateY(${scrollY * 0.06}px)`,
-        }}
-      />
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+              Escolha o plano ideal
+              <br />
+              para{' '}
+              <span className="text-cyan-400">seu uso</span>
+            </h1>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="max-w-3xl">
-          {/* Badge */}
-          <div
-            className={`mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 backdrop-blur-sm">
-              <Zap className="w-4 h-4 text-kwar-electric" />
-              <span className="text-sm font-medium text-kwar-electric">
-                EpidBot Individual
+            <p className="text-white/50 text-base mb-8 max-w-md">
+              Todos os planos possuem acesso completo às capacidades analíticas do EpidBot.
+            </p>
+
+            <div className="space-y-3 mb-8">
+              {[
+                'Dados públicos integrados',
+                'IA especializada em epidemiologia',
+                'Análises temporais, espaciais e demográficas',
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-white/60">
+                  <div className="w-5 h-5 rounded-full bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-cyan-400" />
+                  </div>
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                Começar gratuitamente
+              </button>
+              <span className="text-sm text-white/40">
+                Já tem conta?{' '}
+                <button className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                  Entrar
+                </button>
               </span>
             </div>
           </div>
 
-          {/* Title */}
-          <h1
-            className={`font-display text-3xl sm:text-4xl lg:text-[3.25rem] font-bold text-white leading-[1.1] mb-6 transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            Inteligência epidemiológica acessível{' '}
-            <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-              para pesquisadores e profissionais de saúde.
-            </span>
-          </h1>
+          {/* Right - Product mockup */}
+          <div className="relative hidden lg:block">
+            <div className="relative rounded-2xl border border-white/[0.06] bg-[#111827]/60 backdrop-blur-sm overflow-hidden p-6 shadow-2xl">
+              {/* Header bar */}
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500/60" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                <div className="ml-auto text-xs text-white/30">EpidBot Analytics</div>
+              </div>
 
-          {/* Subtitle */}
-          <p
-            className={`text-base sm:text-lg text-white/60 max-w-2xl leading-relaxed mb-8 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            Analise dados públicos e privados com IA especializada em saúde pública, epidemiologia e vigilância.
-          </p>
+              {/* Chart area */}
+              <div className="space-y-4">
+                {/* Title */}
+                <div>
+                  <div className="text-xs text-white/40 mb-1">Casos de dengue no Brasil</div>
+                  <div className="text-xs text-white/30">Últimos 5 anos</div>
+                </div>
 
-          {/* CTAs */}
-          <div
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            <button
-              onClick={() => document.querySelector('#planos')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-primary group inline-flex items-center justify-center gap-2"
-            >
-              Começar gratuitamente
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
-            <button
-              onClick={() => document.querySelector('#planos')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-white/50 text-sm font-medium border border-white/10 rounded-lg backdrop-blur-sm transition-all duration-300 hover:text-white/80 hover:border-white/20 hover:bg-white/5"
-            >
-              Comparar planos
-            </button>
+                {/* Line chart mock */}
+                <div className="h-32 relative">
+                  <svg viewBox="0 0 400 100" className="w-full h-full">
+                    <defs>
+                      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M0,80 Q50,70 100,60 T200,40 T300,50 T400,20"
+                      fill="none"
+                      stroke="#22d3ee"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M0,80 Q50,70 100,60 T200,40 T300,50 T400,20 L400,100 L0,100 Z"
+                      fill="url(#lineGrad)"
+                    />
+                    {/* Data points */}
+                    <circle cx="100" cy="60" r="4" fill="#22d3ee" />
+                    <circle cx="200" cy="40" r="4" fill="#22d3ee" />
+                    <circle cx="300" cy="50" r="4" fill="#22d3ee" />
+                    <circle cx="400" cy="20" r="4" fill="#22d3ee" />
+                  </svg>
+                </div>
+
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="rounded-lg bg-white/[0.03] p-3">
+                    <div className="text-[10px] text-white/30 mb-1">Total de casos</div>
+                    <div className="text-lg font-bold text-white">1.248.351</div>
+                    <div className="text-[10px] text-green-400">+18,6% vs ano anterior</div>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.03] p-3">
+                    <div className="text-[10px] text-white/30 mb-1">Municípios afetados</div>
+                    <div className="text-lg font-bold text-white">3.456</div>
+                    <div className="text-[10px] text-green-400">+22,4% vs ano anterior</div>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.03] p-3">
+                    <div className="text-[10px] text-white/30 mb-1">Distribuição por região</div>
+                    <div className="flex items-center justify-center h-8">
+                      <div className="w-8 h-8 rounded-full border-4 border-cyan-400/60 border-r-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-400/10 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl" />
+            </div>
           </div>
-
-          {/* Observation */}
-          <p
-            className={`text-xs sm:text-sm text-white/40 mt-6 max-w-xl transition-all duration-1000 delay-[400ms] ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            Todos os planos possuem acesso completo às funcionalidades analíticas do EpidBot.
-          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function DiferenciaisSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  const cards = [
-    {
-      icon: BarChart3,
-      title: 'Capacidade Analítica Completa',
-      text: 'Todos os planos possuem acesso às análises temporais, espaciais, demográficas e geração de gráficos.',
-      color: 'kwar-electric',
-    },
-    {
-      icon: Database,
-      title: 'Dados Públicos Integrados',
-      text: 'Acesse bases como SINAN, SIM, SINASC, SIH, SIA, CNES, PNI e Mosqlimate.',
-      color: 'kwar-electric',
-    },
-    {
-      icon: MessageSquare,
-      title: 'IA Especializada',
-      text: 'Consultas em linguagem natural com suporte a SQL avançado, análise espacial e workflows epidemiológicos.',
-      color: 'kwar-electric',
-    },
-  ];
-
+// ============================================================
+// 3. PRICING TOGGLE
+// ============================================================
+function PricingToggle({ isAnnual, onChange }: { isAnnual: boolean; onChange: (v: boolean) => void }) {
   return (
-    <section
-      id="diferenciais"
-      ref={ref}
-      className="relative py-24 lg:py-28 overflow-hidden"
-    >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+    <div className="flex justify-center mb-12">
+      <div className="inline-flex items-center bg-white/[0.03] rounded-full p-1 border border-white/[0.06]">
+        <button
+          onClick={() => onChange(false)}
+          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            !isAnnual
+              ? 'bg-white/10 text-white'
+              : 'text-white/40 hover:text-white/60'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <Sparkles className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">Diferenciais</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Tudo que você precisa em{' '}
-            <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-              um só lugar
-            </span>
-          </h2>
-          <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            Do acesso a dados públicos à análise avançada com IA — o EpidBot reúne as ferramentas essenciais para vigilância epidemiológica.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {cards.map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <div
-                key={card.title}
-                className={`card-glass p-8 transition-all duration-700 hover:border-kwar-electric/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.04)] ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-kwar-electric/10 border border-kwar-electric/20 flex items-center justify-center mb-6">
-                  <Icon className="w-6 h-6 text-kwar-electric" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-white mb-3">
-                  {card.title}
-                </h3>
-                <p className="text-kwar-gray text-sm leading-relaxed">
-                  {card.text}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+          Mensal
+        </button>
+        <button
+          onClick={() => onChange(true)}
+          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+            isAnnual
+              ? 'bg-cyan-400 text-[#0a0e1a]'
+              : 'text-white/40 hover:text-white/60'
+          }`}
+        >
+          Anual
+          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+            isAnnual ? 'bg-[#0a0e1a]/20 text-[#0a0e1a]' : 'bg-green-500/20 text-green-400'
+          }`}>
+            -17%
+          </span>
+        </button>
       </div>
-    </section>
-  );
-}
-
-const pricingPlans = [
-  {
-    id: 'free',
-    name: 'Free',
-    description: 'Para estudantes e primeiro contato com o EpidBot.',
-    monthlyPrice: '0',
-    annualPrice: '0',
-    features: [
-      '10 consultas/dia',
-      'Todos os bancos públicos',
-      'Mosqlimate (clima e vetores)',
-      'Mapas estáticos',
-      'Relatórios PDF com marca d\'água',
-      'Sessão temporária',
-      'FAQ e comunidade',
-    ],
-    cta: 'Começar grátis',
-    badge: null,
-    highlighted: false,
-    popular: false,
-    color: 'kwar-gray',
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    description: 'Para profissionais e pesquisadores.',
-    monthlyPrice: '49',
-    originalMonthlyPrice: '97',
-    annualPrice: '970',
-    annualEquivMonthly: '80',
-    features: [
-      '50 consultas/dia',
-      'Todos os bancos públicos',
-      'Mosqlimate completo',
-      'Upload de dados privados (500 MB)',
-      'Histórico persistente',
-      'Exportação CSV',
-      'Projetos pessoais',
-      'Suporte por e-mail',
-    ],
-    cta: 'Assinar Pro',
-    badge: 'Mais popular',
-    highlighted: true,
-    popular: true,
-    color: 'kwar-electric',
-  },
-  {
-    id: 'proPlus',
-    name: 'Pro Plus',
-    description: 'Para pesquisadores avançados e heavy users.',
-    monthlyPrice: '99',
-    originalMonthlyPrice: '197',
-    annualPrice: '1.970',
-    annualEquivMonthly: '164',
-    features: [
-      '150 consultas/dia',
-      'Dados internacionais (WHO, PAHO, ECDC, World Bank)',
-      'Upload de dados privados (3 GB)',
-      'Sandbox Python',
-      'Exportação avançada',
-      'Processamento prioritário',
-      'Suporte e-mail + chat',
-    ],
-    cta: 'Assinar Pro Plus',
-    badge: 'Para uso intensivo',
-    highlighted: false,
-    popular: false,
-    color: 'kwar-gold',
-  },
-];
-
-function ToggleSwitch({ isAnnual, onChange }: { isAnnual: boolean; onChange: (v: boolean) => void }) {
-  return (
-    <div className="inline-flex items-center bg-white/[0.03] rounded-full p-1 border border-white/10">
-      <button
-        onClick={() => onChange(false)}
-        className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-          !isAnnual
-            ? 'bg-kwar-electric text-kwar-deep shadow-lg shadow-kwar-electric/20'
-            : 'text-white/50 hover:text-white/70'
-        }`}
-      >
-        Mensal
-      </button>
-      <button
-        onClick={() => onChange(true)}
-        className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-          isAnnual
-            ? 'bg-kwar-electric text-kwar-deep shadow-lg shadow-kwar-electric/20'
-            : 'text-white/50 hover:text-white/70'
-        }`}
-      >
-        Anual
-        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-          isAnnual ? 'bg-kwar-deep/30 text-kwar-deep' : 'bg-kwar-green/20 text-kwar-green'
-        }`}>
-          Economize 20%
-        </span>
-      </button>
     </div>
   );
 }
 
-function PricingSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-  const [isAnnual, setIsAnnual] = useState(true);
+// ============================================================
+// 4. PRICING CARDS
+// ============================================================
+function PricingCards({ isAnnual }: { isAnnual: boolean }) {
+  const plans = [
+    {
+      id: 'free',
+      name: 'Free',
+      badge: null,
+      description: 'Para estudantes e primeiro contato',
+      monthlyPrice: '0',
+      annualPrice: '0',
+      features: [
+        '10 consultas/dia',
+        'Todos os bancos públicos',
+        'Mosqlimate',
+        'Análises completas',
+        'Mapas estáticos',
+        'Sessão temporária',
+      ],
+      cta: 'Começar grátis',
+      highlighted: false,
+      borderColor: 'border-white/[0.06]',
+      btnClass: 'border border-white/10 text-white hover:bg-white/5',
+    },
+    {
+      id: 'pro',
+      name: 'Pro',
+      badge: 'MAIS POPULAR',
+      description: 'Para profissionais e pesquisadores',
+      monthlyNormal: '97',
+      monthlyPromo: '49',
+      annualPrice: '970',
+      annualEquiv: '80',
+      features: [
+        '20 consultas/dia',
+        'Histórico persistente',
+        'Upload de dados privados',
+        'Exportação PDF + CSV',
+        'Projetos pessoais',
+        'Suporte por e-mail',
+      ],
+      cta: 'Assinar Pro',
+      highlighted: true,
+      borderColor: 'border-violet-500/30',
+      btnClass: 'bg-violet-500 hover:bg-violet-400 text-white shadow-lg shadow-violet-500/25',
+    },
+    {
+      id: 'proplus',
+      name: 'Pro Plus',
+      badge: 'USO INTENSIVO',
+      description: 'Para pesquisadores avançados',
+      monthlyNormal: '197',
+      monthlyPromo: '99',
+      annualPrice: '1.970',
+      annualEquiv: '164',
+      features: [
+        '50 consultas/dia',
+        'Dados internacionais',
+        'Sandbox Python',
+        'Upload até 3 GB',
+        'Exportações avançadas',
+        'Processamento prioritário',
+        'E-mail + chat',
+      ],
+      cta: 'Assinar Pro Plus',
+      highlighted: false,
+      borderColor: 'border-amber-500/20',
+      btnClass: 'bg-amber-500 hover:bg-amber-400 text-[#0a0e1a] shadow-lg shadow-amber-500/20',
+    },
+  ];
 
   return (
-    <section
-      id="planos"
-      ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
-    >
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+    <div className="grid lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      {plans.map((plan) => {
+        const isPro = plan.id === 'pro';
+        const isProPlus = plan.id === 'proplus';
+        const isFree = plan.id === 'free';
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div
-          className={`text-center mb-12 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <Zap className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">Planos e Preços</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Escolha o plano ideal para{' '}
-            <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-              seu trabalho
-            </span>
-          </h2>
-          <p className="text-kwar-gray max-w-2xl mx-auto text-lg mb-8">
-            Todos os planos incluem acesso completo às funcionalidades analíticas. Escolha o que melhor atende sua necessidade.
-          </p>
-
-          {/* Toggle */}
-          <div className="flex justify-center mb-4">
-            <ToggleSwitch isAnnual={isAnnual} onChange={setIsAnnual} />
-          </div>
-          <p className="text-xs text-kwar-green/70 font-medium">
-            {isAnnual ? 'Plano anual — melhor custo-benefício' : 'Pagamento mensal — sem fidelidade'}
-          </p>
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {pricingPlans.map((plan, index) => {
-            const isPro = plan.id === 'pro';
-            const isProPlus = plan.id === 'proPlus';
-
-            return (
-              <div
-                key={plan.id}
-                className={`relative card-glass p-8 transition-all duration-500 hover:scale-[1.02] flex flex-col ${
-                  isPro
-                    ? 'border-kwar-electric/40 shadow-[0_0_40px_rgba(0,240,255,0.06)] scale-[1.02] lg:scale-105'
-                    : isProPlus
-                    ? 'border-kwar-gold/20'
-                    : 'border-white/10'
-                } ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                {/* Badges */}
-                {plan.badge && (
-                  <div
-                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold tracking-wider whitespace-nowrap ${
-                      isPro
-                        ? 'bg-kwar-electric text-kwar-deep shadow-lg shadow-kwar-electric/30'
-                        : 'bg-kwar-gold text-kwar-deep shadow-lg shadow-kwar-gold/20'
-                    }`}
-                  >
-                    {plan.badge}
-                  </div>
-                )}
-
-                {/* Annual badge */}
-                {isAnnual && plan.annualPrice !== '0' && (
-                  <div className="absolute -top-3.5 right-4 px-3 py-1 rounded-full bg-kwar-green/15 border border-kwar-green/30 text-kwar-green text-[10px] font-bold tracking-wider">
-                    {isPro ? 'Melhor custo-benefício' : 'Maior economia'}
-                  </div>
-                )}
-
-                {/* Header */}
-                <div className="mb-6">
-                  <h3 className={`font-display text-xl font-bold text-white mb-2`}>
-                    {plan.name}
-                  </h3>
-                  <p className="text-kwar-gray text-sm leading-relaxed">
-                    {plan.description}
-                  </p>
-                </div>
-
-                {/* Price */}
-                <div className="mb-8">
-                  {plan.id === 'free' ? (
-                    <div className="text-4xl font-bold text-white">
-                      Grátis
-                    </div>
-                  ) : isAnnual ? (
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-white">
-                          R$ {plan.annualPrice}
-                        </span>
-                        <span className="text-kwar-gray text-sm">/ano</span>
-                      </div>
-                      <div className="mt-2 flex items-center gap-3">
-                        <span className="text-sm text-kwar-green font-medium">
-                          Equivalente a R$ {plan.annualEquivMonthly}/mês
-                        </span>
-                        <span className="text-[10px] bg-kwar-green/10 border border-kwar-green/20 text-kwar-green px-2 py-0.5 rounded-full font-medium">
-                          2 meses grátis
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-white">
-                          R$ {plan.monthlyPrice}
-                        </span>
-                        <span className="text-kwar-gray text-sm">/mês</span>
-                      </div>
-                      <div className="mt-2">
-                        <span className="text-sm text-white/40 line-through">
-                          R$ {plan.originalMonthlyPrice}/mês
-                        </span>
-                        <span className="text-xs text-kwar-green/70 ml-3 font-medium">
-                          Promoção 3 primeiros meses
-                        </span>
-                      </div>
-                      <p className="text-xs text-white/30 mt-2">
-                        Após 3 meses, retorna ao valor normal
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <span className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        isPro ? 'bg-kwar-electric/10 text-kwar-electric' : isProPlus ? 'bg-kwar-gold/10 text-kwar-gold' : 'bg-white/5 text-white/40'
-                      }`}>
-                        <Check className="w-3 h-3" />
-                      </span>
-                      <span className="text-sm text-white/70">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <button
-                  className={`w-full py-3 rounded-lg font-semibold text-sm transition-all duration-300 ${
-                    isPro
-                      ? 'bg-kwar-electric text-kwar-deep hover:bg-kwar-electric/90 hover:shadow-glow hover:scale-[1.02]'
-                      : isProPlus
-                      ? 'bg-kwar-gold text-kwar-deep hover:bg-kwar-gold/90 hover:shadow-[0_0_20px_rgba(255,184,0,0.3)] hover:scale-[1.02]'
-                      : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
-                  }`}
-                >
-                  {plan.cta}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Social proof + cancel note */}
-        <div
-          className={`text-center mt-12 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <p className="text-sm text-white/50 mb-3">
-            Mais de 70% dos usuários profissionais escolhem o plano anual.
-          </p>
-          <p className="text-xs text-white/30">
-            Cancele a renovação automática quando quiser.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const institutionalFeatures = [
-  { icon: Users, title: 'Multiusuário' },
-  { icon: Layers, title: 'Dashboards compartilhados' },
-  { icon: Map, title: 'Mapas coropléticos interativos' },
-  { icon: Bell, title: 'Alertas automáticos' },
-  { icon: Database, title: 'Templates institucionais' },
-  { icon: Code2, title: 'APIs e integrações' },
-  { icon: Clock, title: 'Monitoramento contínuo' },
-  { icon: Headphones, title: 'Suporte dedicado' },
-];
-
-function InstitutionalSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  return (
-    <section
-      id="institucional"
-      ref={ref}
-      className="relative py-24 lg:py-28 overflow-hidden"
-    >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-
-      <div className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(255,184,0,0.04) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
-            <Shield className="w-4 h-4 text-kwar-gold" />
-            <span className="text-sm font-medium text-kwar-gold">Institucional</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Recursos exclusivos para{' '}
-            <span className="bg-gradient-to-r from-kwar-gold to-amber-400 bg-clip-text text-transparent">
-              equipes e instituições
-            </span>
-          </h2>
-          <p className="text-kwar-gray max-w-2xl mx-auto text-lg mb-4">
-            Os planos individuais são voltados para uso pessoal e profissional individual.
-          </p>
-          <p className="text-white/50 max-w-xl mx-auto text-sm">
-            Para organizações que precisam de colaboração, escala e governança, oferecemos recursos institucionais exclusivos.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-          {institutionalFeatures.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className={`card-glass p-5 text-center transition-all duration-500 hover:border-kwar-gold/20 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                <div className="w-10 h-10 rounded-lg bg-kwar-gold/10 border border-kwar-gold/20 flex items-center justify-center mx-auto mb-3">
-                  <Icon className="w-5 h-5 text-kwar-gold/70" />
-                </div>
-                <p className="text-white text-xs font-medium">{feature.title}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div
-          className={`text-center transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          <Link
-            to="/"
-            className="btn-gold group inline-flex items-center gap-2"
+        return (
+          <div
+            key={plan.id}
+            className={`relative rounded-2xl border p-7 flex flex-col ${
+              isPro
+                ? 'bg-gradient-to-b from-violet-500/5 to-transparent border-violet-500/30 shadow-[0_0_40px_rgba(139,92,246,0.08)]'
+                : isProPlus
+                ? 'bg-gradient-to-b from-amber-500/5 to-transparent border-amber-500/20'
+                : 'bg-white/[0.02] border-white/[0.06]'
+            }`}
           >
-            Conheça os planos institucionais
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+            {/* Badge */}
+            {plan.badge && (
+              <div
+                className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider ${
+                  isPro
+                    ? 'bg-violet-500 text-white shadow-lg shadow-violet-500/30'
+                    : 'bg-amber-500 text-[#0a0e1a] shadow-lg shadow-amber-500/20'
+                }`}
+              >
+                {plan.badge}
+              </div>
+            )}
+
+            {/* Header */}
+            <div className="mb-5">
+              <h3 className="font-display text-xl font-bold text-white mb-1">
+                {plan.name}
+              </h3>
+              <p className="text-white/40 text-sm">{plan.description}</p>
+            </div>
+
+            {/* Price */}
+            <div className="mb-6">
+              {isFree ? (
+                <div>
+                  <div className="text-4xl font-bold text-white">R$ 0</div>
+                  <div className="text-sm text-white/40 mt-1">Grátis para sempre</div>
+                </div>
+              ) : isAnnual ? (
+                <div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-white">
+                      R$ {plan.annualPrice}
+                    </span>
+                    <span className="text-white/40 text-sm">/ano</span>
+                  </div>
+                  <div className="mt-2 space-y-1">
+                    <div className="text-sm text-cyan-400 font-medium">
+                      Equivalente a R$ {plan.annualEquiv}/mês
+                    </div>
+                    <div className="text-xs text-white/30">
+                      {isPro ? 'Melhor custo-benefício' : 'Maior economia'}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-white">
+                      R$ {plan.monthlyNormal}
+                    </span>
+                    <span className="text-white/40 text-sm">/mês</span>
+                  </div>
+                  <div className="mt-2">
+                    <div className="text-sm text-cyan-400 font-medium">
+                      R$ {plan.monthlyPromo}/mês nos 3 primeiros meses
+                    </div>
+                    <div className="text-xs text-white/30 mt-1">
+                      Após o período promocional, retorna para R$ {plan.monthlyNormal}/mês
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-white/[0.06] mb-5" />
+
+            {/* Features */}
+            <ul className="space-y-3 mb-7 flex-1">
+              {plan.features.map((f) => (
+                <li key={f} className="flex items-start gap-3">
+                  <Check
+                    className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                      isPro ? 'text-violet-400' : isProPlus ? 'text-amber-400' : 'text-cyan-400'
+                    }`}
+                  />
+                  <span className="text-sm text-white/70">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA */}
+            <button
+              className={`w-full py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${plan.btnClass}`}
+            >
+              {plan.cta}
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ============================================================
+// 5. COMPARISON TABLE
+// ============================================================
+function ComparisonTable() {
+  const rows = [
+    { feature: 'Consultas por dia', free: '10', pro: '20', proplus: '50' },
+    { feature: 'Todos os bancos públicos', free: true, pro: true, proplus: true },
+    { feature: 'Dados internacionais', free: false, pro: false, proplus: true },
+    { feature: 'Upload de dados privados', free: false, pro: true, proplus: true },
+    { feature: 'Sandbox Python', free: false, pro: false, proplus: true },
+    { feature: 'Exportação PDF', free: true, pro: true, proplus: true },
+    { feature: 'Exportação CSV', free: false, pro: true, proplus: true },
+    { feature: 'Suporte', free: 'FAQ', pro: 'E-mail', proplus: 'E-mail + Chat' },
+  ];
+
+  return (
+    <section className="py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <h3 className="font-display text-xl font-bold text-white mb-8">
+          Compare os planos
+        </h3>
+
+        <div className="rounded-xl border border-white/[0.06] overflow-hidden">
+          {/* Header */}
+          <div className="grid grid-cols-4 text-sm">
+            <div className="p-4 text-white/40 font-medium bg-white/[0.02]">Recurso</div>
+            <div className="p-4 text-center text-white/40 font-medium bg-white/[0.02]">Free</div>
+            <div className="p-4 text-center text-violet-400 font-medium bg-violet-500/5">Pro</div>
+            <div className="p-4 text-center text-amber-400 font-medium bg-amber-500/5">Pro Plus</div>
+          </div>
+
+          {/* Rows */}
+          {rows.map((row, i) => (
+            <div
+              key={row.feature}
+              className={`grid grid-cols-4 text-sm ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
+            >
+              <div className="p-4 text-white/60">{row.feature}</div>
+              <div className="p-4 flex items-center justify-center">
+                {typeof row.free === 'boolean' ? (
+                  row.free ? (
+                    <Check className="w-4 h-4 text-cyan-400" />
+                  ) : (
+                    <span className="text-white/20">—</span>
+                  )
+                ) : (
+                  <span className="text-white/50">{row.free}</span>
+                )}
+              </div>
+              <div className="p-4 flex items-center justify-center bg-violet-500/[0.02]">
+                {typeof row.pro === 'boolean' ? (
+                  row.pro ? (
+                    <Check className="w-4 h-4 text-violet-400" />
+                  ) : (
+                    <span className="text-white/20">—</span>
+                  )
+                ) : (
+                  <span className="text-white/50">{row.pro}</span>
+                )}
+              </div>
+              <div className="p-4 flex items-center justify-center bg-amber-500/[0.02]">
+                {typeof row.proplus === 'boolean' ? (
+                  row.proplus ? (
+                    <Check className="w-4 h-4 text-amber-400" />
+                  ) : (
+                    <span className="text-white/20">—</span>
+                  )
+                ) : (
+                  <span className="text-white/50">{row.proplus}</span>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-const profiles = [
-  { icon: Microscope, title: 'Pesquisadores' },
-  { icon: HeartPulse, title: 'Epidemiologistas' },
-  { icon: Users, title: 'Profissionais de saúde' },
-  { icon: Search, title: 'Vigilância epidemiológica' },
-  { icon: GraduationCap, title: 'Universidades' },
-  { icon: Building2, title: 'Consultores' },
-  { icon: Award, title: 'Pós-graduação' },
-  { icon: Globe, title: 'Laboratórios' },
-];
-
-function ParaQuemSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
+// ============================================================
+// 6. INSTITUTIONAL CARD
+// ============================================================
+function InstitutionalCard() {
+  const features = [
+    { icon: Users, label: 'Multiusuário' },
+    { icon: LayoutDashboard, label: 'Dashboards compartilhados' },
+    { icon: Map, label: 'Mapas interativos' },
+    { icon: Building2, label: 'Workspace institucional' },
+    { icon: Headphones, label: 'Suporte dedicado' },
+  ];
 
   return (
-    <section
-      id="para-quem"
-      ref={ref}
-      className="relative py-24 lg:py-28 overflow-hidden"
-    >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-
-      <div className="absolute inset-0 grid-bg opacity-10" />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <Users className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">Público</span>
+    <section className="py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <h3 className="font-display text-xl font-bold text-white">
+              Para equipes e organizações
+            </h3>
+            <div className="flex gap-2">
+              <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-cyan-400/10 text-cyan-400 border border-cyan-400/20">
+                TEAMS
+              </span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                INSTITUCIONAL
+              </span>
+            </div>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Para quem é o{' '}
-            <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-              EpidBot Individual
-            </span>
-          </h2>
-          <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            Do pesquisador ao profissional de vigilância — o EpidBot se adapta ao seu fluxo de trabalho.
+
+          <p className="text-white/40 text-sm mb-6 max-w-lg">
+            Recursos avançados para colaboração, dashboards institucionais e operações em escala.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+            {features.map((f) => {
+              const Icon = f.icon;
+              return (
+                <div key={f.label} className="text-center">
+                  <div className="w-10 h-10 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mx-auto mb-2">
+                    <Icon className="w-5 h-5 text-white/40" />
+                  </div>
+                  <span className="text-xs text-white/40">{f.label}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="text-white/30 text-xs mb-4">
+            Preencha o formulário e nossa equipe entrará em contato.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <input
+              type="text"
+              placeholder="Nome completo"
+              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+            />
+            <input
+              type="text"
+              placeholder="Instituição"
+              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+            />
+            <input
+              type="email"
+              placeholder="E-mail corporativo"
+              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+            />
+            <select className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white/40 focus:outline-none focus:border-cyan-400/30">
+              <option>Tamanho da equipe</option>
+              <option>1-5 pessoas</option>
+              <option>6-20 pessoas</option>
+              <option>21-50 pessoas</option>
+              <option>50+ pessoas</option>
+            </select>
+          </div>
+
+          <textarea
+            placeholder="Como podemos ajudar?"
+            rows={3}
+            className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30 mb-3 resize-none"
+          />
+
+          <button className="w-full bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+            Tenho interesse
+          </button>
+
+          <p className="text-center text-white/20 text-xs mt-3 flex items-center justify-center gap-1">
+            <Shield className="w-3 h-3" />
+            Seus dados estão seguros. Não enviamos spam.
           </p>
         </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {profiles.map((profile, index) => {
-            const Icon = profile.icon;
-            return (
-              <div
-                key={profile.title}
-                className={`card-glass p-6 text-center transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_30px_rgba(0,240,255,0.03)] ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-kwar-electric/10 border border-kwar-electric/20 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-6 h-6 text-kwar-electric" />
-                </div>
-                <p className="text-white text-sm font-medium">{profile.title}</p>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
 }
 
-const faqItems = [
-  {
-    question: 'Todos os planos possuem as mesmas análises?',
-    answer:
-      'Sim, todos os planos — inclusive o Free — possuem acesso completo às funcionalidades analíticas do EpidBot: análises temporais, espaciais, demográficas e geração de gráficos. A diferença entre os planos está no volume de consultas, armazenamento, exportação e recursos avançados como sandbox Python e dados internacionais.',
-  },
-  {
-    question: 'Qual a diferença entre Pro e Pro Plus?',
-    answer:
-      'O plano Pro é ideal para profissionais que precisam de consultas regulares com dados públicos e privados. O Pro Plus é para pesquisadores avançados e heavy users que necessitam de maior volume de consultas, dados internacionais (WHO, PAHO, ECDC, World Bank), sandbox Python e processamento prioritário.',
-  },
-  {
-    question: 'Posso cancelar quando quiser?',
-    answer:
-      'Sim. Não há fidelidade em nenhum dos planos. Você pode cancelar a renovação automática a qualquer momento pela sua conta, e o acesso continua até o final do período já pago.',
-  },
-  {
-    question: 'Os dados são públicos?',
-    answer:
-      'O EpidBot integra dados públicos oficiais como SINAN, SIM, SINASC, SIH, SIA, CNES, PNI e Mosqlimate. Nos planos Pro e Pro Plus, você também pode fazer upload dos seus próprios dados privados para análise, com total segurança e isolamento.',
-  },
-  {
-    question: 'Posso subir meus próprios dados?',
-    answer:
-      'Sim. Os planos Pro e Pro Plus permitem upload de dados privados — 500 MB no Pro e 3 GB no Pro Plus. Seus dados são armazenados com segurança e utilizados exclusivamente nas suas análises.',
-  },
-  {
-    question: 'Existe plano institucional?',
-    answer:
-      'Sim. Para organizações que precisam de multiusuário, dashboards compartilhados, APIs, alertas automáticos e suporte dedicado, oferecemos planos institucionais personalizados. Entre em contato para conhecer as soluções para sua instituição.',
-  },
-  {
-    question: 'O EpidBot substitui softwares estatísticos?',
-    answer:
-      'O EpidBot complementa ferramentas estatísticas tradicionais. Enquanto softwares como R, Python e Stata oferecem flexibilidade total para modelagem, o EpidBot automatiza análises epidemiológicas recorrentes, integra dados públicos e privados, e permite consultas em linguagem natural — acelerando significativamente o trabalho do pesquisador.',
-  },
-  {
-    question: 'O que é o sandbox Python?',
-    answer:
-      'O sandbox Python é um ambiente seguro e isolado disponível no plano Pro Plus, onde você pode executar scripts Python personalizados para análises avançadas, integrando seus dados com as bases do EpidBot.',
-  },
-];
+// ============================================================
+// 7. FAQ
+// ============================================================
+function FAQ() {
+  const [open, setOpen] = useState<string | null>(null);
 
-function FAQSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-  const [openItem, setOpenItem] = useState<string | null>(null);
+  const items = [
+    {
+      q: 'Todos os planos possuem as mesmas capacidades analíticas?',
+      a: 'Sim. A diferença entre os planos está no volume de uso, persistência de dados, dados avançados e recursos operacionais.',
+    },
+    {
+      q: 'Qual a diferença entre Pro e Pro Plus?',
+      a: 'O Pro Plus inclui dados internacionais, Sandbox Python, maior capacidade de upload e recursos avançados para uso intensivo.',
+    },
+    {
+      q: 'Posso cancelar quando quiser?',
+      a: 'Sim. Os planos mensais podem ser cancelados a qualquer momento.',
+    },
+    {
+      q: 'O que acontece após os 3 primeiros meses promocionais?',
+      a: 'O plano retorna automaticamente ao valor mensal padrão.',
+    },
+    {
+      q: 'Posso usar meus próprios dados?',
+      a: 'Sim. Os planos Pro e Pro Plus permitem upload de dados privados.',
+    },
+    {
+      q: 'O EpidBot substitui softwares estatísticos?',
+      a: 'O EpidBot complementa ferramentas tradicionais oferecendo IA especializada, consultas naturais e workflows epidemiológicos integrados.',
+    },
+    {
+      q: 'Existe plano para equipes ou instituições?',
+      a: 'Sim. O EpidBot possui planos institucionais voltados para colaboração, multiusuário e operações em escala.',
+    },
+    {
+      q: 'Meus dados privados ficam seguros?',
+      a: 'Sim. Os dados enviados permanecem privados e são utilizados apenas dentro do seu ambiente de análise.',
+    },
+  ];
 
   return (
-    <section
-      id="faq"
-      ref={ref}
-      className="relative py-24 lg:py-28 overflow-hidden"
-    >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+    <section className="py-16">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <h3 className="font-display text-2xl font-bold text-white text-center mb-10">
+          Perguntas frequentes
+        </h3>
 
-      <div
-        className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,240,255,0.04) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <MessageSquare className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">FAQ</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Perguntas{' '}
-            <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-              frequentes
-            </span>
-          </h2>
-        </div>
-
-        <div className="space-y-3">
-          {faqItems.map((item) => {
-            const isOpen = openItem === item.question;
+        <div className="grid sm:grid-cols-2 gap-3">
+          {items.map((item) => {
+            const isOpen = open === item.q;
             return (
               <div
-                key={item.question}
-                className={`card-glass transition-all duration-300 ${
-                  isOpen ? 'border-kwar-electric/20' : 'border-white/5'
+                key={item.q}
+                className={`rounded-xl border transition-all duration-300 ${
+                  isOpen ? 'border-cyan-400/20 bg-white/[0.03]' : 'border-white/[0.04] bg-white/[0.01]'
                 }`}
               >
                 <button
-                  onClick={() => setOpenItem(isOpen ? null : item.question)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left"
+                  onClick={() => setOpen(isOpen ? null : item.q)}
+                  className="w-full flex items-center justify-between gap-4 p-4 text-left"
                 >
-                  <span className="text-sm sm:text-base font-medium text-white pr-4">
-                    {item.question}
-                  </span>
+                  <span className="text-sm text-white/80">{item.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-white/40 flex-shrink-0 transition-transform duration-300 ${
+                    className={`w-4 h-4 text-white/30 flex-shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="px-5 pb-5 text-sm text-kwar-gray leading-relaxed">
-                    {item.answer}
+                  <p className="px-4 pb-4 text-sm text-white/40 leading-relaxed">
+                    {item.a}
                   </p>
                 </div>
               </div>
@@ -916,115 +679,91 @@ function FAQSection() {
   );
 }
 
-function FinalCTASection() {
-  const { ref, isVisible } = useScrollReveal(0.2);
-
+// ============================================================
+// 8. FINAL CTA
+// ============================================================
+function FinalCTA() {
   return (
-    <section
-      id="contato"
-      ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
-    >
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,240,255,0.05) 0%, transparent 70%)' }}
-      />
+    <section className="py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="rounded-2xl border border-white/[0.06] bg-gradient-to-r from-cyan-400/5 to-violet-500/5 p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center flex-shrink-0">
+              <Zap className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-display text-xl font-bold text-white mb-1">
+                Comece gratuitamente.
+              </h3>
+              <p className="text-white/40 text-sm">
+                Crie sua conta e explore o poder dos dados em saúde com IA especializada.
+              </p>
+            </div>
+          </div>
 
-      <div
-        className={`relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
-        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-          Comece a explorar{' '}
-          <span className="bg-gradient-to-r from-kwar-electric to-kwar-gold bg-clip-text text-transparent">
-            inteligência epidemiológica com IA.
-          </span>
-        </h2>
-
-        <p className="text-lg text-kwar-gray mb-10 max-w-2xl mx-auto">
-          Teste gratuitamente e descubra como o EpidBot pode acelerar análises, vigilância e tomada de decisão.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-4">
-          <button
-            onClick={() => document.querySelector('#planos')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary group inline-flex items-center gap-2"
-          >
-            Começar gratuitamente
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 px-6 py-3 text-white/50 text-sm font-medium border border-white/10 rounded-lg backdrop-blur-sm transition-all duration-300 hover:text-white/80 hover:border-white/20 hover:bg-white/5"
-          >
-            Conhecer planos institucionais
-            <ExternalLink className="w-4 h-4" />
-          </Link>
+          <div className="flex items-center gap-4 flex-shrink-0">
+            <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+              Criar conta gratuita
+            </button>
+            <span className="text-sm text-white/40">
+              Já tem conta?{' '}
+              <button className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                Entrar
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function LandingFooter() {
-  const currentYear = new Date().getFullYear();
-
+// ============================================================
+// FOOTER
+// ============================================================
+function Footer() {
   return (
-    <footer className="relative py-10 border-t border-white/[0.04] bg-[#050a10]">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2.5">
-            <img
-              src="/images/kwar-ai.png"
-              alt="Kwar-AI"
-              className="w-6 h-6 object-contain opacity-50"
-            />
-            <span className="font-display font-bold text-sm text-white/60">
-              KWAR<span className="text-kwar-electric/60">-</span>AI
-            </span>
-            <span className="text-white/30 text-xs">&copy; {currentYear}</span>
+    <footer className="border-t border-white/[0.04] py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="flex items-center gap-2">
+          <div className="w-5 h-5 rounded bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center">
+            <Zap className="w-3 h-3 text-white" />
           </div>
-          <div className="flex items-center gap-5">
-            <Link to="/" className="text-white/40 hover:text-kwar-electric transition-colors text-xs">
-              Site institucional
-            </Link>
-            <Link to="/hub" className="text-white/40 hover:text-kwar-electric transition-colors text-xs">
-              Hub de plataformas
-            </Link>
-            <a
-              href="https://www.linkedin.com/company/kwar-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/40 hover:text-kwar-electric transition-colors text-xs"
-            >
-              LinkedIn
-            </a>
-          </div>
+          <span className="text-white/30 text-xs">EpidBot by Kwar-AI &copy; {new Date().getFullYear()}</span>
+        </div>
+        <div className="flex items-center gap-6">
+          <a href="#" className="text-white/30 hover:text-white/50 text-xs transition-colors">Termos</a>
+          <a href="#" className="text-white/30 hover:text-white/50 text-xs transition-colors">Privacidade</a>
         </div>
       </div>
     </footer>
   );
 }
 
+// ============================================================
+// PAGE
+// ============================================================
 export default function EpidbotIndividual() {
+  const [isAnnual, setIsAnnual] = useState(true);
+
   return (
-    <div className="relative min-h-screen bg-[#050a10] text-white">
+    <div className="min-h-screen bg-[#0a0e1a] text-white font-body">
       <Navbar />
-      <main>
-        <HeroSection />
-        <DiferenciaisSection />
-        <PricingSection />
-        <InstitutionalSection />
-        <ParaQuemSection />
-        <FAQSection />
-        <FinalCTASection />
-      </main>
-      <LandingFooter />
+      <Hero />
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
+          <PricingCards isAnnual={isAnnual} />
+        </div>
+      </section>
+
+      <ComparisonTable />
+      <InstitutionalCard />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
     </div>
   );
 }
