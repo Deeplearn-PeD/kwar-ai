@@ -10,8 +10,6 @@ import {
   Building2,
   Headphones,
   Shield,
-  Code2,
-  Clock,
 } from 'lucide-react';
 
 // ============================================================

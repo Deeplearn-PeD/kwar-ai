@@ -7,9 +7,6 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 export default defineConfig({
   base: '/',
   plugins: [inspectAttr(), react()],
-  server: {
-    historyApiFallback: true,
-  },
   build: {
     rollupOptions: {
       output: {
