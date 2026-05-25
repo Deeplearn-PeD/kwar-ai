@@ -8,6 +8,7 @@
     "contact": "Contato",
     "contactUs": "Fale Conosco",
     "requestDemo": "Agendar Demonstração",
+    "faleConosco": "Fale Conosco",
     "seeMore": "Ver Mais",
     "required": "obrigatório",
     "viewPresentation": "Ver apresentação"
@@ -579,30 +580,32 @@
       "mainSite": "Site Principal"
     },
     "hero": {
-      "title": "Infraestrutura de IA para saúde pública moderna.",
-      "subtitle": "Explore plataformas de inteligência para municípios, hospitais, pesquisa e operações globais de saúde."
+      "badge": "Kwar-AI",
+      "titleLine1": "Transformamos dados em",
+      "titleHighlight": "decisão",
+      "subtitle": "A Kwar-AI leva inteligência artificial para o centro da vigilância epidemiológica. Ajudamos hospitais, pesquisadores e organizações globais de saúde a antecipar surtos, automatizar análises e transformar dados complexos em inteligência estratégica."
     },
     "cards": {
       "municipal": {
-        "category": "Plataforma",
+        "category": "EpidBot",
         "title": "Vigilância Municipal",
         "description": "Monitoramento integrado de surtos, indicadores e risco operacional no nível local.",
         "cta": "Acessar EpidBot"
       },
       "hospitals": {
-        "category": "Plataforma",
+        "category": "EpidBot",
         "title": "Hospitais e Laboratórios",
         "description": "Inteligência epidemiológica e operacional para instituições de saúde.",
         "cta": "Saiba mais"
       },
       "research": {
-        "category": "Plataforma",
+        "category": "EpidBot",
         "title": "Pesquisa & Universidades",
         "description": "Análise integrada de dados epidemiológicos para acelerar a pesquisa.",
         "cta": "Saiba mais"
       },
       "global": {
-        "category": "Plataforma",
+        "category": "EpidBot",
         "title": "Saúde Global",
         "description": "Inteligência epidemiológica para agências globais de saúde e cooperação internacional.",
         "cta": "Saiba mais"
@@ -620,7 +623,18 @@
       "universities": "Universidades",
       "research": "Pesquisa em Epidemiologia"
     },
-    "manifesto": "Transformando dados em inteligência para saúde pública."
+    "manifesto": "Transformando dados em inteligência para saúde pública.",
+    "topCompany": {
+      "title": "Conheça a Kwar-AI",
+      "description": "Ciência, inteligência artificial e epidemiologia aplicadas à tomada de decisão em saúde pública.",
+      "cta": "Saiba Mais"
+    },
+    "companyCard": {
+      "label": "EMPRESA",
+      "title": "Construindo infraestrutura de inteligência para saúde pública.",
+      "description": "A <strong>Kwar-AI</strong> combina inteligência artificial, epidemiologia e ciência de dados para apoiar decisões de saúde pública mais rápidas e inteligentes.",
+      "cta": "Explorar Kwar-AI"
+    }
   },
   "epidbotLanding": {
     "nav": {

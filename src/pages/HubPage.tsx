@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Menu, X, ExternalLink } from 'lucide-react';
+import { ArrowRight, Menu, X, ExternalLink, Sparkles } from 'lucide-react';
 import { Footer } from '@/sections/Footer';
 
 function useScrollReveal(threshold = 0.15) {
@@ -39,20 +39,12 @@ export function HubPage() {
 
   const heroReveal = useScrollReveal(0.2);
   const cardsReveal = useScrollReveal(0.1);
-  const credibilityReveal = useScrollReveal(0.2);
-  const manifestoReveal = useScrollReveal(0.2);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
 
   const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
 
@@ -63,7 +55,17 @@ export function HubPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050a10] text-white">
+    <div className="min-h-screen bg-[#050a10] text-white relative">
+      {/* Full-page background — global network image, very subtle */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none">
+        <img
+          src="/images/imagem para hero main.png"
+          alt=""
+          className="w-full h-full object-cover object-center opacity-[0.11]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050a10]/50 to-[#050a10]" />
+      </div>
+
       {/* ─── NAVBAR ─── */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -85,27 +87,6 @@ export function HubPage() {
               </span>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-8">
-              <button
-                onClick={() => scrollToSection('#hub-hero')}
-                className="text-sm text-kwar-gray hover:text-white transition-colors"
-              >
-                {t('hub.nav.home')}
-              </button>
-              <button
-                onClick={() => scrollToSection('#hub-platforms')}
-                className="text-sm text-kwar-gray hover:text-white transition-colors"
-              >
-                {t('hub.nav.platforms')}
-              </button>
-              <Link
-                to="/"
-                className="text-sm text-kwar-gray hover:text-white transition-colors"
-              >
-                {t('hub.nav.mainSite')}
-              </Link>
-            </div>
-
             <div className="hidden lg:flex items-center gap-4">
               <div className="flex items-center gap-1.5">
                 {languages.map((lng) => (
@@ -123,7 +104,7 @@ export function HubPage() {
                 ))}
               </div>
               <Link to="/" className="btn-primary text-sm">
-                {t('common.requestDemo')}
+                {t('common.faleConosco')}
               </Link>
             </div>
 
@@ -142,25 +123,6 @@ export function HubPage() {
           }`}
         >
           <div className="bg-kwar-deep/95 backdrop-blur-xl border-t border-white/5 px-4 py-4 space-y-3">
-            <button
-              onClick={() => scrollToSection('#hub-hero')}
-              className="block w-full text-left py-2 text-kwar-gray hover:text-white transition-colors"
-            >
-              {t('hub.nav.home')}
-            </button>
-            <button
-              onClick={() => scrollToSection('#hub-platforms')}
-              className="block w-full text-left py-2 text-kwar-gray hover:text-white transition-colors"
-            >
-              {t('hub.nav.platforms')}
-            </button>
-            <Link
-              to="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 text-kwar-gray hover:text-white transition-colors"
-            >
-              {t('hub.nav.mainSite')}
-            </Link>
             <div className="flex items-center gap-1.5 pt-2 pb-1">
               {languages.map((lng) => (
                 <button
@@ -181,7 +143,7 @@ export function HubPage() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="btn-primary text-sm w-full text-center block mt-2"
             >
-              {t('common.requestDemo')}
+              {t('common.faleConosco')}
             </Link>
           </div>
         </div>
@@ -191,19 +153,38 @@ export function HubPage() {
       <section
         id="hub-hero"
         ref={heroReveal.ref}
-        className="relative pt-28 pb-16 lg:pt-36 lg:pb-20 overflow-hidden"
+        className="relative pt-24 pb-12 lg:pt-28 lg:pb-14 overflow-hidden"
       >
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h1
-            className={`font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-white mb-5 leading-tight transition-all duration-1000 ${
-              heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+          {/* Badge */}
+          <div
+            className={`mb-5 transition-all duration-1000 ${
+              heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}
           >
-            {t('hub.hero.title')}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-kwar-electric/10 border border-kwar-electric/20 backdrop-blur-sm">
+              <Sparkles className="w-3.5 h-3.5 text-kwar-electric" />
+              <span className="text-xs font-medium text-kwar-electric tracking-wider">
+                {t('hub.hero.badge')}
+              </span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <h1
+            className={`font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold text-white leading-[1.1] mb-5 transition-all duration-1000 delay-100 ${
+              heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            <span className="block">{t('hub.hero.titleLine1')}</span>
+            <span className="text-kwar-electric drop-shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+              {t('hub.hero.titleHighlight')}
+            </span>
           </h1>
+
+          {/* Subtitle */}
           <p
-            className={`text-lg text-white/50 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-100 ${
+            className={`text-sm sm:text-base text-white/50 max-w-2xl leading-relaxed transition-all duration-1000 delay-200 ${
               heroReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
@@ -219,46 +200,92 @@ export function HubPage() {
         className="pb-20 lg:pb-28"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Featured card — Municipal */}
+          {/* Featured row — Municipal + Kwar-AI */}
           <div
             className={`mb-6 transition-all duration-700 ${
               cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <Link to="/epidbot-landing" className="block group">
-              <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)]">
-                <div className="absolute inset-0">
-                  <img
-                    src="/images/municipais.png"
-                    alt=""
-                    className="w-full h-full object-cover opacity-40 transition-all duration-700 group-hover:scale-105"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(90deg, rgba(5,10,16,0.92) 0%, rgba(5,10,16,0.80) 45%, rgba(5,10,16,0.50) 70%, rgba(5,10,16,0.30) 100%)',
-                    }}
-                  />
-                </div>
-                <div className="relative z-10 p-8 lg:p-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-                  <div className="max-w-lg">
-                    <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-kwar-electric/80 mb-3 block">
-                      {t('hub.cards.municipal.category')}
-                    </span>
-                    <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
-                      {t('hub.cards.municipal.title')}
-                    </h2>
-                    <p className="text-white/50 text-sm leading-relaxed">
-                      {t('hub.cards.municipal.description')}
-                    </p>
+            <div className="flex flex-col lg:flex-row gap-5">
+              {/* Municipal — 50% */}
+              <div className="lg:w-1/2">
+                <Link to="/epidbot-landing" className="block group h-full">
+                  <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)] h-full">
+                    <div className="absolute inset-0">
+                      <img
+                        src="/images/municipais.png"
+                        alt=""
+                        className="w-full h-full object-cover opacity-35 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/85 to-[#050a10]/50" />
+                    </div>
+                    <div className="relative z-10 p-6 flex flex-col h-full min-h-[260px]">
+                      <div className="flex-1">
+                        <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-kwar-electric/80 mb-3 block">
+                          {t('hub.cards.municipal.category')}
+                        </span>
+                        <h3 className="font-display text-lg font-bold text-white mb-2">
+                          {t('hub.cards.municipal.title')}
+                        </h3>
+                        <p className="text-white/45 text-sm leading-relaxed">
+                          {t('hub.cards.municipal.description')}
+                        </p>
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-xs font-medium text-kwar-electric group-hover:gap-3 transition-all mt-4 pt-4 border-t border-white/[0.06]">
+                        {t('hub.cards.municipal.cta')}
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </div>
-                  <span className="inline-flex items-center gap-2 text-sm font-medium text-kwar-electric group-hover:gap-3 transition-all flex-shrink-0">
-                    {t('hub.cards.municipal.cta')}
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
+                </Link>
               </div>
-            </Link>
+
+              {/* Kwar-AI — 50% */}
+              <div className="lg:w-1/2">
+                <Link to="/" className="block group h-full">
+                  <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-gold/20 hover:shadow-[0_0_40px_rgba(250,204,21,0.04)] h-full">
+                    <div className="absolute inset-0 pointer-events-none">
+                      <svg className="absolute inset-0 w-full h-full opacity-[0.06]" viewBox="0 0 500 500" preserveAspectRatio="none">
+                        <line x1="0" y1="150" x2="500" y2="350" stroke="#FCD34D" strokeWidth="0.4" />
+                        <line x1="0" y1="300" x2="500" y2="100" stroke="#FCD34D" strokeWidth="0.3" />
+                        <line x1="150" y1="0" x2="350" y2="500" stroke="#FCD34D" strokeWidth="0.35" />
+                        <line x1="0" y1="400" x2="500" y2="200" stroke="#FCD34D" strokeWidth="0.2" />
+                        <circle cx="120" cy="180" r="2" fill="#FCD34D" opacity="0.25" />
+                        <circle cx="380" cy="120" r="1.5" fill="#FCD34D" opacity="0.2" />
+                        <circle cx="250" cy="350" r="2" fill="#FCD34D" opacity="0.15" />
+                        <circle cx="400" cy="280" r="1.5" fill="#FCD34D" opacity="0.2" />
+                        <circle cx="80" cy="320" r="1" fill="#FCD34D" opacity="0.25" />
+                      </svg>
+                      <div className="absolute -top-24 -right-24 w-80 h-80 bg-kwar-gold/[0.03] rounded-full blur-3xl" />
+                      <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-500/[0.02] rounded-full blur-3xl" />
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_40%,rgba(252,211,77,0.02),transparent_70%)]" />
+                      <img
+                        src="/images/kwar-ai.png"
+                        alt=""
+                        className="absolute bottom-2 right-2 w-28 h-28 object-contain opacity-[0.07]"
+                      />
+                    </div>
+                    <div className="relative z-10 p-6 flex flex-col h-full min-h-[260px]">
+                      <div className="flex-1">
+                        <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-kwar-gold/80 mb-3 block">
+                          {t('hub.companyCard.label')}
+                        </span>
+                        <h3 className="font-display text-lg font-bold text-white mb-2">
+                          {t('hub.topCompany.title')}
+                        </h3>
+                        <p className="text-white/45 text-sm leading-relaxed">
+                          {t('hub.topCompany.description')}
+                        </p>
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-xs font-medium text-kwar-electric group-hover:gap-3 transition-all mt-4 pt-4 border-t border-white/[0.06]">
+                        {t('hub.topCompany.cta')}
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* Standard cards grid */}
@@ -320,55 +347,6 @@ export function HubPage() {
                 </Link>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CREDIBILITY ─── */}
-      <section
-        ref={credibilityReveal.ref}
-        className="pb-16 lg:pb-20"
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className={`flex flex-wrap items-center justify-center gap-6 lg:gap-10 transition-all duration-1000 ${
-              credibilityReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            {[
-              { key: 'infoDengue', label: t('hub.credibility.infoDengue') },
-              { key: 'mosqlimate', label: t('hub.credibility.mosqlimate') },
-              { key: 'universities', label: t('hub.credibility.universities') },
-              { key: 'research', label: t('hub.credibility.research') },
-            ].map((item) => (
-              <div
-                key={item.key}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02]"
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-kwar-electric/40" />
-                <span className="text-sm text-white/50">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── MANIFESTO ─── */}
-      <section
-        ref={manifestoReveal.ref}
-        className="pb-20 lg:pb-24"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div
-            className={`transition-all duration-1000 ${
-              manifestoReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent mx-auto mb-8" />
-            <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-              {t('hub.manifesto')}
-            </p>
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent mx-auto mt-8" />
           </div>
         </div>
       </section>
