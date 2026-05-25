@@ -246,9 +246,9 @@ export function HubPage() {
                 <img
                   src="/images/kwar-ai.png"
                   alt=""
-                  className="absolute inset-0 w-full h-full object-contain p-8 sm:p-12 lg:p-16 opacity-40 transition-all duration-700 group-hover:scale-105 group-hover:opacity-50"
+                  className="absolute inset-0 w-full h-full object-contain opacity-50 transition-all duration-700 group-hover:scale-105 group-hover:opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050a10] via-[#050a10]/60 to-transparent" />
               </div>
               <div className="relative z-10 p-8 lg:p-10 min-h-[320px] flex flex-col justify-end">
                 <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
