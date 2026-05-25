@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function CTAFinalSection() {
   const { t } = useTranslation();
@@ -25,18 +26,11 @@ export function CTAFinalSection() {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       id="cta-final"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent" />
@@ -51,26 +45,18 @@ export function CTAFinalSection() {
           {t('ctaFinal.title')}
         </h2>
 
-        <p className="text-lg text-kwar-gray mb-10">
-          {t('ctaFinal.subtitle')}
-        </p>
+          <p className="text-lg text-kwar-gray mb-10">
+            <span dangerouslySetInnerHTML={{ __html: t('ctaFinal.subtitle') }} />
+          </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <button
-            onClick={() => scrollToSection('#contact')}
-            className="btn-primary group"
+          <Link
+            to="/epidbot-websummit"
+            className="btn-primary group inline-flex items-center gap-2"
           >
-            {t('ctaFinal.primary')}
-            <ArrowRight className="w-4 h-4 inline-block ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
-          
-          <button
-            onClick={() => scrollToSection('#contact')}
-            className="btn-secondary flex items-center gap-2"
-          >
-            <Mail className="w-4 h-4" />
-            {t('ctaFinal.secondary')}
-          </button>
+            {t('ctaFinal.button')}
+            <ExternalLink className="w-4 h-4 inline-block group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

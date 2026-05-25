@@ -7,33 +7,159 @@
     "learnMore": "Saiba Mais",
     "contact": "Contato",
     "contactUs": "Fale Conosco",
+    "requestDemo": "Agendar Demonstração",
     "seeMore": "Ver Mais",
-    "required": "obrigatório"
+    "required": "obrigatório",
+    "viewPresentation": "Ver apresentação"
   },
   "navbar": {
     "home": "Início",
     "about": "Nossa História",
     "epidbot": "EpidBot",
-    "cursos": "Cursos e Capacitação",
+    "solutions": "Soluções",
+    "webSummit": "Web Summit Rio 2026",
     "contact": "Contato"
   },
   "hero": {
     "badge": "Kwar-AI",
-    "title": "Inteligência em saúde",
-    "subtitle": "A Kwar-AI desenvolve soluções que conectam epidemiologia, ciência de dados e inteligência artificial para apoiar decisões mais rápidas e informadas em saúde pública.",
-    "additionalLine": "Entre nossas soluções está o EpidBot, um assistente de IA para análise de dados em saúde em linguagem natural.",
+    "titleLine1": "Transformamos",
+    "titleLine2Part1": "dados em",
+    "titleHighlight": "decisão",
+    "subtitleLine1": "A <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> leva inteligência artificial para o centro da vigilância epidemiológica.",
+    "subtitleLine2": "Ajudamos hospitais, pesquisadores e organizações globais de saúde a antecipar surtos, automatizar análises e transformar dados complexos em inteligência estratégica.",
     "cta": {
+      "vision": "Nossa Visão",
+      "explore": "Explorar Soluções",
       "epidbot": "Conheça mais funcionalidades",
       "about": "Sobre a Kwar-AI",
       "products": "Nossos Produtos",
       "demo": "Solicitar demonstração",
-      "learnMore": "Saiba Mais"
+      "learnMore": "Saiba Mais",
+      "webSummit": "<strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> @ Web Summit Rio 2026"
     },
     "floatingCards": {
       "activeMonitoring": "Monitoramento Ativo",
       "neuralNetwork": "Rede Neural Online"
     },
     "scrollIndicator": "Role para explorar"
+  },
+  "ourStory": {
+    "badge": "Nossa História",
+    "headline": {
+      "part1": "O futuro deixa",
+      "highlight": "sinais"
+    },
+    "paragraphs": [
+      "Inspirada no termo tupi-guarani <strong>\"Kuaray\"</strong> — associado ao sol, aos ciclos e aos sinais da natureza — a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> nasceu para transformar dados epidemiológicos em inteligência operacional para saúde pública.",
+      "Epidemias não começam quando viram notícia. Elas deixam rastros antes: em dados ambientais, epidemiológicos, climáticos e comportamentais.",
+      "Nosso trabalho é transformar esses sinais em inteligência operacional. Combinamos epidemiologia, modelagem matemática e inteligência artificial para apoiar decisões mais rápidas, estratégicas e antecipadas em saúde pública.",
+      "Porque inteligência epidemiológica não é apenas reagir a crises. É reconhecer padrões antes que eles se tornem emergências."
+    ],
+    "quote": "O sol nasce para todos. A diferença está em quem consegue reconhecer os sinais antes do amanhecer.",
+    "pillars": {
+      "observation": {
+        "title": "Observação",
+        "description": "Detectamos sinais dispersos em múltiplas fontes de dados para revelar padrões antes que se tornem crises."
+      },
+      "intelligence": {
+        "title": "Inteligência",
+        "description": "Transformamos dados complexos em modelos inteligentes e insights acionáveis para saúde pública."
+      },
+      "anticipation": {
+        "title": "Antecipação",
+        "description": "Identificamos riscos e tendências antes das emergências, permitindo respostas mais rápidas e eficazes."
+      },
+      "integration": {
+        "title": "Integração",
+        "description": "Conectamos epidemiologia, clima, comportamento e território em uma visão completa e integrada."
+      }
+    }
+  },
+  "credibility": {
+    "badge": "Credibilidade",
+    "title": "Construído sobre ciência, epidemiologia e inteligência artificial aplicada.",
+    "subtitle": "A <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> combina experiência em modelagem matemática, vigilância epidemiológica, inteligência climática e análise estratégica para saúde pública.",
+    "cards": {
+      "epidemiology": {
+        "title": "Epidemiologia & Vigilância",
+        "description": "Análise de surtos, padrões epidemiológicos e inteligência em saúde pública."
+      },
+      "modeling": {
+        "title": "Modelagem Matemática",
+        "description": "Modelos aplicados à dinâmica de doenças e previsão de cenários epidemiológicos."
+      },
+      "ai": {
+        "title": "IA & Ciência de Dados",
+        "description": "Infraestrutura de inteligência artificial para interpretação de dados complexos."
+      },
+      "globalHealth": {
+        "title": "Saúde Global & Clima",
+        "description": "Integração entre variáveis ambientais, climáticas e epidemiológicas."
+      }
+    },
+    "labels": {
+      "01": "EPIDEMIOLOGIA & VIGILÂNCIA",
+      "02": "MODELAGEM MATEMÁTICA",
+      "03": "IA & CIÊNCIA DE DADOS",
+      "04": "SAÚDE GLOBAL & CLIMA"
+    },
+    "webSummitPrefix": "A <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> foi escolhida como Startup de Impacto do",
+    "webSummitHighlight": "Web Summit Rio 2026.",
+    "learnMore": "Saiba mais"
+  },
+  "desafio": {
+    "badge": "O Desafio",
+    "title": "A saúde pública produz dados em escala.\nTransformá-los em decisão ainda é um desafio.",
+    "subtitle": "Bases epidemiológicas, indicadores ambientais, notificações e sistemas hospitalares crescem continuamente. Mas integrar essas informações e transformá-las em inteligência acionável ainda exige tempo, infraestrutura técnica e capacidade analítica.",
+    "painPoints": [
+      "Dados fragmentados entre múltiplos sistemas e instituições.",
+      "Análises lentas durante situações críticas e surtos.",
+      "Dependência de equipes técnicas altamente especializadas.",
+      "Dificuldade em transformar informação em ação coordenada."
+    ]
+  },
+  "transition": {
+    "badge": "EPIDBOT",
+    "title": "Criamos o EpidBot para tornar inteligência epidemiológica acessível em escala.",
+    "subtitle": "Uma nova interface para análise epidemiológica, integrando múltiplas fontes de dados e transformando perguntas complexas em respostas acionáveis."
+  },
+  "epidbotTransition": {
+    "badge": "EpidBot",
+    "titlePart1": "Foi para resolver esse desafio que criamos o",
+    "titleHighlight": "EpidBot.",
+    "titlePart2": "",
+    "subtitle": "Uma nova interface para transformar complexidade epidemiológica em inteligência acionável."
+  },
+  "epidbotVisual": {
+    "badge": "EpidBot",
+    "titlePart1": "Inteligência epidemiológica em ",
+    "titleHighlight": "linguagem natural",
+    "titlePart2": ".",
+    "subtitle": "Faça perguntas complexas, integre múltiplas fontes de dados e receba respostas acionáveis em segundos."
+  },
+  "solutions": {
+    "badge": "Soluções",
+    "title": "Inteligência epidemiológica aplicada em diferentes escalas.",
+    "subtitle": "Do monitoramento municipal à inteligência epidemiológica global, o EpidBot se adapta a diferentes contextos, fluxos de trabalho e operações modernas de saúde pública.",
+    "comingSoon": "Em breve",
+    "cards": {
+      "municipal": {
+        "title": "Vigilância Municipal",
+        "description": "Monitore surtos, indicadores e risco operacional no nível local."
+      },
+      "hospitals": {
+        "title": "Hospitais e Laboratórios",
+        "description": "Apoio ao monitoramento epidemiológico e inteligência operacional em saúde."
+      },
+      "research": {
+        "title": "Pesquisa & Universidades",
+        "description": "Acelere a pesquisa em saúde pública com análise integrada de dados epidemiológicos."
+      },
+      "global": {
+        "title": "Saúde Global e Organizações Internacionais",
+        "description": "Inteligência epidemiológica para agências globais de saúde e cooperação internacional."
+      }
+    }
   },
   "about": {
     "badge": "NOSSA HISTÓRIA",
@@ -185,7 +311,11 @@
     "integratesWith": "Integra com",
     "datasus": "DATASUS / PySUS",
     "basedOn": "Baseado em",
-    "statistical": "Modelagem Estatística"
+    "statistical": "Modelagem Estatística",
+    "validationText": "O EpidBot já está sendo validado por epidemiologistas, profissionais de vigilância e pesquisadores em saúde pública — incluindo a Organização Mundial da Saúde (OMS) Escritório Regional do Mediterrâneo Oriental (EMRO).",
+    "validationHighlight": "Organização Mundial da Saúde (OMS) Escritório Regional do Mediterrâneo Oriental (EMRO)",
+    "webSummitBadge": "Web Summit Rio 2026 Impact Startup",
+    "webSummitLink": "https://rio.websummit.com/pt-br/startups/impact-startups/search/KWAR-AI/"
   },
   "epidBotParaQuem": {
     "badge": "APLICAÇÕES DIRETAS",
@@ -314,7 +444,7 @@
   },
   "equipe": {
     "badge": "NÚCLEO FUNDADOR",
-    "title": "Quem lidera a Kwar-AI",
+    "title": "Quem lidera a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>",
     "subtitle": "Um time com base científica sólida e experiência em modelagem epidemiológica.",
     "relatedTo": "Projetos relacionados:",
     "projects": ["PySUS", "Infodengue", "Mosqlimate"],
@@ -334,8 +464,8 @@
   "equipeRede": {
     "badge": "REDE DE COLABORAÇÃO",
     "title": "Equipe e Rede de Colaboração",
-    "subtitle": "A Kwar-AI é liderada por um núcleo fundador e opera em colaboração com uma rede multidisciplinar.",
-    "description": "Hoje, a Kwar-AI é conduzida por um time fundador com base científica e tecnológica sólida. Para desenvolver e aplicar soluções em saúde pública, atuamos em colaboração com pesquisadores, desenvolvedores e instituições parceiras no Brasil e no exterior.",
+    "subtitle": "A <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> é liderada por um núcleo fundador e opera em colaboração com uma rede multidisciplinar.",
+    "description": "Hoje, a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> é conduzida por um time fundador com base científica e tecnológica sólida. Para desenvolver e aplicar soluções em saúde pública, atuamos em colaboração com pesquisadores, desenvolvedores e instituições parceiras no Brasil e no exterior.",
     "areas": [
       { "title": "Epidemiologia & Vigilância", "desc": "Integração com sistemas e indicadores de saúde." },
       { "title": "Modelagem & Estatística", "desc": "Métodos quantitativos para inferência e previsão." },
@@ -347,10 +477,9 @@
     "credibilidade": "Relacionado a projetos e iniciativas: PySUS • Mosqlimate • InfoDengue"
   },
   "ctaFinal": {
-    "title": "Pronto para transformar dados em clareza?",
-    "subtitle": "Solicite uma demonstração personalizada",
-    "primary": "Solicitar Demonstração",
-    "secondary": "Falar com a Kwar-AI"
+    "title": "Conheça o EpidBot apresentado no Web Summit Rio 2026",
+    "subtitle": "Explore a visão, tecnologia e aplicações da <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> para inteligência epidemiológica.",
+    "button": "Ver apresentação"
   },
   "contact": {
     "badge": "Contato",
@@ -416,11 +545,12 @@
       "products": {
         "title": "Soluções",
         "epidbot": "EpidBot",
-        "courses": "Cursos e Capacitação",
-        "aiSolutions": "Soluções em IA para Saúde"
+        "solutions": "Soluções",
+        "webSummit": "Web Summit Rio 2026"
       },
       "company": {
         "title": "Empresa",
+        "home": "Início",
         "about": "Nossa História",
         "team": "Equipe",
         "contact": "Contato"
@@ -439,7 +569,7 @@
     },
     "copyright": "© {{year}} Kwar-AI",
     "slogan": {
-      "line1": "Antecipar é proteger."
+      "line1": "Transformando dados em inteligência para saúde pública."
     }
   },
   "epidbotLanding": {
@@ -478,6 +608,20 @@
           "description": "O prefeito pergunta se está tudo sob controle. Você quer responder, mas não tem número na hora. Fica na defensiva. Parece que não sabe o que está fazendo."
         }
       }
+    },
+    "validation": {
+      "badge": "Validação",
+      "title": "Já está sendo validado",
+      "subtitle": "EpidBot já está sendo testado em ambientes reais de saúde pública.",
+      "whoTitle": "Organização Mundial da Saúde (OMS)",
+      "whoSubtitle": "Escritório Regional do Mediterrâneo Oriental (EMRO)",
+      "whoDescription": "Iniciativa piloto precoce conectada ao ecossistema de inovação e saúde pública da OMS EMRO.",
+      "webSummitTitle": "Web Summit Rio 2026",
+      "webSummitSubtitle": "Impact Startup",
+      "webSummitDescription": "Selecionada como startup de impacto dentro do ecossistema Web Summit.",
+      "usersTitle": "20+",
+      "usersSubtitle": "Usuários qualificados em 1 mês",
+      "usersDescription": "Epidemiologistas, profissionais de vigilância, equipes de inteligência hospitalar e pesquisadores em saúde pública no Brasil."
     },
     "whatis": {
       "badge": "A Solução",
@@ -610,6 +754,23 @@
         "pricing": "Preços",
         "contact": "Contato"
       }
+    }
+  },
+  "websummit": {
+    "nav": {
+      "problem": "Problema",
+      "solution": "Solução",
+      "product": "Produto",
+      "vision": "Visão",
+      "contact": "Contato",
+      "schedule": "Agendar Reunião"
+    },
+    "hero": {
+      "badge": "Web Summit Rio 2026",
+      "badgeSub": "Impact Startup",
+      "title": "Inteligência para decisões de saúde pública mais rápidas.",
+      "subtitle": "A plataforma de inteligência conversacional da KWAR-AI transforma dados epidemiológicos, climáticos e de mobilidade em insights estratégicos em tempo real para detecção de surtos e resposta em saúde pública.",
+      "cta": "Ver EpidBot em Ação"
     }
   }
 }

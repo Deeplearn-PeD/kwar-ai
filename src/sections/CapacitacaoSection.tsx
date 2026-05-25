@@ -75,9 +75,9 @@ export function CapacitacaoSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-purple/10 border border-kwar-purple/30 mb-6">
-            <GraduationCap className="w-4 h-4 text-kwar-purple" />
-            <span className="text-sm font-medium text-kwar-purple">{t('capacitacao.badge')}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <GraduationCap className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">{t('capacitacao.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, BarChart3, Database, Monitor, Shield, Handshake } from 'lucide-react';
+import { Activity, BarChart3, Database, Monitor, Shield, Handshake, Sparkles } from 'lucide-react';
 
 export function EquipeRedeSection() {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ export function EquipeRedeSection() {
     <section
       id="equipe-rede"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-purple/30 to-transparent" />
@@ -46,8 +46,9 @@ export function EquipeRedeSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-purple/10 border border-kwar-purple/30 mb-6">
-            <span className="text-sm font-medium text-kwar-purple">{t('equipeRede.badge')}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">{t('equipeRede.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -55,11 +56,11 @@ export function EquipeRedeSection() {
           </h2>
 
           <p className="text-kwar-electric text-lg mb-6">
-            {t('equipeRede.subtitle')}
+            <span dangerouslySetInnerHTML={{ __html: t('equipeRede.subtitle') }} />
           </p>
 
           <p className="text-kwar-gray max-w-3xl mx-auto leading-relaxed">
-            {t('equipeRede.description')}
+            <span dangerouslySetInnerHTML={{ __html: t('equipeRede.description') }} />
           </p>
         </div>
 

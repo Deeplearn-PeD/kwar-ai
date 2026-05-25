@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Sparkles } from 'lucide-react';
 
 export function BaseCientificaSection() {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ export function BaseCientificaSection() {
           }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
             <span className="text-sm font-medium text-kwar-electric">{t('baseCientifica.badge')}</span>
           </div>
 

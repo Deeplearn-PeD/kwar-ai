@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Puzzle, Code, Users, Clock } from 'lucide-react';
+import { Puzzle, Code, Users, Clock, Sparkles } from 'lucide-react';
 
 export function ClarezaDados() {
   const { t } = useTranslation();
@@ -68,6 +68,7 @@ export function ClarezaDados() {
           }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
             <span className="text-sm font-medium text-kwar-electric">{t('clarezaDados.badge')}</span>
           </div>
 

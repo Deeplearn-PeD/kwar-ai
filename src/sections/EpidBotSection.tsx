@@ -62,9 +62,28 @@ export function EpidBotSection() {
               ))}
             </div>
 
-            <p className="text-sm text-white/60 leading-relaxed mb-6">
-              EpidBot is already being validated by epidemiologists, surveillance professionals and public health researchers — including the <span className="text-kwar-electric">World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO)</span>.
+            <p className="text-sm text-white/60 leading-relaxed mb-5">
+              {t('epidBot.validationText').split(t('epidBot.validationHighlight'))[0]}
+              <span className="text-kwar-electric">{t('epidBot.validationHighlight')}</span>
+              {t('epidBot.validationText').split(t('epidBot.validationHighlight'))[1]}
             </p>
+
+            {/* Credibility badges */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/[0.06] bg-white/[0.02]">
+                <img src="/images/who-emro.png" alt="WHO EMRO" className="h-5 w-auto object-contain opacity-70" />
+                <span className="text-[10px] text-white/40 tracking-wide">WHO EMRO</span>
+              </div>
+              <a
+                href={t('epidBot.webSummitLink')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-kwar-electric/20 transition-colors group"
+              >
+                <img src="/images/RIO26_Impact badge.png" alt="Web Summit" className="h-5 w-auto object-contain opacity-70 group-hover:opacity-90 transition-opacity" />
+                <span className="text-[10px] text-white/40 tracking-wide group-hover:text-white/60 transition-colors">{t('epidBot.webSummitBadge')}</span>
+              </a>
+            </div>
 
             <Link
               to="/epidbot-landing"

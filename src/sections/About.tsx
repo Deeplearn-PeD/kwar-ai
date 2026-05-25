@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Sun, Brain, Target, Lightbulb, RefreshCw, Eye } from 'lucide-react';
+import { Sun, Brain, Target, Lightbulb, RefreshCw, Eye, Sparkles } from 'lucide-react';
 
 export function About() {
   const { t } = useTranslation();
@@ -70,9 +70,9 @@ export function About() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
-              <Sun className="w-4 h-4 text-kwar-gold" />
-              <span className="text-sm font-medium text-kwar-gold">{t('about.badge')}</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+              <Sparkles className="w-4 h-4 text-kwar-electric" />
+              <span className="text-sm font-medium text-kwar-electric">{t('about.badge')}</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">

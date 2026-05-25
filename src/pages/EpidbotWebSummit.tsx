@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
@@ -52,6 +53,7 @@ function useScrollReveal(threshold = 0.15) {
 // NAVBAR
 // ============================================================================
 function Navbar() {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -67,12 +69,22 @@ function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const languages = [
+    { code: 'en', label: 'EN' },
+    { code: 'pt-BR', label: 'PT' },
+    { code: 'es', label: 'ES' },
+  ];
+
   const navLinks = [
-    { label: 'Problem', href: '#problem' },
-    { label: 'Solution', href: '#solution' },
-    { label: 'Product', href: '#product' },
-    { label: 'Vision', href: '#vision' },
-    { label: 'Contact', href: '#contact' },
+    { label: t('websummit.nav.problem'), href: '#problem' },
+    { label: t('websummit.nav.solution'), href: '#solution' },
+    { label: t('websummit.nav.product'), href: '#product' },
+    { label: t('websummit.nav.vision'), href: '#vision' },
+    { label: t('websummit.nav.contact'), href: '#contact' },
   ];
 
   return (
@@ -109,12 +121,29 @@ function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Language switcher */}
+            <div className="hidden sm:flex items-center gap-1">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                    i18n.language === lang.code
+                      ? 'text-kwar-electric bg-kwar-electric/10'
+                      : 'text-white/40 hover:text-white/70'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+
             <Button
               onClick={() => scrollToSection('#contact')}
               size="sm"
               className="hidden sm:inline-flex bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold text-sm h-9"
             >
-              Schedule a Meeting
+              {t('websummit.nav.schedule', { defaultValue: 'Schedule a Meeting' })}
             </Button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -155,6 +184,7 @@ function Navbar() {
 // HERO SECTION — CINEMATIC GLOBAL (UNCHANGED)
 // ============================================================================
 function HeroSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -230,8 +260,8 @@ function HeroSection() {
             >
               <img src="/images/RIO26_Impact badge.png" alt="Web Summit Impact Startup" className="h-5 w-auto object-contain" />
               <div className="flex flex-col">
-                <span className="text-xs font-bold text-kwar-electric tracking-wide uppercase">Web Summit Rio 2026</span>
-                <span className="text-[11px] text-kwar-electric/80">Impact Startup</span>
+              <span className="text-xs font-bold text-kwar-electric tracking-wide uppercase">{t('websummit.hero.badge', { defaultValue: 'Web Summit Rio 2026' })}</span>
+              <span className="text-[11px] text-kwar-electric/80">{t('websummit.hero.badgeSub', { defaultValue: 'Impact Startup' })}</span>
               </div>
               <svg className="w-3 h-3 text-kwar-electric opacity-0 group-hover:opacity-100 transition-opacity ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -245,7 +275,7 @@ function HeroSection() {
             }`}
             style={{ letterSpacing: '-0.03em', lineHeight: '1.4' }}
           >
-            Intelligence for faster public health decisions.
+            {t('websummit.hero.title', { defaultValue: 'Intelligence for faster public health decisions.' })}
           </h1>
 
           <p
@@ -253,7 +283,7 @@ function HeroSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
-            <span className="text-kwar-electric font-bold">EpidBot</span>, KWAR-AI's conversational intelligence platform, transforms epidemiological, climate and mobility data into real-time strategic insights for outbreak detection and public health response.
+            <span className="text-kwar-electric font-bold">EpidBot</span>, {t('websummit.hero.subtitle', { defaultValue: "KWAR-AI's conversational intelligence platform, transforms epidemiological, climate and mobility data into real-time strategic insights for outbreak detection and public health response." })}
           </p>
 
           <div
@@ -266,7 +296,7 @@ function HeroSection() {
               size="lg"
               className="bg-kwar-electric hover:bg-kwar-electric/85 text-kwar-deep font-bold px-8 h-12 text-sm group shadow-[0_0_32px_rgba(0,240,255,0.25)] hover:shadow-[0_0_40px_rgba(0,240,255,0.35)] transition-all"
             >
-              See EpidBot in Action
+              {t('websummit.hero.cta', { defaultValue: 'See EpidBot in Action' })}
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
@@ -320,13 +350,8 @@ function ProblemSection() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-8 items-start mb-4">
           {/* Left — Text */}
           <div className="max-w-xl">
-            <p
-              className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              The Problem
-            </p>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">The Problem
+            </span></div>
 
             <h2
               className={`font-body text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[3.25rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
@@ -454,13 +479,8 @@ function SolutionSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-start mb-16 lg:mb-20">
           {/* Left — Text */}
           <div className="max-w-lg pt-4">
-            <p
-              className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              The Solution
-            </p>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">The Solution
+            </span></div>
 
             <h2
               className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-normal text-white mb-4 transition-all duration-1000 delay-100 ${
@@ -660,13 +680,8 @@ function TractionSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-10">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.25em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Traction
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Traction
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -858,13 +873,8 @@ function MarketSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>
-            <p
-              className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              Market Opportunity
-            </p>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Market Opportunity
+            </span></div>
             <h2
               className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -941,13 +951,8 @@ function TeamSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Team
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Team
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1033,13 +1038,8 @@ function CompetitiveEdgeSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Competitive Edge
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Competitive Edge
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1109,13 +1109,8 @@ function RoadmapSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Roadmap
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Roadmap
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1253,13 +1248,8 @@ function ProductSection() {
 
           {/* RIGHT — Content */}
           <div className="order-1 lg:order-2">
-            <p
-              className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              Product Demo
-            </p>
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Product Demo
+            </span></div>
 
             <h2
               className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
@@ -1339,13 +1329,8 @@ function WhyNowSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-16">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Why Now
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Why Now
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1402,13 +1387,8 @@ function CredibilitySection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Credibility
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Credibility
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1487,13 +1467,8 @@ function VisionSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mb-12 lg:mb-16">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Vision
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Vision
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1698,13 +1673,8 @@ function ContactSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p
-            className={`text-[11px] text-kwar-electric font-medium tracking-[0.2em] uppercase mb-5 transition-all duration-700 ${
-              isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Contact
-          </p>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Contact
+          </span></div>
           <h2
             className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-4 transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

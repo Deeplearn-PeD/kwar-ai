@@ -7,33 +7,159 @@
     "learnMore": "Learn More",
     "contact": "Contact",
     "contactUs": "Contact Us",
+    "requestDemo": "Request Demo",
     "seeMore": "See More",
-    "required": "required"
+    "required": "required",
+    "viewPresentation": "View Presentation"
   },
   "navbar": {
     "home": "Home",
     "about": "Our Story",
     "epidbot": "EpidBot",
-    "cursos": "Courses & Training",
+    "solutions": "Solutions",
+    "webSummit": "Web Summit Rio 2026",
     "contact": "Contact"
   },
   "hero": {
     "badge": "Kwar-AI",
-    "title": "Health Intelligence",
-    "subtitle": "Kwar-AI develops solutions that connect epidemiology, data science and artificial intelligence to support faster and more informed public health decisions.",
-    "additionalLine": "Among our solutions is EpidBot, an AI assistant for health data analysis in natural language.",
+    "titleLine1": "We turn",
+    "titleLine2Part1": "data into",
+    "titleHighlight": "decision",
+    "subtitleLine1": "<strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> brings artificial intelligence to the center of disease surveillance.",
+    "subtitleLine2": "We help hospitals, researchers, and global health organizations anticipate outbreaks, automate analyses, and transform complex data into strategic intelligence.",
     "cta": {
+      "vision": "Our Vision",
+      "explore": "Explore Solutions",
       "epidbot": "Explore EpidBot Features",
       "about": "About Kwar-AI",
       "products": "Our Products",
       "demo": "Request Demo",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "webSummit": "<strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> @ Web Summit Rio 2026"
     },
     "floatingCards": {
       "activeMonitoring": "Active Monitoring",
       "neuralNetwork": "Online Neural Network"
     },
     "scrollIndicator": "Scroll to explore"
+  },
+  "ourStory": {
+    "badge": "Our Story",
+    "headline": {
+      "part1": "The future leaves",
+      "highlight": "signs"
+    },
+    "paragraphs": [
+      "Inspired by the Tupi-Guarani term <strong>\"Kuaray\"</strong> — associated with the sun, cycles, and nature's signs — Kwar-AI was born to transform epidemiological data into operational intelligence for public health.",
+      "Epidemics don't start when they make the news. They leave traces earlier: in environmental, epidemiological, climatic, and behavioral data.",
+      "Our work is to transform these signs into operational intelligence. We combine epidemiology, mathematical modeling, and artificial intelligence to support faster, more strategic, and anticipatory decisions in public health.",
+      "Because epidemiological intelligence is not just about reacting to crises. It's about recognizing patterns before they become emergencies."
+    ],
+    "quote": "The sun rises for everyone. The difference lies in who can recognize the signs before dawn.",
+    "pillars": {
+      "observation": {
+        "title": "Observation",
+        "description": "We detect dispersed signals across multiple data sources to reveal patterns before they become crises."
+      },
+      "intelligence": {
+        "title": "Intelligence",
+        "description": "We transform complex data into intelligent models and actionable insights for public health."
+      },
+      "anticipation": {
+        "title": "Anticipation",
+        "description": "We identify risks and trends before emergencies, enabling faster and more effective responses."
+      },
+      "integration": {
+        "title": "Integration",
+        "description": "We connect epidemiology, climate, behavior, and territory into a complete and integrated view."
+      }
+    }
+  },
+  "credibility": {
+    "badge": "Credibility",
+    "title": "Built on science, epidemiology, and applied artificial intelligence.",
+    "subtitle": "Kwar-AI combines expertise in mathematical modeling, disease surveillance, climate intelligence, and strategic analysis for public health.",
+    "cards": {
+      "epidemiology": {
+        "title": "Epidemiology & Surveillance",
+        "description": "Outbreak analysis, epidemiological patterns, and public health intelligence."
+      },
+      "modeling": {
+        "title": "Mathematical Modeling",
+        "description": "Models applied to disease dynamics and epidemiological scenario forecasting."
+      },
+      "ai": {
+        "title": "AI & Data Science",
+        "description": "Artificial intelligence infrastructure for interpreting complex data."
+      },
+      "globalHealth": {
+        "title": "Global Health & Climate",
+        "description": "Integration of environmental, climatic, and epidemiological variables."
+      }
+    },
+    "labels": {
+      "01": "EPIDEMIOLOGY & SURVEILLANCE",
+      "02": "MATHEMATICAL MODELING",
+      "03": "AI & DATA SCIENCE",
+      "04": "GLOBAL HEALTH & CLIMATE"
+    },
+    "webSummitPrefix": "<strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> was selected as an Impact Startup at",
+    "webSummitHighlight": "Web Summit Rio 2026.",
+    "learnMore": "Learn more"
+  },
+  "desafio": {
+    "badge": "The Challenge",
+    "title": "Public health generates data at scale.\nTurning it into decisions is still a challenge.",
+    "subtitle": "Epidemiological databases, environmental indicators, notifications and hospital systems continue to grow. But integrating this information and turning it into actionable intelligence still requires time, technical infrastructure and analytical capacity.",
+    "painPoints": [
+      "Fragmented data across multiple systems and institutions.",
+      "Slow analysis during outbreaks and critical situations.",
+      "Dependence on highly specialized technical teams.",
+      "Difficulty transforming information into coordinated action."
+    ]
+  },
+  "transition": {
+    "badge": "EPIDBOT",
+    "title": "We created EpidBot to make epidemiological intelligence accessible at scale.",
+    "subtitle": "A new interface for epidemiological analysis, integrating multiple data sources and transforming complex questions into actionable answers."
+  },
+  "epidbotTransition": {
+    "badge": "EpidBot",
+    "titlePart1": "It was to solve this challenge that we created",
+    "titleHighlight": "EpidBot.",
+    "titlePart2": "",
+    "subtitle": "A new interface to transform epidemiological complexity into actionable intelligence."
+  },
+  "epidbotVisual": {
+    "badge": "EpidBot",
+    "titlePart1": "Epidemiological intelligence in ",
+    "titleHighlight": "natural language",
+    "titlePart2": ".",
+    "subtitle": "Ask complex questions, integrate multiple data sources and receive actionable answers in seconds."
+  },
+  "solutions": {
+    "badge": "Solutions",
+    "title": "Epidemiological intelligence applied at different scales.",
+    "subtitle": "From municipal monitoring to global epidemiological intelligence, EpidBot adapts to different contexts, workflows and modern public health operations.",
+    "comingSoon": "Coming soon",
+    "cards": {
+      "municipal": {
+        "title": "Municipal Surveillance",
+        "description": "Monitor outbreaks, indicators, and operational risk at the local level."
+      },
+      "hospitals": {
+        "title": "Hospitals & Laboratories",
+        "description": "Support epidemiological monitoring and operational healthcare intelligence."
+      },
+      "research": {
+        "title": "Research & Universities",
+        "description": "Accelerate public health research with integrated epidemiological data analysis."
+      },
+      "global": {
+        "title": "Global Health & International Organizations",
+        "description": "Epidemiological intelligence for global health agencies and international cooperation."
+      }
+    }
   },
   "about": {
     "badge": "OUR STORY",
@@ -186,7 +312,11 @@
     "integratesWith": "Integrates with",
     "datasus": "DATASUS / PySUS",
     "basedOn": "Based on",
-    "statistical": "Statistical Modeling"
+    "statistical": "Statistical Modeling",
+    "validationText": "EpidBot is already being validated by epidemiologists, surveillance professionals and public health researchers — including the World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO).",
+    "validationHighlight": "World Health Organization (WHO) Eastern Mediterranean Regional Office (EMRO)",
+    "webSummitBadge": "Web Summit Rio 2026 Impact Startup",
+    "webSummitLink": "https://rio.websummit.com/pt-br/startups/impact-startups/search/KWAR-AI/"
   },
   "epidBotParaQuem": {
     "badge": "DIRECT APPLICATIONS",
@@ -315,7 +445,7 @@
   },
   "equipe": {
     "badge": "FOUNDING TEAM",
-    "title": "Who leads Kwar-AI",
+    "title": "Who leads <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>",
     "subtitle": "A team with solid scientific foundation and experience in epidemiological modeling.",
     "relatedTo": "Related projects:",
     "projects": ["PySUS", "Infodengue", "Mosqlimate"],
@@ -335,8 +465,8 @@
   "equipeRede": {
     "badge": "TEAM & NETWORK",
     "title": "Team and Collaboration Network",
-    "subtitle": "Kwar-AI is led by a founding core and operates in collaboration with a multidisciplinary network.",
-    "description": "Today, Kwar-AI is driven by a founding team with solid scientific and technological foundation. To develop and apply solutions in public health, we work with researchers, developers and partner institutions in Brazil and abroad.",
+    "subtitle": "<strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> is led by a founding core and operates in collaboration with a multidisciplinary network.",
+    "description": "Today, <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> is driven by a founding team with solid scientific and technological foundation. To develop and apply solutions in public health, we work with researchers, developers and partner institutions in Brazil and abroad.",
     "areas": [
       { "title": "Epidemiology & Surveillance", "desc": "Integration with health systems and indicators." },
       { "title": "Modeling & Statistics", "desc": "Quantitative methods for inference and prediction." },
@@ -348,10 +478,9 @@
     "credibilidade": "Related to projects and initiatives: PySUS • Mosqlimate • InfoDengue"
   },
   "ctaFinal": {
-    "title": "Ready to transform data into clarity?",
-    "subtitle": "Request a personalized demonstration",
-    "primary": "Request Demo",
-    "secondary": "Talk to Kwar-AI"
+    "title": "Meet EpidBot presented at Web Summit Rio 2026",
+    "subtitle": "Explore the vision, technology and applications of <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong> for epidemiological intelligence.",
+    "button": "View Presentation"
   },
   "contact": {
     "badge": "Contact",
@@ -417,11 +546,12 @@
       "products": {
         "title": "Solutions",
         "epidbot": "EpidBot",
-        "courses": "Courses & Training",
-        "aiSolutions": "AI Solutions for Health"
+        "solutions": "Solutions",
+        "webSummit": "Web Summit Rio 2026"
       },
       "company": {
         "title": "Company",
+        "home": "Home",
         "about": "Our Story",
         "team": "Team",
         "contact": "Contact"
@@ -440,7 +570,7 @@
     },
     "copyright": "© {{year}} Kwar-AI",
     "slogan": {
-      "line1": "To anticipate is to protect."
+      "line1": "Turning data into intelligence for public health."
     }
   },
   "epidbotLanding": {
@@ -479,6 +609,20 @@
           "description": "Did you open beds you didn't need? Buy too many vaccines? Fail to buy what was missing? Without clear data, you waste resources your city doesn't have to spare."
         }
       }
+    },
+    "validation": {
+      "badge": "Validation",
+      "title": "Already being validated",
+      "subtitle": "EpidBot is already being tested in real public health environments.",
+      "whoTitle": "World Health Organization (WHO)",
+      "whoSubtitle": "Eastern Mediterranean Regional Office (EMRO)",
+      "whoDescription": "Early pilot initiative connected to the WHO EMRO innovation and public health ecosystem.",
+      "webSummitTitle": "Web Summit Rio 2026",
+      "webSummitSubtitle": "Impact Startup",
+      "webSummitDescription": "Selected as an impact-driven startup within the Web Summit ecosystem.",
+      "usersTitle": "20+",
+      "usersSubtitle": "Qualified users in 1 month",
+      "usersDescription": "Epidemiologists, surveillance professionals, hospital intelligence teams and public health researchers in Brazil."
     },
     "solution": {
       "badge": "The Solution",
@@ -644,6 +788,23 @@
         "pricing": "Pricing",
         "contact": "Contact"
       }
+    }
+  },
+  "websummit": {
+    "nav": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "product": "Product",
+      "vision": "Vision",
+      "contact": "Contact",
+      "schedule": "Schedule a Meeting"
+    },
+    "hero": {
+      "badge": "Web Summit Rio 2026",
+      "badgeSub": "Impact Startup",
+      "title": "Intelligence for faster public health decisions.",
+      "subtitle": "KWAR-AI's conversational intelligence platform, transforms epidemiological, climate and mobility data into real-time strategic insights for outbreak detection and public health response.",
+      "cta": "See EpidBot in Action"
     }
   }
 }

@@ -132,7 +132,7 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 grid-bg opacity-30" />

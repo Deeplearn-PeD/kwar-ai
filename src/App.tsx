@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
-import { NeuralBackground } from '@/components/NeuralBackground';
 import { Hero } from '@/sections/Hero';
-import { About } from '@/sections/About';
-import { ClarezaDados } from '@/sections/ClarezaDados';
-import { EpidBotSection } from '@/sections/EpidBotSection';
-import { BaseCientificaSection } from '@/sections/BaseCientificaSection';
-import { CapacitacaoSection } from '@/sections/CapacitacaoSection';
+import { OurStory } from '@/sections/OurStory';
+import { CredibilitySection } from '@/sections/CredibilitySection';
+import { DesafioSection } from '@/sections/DesafioSection';
+import { SolutionsSection } from '@/sections/SolutionsSection';
+import { EpidBotTransitionSection } from '@/sections/EpidBotTransitionSection';
+import { EpidBotVisualSection } from '@/sections/EpidBotVisualSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
 import { EquipeSection } from '@/sections/EquipeSection';
 import { CTAFinalSection } from '@/sections/CTAFinalSection';
@@ -19,9 +19,6 @@ import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
 function HomePage() {
   return (
     <>
-      {/* Neural Background Animation */}
-      <NeuralBackground />
-      
       {/* Navigation */}
       <Navbar />
       
@@ -29,32 +26,35 @@ function HomePage() {
       <main className="relative z-10">
         {/* 1) Hero */}
         <Hero />
-        
-        {/* 2) About - Nossa história */}
-        <About />
-        
-        {/* 3) ClarezaDados */}
-        <ClarezaDados />
-        
-        {/* 4) EpidBotSection - Resumo com link para landing */}
-        <EpidBotSection />
-        
-        {/* 5) BaseCientificaSection */}
-        <BaseCientificaSection />
-        
-        {/* 8) CapacitacaoSection */}
-        <CapacitacaoSection />
-        
-        {/* 9) EquipeRedeSection (Kimi) */}
+
+        {/* 2) Our Story */}
+        <OurStory />
+
+        {/* 3) Credibility */}
+        <CredibilitySection />
+
+        {/* 4) O Desafio */}
+        <DesafioSection />
+
+        {/* 5) EpidBot Transition */}
+        <EpidBotTransitionSection />
+
+        {/* 6) EpidBot Visual Presentation */}
+        <EpidBotVisualSection />
+
+        {/* 7) Solutions */}
+        <SolutionsSection />
+
+        {/* 7) EquipeRedeSection */}
         <EquipeRedeSection />
         
-        {/* 10) EquipeSection (fundadores) */}
+        {/* 9) EquipeSection */}
         <EquipeSection />
         
-        {/* 11) CTA Final (Kimi) */}
+        {/* 10) CTA Final */}
         <CTAFinalSection />
         
-        {/* 12) Contact */}
+        {/* 11) Contact */}
         <Contact />
       </main>
       

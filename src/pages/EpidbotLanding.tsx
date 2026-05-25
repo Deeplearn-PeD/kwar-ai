@@ -15,12 +15,12 @@ import {
   Clock,
   Shield,
   Award,
-  Target
+  Target,
+  Sparkles
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { NeuralBackground } from '@/components/NeuralBackground';
 
 // ============================================================================
 // NAVIGATION
@@ -303,9 +303,9 @@ function ProblemSection() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 mb-6">
-              <AlertCircle className="w-4 h-4 text-red-400" />
-              <span className="text-sm font-medium text-red-400">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+              <AlertCircle className="w-4 h-4 text-kwar-electric" />
+              <span className="text-sm font-medium text-kwar-electric">
                 {t('epidbotLanding.problem.badge', { defaultValue: 'O problema' })}
               </span>
             </div>
@@ -354,6 +354,118 @@ function ProblemSection() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// VALIDATION SECTION
+// ============================================================================
+function ValidationSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('validation');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const cards = [
+    {
+      title: t('epidbotLanding.validation.whoTitle', { defaultValue: 'World Health Organization (WHO)' }),
+      subtitle: t('epidbotLanding.validation.whoSubtitle', { defaultValue: 'Eastern Mediterranean Regional Office (EMRO)' }),
+      description: t('epidbotLanding.validation.whoDescription', { defaultValue: 'Early pilot initiative connected to the WHO EMRO innovation and public health ecosystem.' }),
+      image: '/images/who-emro.png',
+      imageAlt: 'WHO EMRO',
+    },
+    {
+      title: t('epidbotLanding.validation.webSummitTitle', { defaultValue: 'Web Summit Rio 2026' }),
+      subtitle: t('epidbotLanding.validation.webSummitSubtitle', { defaultValue: 'Impact Startup' }),
+      description: t('epidbotLanding.validation.webSummitDescription', { defaultValue: 'Selected as an impact-driven startup within the Web Summit ecosystem.' }),
+      image: '/images/RIO26_Impact badge.png',
+      imageAlt: 'Web Summit Impact Startup',
+      link: 'https://rio.websummit.com/pt-br/startups/impact-startups/search/KWAR-AI/',
+    },
+    {
+      title: t('epidbotLanding.validation.usersTitle', { defaultValue: '20+' }),
+      subtitle: t('epidbotLanding.validation.usersSubtitle', { defaultValue: 'Qualified users in 1 month' }),
+      description: t('epidbotLanding.validation.usersDescription', { defaultValue: 'Epidemiologists, surveillance professionals, hospital intelligence teams and public health researchers in Brazil.' }),
+      icon: Users,
+    },
+  ];
+
+  return (
+    <section id="validation" className="relative py-20 lg:py-28 border-y border-white/[0.04]">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">
+              {t('epidbotLanding.validation.badge', { defaultValue: 'Validation' })}
+            </span>
+          </div>
+          <h2
+            className={`font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 transition-all duration-1000 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {t('epidbotLanding.validation.title', { defaultValue: 'Already being validated' })}
+          </h2>
+          <p
+            className={`text-lg text-kwar-gray transition-all duration-1000 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            {t('epidbotLanding.validation.subtitle', { defaultValue: 'EpidBot is already being tested in real public health environments.' })}
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-5">
+          {cards.map((card, index) => (
+            <div
+              key={card.title}
+              className={`group relative p-6 rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.12] hover:bg-white/[0.025] ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              {card.image ? (
+                <div className="mb-5">
+                  {card.link ? (
+                    <a href={card.link} target="_blank" rel="noopener noreferrer" className="inline-block">
+                      <img src={card.image} alt={card.imageAlt} className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ) : (
+                    <img src={card.image} alt={card.imageAlt} className="h-10 w-auto object-contain opacity-70" />
+                  )}
+                </div>
+              ) : card.icon ? (
+                <div className="w-11 h-11 rounded-lg border border-white/[0.06] bg-white/[0.02] flex items-center justify-center mb-5">
+                  <card.icon className="w-5 h-5 text-white/40" strokeWidth={1.5} />
+                </div>
+              ) : null}
+
+              <h3 className="text-white font-semibold text-lg mb-0.5">{card.title}</h3>
+              <p className="text-kwar-electric text-xs tracking-wide uppercase mb-3">{card.subtitle}</p>
+              <p className="text-white/40 text-sm leading-relaxed">{card.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -411,8 +523,9 @@ function WhatIsEpidbotSection() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-gold/10 border border-kwar-gold/30 mb-6">
-              <span className="text-sm font-medium text-kwar-gold">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+              <Sparkles className="w-4 h-4 text-kwar-electric" />
+              <span className="text-sm font-medium text-kwar-electric">
                 {t('epidbotLanding.solution.badge', { defaultValue: 'A solução' })}
               </span>
             </div>
@@ -994,7 +1107,7 @@ function KwarAICredibilitySection() {
             />
             
             <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
-              {t('epidbotLanding.credibility.title', { defaultValue: 'Desenvolvido pela' })} <span className="text-kwar-electric">Kwar-AI</span>
+              {t('epidbotLanding.credibility.title', { defaultValue: 'Desenvolvido pela' })} <span className="bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]">Kwar-AI</span>
             </h3>
             
             <p className="text-kwar-gray mb-6 max-w-xl mx-auto">
@@ -1007,7 +1120,11 @@ function KwarAICredibilitySection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-kwar-electric hover:text-kwar-electric/80 transition-colors font-medium"
             >
-              {t('epidbotLanding.credibility.cta', { defaultValue: 'Conheça a Kwar-AI' })}
+              <span dangerouslySetInnerHTML={{
+                __html: t('epidbotLanding.credibility.cta', {
+                  defaultValue: 'Conheça a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>'
+                })
+              }} />
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -1357,12 +1474,12 @@ function LandingFooter() {
 export default function EpidbotLanding() {
   return (
     <div className="relative min-h-screen bg-kwar-deep">
-      <NeuralBackground />
       <LandingNavbar />
       
       <main className="relative z-10">
         <HeroSection />
         <ProblemSection />
+        <ValidationSection />
         <WhatIsEpidbotSection />
         <WhatItDoesSection />
         <DemoVideoSection />

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Linkedin, User } from 'lucide-react';
+import { Linkedin, Sparkles } from 'lucide-react';
 
 export function EquipeSection() {
   const { t } = useTranslation();
@@ -13,12 +13,14 @@ export function EquipeSection() {
       role: t('equipe.members.flavio.role'),
       bio: t('equipe.members.flavio.bio'),
       linkedin: 'https://linkedin.com/in/flaviocodeco',
+      photo: '/images/flavio.png',
     },
     {
       name: t('equipe.members.joyce.name'),
       role: t('equipe.members.joyce.role'),
       bio: t('equipe.members.joyce.bio'),
       linkedin: 'https://linkedin.com/in/joycefigueiro',
+      photo: '/images/joyce.png',
     },
   ];
 
@@ -44,7 +46,7 @@ export function EquipeSection() {
     <section
       id="equipe"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-kwar-electric/30 to-transparent" />
@@ -56,15 +58,16 @@ export function EquipeSection() {
           }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
             <span className="text-sm font-medium text-kwar-electric">{t('equipe.badge')}</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            {t('equipe.title')}
+            <span dangerouslySetInnerHTML={{ __html: t('equipe.title') }} />
           </h2>
 
           <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
-            {t('equipe.subtitle')}
+            <span dangerouslySetInnerHTML={{ __html: t('equipe.subtitle') }} />
           </p>
         </div>
 
@@ -79,8 +82,8 @@ export function EquipeSection() {
               className="card-glass p-8 text-center group hover:border-kwar-electric/30 transition-all duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-kwar-electric/20 to-kwar-gold/10 flex items-center justify-center mx-auto mb-6 border-2 border-kwar-electric/30">
-                <User className="w-10 h-10 text-kwar-electric/60" />
+              <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-2 border-kwar-electric/30">
+                <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
               </div>
 
               <div className="text-center mb-3">
