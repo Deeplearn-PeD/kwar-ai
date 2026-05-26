@@ -70,6 +70,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/epidbot" element={<EpidbotLanding />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
       <Route path="/epidbot_individual" element={<EpidbotIndividual />} />
