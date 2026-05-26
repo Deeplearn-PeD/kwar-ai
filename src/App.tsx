@@ -15,6 +15,7 @@ import { Footer } from '@/sections/Footer';
 import EpidbotLanding from '@/pages/EpidbotLanding';
 import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
 import EpidbotIndividual from '@/pages/EpidbotIndividual';
+import Epidbot from '@/pages/Epidbot';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -70,7 +71,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/epidbot" element={<EpidbotLanding />} />
+      <Route path="/epidbot" element={<Epidbot />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
       <Route path="/epidbot_individual" element={<EpidbotIndividual />} />

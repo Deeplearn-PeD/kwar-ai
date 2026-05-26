@@ -1,33 +1,260 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Check,
-  ChevronDown,
-  ArrowRight,
-  Zap,
-  Shield,
-  Database,
-  Brain,
-  Clock,
+﻿import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { 
+  ArrowRight, 
+  AlertCircle,
   Users,
-  BarChart3,
-  MessageSquare,
-  Globe,
-  Lock,
-  Play,
-  Sparkles,
+  Zap,
   TrendingUp,
-  Search,
-  FileText,
-  PieChart,
-  Activity,
-  Download,
+  Check,
+  MessageSquare,
+  Menu,
+  X,
+  Play,
+  BarChart3,
+  Clock,
+  Shield,
+  Award,
+  Target,
+  Sparkles
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
-// Animation hook
-function useScrollReveal(threshold = 0.1) {
+// ============================================================================
+// NAVIGATION
+// ============================================================================
+function LandingNavbar() {
+  const { t, i18n } = useTranslation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const languages = [
+    { code: 'pt-BR', label: 'PT', flag: '­ƒçº­ƒçÀ' },
+    { code: 'en', label: 'EN', flag: '­ƒç║­ƒç©' },
+    { code: 'es', label: 'ES', flag: '­ƒç¬­ƒç©' },
+  ];
+
+  const navLinks = [
+    { label: t('epidbotLanding.nav.howItWorks', { defaultValue: 'Como Funciona' }), href: '#steps' },
+    { label: t('epidbotLanding.nav.demo'), href: '#demo' },
+    { label: t('epidbotLanding.nav.pricing'), href: '#pricing' },
+    { label: t('epidbotLanding.nav.contact', { defaultValue: 'Contato' }), href: '#final-cta' },
+  ];
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-kwar-deep/95 backdrop-blur-xl border-b border-kwar-electric/20'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10">
+              <img 
+                src="/images/logo-oficial.png" 
+                alt="Kwar-AI" 
+                className="w-full h-full object-contain transition-transform group-hover:scale-110"
+              />
+            </div>
+            <span className="font-display font-bold text-xl text-white">
+              KWAR<span className="text-kwar-electric">-</span>AI
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="text-sm text-kwar-gray hover:text-white transition-colors relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-kwar-electric transition-all group-hover:w-full" />
+              </button>
+            ))}
+          </div>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-4">
+            {/* Language Selector */}
+            <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
+              {languages.map((lng) => (
+                <button
+                  key={lng.code}
+                  onClick={() => changeLanguage(lng.code)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+                    i18n.language === lng.code
+                      ? 'bg-kwar-electric text-kwar-deep'
+                      : 'text-kwar-gray hover:text-white'
+                  }`}
+                >
+                  {lng.label}
+                </button>
+              ))}
+            </div>
+
+            <Button
+              onClick={() => scrollToSection('#final-cta')}
+              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
+            >
+              {t('epidbotLanding.nav.cta')}
+            </Button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-white"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-kwar-deep/98 border-b border-kwar-electric/20">
+          <div className="px-4 py-6 space-y-4">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="block w-full text-left py-2 text-white font-medium"
+              >
+                {link.label}
+              </button>
+            ))}
+            <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+              {languages.map((lng) => (
+                <button
+                  key={lng.code}
+                  onClick={() => changeLanguage(lng.code)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg flex-1 ${
+                    i18n.language === lng.code
+                      ? 'bg-kwar-electric text-kwar-deep'
+                      : 'bg-white/5 text-kwar-gray'
+                  }`}
+                >
+                  {lng.flag} {lng.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+// ============================================================================
+// HERO SECTION - MINIMALISTA E IMPACTANTE
+// ============================================================================
+function HeroSection() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: 'url(/images/hero.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay gradiente escuro - esquerda mais escura para direita mais clara */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.75) 50%, rgba(10, 22, 40, 0.50) 100%)',
+        }}
+      />
+      
+      {/* Grid pattern sutil por cima */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
+
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+        <div className="flex flex-col items-center text-center">
+          {/* Main Title - Minimalista e Impactante */}
+          <h1
+            className={`font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-16 max-w-[900px] transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            {t('epidbotLanding.hero.titleLine1', { defaultValue: 'O surto n├úo espera' })} {t('epidbotLanding.hero.titleLine2', { defaultValue: 'voc├¬ analisar os dados.' })}
+          </h1>
+
+          {/* CTA Minimalista - Centralizado */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <Button
+              onClick={() => scrollToSection('#problem')}
+              size="lg"
+              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-12 py-8 text-xl group shadow-lg shadow-kwar-electric/25"
+            >
+              {t('epidbotLanding.hero.ctaButton', { defaultValue: 'E agora?' })}
+              <ArrowRight className="w-6 h-6 ml-3 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 rounded-full border-2 border-kwar-electric/30 flex justify-center pt-2">
+          <div className="w-1.5 h-3 bg-kwar-electric rounded-full" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// PROBLEM SECTION
+// ============================================================================
+function ProblemSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,472 +264,95 @@ function useScrollReveal(threshold = 0.1) {
           observer.disconnect();
         }
       },
-      { threshold }
+      { threshold: 0.2 }
     );
-    if (ref.current) observer.observe(ref.current);
+
+    const element = document.getElementById('problem');
+    if (element) observer.observe(element);
+
     return () => observer.disconnect();
-  }, [threshold]);
-
-  return { ref, isVisible };
-}
-
-// ============================================================================
-// NAVBAR
-// ============================================================================
-function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-[#080c14]/80 backdrop-blur-xl border-b border-white/[0.04]' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-md bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-            <div className="grid grid-cols-2 gap-0.5">
-              <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-              <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-              <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-              <div className="w-1.5 h-1.5 rounded-[1px] bg-white/40" />
-            </div>
-          </div>
-          <span className="font-display font-bold text-lg text-white tracking-tight">
-            Epid<span className="text-cyan-400">Bot</span>
-          </span>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          {[
-            { label: 'Recursos', href: '#features' },
-            { label: 'Como funciona', href: '#roi' },
-            { label: 'Planos', href: '#pricing' },
-            { label: 'Equipe', href: '#differentiation' },
-            { label: 'FAQ', href: '#faq' },
-          ].map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="text-sm text-white/50 hover:text-white transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button className="text-sm text-white/50 hover:text-white transition-colors hidden sm:block">
-            Entrar
-          </button>
-          <button
-            onClick={() => scrollTo('#pricing')}
-            className="bg-cyan-400 hover:bg-cyan-300 text-[#080c14] text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
-          >
-            Experimentar EpidBot
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-// ============================================================================
-// HERO
-// ============================================================================
-function Hero() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  return (
-    <section ref={ref} className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-400/[0.03] rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-6">
-              <Zap className="w-3 h-3 text-cyan-400" />
-              <span className="text-[11px] font-semibold text-cyan-400 tracking-wider uppercase">IA Especializada</span>
-            </div>
-
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] mb-5">
-              IA especializada para{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                saúde pública e epidemiologia
-              </span>
-            </h1>
-
-            <p className="text-white/50 text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
-              Transforme dados públicos em análises rápidas, contextualizadas e utilizáveis para vigilância, pesquisa e tomada de decisão.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-8">
-              <button className="bg-cyan-400 hover:bg-cyan-300 text-[#080c14] text-sm font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] flex items-center gap-2">
-                Experimentar EpidBot
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="px-6 py-3 rounded-lg border border-white/10 text-white/70 text-sm font-medium hover:bg-white/5 transition-all duration-300 flex items-center gap-2">
-                <Play className="w-4 h-4" />
-                Ver demonstração
-              </button>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs text-white/30">
-              <Shield className="w-4 h-4 text-cyan-400/60" />
-              <span>Desenvolvido para o contexto epidemiológico brasileiro.</span>
-            </div>
-          </div>
-
-          {/* Right - Product Mockup */}
-          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="relative rounded-2xl border border-white/[0.08] bg-[#0d1117]/80 backdrop-blur-sm overflow-hidden shadow-2xl shadow-cyan-400/5">
-              {/* Header */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.04]">
-                <div className="w-3 h-3 rounded-full bg-red-500/40" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/40" />
-                <div className="w-3 h-3 rounded-full bg-green-500/40" />
-                <span className="ml-auto text-[10px] text-white/30 font-medium">EpidBot</span>
-              </div>
-
-              <div className="flex">
-                {/* Sidebar */}
-                <div className="hidden sm:flex w-48 flex-col border-r border-white/[0.04] p-3 gap-1">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.04] text-white/80 text-xs">
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    Nova conversa
-                  </div>
-                  {['Conversas', 'Indicadores', 'Bases de dados', 'Análises salvas', 'Relatórios', 'Configurações'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 px-3 py-2 rounded-lg text-white/30 text-xs hover:bg-white/[0.02] transition-colors">
-                      <div className="w-3.5 h-3.5 rounded-[2px] border border-white/20" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Chat area */}
-                <div className="flex-1 p-4 space-y-4">
-                  {/* User message */}
-                  <div className="flex justify-end">
-                    <div className="bg-cyan-400/10 border border-cyan-400/20 rounded-xl rounded-tr-sm px-4 py-3 max-w-[80%]">
-                      <p className="text-xs text-white/70">
-                        Quais foram os casos de dengue por semana epidemiológica em 2024 no estado de Minas Gerais?
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Bot response */}
-                  <div className="flex gap-3">
-                    <div className="w-6 h-6 rounded-md bg-gradient-to-br from-cyan-400 to-blue-500 flex-shrink-0 flex items-center justify-center">
-                      <Zap className="w-3 h-3 text-white" />
-                    </div>
-                    <div className="space-y-3 flex-1">
-                      <p className="text-xs text-white/60 leading-relaxed">
-                        Aqui está o número de casos prováveis de dengue por semana epidemiológica em Minas Gerais, em 2024.
-                      </p>
-                      {/* Chart mock */}
-                      <div className="bg-[#0a0e14] rounded-xl p-4 border border-white/[0.04]">
-                        <div className="text-[10px] text-white/40 mb-3">Casos prováveis de dengue — MG, 2024</div>
-                        <svg viewBox="0 0 300 80" className="w-full h-20">
-                          <defs>
-                            <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.2" />
-                              <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-                            </linearGradient>
-                          </defs>
-                          <path
-                            d="M0,70 Q30,65 60,55 T120,40 T180,35 T240,20 T300,15"
-                            fill="none"
-                            stroke="#22d3ee"
-                            strokeWidth="1.5"
-                          />
-                          <path
-                            d="M0,70 Q30,65 60,55 T120,40 T180,35 T240,20 T300,15 L300,80 L0,80 Z"
-                            fill="url(#chartGrad)"
-                          />
-                          <circle cx="60" cy="55" r="3" fill="#22d3ee" />
-                          <circle cx="120" cy="40" r="3" fill="#22d3ee" />
-                          <circle cx="180" cy="35" r="3" fill="#22d3ee" />
-                          <circle cx="240" cy="20" r="3" fill="#22d3ee" />
-                          <circle cx="300" cy="15" r="3" fill="#22d3ee" />
-                        </svg>
-                        <div className="flex justify-between text-[9px] text-white/20 mt-1 px-2">
-                          <span>1</span><span>11</span><span>21</span><span>31</span><span>41</span><span>51</span>
-                        </div>
-                        <div className="text-center text-[9px] text-white/20 mt-1">Semana epidemiológica</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Input */}
-                  <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] mt-4">
-                    <input
-                      type="text"
-                      placeholder="Pergunte ao EpidBot..."
-                      className="flex-1 bg-transparent text-xs text-white/50 placeholder:text-white/20 outline-none"
-                      readOnly
-                    />
-                    <div className="w-6 h-6 rounded-md bg-cyan-400/20 flex items-center justify-center">
-                      <ArrowRight className="w-3 h-3 text-cyan-400" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Glow */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// TRUST
-// ============================================================================
-function Trust() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  const logos = [
-    { name: 'InfoDengue', icon: Activity },
-    { name: 'PySUS', icon: Database },
-    { name: 'Web Summit', icon: Globe },
-    { name: 'UFMG', icon: Shield },
-    { name: 'SUS', icon: Users },
-    { name: 'Fiocruz', icon: Sparkles },
-  ];
-
-  return (
-    <section ref={ref} className="py-12 border-y border-white/[0.04] bg-white/[0.01]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <p
-          className={`text-center text-[11px] font-medium text-white/30 tracking-widest uppercase mb-8 transition-all duration-700 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          Confiança de quem usa e apoia
-        </p>
-
-        <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
-          {logos.map((logo, i) => {
-            const Icon = logo.icon;
-            return (
-              <div
-                key={logo.name}
-                className={`flex items-center gap-2 text-white/30 hover:text-white/50 transition-all duration-500 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <Icon className="w-5 h-5" />
-                <span className="text-sm font-medium">{logo.name}</span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// FEATURES
-// ============================================================================
-function Features() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  const features = [
+  const problems = [
     {
-      icon: Database,
-      title: 'Dados públicos integrados',
-      desc: 'Acesse e interprete informações epidemiológicas sem fluxos complexos de extração. DATASUS, SINAN, SIM, SIH e outras bases.',
-    },
-    {
-      icon: Brain,
-      title: 'Inteligência contextual',
-      desc: 'O EpidBot entende indicadores, sazonalidade, regiões e o contexto epidemiológico brasileiro para gerar respostas mais precisas.',
+      icon: Users,
+      title: t('epidbotLanding.problem.items.team.title', { defaultValue: 'Sua equipe j├í est├í no limite' }),
+      description: t('epidbotLanding.problem.items.team.description', { defaultValue: 'Poucas pessoas tentando dar conta de tudo. Enquanto os dados se acumulam, o tempo para analisar s├│ diminui.' }),
     },
     {
       icon: TrendingUp,
-      title: 'Análises mais rápidas',
-      desc: 'Consultas em linguagem natural, visualizações automáticas e análises exploratórias em minutos, não em horas.',
+      title: t('epidbotLanding.problem.items.surprise.title', { defaultValue: 'O problema cresce ÔÇö e voc├¬ descobre tarde demais' }),
+      description: t('epidbotLanding.problem.items.surprise.description', { defaultValue: 'Quando o relat├│rio fica pronto, os casos j├í aumentaram. A decis├úo sempre chega depois do problema.' }),
     },
     {
-      icon: FileText,
-      title: 'Menos dependência técnica',
-      desc: 'Reduz a necessidade de scripts extensos, manipulação manual de planilhas e conhecimento avançado em programação.',
-    },
-    {
-      icon: Users,
-      title: 'Apoio à gestão e comunicação',
-      desc: 'Gere gráficos, tabelas e resumos prontos para compartilhar com equipes, gestores e outros públicos de forma clara.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Ambiente em evolução contínua',
-      desc: 'Novas bases, indicadores e funcionalidades sendo adicionadas constantemente com foco nas necessidades da área.',
+      icon: AlertCircle,
+      title: t('epidbotLanding.problem.items.money.title', { defaultValue: 'Na hora de prestar contas, faltam respostas' }),
+      description: t('epidbotLanding.problem.items.money.description', { defaultValue: 'Voc├¬ precisa explicar a situa├º├úo, mas os dados n├úo est├úo organizados. E o tempo para analisar j├í acabou.' }),
     },
   ];
 
   return (
-    <section id="features" ref={ref} className="py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <h2
-          className={`font-display text-3xl sm:text-4xl font-bold text-center text-white mb-14 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          Feito para o trabalho{' '}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-            epidemiológico real
-          </span>
-        </h2>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className={`group relative p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-cyan-400/20 hover:bg-white/[0.03] transition-all duration-500 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Icon className="w-5 h-5 text-cyan-400" />
-                </div>
-                <h3 className="text-white font-semibold text-base mb-2">{feature.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{feature.desc}</p>
-
-                {/* Subtle glow on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// ROI SECTION
-// ============================================================================
-function ROI() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
-  const tasks = [
-    { icon: Search, label: 'Busca de dados' },
-    { icon: Check, label: 'Limpeza e estruturação' },
-    { icon: BarChart3, label: 'Geração de gráficos' },
-    { icon: FileText, label: 'Relatórios e tabelas' },
-    { icon: PieChart, label: 'Análises exploratórias' },
-  ];
-
-  return (
-    <section id="roi" ref={ref} className="py-20 lg:py-28 bg-white/[0.01]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-              Algumas horas economizadas{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                por semana já fazem diferença.
+    <section id="problem" className="relative py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content - Texto + Imagem */}
+          <div
+            className={`transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+              <AlertCircle className="w-4 h-4 text-kwar-electric" />
+              <span className="text-sm font-medium text-kwar-electric">
+                {t('epidbotLanding.problem.badge', { defaultValue: 'O problema' })}
               </span>
+            </div>
+            
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+              <span className="block">{t('epidbotLanding.problem.title', { defaultValue: 'Voc├¬ est├í fazendo o poss├¡vel.' })}</span>
+              <span className="block">{t('epidbotLanding.problem.subtitle', { defaultValue: 'Mas n├úo est├í sendo suficiente.' })}</span>
             </h2>
-
-            <p className="text-white/40 text-base mb-8 leading-relaxed">
-              O EpidBot foi pensado para reduzir o tempo gasto em tarefas técnicas e repetitivas que não precisam ser um gargalo para o seu trabalho.
+            
+            <p className="text-lg text-kwar-gray mb-8">
+              {t('epidbotLanding.problem.description', { defaultValue: 'Gerir sa├║de p├║blica com pouca equipe n├úo ├® f├ícil. Voc├¬ precisa tomar decis├Áes sem tempo e sem todas as respostas.' })}
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              {tasks.map((task) => {
-                const Icon = task.icon;
-                return (
-                  <div key={task.label} className="flex items-center gap-3 text-sm text-white/50">
-                    <Icon className="w-4 h-4 text-cyan-400/60" />
-                    <span>{task.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="inline-flex items-start gap-3 p-4 rounded-xl border border-cyan-400/20 bg-cyan-400/[0.03]">
-              <Clock className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-cyan-400/80">
-                Se a ferramenta economizar apenas algumas horas por semana, ela já se paga rapidamente.
-              </p>
+            {/* Imagem impactante */}
+            <div className="relative w-full">
+              <div className="absolute -inset-4 bg-red-500/10 rounded-3xl blur-2xl" />
+              <div className="relative card-glass p-4 rounded-2xl border-red-500/20">
+                <img
+                  src="/images/problema.png"
+                  alt={t('epidbotLanding.problem.imageAlt', { defaultValue: 'Profissional de sa├║de afundado em planilhas e relat├│rios' })}
+                  className="w-full h-auto rounded-xl"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Right - Table mockup */}
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="relative rounded-2xl border border-white/[0.08] bg-[#0d1117]/80 backdrop-blur-sm overflow-hidden shadow-2xl shadow-cyan-400/5">
-              {/* Chat header */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.04]">
-                <div className="px-2 py-1 rounded-md bg-cyan-400/10 text-[10px] text-cyan-400 font-medium">Pergunta</div>
-              </div>
-
-              {/* Question bubble */}
-              <div className="px-4 py-3">
-                <div className="bg-cyan-400/10 border border-cyan-400/20 rounded-xl rounded-tl-sm px-4 py-3 max-w-[90%] ml-auto">
-                  <p className="text-xs text-white/70">
-                    Quais os 10 municípios com maior incidência de chikungunya em 2024 no Nordeste?
-                  </p>
-                </div>
-              </div>
-
-              {/* Response */}
-              <div className="px-4 pb-4">
-                <div className="bg-[#0a0e14] rounded-xl border border-white/[0.04] overflow-hidden">
-                  <div className="px-4 py-3 border-b border-white/[0.04] flex items-center justify-between">
-                    <span className="text-xs text-white/50">Top 10 municípios por incidência de chikungunya — 2024</span>
-                    <button className="text-[10px] text-cyan-400 flex items-center gap-1">
-                      <Download className="w-3 h-3" />
-                      Baixar tabela
-                    </button>
+          {/* Right Content - Problem Cards */}
+          <div className="space-y-6">
+            {problems.map((problem, index) => (
+              <div
+                key={problem.title}
+                className={`card-glass p-8 hover:border-red-500/30 transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                }`}
+                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <problem.icon className="w-7 h-7 text-red-400" />
                   </div>
-                  <div className="px-4 py-2">
-                    <div className="grid grid-cols-4 gap-2 text-[10px] text-white/30 mb-2">
-                      <span>#</span><span>Município</span><span>UF</span><span>Incidência</span>
-                    </div>
-                    {[
-                      ['1', 'Ipueiras', 'PE', '1.482,7'],
-                      ['2', 'Fortaleza', 'CE', '1.179,3'],
-                      ['3', 'Camaçari', 'BA', '1.026,8'],
-                      ['4', 'São Luís', 'MA', '987,1'],
-                      ['5', 'Lauro de Freitas', 'BA', '876,2'],
-                    ].map((row) => (
-                      <div key={row[0]} className="grid grid-cols-4 gap-2 text-[10px] py-1.5 border-t border-white/[0.02]">
-                        <span className="text-white/40">{row[0]}</span>
-                        <span className="text-white/60">{row[1]}</span>
-                        <span className="text-white/40">{row[2]}</span>
-                        <span className="text-white/60">{row[3]}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="px-4 py-2 border-t border-white/[0.04] text-[9px] text-white/20">
-                    Fonte: SINAN — Dados atualizados em 20/05/2024
+                  <div>
+                    <h3 className="text-white font-semibold text-xl mb-3">{problem.title}</h3>
+                    <p className="text-kwar-gray text-base leading-relaxed">{problem.description}</p>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -511,73 +361,111 @@ function ROI() {
 }
 
 // ============================================================================
-// DIFFERENTIATION
+// VALIDATION SECTION
 // ============================================================================
-function Differentiation() {
-  const { ref, isVisible } = useScrollReveal(0.1);
+function ValidationSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('validation');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
 
   const cards = [
     {
-      icon: Shield,
-      title: 'Epidemiologia aplicada',
-      desc: 'Entende indicadores, definições e métodos utilizados na prática profissional.',
+      title: t('epidbotLanding.validation.whoTitle', { defaultValue: 'World Health Organization (WHO)' }),
+      subtitle: t('epidbotLanding.validation.whoSubtitle', { defaultValue: 'Eastern Mediterranean Regional Office (EMRO)' }),
+      description: t('epidbotLanding.validation.whoDescription', { defaultValue: 'Early pilot initiative connected to the WHO EMRO innovation and public health ecosystem.' }),
+      image: '/images/who-emro.png',
+      imageAlt: 'WHO EMRO',
     },
     {
-      icon: Database,
-      title: 'Bases brasileiras nativas',
-      desc: 'Integração com as principais bases públicas utilizadas no Brasil.',
+      title: t('epidbotLanding.validation.webSummitTitle', { defaultValue: 'Web Summit Rio 2026' }),
+      subtitle: t('epidbotLanding.validation.webSummitSubtitle', { defaultValue: 'Impact Startup' }),
+      description: t('epidbotLanding.validation.webSummitDescription', { defaultValue: 'Selected as an impact-driven startup within the Web Summit ecosystem.' }),
+      image: '/images/RIO26_Impact badge.png',
+      imageAlt: 'Web Summit Impact Startup',
+      link: 'https://rio.websummit.com/pt-br/startups/impact-startups/search/KWAR-AI/',
     },
     {
-      icon: Check,
-      title: 'Respostas confiáveis',
-      desc: 'Transparência nas fontes e rastreabilidade das informações utilizadas.',
-    },
-    {
-      icon: Lock,
-      title: 'Privacidade e segurança',
-      desc: 'Seus dados e análises são protegidos com padrões de segurança corporativos.',
+      title: t('epidbotLanding.validation.usersTitle', { defaultValue: '20+' }),
+      subtitle: t('epidbotLanding.validation.usersSubtitle', { defaultValue: 'Qualified users in 1 month' }),
+      description: t('epidbotLanding.validation.usersDescription', { defaultValue: 'Epidemiologists, surveillance professionals, hospital intelligence teams and public health researchers in Brazil.' }),
+      icon: Users,
     },
   ];
 
   return (
-    <section id="differentiation" ref={ref} className="py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-              Não é uma IA genérica.{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                É especializada.
-              </span>
-            </h2>
+    <section id="validation" className="relative py-20 lg:py-28 border-y border-white/[0.04]">
+      <div className="absolute inset-0 grid-bg opacity-20" />
 
-            <p className="text-white/40 text-base leading-relaxed">
-              Enquanto ferramentas genéricas exigem prompts extensos e adaptação técnica, o EpidBot já nasceu voltado para a realidade da saúde pública brasileira.
-            </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Sparkles className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">
+              {t('epidbotLanding.validation.badge', { defaultValue: 'Validation' })}
+            </span>
           </div>
+          <h2
+            className={`font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 transition-all duration-1000 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {t('epidbotLanding.validation.title', { defaultValue: 'Already being validated' })}
+          </h2>
+          <p
+            className={`text-lg text-kwar-gray transition-all duration-1000 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            {t('epidbotLanding.validation.subtitle', { defaultValue: 'EpidBot is already being tested in real public health environments.' })}
+          </p>
+        </div>
 
-          {/* Right - Cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {cards.map((card, i) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={card.title}
-                  className={`p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.1] transition-all duration-500 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                  }`}
-                  style={{ transitionDelay: `${(i + 1) * 100}ms` }}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-3">
-                    <Icon className="w-4 h-4 text-cyan-400" />
-                  </div>
-                  <h3 className="text-white font-medium text-sm mb-1.5">{card.title}</h3>
-                  <p className="text-white/40 text-xs leading-relaxed">{card.desc}</p>
+        <div className="grid sm:grid-cols-3 gap-5">
+          {cards.map((card, index) => (
+            <div
+              key={card.title}
+              className={`group relative p-6 rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.12] hover:bg-white/[0.025] ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              {card.image ? (
+                <div className="mb-5">
+                  {card.link ? (
+                    <a href={card.link} target="_blank" rel="noopener noreferrer" className="inline-block">
+                      <img src={card.image} alt={card.imageAlt} className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ) : (
+                    <img src={card.image} alt={card.imageAlt} className="h-10 w-auto object-contain opacity-70" />
+                  )}
                 </div>
-              );
-            })}
-          </div>
+              ) : card.icon ? (
+                <div className="w-11 h-11 rounded-lg border border-white/[0.06] bg-white/[0.02] flex items-center justify-center mb-5">
+                  <card.icon className="w-5 h-5 text-white/40" strokeWidth={1.5} />
+                </div>
+              ) : null}
+
+              <h3 className="text-white font-semibold text-lg mb-0.5">{card.title}</h3>
+              <p className="text-kwar-electric text-xs tracking-wide uppercase mb-3">{card.subtitle}</p>
+              <p className="text-white/40 text-sm leading-relaxed">{card.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -585,170 +473,113 @@ function Differentiation() {
 }
 
 // ============================================================================
-// PRICING
+// O QUE E O EPIDBOT SECTION
 // ============================================================================
-function Pricing() {
-  const [isAnnual, setIsAnnual] = useState(true);
-  const { ref, isVisible } = useScrollReveal(0.1);
+function WhatIsEpidbotSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('what-is');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const features = [
+    {
+      icon: MessageSquare,
+      title: t('epidbotLanding.whatis.features.language.title', { defaultValue: 'Fa├ºa perguntas em linguagem simples' }),
+    },
+    {
+      icon: BarChart3,
+      title: t('epidbotLanding.whatis.features.analysis.title', { defaultValue: 'Receba an├ílises baseadas em dados reais' }),
+    },
+    {
+      icon: Shield,
+      title: t('epidbotLanding.whatis.features.decision.title', { defaultValue: 'Tome decis├Áes com mais rapidez e seguran├ºa' }),
+    },
+  ];
 
   return (
-    <section id="pricing" ref={ref} className="py-20 lg:py-28 bg-white/[0.01]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <h2
-          className={`font-display text-3xl sm:text-4xl font-bold text-center text-white mb-12 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          Escolha o plano ideal{' '}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-            para você
-          </span>
-        </h2>
-
-        {/* Toggle */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center bg-white/[0.03] rounded-full p-1 border border-white/[0.06]">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                !isAnnual ? 'bg-white/10 text-white' : 'text-white/40 hover:text-white/60'
-              }`}
-            >
-              Mensal
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                isAnnual ? 'bg-cyan-400 text-[#080c14]' : 'text-white/40 hover:text-white/60'
-              }`}
-            >
-              Anual
-              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                isAnnual ? 'bg-[#080c14]/20 text-[#080c14]' : 'bg-cyan-400/20 text-cyan-400'
-              }`}>
-                -17%
+    <section id="what-is" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep to-kwar-deep/95">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left - Content */}
+          <div
+            className={`transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+              <Sparkles className="w-4 h-4 text-kwar-electric" />
+              <span className="text-sm font-medium text-kwar-electric">
+                {t('epidbotLanding.solution.badge', { defaultValue: 'A solu├º├úo' })}
               </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Cards */}
-        <div className="grid lg:grid-cols-4 gap-5">
-          {/* Free */}
-          <div
-            className={`rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 flex flex-col transition-all duration-700 hover:border-white/[0.1] ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '100ms' }}
-          >
-            <h3 className="text-white font-semibold text-lg mb-1">Free</h3>
-            <p className="text-white/40 text-sm mb-5">Para começar</p>
-            <div className="mb-6">
-              <span className="text-3xl font-bold text-white">R$ 0</span>
-              <span className="text-white/30 text-sm">/mês</span>
             </div>
-            <ul className="space-y-3 mb-7 flex-1">
-              {[
-                'Consultas limitadas por dia',
-                'Acesso a indicadores básicos',
-                'Análises e gráficos padrão',
-                'Suporte por comunidade',
-              ].map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-white/50">
-                  <Check className="w-4 h-4 text-cyan-400/60 flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full py-2.5 rounded-lg border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-all">
-              Começar gratuitamente
-            </button>
-          </div>
-
-          {/* Pro - highlighted */}
-          <div
-            className={`relative rounded-2xl border border-cyan-400/30 bg-gradient-to-b from-cyan-400/[0.05] to-transparent p-7 flex flex-col transition-all duration-700 shadow-[0_0_40px_rgba(34,211,238,0.06)] lg:scale-105 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '200ms' }}
-          >
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-cyan-400 text-[#080c14] text-[10px] font-bold tracking-wider uppercase rounded-full">
-              Mais escolhido
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-1">Pro</h3>
-            <p className="text-white/40 text-sm mb-5">Para profissionais</p>
-            <div className="mb-6">
-              <span className="text-3xl font-bold text-white">R$ 97</span>
-              <span className="text-white/30 text-sm">/mês</span>
-            </div>
-            <ul className="space-y-3 mb-7 flex-1">
-              {[
-                'Mais consultas por dia',
-                'Acesso a todas as bases',
-                'Análises avançadas e personalizadas',
-                'Exportação de relatórios',
-                'Suporte prioritário',
-              ].map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-white/70">
-                  <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-[#080c14] text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-              Assinar Pro
-            </button>
-          </div>
-
-          {/* Team */}
-          <div
-            className={`rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 flex flex-col transition-all duration-700 hover:border-white/[0.1] ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '300ms' }}
-          >
-            <h3 className="text-white font-semibold text-lg mb-1">Team</h3>
-            <p className="text-white/40 text-sm mb-5">Para equipes e instituições</p>
-            <div className="mb-6">
-              <span className="text-2xl font-bold text-white">Sob consulta</span>
-            </div>
-            <ul className="space-y-3 mb-7 flex-1">
-              {[
-                'Usuários ilimitados',
-                'Recursos avançados de colaboração',
-                'Relatórios automatizados',
-                'Suporte dedicado',
-                'Integrações e API',
-              ].map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-white/50">
-                  <Check className="w-4 h-4 text-cyan-400/60 flex-shrink-0 mt-0.5" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full py-2.5 rounded-lg border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-all">
-              Falar com o time
-            </button>
-          </div>
-
-          {/* Early Adopter */}
-          <div
-            className={`rounded-2xl border border-amber-500/20 bg-gradient-to-b from-amber-500/[0.05] to-transparent p-7 flex flex-col transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '400ms' }}
-          >
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
-              <Zap className="w-5 h-5 text-amber-400" />
-            </div>
-            <h3 className="text-white font-semibold text-base mb-2">Early adopter access</h3>
-            <p className="text-white/40 text-sm leading-relaxed mb-6 flex-1">
-              Os primeiros usuários terão condições especiais durante a fase inicial da plataforma.
+            
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+              {t('epidbotLanding.solution.title', { defaultValue: 'EpidBot: Um analista epidemiol├│gico dispon├¡vel quando voc├¬ precisa' })}
+            </h2>
+            
+            <p className="text-lg text-kwar-gray mb-8">
+              {t('epidbotLanding.solution.subtitle', { defaultValue: 'An├ílises de sa├║de p├║blica em minutos, sem complica├º├úo t├®cnica.' })}
             </p>
-            <button className="text-amber-400 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
-              Saiba mais
-              <ArrowRight className="w-4 h-4" />
-            </button>
+
+            <div className="space-y-4">
+              {features.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className={`flex items-center gap-4 transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                  }`}
+                  style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-kwar-electric/10 flex items-center justify-center flex-shrink-0">
+                    <feature.icon className="w-5 h-5 text-kwar-electric" />
+                  </div>
+                  <span className="text-white font-medium">{feature.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right - Imagem do Produto */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}
+          >
+            <div className="relative max-w-md lg:max-w-lg mx-auto">
+              {/* Glow effect behind image */}
+              <div className="absolute -inset-4 bg-kwar-electric/20 rounded-3xl blur-3xl" />
+              
+              {/* Image container */}
+              <div className="relative card-glass p-4 rounded-2xl border-kwar-electric/30">
+                <img
+                  src="/images/epidbot.png"
+                  alt="EpidBot Interface"
+                  className="w-full h-auto rounded-xl shadow-2xl"
+                />
+                
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -right-4 bg-kwar-electric text-kwar-deep px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                  IA Powered
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -757,34 +588,805 @@ function Pricing() {
 }
 
 // ============================================================================
-// FINAL CTA
+// O QUE ELE FAZ NA PRATICA SECTION
 // ============================================================================
-function FinalCTA() {
-  const { ref, isVisible } = useScrollReveal(0.1);
+function WhatItDoesSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('what-it-does');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const benefits = [
+    {
+      icon: Clock,
+      title: t('epidbotLanding.does.fast.title', { defaultValue: 'Voc├¬ tem respostas na hora' }),
+      description: t('epidbotLanding.does.fast.description', { defaultValue: 'Pare de esperar dias por relat├│rios. Fa├ºa uma pergunta e receba a an├ílise em minutos.' }),
+    },
+    {
+      icon: BarChart3,
+      title: t('epidbotLanding.does.location.title', { defaultValue: 'Voc├¬ sabe exatamente onde agir' }),
+      description: t('epidbotLanding.does.location.description', { defaultValue: 'Identifique bairros, regi├Áes ou grupos de risco sem precisar montar planilhas ou cruzar dados manualmente.' }),
+    },
+    {
+      icon: Shield,
+      title: t('epidbotLanding.does.confidence.title', { defaultValue: 'Voc├¬ chega preparado e com dados claros' }),
+      description: t('epidbotLanding.does.confidence.description', { defaultValue: 'Tenha n├║meros confi├íveis na hora de prestar contas. Mais seguran├ºa nas decis├Áes, menos improviso.' }),
+    },
+  ];
 
   return (
-    <section ref={ref} className="py-16 lg:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section id="what-it-does" className="relative py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`relative rounded-2xl border border-white/[0.06] bg-gradient-to-r from-cyan-400/[0.05] to-blue-500/[0.05] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 transition-all duration-1000 ${
+          className={`text-center mb-20 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
-              <Shield className="w-6 h-6 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Zap className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">
+              {t('epidbotLanding.does.badge', { defaultValue: 'O que muda na sua rotina' })}
+            </span>
+          </div>
+          
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            {t('epidbotLanding.does.title', { defaultValue: 'Voc├¬ deixa de correr atr├ís dos dados' })}
+          </h2>
+          <p className="text-xl text-kwar-electric max-w-3xl mx-auto mb-6">
+            {t('epidbotLanding.does.titleHighlight', { defaultValue: 'e passa a tomar decis├Áes assertivas.' })}
+          </p>
+          
+          <p className="text-xl text-kwar-gray max-w-3xl mx-auto">
+            {t('epidbotLanding.does.subtitle', { defaultValue: 'Sem planilhas, sem esperar dias por relat├│rios. Voc├¬ tem respostas claras, na hora que precisa.' })}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+          {benefits.map((benefit, index) => (
+            <div
+              key={benefit.title}
+              className={`card-glass p-8 text-center hover:border-kwar-electric/30 transition-all duration-700 group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              <div className="w-16 h-16 rounded-2xl bg-kwar-electric/10 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+                <benefit.icon className="w-8 h-8 text-kwar-electric" />
+              </div>
+              <h3 className="text-white font-bold text-xl mb-4 leading-snug">{benefit.title}</h3>
+              <p className="text-kwar-gray text-base leading-relaxed max-w-xs mx-auto">{benefit.description}</p>
             </div>
-            <div>
-              <h3 className="font-display text-2xl font-bold text-white mb-2">Antecipar é proteger.</h3>
-              <p className="text-white/40 text-sm leading-relaxed max-w-md">
-                Dados melhores. Decisões mais rápidas. Impacto real na saúde do população.
-              </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// DEMO VIDEO SECTION
+// ============================================================================
+function DemoVideoSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('demo');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="demo" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep/95 to-kwar-deep">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`text-center mb-12 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <Play className="w-4 h-4 text-kwar-electric" />
+            <span className="text-sm font-medium text-kwar-electric">
+              {t('epidbotLanding.demo.badge', { defaultValue: 'Demonstra├º├úo' })}
+            </span>
+          </div>
+          
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            Veja como o EpidBot funciona na pr├ítica
+          </h2>
+          
+          <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
+            {t('epidbotLanding.demo.subtitle', { defaultValue: 'Em poucos minutos, voc├¬ entende como transformar dados em decis├Áes.' })}
+          </p>
+        </div>
+
+        {/* Video Embed */}
+        <div
+          className={`relative transition-all duration-1000 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="card-glass p-2 rounded-2xl border-kwar-electric/20">
+            <div className="relative aspect-video bg-kwar-deep rounded-xl overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/uOiREDMb2B0"
+                title="EpidBot Demo"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
+          
+          {/* Glow */}
+          <div className="absolute -inset-4 bg-kwar-electric/5 rounded-3xl blur-2xl -z-10" />
+        </div>
 
-          <button className="bg-cyan-400 hover:bg-cyan-300 text-[#080c14] text-sm font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] flex-shrink-0">
-            Experimentar EpidBot
-          </button>
+        {/* Micro-copy */}
+        <p
+          className={`text-center text-kwar-gray mt-8 transition-all duration-1000 delay-400 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {t('epidbotLanding.demo.note', { defaultValue: 'Sem instala├º├úo. Sem equipe t├®cnica. Direto ao ponto.' })}
+        </p>
+
+        {/* Access App Button */}
+        <div
+          className={`text-center mt-8 transition-all duration-1000 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <Button
+            asChild
+            size="lg"
+            className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-10 py-6 text-lg group shadow-lg shadow-kwar-electric/25"
+          >
+            <a href="https://epidbot.kwar-ai.com.br" target="_blank" rel="noopener noreferrer">
+              {t('epidbotLanding.demo.accessApp', { defaultValue: 'Experimente o EpidBot!' })}
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// COMO FUNCIONA SECTION
+// ============================================================================
+function HowItWorksSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('steps');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const steps = [
+    {
+      number: '01',
+      title: t('epidbotLanding.steps.step1.title', { defaultValue: 'Voc├¬ faz uma pergunta' }),
+      description: t('epidbotLanding.steps.step1.description', { defaultValue: 'Em linguagem natural, como faria a um analista experiente.' }),
+    },
+    {
+      number: '02',
+      title: t('epidbotLanding.steps.step2.title', { defaultValue: 'O EpidBot analisa os dados' }),
+      description: t('epidbotLanding.steps.step2.description', { defaultValue: 'Processa informa├º├Áes de m├║ltiplas fontes em segundos.' }),
+    },
+    {
+      number: '03',
+      title: t('epidbotLanding.steps.step3.title', { defaultValue: 'Voc├¬ recebe uma resposta clara' }),
+      description: t('epidbotLanding.steps.step3.description', { defaultValue: 'Com insights acion├íveis em minutos, n├úo dias.' }),
+    },
+  ];
+
+  const demoSteps = [
+    {
+      label: t('epidbotLanding.steps.labels.question', { defaultValue: 'Pergunta' }),
+      image: '/images/prompt.png',
+      alt: t('epidbotLanding.steps.labels.questionAlt', { defaultValue: 'Exemplo de pergunta feita ao EpidBot' }),
+    },
+    {
+      label: t('epidbotLanding.steps.labels.analysis', { defaultValue: 'An├ílise' }),
+      image: '/images/analise.png',
+      alt: t('epidbotLanding.steps.labels.analysisAlt', { defaultValue: 'An├ílise dos dados pelo EpidBot' }),
+      highlighted: true,
+    },
+    {
+      label: t('epidbotLanding.steps.labels.recommendation', { defaultValue: 'Recomenda├º├úo' }),
+      image: '/images/recomendacao.png',
+      alt: t('epidbotLanding.steps.labels.recommendationAlt', { defaultValue: 'Recomenda├º├Áes e plano de a├º├úo gerado' }),
+    },
+  ];
+
+  return (
+    <section id="steps" className="relative py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header com label */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
+            <span className="text-sm font-medium text-kwar-electric">
+              {t('epidbotLanding.steps.badge', { defaultValue: 'Exemplo pr├ítico' })}
+            </span>
+          </div>
+          
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            {t('epidbotLanding.steps.title', { defaultValue: 'De pergunta a decis├úo em minutos' })}
+          </h2>
+          <p className="text-lg text-kwar-gray max-w-2xl mx-auto">
+            {t('epidbotLanding.steps.subtitle', { defaultValue: 'Veja como o EpidBot transforma dados em plano de a├º├úo' })}
+          </p>
+        </div>
+
+        {/* 3 Cards de etapas */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {steps.map((step, index) => (
+            <div
+              key={step.number}
+              className={`relative card-glass p-8 hover:border-kwar-electric/30 transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              <span className="text-5xl font-bold text-kwar-electric/20 absolute top-4 right-4">
+                {step.number}
+              </span>
+              <h3 className="text-white font-semibold text-xl mb-3 relative z-10">{step.title}</h3>
+              <p className="text-kwar-gray relative z-10">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Fluxo visual vertical */}
+        <div className="max-w-3xl mx-auto mb-20 space-y-4">
+          {demoSteps.map((step, index) => (
+            <div key={step.label}>
+              {/* Step Block */}
+              <div
+                className={`transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${(index + 4) * 200}ms` }}
+              >
+                {/* Step Label */}
+                <div className="text-center mb-4">
+                  <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${
+                    step.highlighted 
+                      ? 'bg-kwar-electric text-kwar-deep' 
+                      : 'bg-white/10 text-white border border-white/20'
+                  }`}>
+                    {step.label}
+                  </span>
+                </div>
+                
+                {/* Step Image */}
+                <div className={`relative ${step.highlighted ? 'scale-[1.02]' : ''} transition-transform duration-500`}>
+                  <div className={`absolute -inset-2 rounded-2xl blur-xl ${
+                    step.highlighted ? 'bg-kwar-electric/20' : 'bg-kwar-electric/5'
+                  }`} />
+                  <div className={`relative card-glass p-4 rounded-xl overflow-hidden ${
+                    step.highlighted ? 'border-kwar-electric/50' : 'border-white/10'
+                  }`}>
+                    <img
+                      src={step.image}
+                      alt={step.alt}
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      onError={(e) => {
+                        e.currentTarget.src = '/images/epidbot.png';
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Arrow down - except for last item */}
+              {index < demoSteps.length - 1 && (
+                <div 
+                  className={`flex justify-center py-4 transition-all duration-700 ${
+                    isVisible ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${(index + 4) * 200 + 100}ms` }}
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="w-0.5 h-8 bg-kwar-electric/30"></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-kwar-electric">
+                      <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Conversion Block com PDF */}
+        <div
+          className={`relative transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '1200ms' }}
+        >
+          <div className="card-glass p-10 lg:p-12 rounded-2xl border-kwar-electric/20 text-center max-w-3xl mx-auto">
+            <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
+              {t('epidbotLanding.steps.report.title', { defaultValue: 'Veja como ├® um relat├│rio completo' })}
+            </h3>
+            
+            <p className="text-kwar-gray text-lg mb-8 max-w-xl mx-auto">
+              {t('epidbotLanding.steps.report.description', { defaultValue: 'An├ílise, dados e recomenda├º├Áes prontos para apresentar.' })}
+            </p>
+            
+            <Button
+              asChild
+              size="lg"
+              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 text-base group"
+            >
+              <a href="/files/relatorio-exemplo.pdf" target="_blank" rel="noopener noreferrer">
+                {t('epidbotLanding.steps.report.cta', { defaultValue: 'Baixar exemplo de relat├│rio (PDF)' })}
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// BENEFITS SECTION
+// ============================================================================
+function BenefitsSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('benefits');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const benefits = [
+    {
+      icon: Clock,
+      title: t('epidbotLanding.benefits.items.time.title', { defaultValue: 'Ganhe tempo' }),
+      description: t('epidbotLanding.benefits.items.time.description', { defaultValue: 'An├ílises que levavam dias agora levam minutos. Sua equipe foca no que realmente importa.' }),
+    },
+    {
+      icon: Target,
+      title: t('epidbotLanding.benefits.items.control.title', { defaultValue: 'Aja no momento certo' }),
+      description: t('epidbotLanding.benefits.items.control.description', { defaultValue: 'Identifique riscos antes que se tornem problemas. Tome decis├Áes com anteced├¬ncia, n├úo na correria.' }),
+    },
+    {
+      icon: Award,
+      title: t('epidbotLanding.benefits.items.peace.title', { defaultValue: 'Tenha confian├ºa' }),
+      description: t('epidbotLanding.benefits.items.peace.description', { defaultValue: 'Chegue ├ás reuni├Áes com dados claros e embasados. Mais credibilidade, menos improviso.' }),
+    },
+  ];
+
+  return (
+    <section id="benefits" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep to-kwar-deep/95">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            {t('epidbotLanding.benefits.title', { defaultValue: 'Trabalhe de forma diferente' })}
+          </h2>
+          <p className="text-xl sm:text-2xl text-kwar-gray max-w-2xl mx-auto">
+            {t('epidbotLanding.benefits.subtitle', { defaultValue: 'Menos correria, mais resultado.' })}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {benefits.map((benefit, index) => (
+            <div
+              key={benefit.title}
+              className={`card-glass p-8 text-center hover:border-kwar-electric/30 transition-all duration-700 group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              <div className="w-16 h-16 rounded-2xl bg-kwar-electric/10 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+                <benefit.icon className="w-8 h-8 text-kwar-electric" />
+              </div>
+              <h3 className="text-white font-bold text-2xl mb-4">{benefit.title}</h3>
+              <p className="text-kwar-gray text-base leading-relaxed">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// CREDIBILIDADE KWAR-AI SECTION - Simplificada e no final
+// ============================================================================
+function KwarAICredibilitySection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('credibility');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="credibility" className="relative py-16 lg:py-24 bg-gradient-to-b from-kwar-deep to-kwar-deep/95">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="card-glass p-8 lg:p-12 rounded-2xl border-kwar-electric/20">
+            <img 
+              src="/images/logo-oficial.png" 
+              alt="Kwar-AI" 
+              className="w-20 h-20 mx-auto mb-6 object-contain"
+            />
+            
+            <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
+              {t('epidbotLanding.credibility.title', { defaultValue: 'Desenvolvido pela' })} <span className="bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]">Kwar-AI</span>
+            </h3>
+            
+            <p className="text-kwar-gray mb-6 max-w-xl mx-auto">
+              {t('epidbotLanding.credibility.description', { defaultValue: 'Tecnologia baseada em anos de pesquisa e projetos reais em sa├║de p├║blica no Brasil.' })}
+            </p>
+
+            <a 
+              href="https://kwar-ai.com.br" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-kwar-electric hover:text-kwar-electric/80 transition-colors font-medium"
+            >
+              <span dangerouslySetInnerHTML={{
+                __html: t('epidbotLanding.credibility.cta', {
+                  defaultValue: 'Conhe├ºa a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>'
+                })
+              }} />
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// PRICING SECTION
+// ============================================================================
+function PricingSection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('pricing');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const plans = [
+    {
+      name: 'Free',
+      description: 'Experimente o EpidBot e veja como transformar dados em insights',
+      features: [
+        'At├® 5 an├ílises por m├¬s',
+        'Upload de dados pequenos',
+        'Respostas b├ísicas',
+        'Sem exporta├º├úo de relat├│rios',
+      ],
+      cta: 'Come├ºar gr├ítis',
+      popular: false,
+    },
+    {
+      name: 'Pro',
+      description: 'Ideal para uso frequente e an├ílises cont├¡nuas',
+      features: [
+        'At├® 100 an├ílises por m├¬s',
+        'Upload de conjunto de dados',
+        'Gera├º├úo de relat├│rios b├ísicos',
+        'Hist├│rico de an├ílises',
+      ],
+      cta: 'Tenho interesse',
+      popular: true,
+    },
+    {
+      name: 'Pro+',
+      description: 'Para equipes e an├ílises mais avan├ºadas',
+      features: [
+        'At├® 300 an├ílises por m├¬s',
+        'Relat├│rios completos em PDF',
+        'Melhor performance',
+        'Prioridade no processamento',
+      ],
+      cta: 'Tenho interesse',
+      popular: false,
+    },
+    {
+      name: 'Enterprise',
+      description: 'Solu├º├úo estrat├®gica para institui├º├Áes e projetos maiores',
+      features: [
+        'Alto volume de an├ílises (uso sob medida)',
+        'Integra├º├úo com bases de dados locais',
+        'Customiza├º├Áes sob demanda',
+        'Suporte priorit├írio',
+      ],
+      note: 'Customiza├º├Áes e projetos especiais podem ser contratados ├á parte',
+      cta: 'Falar com especialista',
+      popular: false,
+      enterprise: true,
+    },
+  ];
+
+  return (
+    <section id="pricing" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep/95 to-kwar-deep">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            {t('epidbotLanding.pricing.title', { defaultValue: 'O que est├í incluso' })}
+          </h2>
+          <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
+            {t('epidbotLanding.pricing.subtitle', { defaultValue: 'Escolha o plano que melhor atende suas necessidades.' })}
+          </p>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {plans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className={`relative card-glass p-6 hover:border-kwar-electric/30 transition-all duration-700 flex flex-col ${
+                plan.popular ? 'border-kwar-electric/50 lg:scale-105' : ''
+              } ${plan.enterprise ? 'border-kwar-gold/30' : ''} ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
+              {/* Badge */}
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-kwar-electric text-kwar-deep text-sm font-bold rounded-full">
+                  {t('epidbotLanding.pricing.popular', { defaultValue: 'Mais popular' })}
+                </div>
+              )}
+              
+              {/* Plan Name */}
+              <h3 className={`font-semibold text-xl mb-2 ${plan.enterprise ? 'text-kwar-gold' : 'text-white'}`}>
+                {plan.name}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-kwar-gray text-sm mb-4 min-h-[40px]">{plan.description}</p>
+              
+              {/* Features */}
+              <ul className="space-y-3 mb-6 flex-grow">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-kwar-gray text-sm">
+                    <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.enterprise ? 'text-kwar-gold' : 'text-kwar-electric'}`} />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Note for Enterprise */}
+              {plan.note && (
+                <p className="text-kwar-gray text-xs mb-4 italic">{plan.note}</p>
+              )}
+              
+              {/* CTA Button */}
+              <Button
+                onClick={() => scrollToSection('#final-cta')}
+                className={`w-full mt-auto ${
+                  plan.popular
+                    ? 'bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold'
+                    : plan.enterprise
+                    ? 'bg-kwar-gold hover:bg-kwar-gold/90 text-kwar-deep font-bold'
+                    : 'bg-white/10 hover:bg-white/20 text-white'
+                }`}
+              >
+                {plan.cta}
+              </Button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// FINAL CTA SECTION
+// ============================================================================
+function FinalCTASection() {
+  const { t } = useTranslation();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const element = document.getElementById('final-cta');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="final-cta" className="relative py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-50" />
+      
+      {/* Gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-kwar-electric/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-kwar-gold/10 rounded-full blur-3xl" />
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          className={`transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+<h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            {t('epidbotLanding.final.title', { defaultValue: 'Transforme dados em decis├Áes' })}
+          </h2>
+
+          <p className="text-xl text-kwar-gray mb-10">
+            {t('epidbotLanding.final.subtitle', { defaultValue: 'Fale com nossa equipe e descubra como o EpidBot pode ajudar.' })}
+          </p>
+          
+          {/* Web3Forms Integration */}
+          <form action="https://api.web3forms.com/submit" method="POST" className="max-w-md mx-auto">
+            <input type="hidden" name="access_key" value="b065c0bd-51d6-44df-b315-48aaa195103e" />
+            <input type="hidden" name="subject" value="Nova mensagem - EpidBot Landing Page" />
+            <input type="hidden" name="from_name" value="EpidBot Website" />
+            <div className="space-y-4">
+              <Input
+                type="text"
+                name="name"
+                placeholder={t('epidbotLanding.final.form.namePlaceholder', { defaultValue: 'Seu nome' })}
+                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder={t('epidbotLanding.final.form.emailPlaceholder', { defaultValue: 'Seu email' })}
+                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
+                required
+              />
+              <Input
+                type="text"
+                name="organization"
+                placeholder={t('epidbotLanding.final.form.organizationPlaceholder', { defaultValue: 'Nome da secretaria ou munic├¡pio' })}
+                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
+                required
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12"
+              >
+                {t('epidbotLanding.final.form.submitButton', { defaultValue: 'Quero Conversar' })}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </form>
+
+          <p className="text-kwar-gray text-sm mt-6">
+            {t('epidbotLanding.final.note', { defaultValue: 'Respondemos em at├® 24 horas. Sem compromisso.' })}
+          </p>
         </div>
       </div>
     </section>
@@ -794,77 +1396,59 @@ function FinalCTA() {
 // ============================================================================
 // FOOTER
 // ============================================================================
-function Footer() {
+function LandingFooter() {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const links = [
+    { label: t('epidbotLanding.footer.links.product', { defaultValue: 'Produto' }), href: '#what-is' },
+    { label: t('epidbotLanding.footer.links.pricing', { defaultValue: 'Pre├ºos' }), href: '#pricing' },
+    { label: t('epidbotLanding.footer.links.contact', { defaultValue: 'Contato' }), href: '#final-cta' },
+  ];
+
   return (
-    <footer className="border-t border-white/[0.04] py-12 bg-[#080c14]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-0.5">
-                  <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-                  <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-                  <div className="w-1.5 h-1.5 rounded-[1px] bg-white/80" />
-                  <div className="w-1.5 h-1.5 rounded-[1px] bg-white/40" />
-                </div>
-              </div>
-              <span className="font-display font-bold text-lg text-white">
-                Epid<span className="text-cyan-400">Bot</span>
+    <footer className="relative py-12 border-t border-white/10">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Logo & Copyright */}
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/images/logo-oficial.png" alt="Kwar-AI" className="w-8 h-8" />
+              <span className="font-display font-bold text-white">
+                KWAR<span className="text-kwar-electric">-</span>AI
               </span>
-            </div>
-            <p className="text-white/30 text-xs leading-relaxed max-w-xs">
-              IA aplicada à saúde pública brasileira para impulsionar análises, vigilância e decisões baseadas em evidências.
-            </p>
+            </Link>
+            <span className="text-kwar-gray text-sm">
+              ┬® {currentYear} {t('epidbotLanding.footer.rights', { defaultValue: 'Todos os direitos reservados' })}
+            </span>
           </div>
 
           {/* Links */}
-          {[
-            {
-              title: 'Produto',
-              links: ['Recursos', 'Como funciona', 'Planos', 'Atualizações'],
-            },
-            {
-              title: 'Empresa',
-              links: ['Sobre nós', 'Equipe', 'Parceiros', 'Carreiras'],
-            },
-            {
-              title: 'Suporte',
-              links: ['FAQ', 'Documentação', 'Contato'],
-            },
-          ].map((section) => (
-            <div key={section.title}>
-              <h4 className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-4">{section.title}</h4>
-              <ul className="space-y-2.5">
-                {section.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="h-px bg-white/[0.04] mb-6" />
-
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <span className="text-white/20 text-xs">
-            © {new Date().getFullYear()} Kwar-AI. Todos os direitos reservados.
-          </span>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-white/20 hover:text-white/40 transition-colors">
-              <Globe className="w-4 h-4" />
-            </a>
-            <a href="#" className="text-white/20 hover:text-white/40 transition-colors">
-              <Users className="w-4 h-4" />
-            </a>
-            <a href="#" className="text-white/20 hover:text-white/40 transition-colors">
-              <MessageSquare className="w-4 h-4" />
-            </a>
+          <div className="flex items-center gap-8">
+            {links.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="text-kwar-gray hover:text-white transition-colors text-sm"
+              >
+                {link.label}
+              </button>
+            ))}
+            <Link
+              to="/"
+              className="text-kwar-electric hover:text-kwar-electric/80 transition-colors text-sm font-medium"
+            >
+              {t('epidbotLanding.footer.mainSite', { defaultValue: 'Voltar ao Site Principal' })}
+            </Link>
           </div>
         </div>
       </div>
@@ -873,20 +1457,28 @@ function Footer() {
 }
 
 // ============================================================================
-// PAGE
+// MAIN COMPONENT
 // ============================================================================
-export default function EpidbotPage() {
+export default function EpidbotLanding() {
   return (
-    <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
-      <Navbar />
-      <Hero />
-      <Trust />
-      <Features />
-      <ROI />
-      <Differentiation />
-      <Pricing />
-      <FinalCTA />
-      <Footer />
+    <div className="relative min-h-screen bg-kwar-deep">
+      <LandingNavbar />
+      
+      <main className="relative z-10">
+        <HeroSection />
+        <ProblemSection />
+        <ValidationSection />
+        <WhatIsEpidbotSection />
+        <WhatItDoesSection />
+        <DemoVideoSection />
+        <HowItWorksSection />
+        <BenefitsSection />
+        <PricingSection />
+        <FinalCTASection />
+        <KwarAICredibilitySection />
+      </main>
+      
+      <LandingFooter />
     </div>
   );
 }
