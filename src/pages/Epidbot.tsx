@@ -1236,7 +1236,7 @@ const faqEs = [
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { ref, isVisible } = useScrollReveal(0.1);
-  const { t, lng } = useEpidbotCopy();
+  const { lng } = useEpidbotCopy();
 
   const faqPt = [
     { q: 'O que é o EpidBot?', a: 'O EpidBot é uma plataforma de inteligência epidemiológica baseada em IA desenvolvida para ajudar pesquisadores, profissionais de saúde, universidades, equipes de vigilância e instituições a explorar, analisar e visualizar dados de saúde pública de forma mais rápida e intuitiva. A plataforma combina IA conversacional, análise epidemiológica, visualização de dados, mapas e análises espaciais, integração com bases públicas de saúde e geração de insights e relatórios — tudo em uma interface moderna e acessível.' },
