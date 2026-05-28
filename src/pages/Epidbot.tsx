@@ -355,7 +355,8 @@ type LocaleKey = keyof typeof copy;
 
 function useEpidbotCopy() {
   const { i18n } = useTranslation();
-  const lng = i18n.language.startsWith('en') ? 'en' : i18n.language.startsWith('es') ? 'es' : 'pt-BR';
+  const lang = i18n.language || 'pt-BR';
+  const lng = lang.startsWith('en') ? 'en' : lang.startsWith('es') ? 'es' : 'pt-BR';
   return { t: copy[lng as LocaleKey], i18n, lng: lng as LocaleKey };
 }
 
