@@ -666,12 +666,12 @@ function Pricing() {
     </svg>
   );
 
-  const getIcon = (name: string, accent: string) => {
+  const getIcon = (name: string) => {
     switch (name.toLowerCase()) {
-      case 'free': return <FreeIcon accent={accent} key={name} />;
-      case 'pro': return <ProIcon accent={accent} key={name} />;
-      case 'max': return <MaxIcon accent={accent} key={name} />;
-      case 'research team': return <TeamIcon accent={accent} key={name} />;
+      case 'free': return <FreeIcon key={name} />;
+      case 'pro': return <ProIcon key={name} />;
+      case 'max': return <MaxIcon key={name} />;
+      case 'research team': return <TeamIcon key={name} />;
       default: return null;
     }
   };
@@ -866,7 +866,7 @@ function Pricing() {
                 plan.accent === 'neutral' ? 'text-white/30' :
                 'text-white/50'
               }`}>
-                {getIcon(plan.name, plan.accent)}
+                {getIcon(plan.name)}
               </div>
 
               <h3 className="text-white font-semibold text-2xl mb-1.5">{plan.name}</h3>
@@ -965,7 +965,7 @@ function Pricing() {
           {/* Content */}
           <div className="relative grid lg:grid-cols-[1fr_1fr] gap-10 items-center p-10 lg:p-14">
             <div className="relative z-10">
-              <EnterpriseIcon accent="gold" />
+              <EnterpriseIcon />
               <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.015] backdrop-blur-sm px-3 py-1 mb-5 mt-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                 <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-white/40">Enterprise</span>
