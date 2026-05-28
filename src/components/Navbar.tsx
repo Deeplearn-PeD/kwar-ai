@@ -93,15 +93,13 @@ export function Navbar() {
             >
               {t('navbar.webSummit')}
             </Link>
-            <button
-              onClick={() => scrollToSection('#contact')}
+            <Link
+              to="/epidbot"
               className="btn-primary text-sm"
             >
-              {t('common.requestDemo')}
-            </button>
+              Conheça o EpidBot
+            </Link>
           </div>
-
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-kwar-gray hover:text-kwar-electric transition-colors"
@@ -142,12 +140,13 @@ export function Navbar() {
           <div className="pt-3 pb-2 border-b border-white/5">
             <LanguageSwitcher />
           </div>
-          <button
-            onClick={() => scrollToSection('#contact')}
+          <Link
+            to="/epidbot"
+            onClick={() => setIsMobileMenuOpen(false)}
             className="btn-primary w-full mt-4 text-sm"
           >
-            {t('common.requestDemo')}
-          </button>
+            Conheça o EpidBot
+          </Link>
         </div>
       </div>
     </nav>

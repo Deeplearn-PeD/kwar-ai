@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/sections/Hero';
 import { OurStory } from '@/sections/OurStory';
@@ -10,7 +11,8 @@ import { EpidBotVisualSection } from '@/sections/EpidBotVisualSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
 import { EquipeSection } from '@/sections/EquipeSection';
 import { CTAFinalSection } from '@/sections/CTAFinalSection';
-import { Contact } from '@/sections/Contact';
+import { WhoIsItFor } from '@/sections/WhoIsItFor';
+import { ExamplePrompts } from '@/sections/ExamplePrompts';
 import { Footer } from '@/sections/Footer';
 import EpidbotLanding from '@/pages/EpidbotLanding';
 import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
@@ -20,6 +22,23 @@ import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
 function HomePage() {
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const scrollTo = searchParams.get('scroll');
+    if (scrollTo) {
+      const tryScroll = () => {
+        const el = document.getElementById(scrollTo);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          setTimeout(tryScroll, 150);
+        }
+      };
+      setTimeout(tryScroll, 100);
+    }
+  }, [searchParams]);
+
   return (
     <>
       {/* Navigation */}
