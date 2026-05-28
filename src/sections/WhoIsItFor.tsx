@@ -10,7 +10,7 @@ const audiences = [
   { icon: Globe, key: 'globalOrgs' },
 ];
 
-const labels: Record<string, Record<string, string>> = {
+const labels: Record<string, { title: string; subtitle: string; [key: string]: string | { title: string; desc: string } }> = {
   'pt-BR': {
     title: 'Para quem é o EpidBot',
     subtitle: 'Inteligência epidemiológica para todos os níveis de análise.',

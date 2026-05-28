@@ -612,7 +612,7 @@ function Pricing() {
   const { ref, isVisible } = useScrollReveal(0.1);
   const { t } = useEpidbotCopy();
 
-  const FreeIcon = ({ accent }: { accent: string }) => (
+  const FreeIcon = () => (
     <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="18" cy="18" r="10" />
       <path d="M26 26l8 8" strokeWidth="1.8" />
@@ -622,7 +622,7 @@ function Pricing() {
     </svg>
   );
 
-  const ProIcon = ({ accent }: { accent: string }) => (
+  const ProIcon = () => (
     <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="2" width="36" height="36" rx="3" />
       <path d="M4 14h36" />
@@ -634,7 +634,7 @@ function Pricing() {
     </svg>
   );
 
-  const MaxIcon = ({ accent }: { accent: string }) => (
+  const MaxIcon = () => (
     <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="24" cy="20" r="12" />
       <ellipse cx="24" cy="20" rx="6" ry="12" />
@@ -646,7 +646,7 @@ function Pricing() {
     </svg>
   );
 
-  const TeamIcon = ({ accent }: { accent: string }) => (
+  const TeamIcon = () => (
     <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M24 6l13 7.5v15L24 36l-13-7.5v-15L24 6z" />
       <path d="M24 6v30" />
@@ -654,7 +654,7 @@ function Pricing() {
     </svg>
   );
 
-  const EnterpriseIcon = ({ accent }: { accent: string }) => (
+  const EnterpriseIcon = () => (
     <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="24" cy="20" r="16" />
       <path d="M24 4v6M24 34v6" />
@@ -1096,7 +1096,6 @@ function Pricing() {
 // FOOTER
 // ============================================================================
 function Footer() {
-  const { t } = useEpidbotCopy();
   return (
     <footer className="relative py-16 overflow-hidden border-t border-white/[0.04]">
       <div className="absolute inset-0 bg-gradient-to-t from-kwar-deep to-transparent" />
