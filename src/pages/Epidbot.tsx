@@ -1,24 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-  Check,
-  Shield,
-  Database,
-  Brain,
-  Clock,
-  Users,
-  BarChart3,
-  Globe,
-  Lock,
-  Sparkles,
-  TrendingUp,
-  Search,
-  FileText,
-  PieChart,
-  Activity,
-  Download,
-} from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const copy = {
   'pt-BR': {
