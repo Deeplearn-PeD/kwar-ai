@@ -1,0 +1,188 @@
+{
+  "epidbotLanding": {
+    "nav": {
+      "howItWorks": "如何运作",
+      "results": "成果",
+      "pricing": "价格",
+      "mainSite": "主站",
+      "cta": "预约演示"
+    },
+    "hero": {
+      "badge": "公共卫生AI助手",
+      "title": "几分钟完成流行病学分析，而非几天",
+      "subtitle": "用自然语言提问。获得包含可行洞察的完整报告。",
+      "impact": "无需代码。无需麻烦。只有答案。",
+      "ctaPrimary": "预约演示",
+      "ctaSecondary": "了解如何运作",
+      "stats": {
+        "faster": "更快",
+        "institutions": "机构",
+        "accuracy": "准确度",
+        "languages": "语言"
+      }
+    },
+    "demo": {
+      "badge": "演示",
+      "title": "观看EpidBot实战",
+      "subtitle": "圣保罗登革热数据实时分析",
+      "duration": "2分钟",
+      "description": "观看EpidBot如何将复杂数据转化为清晰洞察"
+    },
+    "problem": {
+      "badge": "挑战",
+      "title": "健康数据存在。分析时间，不存在。",
+      "subtitle": "卫生部门在流行病学数据分析方面面临日常挑战。",
+      "stat": "手动分析平均时间",
+      "items": {
+        "time": {
+          "title": "手动分析需要数天",
+          "description": "团队花费数周处理数据，而非做出决策。"
+        },
+        "data": {
+          "title": "数据分散在多个系统中",
+          "description": "分散的信息难以获得公共卫生整体视图。"
+        },
+        "team": {
+          "title": "缺乏技术专业人员",
+          "description": "缺乏具有编程和统计技能的分析师。"
+        }
+      }
+    },
+    "solution": {
+      "badge": "解决方案",
+      "title": "像与专家交谈一样与您的数据对话",
+      "subtitle": "用自然语言提问，几秒钟内获得完整的流行病学分析。",
+      "features": {
+        "chat": {
+          "title": "对话界面",
+          "description": "使用自然语言与数据交互，无需编码。"
+        },
+        "reports": {
+          "title": "自动报告",
+          "description": "一键生成技术公报和执行摘要。"
+        },
+        "data": {
+          "title": "DATASUS/SINAN集成",
+          "description": "直接连接巴西主要健康数据库。"
+        }
+      },
+      "chat": {
+        "userMessage": "显示圣保罗过去6个月的登革热趋势",
+        "botMessage": "这是圣保罗登革热病例的分析："
+      }
+    },
+    "gallery": {
+      "badge": "真实成果",
+      "title": "使用EpidBot完成的真实分析",
+      "subtitle": "合作机构进行的流行病学研究成果",
+      "placeholder": "分析图像",
+      "view": "查看分析",
+      "note": "图像即将添加。联系我们查看真实案例。",
+      "items": {
+        "temporal": "时间分析",
+        "map": "热力图",
+        "report": "技术报告",
+        "correlation": "数据关联",
+        "forecast": "预测",
+        "comparison": "区域比较"
+      }
+    },
+    "benefits": {
+      "title": "您将看到的结果",
+      "speed": {
+        "title": "更快",
+        "description": "小时 → 分钟"
+      },
+      "code": {
+        "title": "零代码",
+        "description": "自然语言"
+      },
+      "accuracy": {
+        "title": "准确度",
+        "description": "可靠数据"
+      },
+      "languages": {
+        "title": "多语言",
+        "description": "葡、英、西、中、阿"
+      }
+    },
+    "report": {
+      "badge": "免费下载",
+      "title": "查看示例报告",
+      "subtitle": "下载EpidBot生成的完整报告，了解分析质量",
+      "features": {
+        "executive": "执行摘要",
+        "analysis": "详细统计分析",
+        "visualizations": "图表和可视化",
+        "recommendations": "可行建议"
+      },
+      "form": {
+        "name": "您的姓名",
+        "email": "您的专业邮箱",
+        "institution": "机构名称",
+        "submit": "下载示例报告",
+        "note": "下载即表示您同意接收EpidBot的最新资讯。"
+      }
+    },
+    "pricing": {
+      "title": "免费开始，按需扩展",
+      "subtitle": "为您的机构选择理想方案",
+      "month": "月",
+      "tokens": "令牌/月",
+      "unlimited": "无限",
+      "popular": "最受欢迎",
+      "note": "适合探索 — 机构使用推荐Pro或Enterprise方案",
+      "free": {
+        "name": "免费版",
+        "description": "适合测试",
+        "features": {
+          "1": "10万令牌/月",
+          "2": "基础查询",
+          "3": "邮件支持"
+        },
+        "cta": "免费开始"
+      },
+      "pro": {
+        "name": "专业版",
+        "description": "适合成长中的团队",
+        "features": {
+          "1": "100万令牌/月",
+          "2": "完整报告",
+          "3": "优先处理",
+          "4": "优先支持"
+        },
+        "cta": "试用专业版"
+      },
+      "enterprise": {
+        "name": "企业版",
+        "description": "适合大型组织",
+        "features": {
+          "1": "无限令牌",
+          "2": "定制集成",
+          "3": "专属支持",
+          "4": "包含培训"
+        },
+        "cta": "联系销售"
+      }
+    },
+    "final": {
+      "title": "准备好转变您的数据分析了吗？",
+      "subtitle": "加入50多家已使用EpidBot做出更快数据驱动决策的机构。",
+      "institutions": "家机构信赖EpidBot",
+      "form": {
+        "placeholder": "输入您的专业邮箱",
+        "submit": "免费开始"
+      },
+      "note": "14天免费试用。无需信用卡。"
+    },
+    "footer": {
+      "rights": "版权所有",
+      "mainSite": "返回主站",
+      "links": {
+        "product": "产品",
+        "pricing": "价格",
+        "contact": "联系"
+      }
+    }
+  }
+}
