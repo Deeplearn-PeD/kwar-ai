@@ -355,8 +355,8 @@ type LocaleKey = keyof typeof copy;
 
 function useEpidbotCopy() {
   const { i18n } = useTranslation();
-  const lang = i18n.language || 'pt-BR';
-  const lng = lang.startsWith('en') ? 'en' : lang.startsWith('es') ? 'es' : 'pt-BR';
+  const lang = i18n?.language || 'pt-BR';
+  const lng = (typeof lang === 'string' && lang.startsWith('en')) ? 'en' : (typeof lang === 'string' && lang.startsWith('es')) ? 'es' : 'pt-BR';
   return { t: copy[lng as LocaleKey], i18n, lng: lng as LocaleKey };
 }
 
@@ -1112,7 +1112,7 @@ function Footer() {
               </span>
             </a>
             <p className="text-kwar-gray text-sm leading-relaxed mb-4 max-w-sm">
-              {t.footer.text}
+              IA aplicada à saúde pública brasileira para impulsionar análises, vigilância e decisões baseadas em evidências.
             </p>
           </div>
 
@@ -1165,7 +1165,7 @@ function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-kwar-gray text-sm">
-            © {new Date().getFullYear()} Kwar-AI. {t.footer.rights}
+            © {new Date().getFullYear()} Kwar-AI. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
             <a href="https://linkedin.com/company/kwar-ai" target="_blank" rel="noopener noreferrer" className="text-kwar-gray hover:text-kwar-electric transition-colors">
