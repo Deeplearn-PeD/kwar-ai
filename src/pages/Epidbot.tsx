@@ -407,9 +407,9 @@ function Navbar() {
     {
       items: [
         { label: t.menu.epidbotItems[0], href: '/#/epidbot' },
-        { label: t.menu.epidbotItems[1], href: 'https://kwar-ai.com.br/docs' },
-        { label: t.menu.epidbotItems[2], href: 'https://kwar-ai.com.br/terms' },
-        { label: t.menu.epidbotItems[3], href: 'https://kwar-ai.com.br/lgpd' },
+        { label: t.menu.epidbotItems[1], href: '/#/documentacao' },
+        { label: t.menu.epidbotItems[2], href: '/#/termos' },
+        { label: t.menu.epidbotItems[3], href: '/#/privacy' },
         { label: t.menu.epidbotItems[4], href: '/#/epidbot#pricing' },
       ],
     },
@@ -1138,7 +1138,7 @@ function Footer() {
               {[
                 { label: 'Visão geral', href: 'https://kwar-ai.com.br/#/epidbot' },
                 { label: 'Preços', href: '#pricing' },
-                { label: 'Documentação', href: '#' },
+                { label: 'Documentação', href: '/#/documentacao' },
                 { label: 'Web Summit', href: 'https://kwar-ai.com.br/#/epidbot-websummit' },
               ].map((link) => (
                 <li key={link.label}>
@@ -1167,9 +1167,9 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">Legal</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Termos de uso', href: '#' },
-                { label: 'Privacidade', href: '#' },
-                { label: 'LGPD', href: '#' },
+                { label: 'Termos de uso', href: '/#/termos' },
+                { label: 'Privacidade', href: '/#/privacy' },
+                { label: 'LGPD', href: '/#/privacy' },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>

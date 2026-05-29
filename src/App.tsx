@@ -20,6 +20,9 @@ import Epidbot from '@/pages/Epidbot';
 import Hospitais from '@/pages/Hospitais';
 import Pesquisa from '@/pages/Pesquisa';
 import SaudeGlobal from '@/pages/SaudeGlobal';
+import Privacy from '@/pages/Privacy';
+import Documentacao from '@/pages/Documentacao';
+import Termos from '@/pages/Termos';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -100,6 +103,9 @@ function App() {
       <Route path="/hospitais" element={<Hospitais />} />
       <Route path="/pesquisa" element={<Pesquisa />} />
       <Route path="/saude-global" element={<SaudeGlobal />} />
+      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/termos" element={<Termos />} />
+      <Route path="/documentacao" element={<Documentacao />} />
     </Routes>
   );
 }
