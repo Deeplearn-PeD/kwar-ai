@@ -10,7 +10,7 @@ const copy = {
       kwaraiItems: ['Nossa História', 'Quem lidera a Kwar-AI', 'Fale com a gente', 'Kwar-AI Home'],
       epidbot: 'EpidBot',
       epidbotItems: ['Visão geral', 'Documentação', 'Termos de uso', 'LGPD', 'Preços'],
-      solucoes: 'Soluções',
+      solucoes: 'Para quem é o EpidBot?',
       solucoesItems: ['Profissionais de vigilância epidemiológica', 'Pesquisadores e universidades', 'Hospitais e laboratórios', 'Organizações globais de saúde', 'Jornalistas e mídia'],
       precos: 'Preços',
       precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
@@ -135,7 +135,7 @@ const copy = {
       kwaraiItems: ['Our History', 'Who leads Kwar-AI', 'Contact us', 'Kwar-AI Home'],
       epidbot: 'EpidBot',
       epidbotItems: ['Overview', 'Documentation', 'Terms of Use', 'LGPD', 'Pricing'],
-      solucoes: 'Solutions',
+      solucoes: 'Who is EpidBot for?',
       solucoesItems: ['Epidemiological surveillance professionals', 'Researchers & universities', 'Hospitals & laboratories', 'Global health organizations', 'Journalists & media'],
       precos: 'Pricing',
       precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
@@ -260,7 +260,7 @@ const copy = {
       kwaraiItems: ['Nuestra Historia', 'Quién lidera Kwar-AI', 'Hable con nosotros', 'Kwar-AI Home'],
       epidbot: 'EpidBot',
       epidbotItems: ['Visión general', 'Documentación', 'Términos de uso', 'LGPD', 'Precios'],
-      solucoes: 'Soluciones',
+      solucoes: '¿Para quién es EpidBot?',
       solucoesItems: ['Profesionales de vigilancia epidemiológica', 'Investigadores y universidades', 'Hospitales y laboratorios', 'Organizaciones globales de salud', 'Periodistas y medios'],
       precos: 'Precios',
       precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
@@ -1030,21 +1030,13 @@ function Pricing() {
                 <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-white/40">Enterprise</span>
               </div>
               <h3 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight">
-                Infraestrutura institucional para operações epidemiológicas em larga escala.
+                {t.enterprise.title}
               </h3>
               <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-lg">
-                Solução completa para secretarias de saúde, hospitais, instituições públicas e organizações internacionais que precisam de ambiente personalizado, governança e suporte dedicado.
+                {t.enterprise.description}
               </p>
               <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8">
-                {[
-                  'Relatórios personalizados',
-                  'Branding institucional',
-                  'Dashboards organizacionais',
-                  'Templates institucionais',
-                  'Mapas interativos avançados',
-                  'Onboarding e treinamento',
-                  'Suporte dedicado',
-                ].map((f) => (
+                {t.enterprise.features.map((f) => (
                   <div key={f} className="flex items-start gap-2.5 text-sm text-white/55">
                     <Check className="w-4 h-4 text-amber-400/60 flex-shrink-0 mt-0.5" />
                     {f}
@@ -1052,7 +1044,7 @@ function Pricing() {
                 ))}
               </div>
               <a href="#contact" className="rounded-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] px-6 py-2.5 text-sm font-medium text-white/70 hover:text-white transition-all backdrop-blur-sm inline-block">
-                Agendar demonstração
+                {t.enterprise.cta}
               </a>
             </div>
             {/* Right side — empty, image visible behind */}
