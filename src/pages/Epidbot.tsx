@@ -398,19 +398,16 @@ function Navbar() {
   const menuGroups = [
     {
       items: [
-        { label: t.menu.kwaraiItems[0], href: 'https://kwar-ai.com.br/#/?scroll=our-story' },
-        { label: t.menu.kwaraiItems[1], href: 'https://kwar-ai.com.br/#/?scroll=equipe' },
-        { label: t.menu.kwaraiItems[2], href: 'https://kwar-ai.com.br/#/?scroll=contact' },
+        { label: t.menu.kwaraiItems[0], href: 'https://kwar-ai.com.br/' },
+        { label: t.menu.kwaraiItems[1], href: 'https://kwar-ai.com.br/' },
+        { label: t.menu.kwaraiItems[2], href: 'https://kwar-ai.com.br/' },
         { label: t.menu.kwaraiItems[3], href: 'https://kwar-ai.com.br/' },
       ],
     },
     {
       items: [
-        { label: t.menu.epidbotItems[0], href: '/#/epidbot' },
-        { label: t.menu.epidbotItems[1], href: '/#/documentacao' },
-        { label: t.menu.epidbotItems[2], href: '/#/termos' },
-        { label: t.menu.epidbotItems[3], href: '/#/privacy' },
-        { label: t.menu.epidbotItems[4], href: '/#/epidbot#pricing' },
+        { label: 'Documentação', href: '/files/EpiDBot_User_Manual.pdf' },
+        { label: 'Preços', href: '#pricing' },
       ],
     },
     {
