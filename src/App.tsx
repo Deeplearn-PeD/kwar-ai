@@ -17,6 +17,9 @@ import EpidbotLanding from '@/pages/EpidbotLanding';
 import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
 import EpidbotIndividual from '@/pages/EpidbotIndividual';
 import Epidbot from '@/pages/Epidbot';
+import Hospitais from '@/pages/Hospitais';
+import Pesquisa from '@/pages/Pesquisa';
+import SaudeGlobal from '@/pages/SaudeGlobal';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -94,6 +97,9 @@ function App() {
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
       <Route path="/epidbot_individual" element={<EpidbotIndividual />} />
       <Route path="/hub" element={<HubPage />} />
+      <Route path="/hospitais" element={<Hospitais />} />
+      <Route path="/pesquisa" element={<Pesquisa />} />
+      <Route path="/saude-global" element={<SaudeGlobal />} />
     </Routes>
   );
 }

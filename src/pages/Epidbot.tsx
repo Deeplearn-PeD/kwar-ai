@@ -415,18 +415,18 @@ function Navbar() {
     },
     {
       items: [
-        { label: t.menu.solucoesItems[0], href: 'https://kwar-ai.com.br/#/solutions/vigilancia' },
-        { label: t.menu.solucoesItems[1], href: 'https://kwar-ai.com.br/#/solutions/hospital' },
-        { label: t.menu.solucoesItems[2], href: 'https://kwar-ai.com.br/#/solutions/pesquisa' },
-        { label: t.menu.solucoesItems[3], href: 'https://kwar-ai.com.br/#/solutions/global' },
+        { label: t.menu.solucoesItems[0], href: '/#/epidbot-landing' },
+        { label: t.menu.solucoesItems[1], href: '/#/hospitais' },
+        { label: t.menu.solucoesItems[2], href: '/#/pesquisa' },
+        { label: t.menu.solucoesItems[3], href: '/#/saude-global' },
       ],
     },
     {
       items: [
-        { label: t.menu.precosItems[0], href: 'https://kwar-ai.com.br/#/pricing/pro' },
-        { label: t.menu.precosItems[1], href: 'https://kwar-ai.com.br/#/pricing/pro-plus' },
-        { label: t.menu.precosItems[2], href: 'https://kwar-ai.com.br/#/pricing/team' },
-        { label: t.menu.precosItems[3], href: 'https://kwar-ai.com.br/#/pricing/enterprise' },
+        { label: t.menu.precosItems[0], href: '/#/epidbot#pricing' },
+        { label: t.menu.precosItems[1], href: '/#/epidbot#pricing' },
+        { label: t.menu.precosItems[2], href: '/#/epidbot#pricing' },
+        { label: t.menu.precosItems[3], href: '/#/epidbot#pricing' },
       ],
     },
   ];
