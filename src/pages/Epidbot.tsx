@@ -1215,6 +1215,7 @@ const faqEn = [
   { q: 'How can I request a demo?', a: 'You can contact the Kwar-AI team through the contact section below or via the "Schedule a demo" button in the Enterprise section.' },
   { q: 'How do I join the early adopter list?', a: 'During the promotional launch period, eligible users can use the EARLY100 coupon. Subject to availability.' },
   { q: 'Who developed EpidBot?', a: 'EpidBot is developed by Kwar-AI. The platform was created to transform epidemiological data into actionable intelligence through AI, data analysis and advanced visualization. EpidBot is constantly evolving, with new features, integrations and improvements continuously added.' },
+  { q: 'Where are EpidBot servers located?', a: 'The platform infrastructure is currently hosted through Hetzner Cloud, with servers located in Finland. Kwar-AI adopts technical and organizational measures designed to protect platform availability, integrity and security.' },
   { q: 'I still have questions. How can I get in touch?', a: "You can request a demo, contact the team through the form below, use Kwar-AI\'s official channels or follow platform updates." },
 ];
 
@@ -1241,6 +1242,7 @@ const faqEs = [
   { q: '¿Cómo puedo solicitar una demostración?', a: 'Puede comunicarse con el equipo de Kwar-AI a través de la sección de contacto a continuación o mediante el botón "Agendar demostración" en la sección Enterprise.' },
   { q: '¿Cómo entro en la lista de early adopters?', a: 'Durante el período promocional de lanzamiento, los usuarios elegibles pueden usar el cupón EARLY100. Sujeto a disponibilidad.' },
   { q: '¿Quién desarrolló EpidBot?', a: 'EpidBot es desarrollado por Kwar-AI. La plataforma fue creada para transformar datos epidemiológicos en inteligencia accionable a través de IA, análisis de datos y visualización avanzada. EpidBot está en constante evolución, con nuevas funcionalidades, integraciones y mejoras agregadas continuamente.' },
+  { q: '¿Dónde están ubicados los servidores de EpidBot?', a: 'La infraestructura de la plataforma se encuentra actualmente alojada en Hetzner Cloud, con servidores ubicados en Finlandia. Kwar-AI adopta medidas técnicas y organizativas para proteger la disponibilidad, integridad y seguridad de la plataforma.' },
   { q: '¿Aún tengo dudas. ¿Cómo me comunico?', a: 'Puede solicitar una demostración, contactar al equipo a través del formulario a continuación, utilizar los canales oficiales de Kwar-AI o seguir las actualizaciones de la plataforma.' },
 ];
 
@@ -1275,6 +1277,7 @@ function FAQ() {
     { q: 'Como posso solicitar uma demonstração?', a: 'Você pode entrar em contato com a equipe da Kwar-AI através da seção de contato abaixo ou pelo botão "Agendar demonstração" na seção Enterprise.' },
     { q: 'Como entro na lista de early adopters?', a: 'Durante o período promocional de lançamento, usuários elegíveis podem utilizar o cupom EARLY100. Sujeito à disponibilidade.' },
     { q: 'Quem desenvolveu o EpidBot?', a: 'O EpidBot é desenvolvido pela Kwar-AI. A plataforma foi criada para transformar dados epidemiológicos em inteligência acionável através de IA, análise de dados e visualização avançada. O EpidBot está em constante evolução, com novas funcionalidades, integrações e melhorias sendo adicionadas continuamente.' },
+    { q: 'Onde estão localizados os servidores do EpidBot?', a: 'Atualmente, a infraestrutura da plataforma é hospedada por meio da Hetzner Cloud, com servidores localizados na Finlândia. A Kwar-AI adota medidas técnicas e organizacionais para proteger a disponibilidade, integridade e segurança da plataforma.' },
     { q: 'Ainda tenho dúvidas. Como entro em contato?', a: 'Você pode solicitar uma demonstração, entrar em contato com a equipe através do formulário abaixo, utilizar os canais oficiais da Kwar-AI ou acompanhar atualizações da plataforma.' },
   ];
 

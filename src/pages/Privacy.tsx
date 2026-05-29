@@ -129,6 +129,8 @@ Essas medidas podem incluir controles de acesso, autenticação de usuários, mo
 
 Embora empreguemos boas práticas de segurança, nenhum sistema pode garantir proteção absoluta contra todos os riscos existentes na internet.
 
+Atualmente, a infraestrutura da plataforma é hospedada por meio da Hetzner Cloud, com servidores localizados na Finlândia. Os dados podem ser processados e armazenados na infraestrutura localizada na Finlândia e em outras localidades utilizadas pela Kwar-AI e seus provedores de serviço, conforme necessário para a operação da plataforma.
+
 ---
 
 ## 11. Retenção de Dados
@@ -321,6 +323,8 @@ These measures may include access controls, user authentication, security monito
 
 Although we employ good security practices, no system can guarantee absolute protection against all risks existing on the internet.
 
+The platform infrastructure is currently hosted through Hetzner Cloud, with servers located in Finland. Data may be processed and stored on infrastructure located in Finland and other locations used by Kwar-AI and its service providers as necessary for platform operation.
+
 ---
 
 ## 11. Data Retention
@@ -512,6 +516,8 @@ Adoptamos medidas técnicas y organizativas adecuadas para proteger la informaci
 Estas medidas pueden incluir controles de acceso, autenticación de usuarios, monitoreo de seguridad, copias de seguridad operativas y mecanismos destinados a proteger contra accesos no autorizados.
 
 Aunque empleamos buenas prácticas de seguridad, ningún sistema puede garantizar protección absoluta contra todos los riesgos existentes en internet.
+
+La infraestructura de la plataforma se encuentra actualmente alojada en Hetzner Cloud, con servidores ubicados en Finlandia. Los datos pueden ser procesados y almacenados en infraestructura ubicada en Finlandia y en otras localidades utilizadas por Kwar-AI y sus proveedores de servicios, según sea necesario para la operación de la plataforma.
 
 ---
 
