@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import SkipToContent from '../components/SkipToContent';
 import {
   Check,
   ChevronDown,
@@ -268,7 +270,7 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
     },
     {
       id: 'proplus',
-      name: 'Pro Plus',
+      name: 'Max',
       badge: 'USO INTENSIVO',
       description: 'Para pesquisadores avançados',
       monthlyNormal: '197',
@@ -284,7 +286,7 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
         'Processamento prioritário',
         'E-mail + chat',
       ],
-      cta: 'Assinar Pro Plus',
+      cta: 'Assinar Max',
       highlighted: false,
       borderColor: 'border-amber-500/20',
       btnClass: 'bg-amber-500 hover:bg-amber-400 text-[#0a0e1a] shadow-lg shadow-amber-500/20',
@@ -432,7 +434,7 @@ function ComparisonTable() {
             <div className="p-4 text-white/40 font-medium bg-white/[0.02]">Recurso</div>
             <div className="p-4 text-center text-white/40 font-medium bg-white/[0.02]">Free</div>
             <div className="p-4 text-center text-violet-400 font-medium bg-violet-500/5">Pro</div>
-            <div className="p-4 text-center text-amber-400 font-medium bg-amber-500/5">Pro Plus</div>
+            <div className="p-4 text-center text-amber-400 font-medium bg-amber-500/5">Max</div>
           </div>
 
           {/* Rows */}
@@ -487,6 +489,9 @@ function ComparisonTable() {
 // 6. INSTITUTIONAL CARD
 // ============================================================
 function InstitutionalCard() {
+  const { t } = useTranslation();
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
   const features = [
     { icon: Users, label: 'Multiusuário' },
     { icon: LayoutDashboard, label: 'Dashboards compartilhados' },
@@ -495,13 +500,27 @@ function InstitutionalCard() {
     { icon: Headphones, label: 'Suporte dedicado' },
   ];
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      const firstInvalid = form.querySelector(':invalid') as HTMLElement;
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+    setFormStatus('success');
+    form.reset();
+    setTimeout(() => setFormStatus('idle'), 5000);
+  };
+
   return (
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <h3 className="font-display text-xl font-bold text-white">
-              Para equipes e organizações
+              {t('epidbotIndividual.institutional.title', { defaultValue: 'Para equipes e organizações' })}
             </h3>
             <div className="flex gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-cyan-400/10 text-cyan-400 border border-cyan-400/20">
@@ -514,7 +533,7 @@ function InstitutionalCard() {
           </div>
 
           <p className="text-white/40 text-sm mb-6 max-w-lg">
-            Recursos avançados para colaboração, dashboards institucionais e operações em escala.
+            {t('epidbotIndividual.institutional.description', { defaultValue: 'Recursos avançados para colaboração, dashboards institucionais e operações em escala.' })}
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
@@ -532,48 +551,90 @@ function InstitutionalCard() {
           </div>
 
           <p className="text-white/30 text-xs mb-4">
-            Preencha o formulário e nossa equipe entrará em contato.
+            {t('epidbotIndividual.institutional.formLead', { defaultValue: 'Preencha o formulário e nossa equipe entrará em contato.' })}
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-3 mb-3">
-            <input
-              type="text"
-              placeholder="Nome completo"
-              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
-            />
-            <input
-              type="text"
-              placeholder="Instituição"
-              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
-            />
-            <input
-              type="email"
-              placeholder="E-mail corporativo"
-              className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
-            />
-            <select className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white/40 focus:outline-none focus:border-cyan-400/30">
-              <option>Tamanho da equipe</option>
-              <option>1-5 pessoas</option>
-              <option>6-20 pessoas</option>
-              <option>21-50 pessoas</option>
-              <option>50+ pessoas</option>
-            </select>
-          </div>
+          <form ref={formRef} onSubmit={handleSubmit} noValidate>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <label htmlFor="indiv-name" className="sr-only">
+                {t('epidbotIndividual.institutional.nameLabel', { defaultValue: 'Nome completo' })}
+              </label>
+              <input
+                id="indiv-name"
+                type="text"
+                name="name"
+                autoComplete="name"
+                required
+                placeholder={t('epidbotIndividual.institutional.namePlaceholder', { defaultValue: 'Nome completo' })}
+                className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+              />
+              <label htmlFor="indiv-org" className="sr-only">
+                {t('epidbotIndividual.institutional.orgLabel', { defaultValue: 'Instituição' })}
+              </label>
+              <input
+                id="indiv-org"
+                type="text"
+                name="organization"
+                autoComplete="organization"
+                required
+                placeholder={t('epidbotIndividual.institutional.orgPlaceholder', { defaultValue: 'Instituição' })}
+                className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+              />
+              <label htmlFor="indiv-email" className="sr-only">
+                {t('epidbotIndividual.institutional.emailLabel', { defaultValue: 'E-mail corporativo' })}
+              </label>
+              <input
+                id="indiv-email"
+                type="email"
+                name="email"
+                autoComplete="email"
+                required
+                placeholder={t('epidbotIndividual.institutional.emailPlaceholder', { defaultValue: 'E-mail corporativo' })}
+                className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30"
+              />
+              <label htmlFor="indiv-team" className="sr-only">
+                {t('epidbotIndividual.institutional.teamLabel', { defaultValue: 'Tamanho da equipe' })}
+              </label>
+              <select
+                id="indiv-team"
+                name="teamSize"
+                required
+                className="px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white/40 focus:outline-none focus:border-cyan-400/30"
+              >
+                <option value="">{t('epidbotIndividual.institutional.teamPlaceholder', { defaultValue: 'Tamanho da equipe' })}</option>
+                <option value="1-5">1-5 pessoas</option>
+                <option value="6-20">6-20 pessoas</option>
+                <option value="21-50">21-50 pessoas</option>
+                <option value="50+">50+ pessoas</option>
+              </select>
+            </div>
 
-          <textarea
-            placeholder="Como podemos ajudar?"
-            rows={3}
-            className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30 mb-3 resize-none"
-          />
+            <label htmlFor="indiv-message" className="sr-only">
+              {t('epidbotIndividual.institutional.messageLabel', { defaultValue: 'Como podemos ajudar?' })}
+            </label>
+            <textarea
+              id="indiv-message"
+              name="message"
+              placeholder={t('epidbotIndividual.institutional.messagePlaceholder', { defaultValue: 'Como podemos ajudar?' })}
+              rows={3}
+              className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-cyan-400/30 mb-3 resize-none"
+            />
 
-          <button className="w-full bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-            Tenho interesse
-          </button>
+            {formStatus === 'success' && (
+              <p className="text-emerald-400 text-sm mb-3 text-center" role="status" aria-live="polite">
+                {t('epidbotIndividual.institutional.successMessage', { defaultValue: 'Recebemos sua mensagem! Entraremos em contato em breve.' })}
+              </p>
+            )}
 
-          <p className="text-center text-white/20 text-xs mt-3 flex items-center justify-center gap-1">
-            <Shield className="w-3 h-3" />
-            Seus dados estão seguros. Não enviamos spam.
-          </p>
+            <button type="submit" className="w-full bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+              {t('epidbotIndividual.institutional.submitButton', { defaultValue: 'Tenho interesse' })}
+            </button>
+
+            <p className="text-center text-white/20 text-xs mt-3 flex items-center justify-center gap-1">
+              <Shield className="w-3 h-3" />
+              {t('epidbotIndividual.institutional.privacyNote', { defaultValue: 'Seus dados estão seguros. Não enviamos spam.' })}
+            </p>
+          </form>
         </div>
       </div>
     </section>
@@ -592,8 +653,8 @@ function FAQ() {
       a: 'Sim. A diferença entre os planos está no volume de uso, persistência de dados, dados avançados e recursos operacionais.',
     },
     {
-      q: 'Qual a diferença entre Pro e Pro Plus?',
-      a: 'O Pro Plus inclui dados internacionais, Sandbox Python, maior capacidade de upload e recursos avançados para uso intensivo.',
+      q: 'Qual a diferença entre Pro e Max?',
+      a: 'O Max inclui dados internacionais, Sandbox Python, maior capacidade de upload e recursos avançados para uso intensivo.',
     },
     {
       q: 'Posso cancelar quando quiser?',
@@ -605,7 +666,7 @@ function FAQ() {
     },
     {
       q: 'Posso usar meus próprios dados?',
-      a: 'Sim. Os planos Pro e Pro Plus permitem upload de dados privados.',
+      a: 'Sim. Os planos Pro e Max permitem upload de dados privados.',
     },
     {
       q: 'O EpidBot substitui softwares estatísticos?',
@@ -675,19 +736,19 @@ function Discounts() {
     {
       audience: 'Estudante',
       discount: '50%',
-      scope: 'no Pro/Pro Plus',
+      scope: 'no Pro/Max',
       condition: 'Com comprovante de matrícula',
     },
     {
       audience: 'Servidor público SUS',
       discount: '30%',
-      scope: 'no Pro/Pro Plus',
+      scope: 'no Pro/Max',
       condition: 'Com comprovante',
     },
     {
       audience: 'ONGs de saúde',
       discount: '40%',
-      scope: 'no Pro/Pro Plus',
+      scope: 'no Pro/Max',
       condition: 'Com comprovante',
     },
   ];
@@ -796,8 +857,10 @@ export default function EpidbotIndividual() {
 
   return (
     <div className="min-h-screen bg-[#0a0e1a] text-white font-body">
+      <SkipToContent />
       <Navbar />
-      <Hero />
+      <main id="main-content">
+        <Hero />
 
       {/* Pricing Section */}
       <section id="pricing" className="py-12">
@@ -813,6 +876,7 @@ export default function EpidbotIndividual() {
       <Discounts />
       <FinalCTA />
       <Footer />
+      </main>
     </div>
   );
 }

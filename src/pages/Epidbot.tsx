@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check } from 'lucide-react';
+import { Check, Menu, X } from 'lucide-react';
+import { SEO } from '@/components/SEO';
+import SkipToContent from '@/components/SkipToContent';
 
 const copy = {
   'pt-BR': {
@@ -13,7 +15,7 @@ const copy = {
       solucoes: 'Para quem é o EpidBot?',
       solucoesItems: ['Profissionais de vigilância epidemiológica', 'Pesquisadores e universidades', 'Hospitais e laboratórios', 'Organizações globais de saúde', 'Jornalistas e mídia'],
       precos: 'Preços',
-      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
       platform: 'Plataforma',
@@ -22,6 +24,7 @@ const copy = {
       research: 'Pesquisa',
       pilots: 'Pilotos',
       login: 'Login',
+      signup: 'Fazer cadastro',
       requestDemo: 'Solicitar demo',
       try: 'Testar EpidBot',
     },
@@ -61,21 +64,47 @@ const copy = {
       description: 'Enquanto ferramentas genéricas exigem prompts extensos e adaptação técnica, o EpidBot já nasceu voltado para a realidade da saúde pública brasileira.',
     },
     pricing: {
-      badge: 'Promoção de lançamento -30%',
-      title: 'Escolha o plano ideal para você',
-      subtitle: 'Condição especial para os primeiros usuários durante o lançamento do EpidBot.',
+      badge: 'Early access',
+      title: 'Escolha o plano ideal',
+      subtitle: 'Do primeiro contato à colaboração institucional.',
+      promo: 'Preços especiais de lançamento para os primeiros 100 usuários • Use o cupom',
+      promoCode: 'EARLY100',
       monthly: 'Mensal',
       annual: 'Anual',
-      free: 'Para começar',
-      pro: 'Para profissionais',
-      team: 'Para equipes e instituições',
-      promo: 'Preço promocional de lançamento',
-      subscribe: 'Assinar Pro',
-      start: 'Começar gratuitamente',
-      contact: 'Falar com o time',
-      earlyTitle: 'Acesso early adopter',
-      earlyText: 'Os primeiros usuários terão condições especiais durante a fase inicial da plataforma.',
-      learnMore: 'Saiba mais',
+      discountLabel: '-30%',
+      priceFree: 'Grátis',
+      pricePerMonth: '/mês',
+      firstMonth: 'Primeiro mês por',
+      chargedAnnual: 'Cobrado anualmente em',
+      enterpriseBadge: 'Enterprise',
+      disclaimerStart: '* ',
+      disclaimerLink: 'Como funcionam os limites de uso',
+      disclaimerEnd: '. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.',
+      plans: {
+        free: {
+          subtitle: 'Explore a plataforma',
+          cta: 'Experimentar grátis',
+          features: ['Uso incluído*', 'Dados públicos de saúde', 'Consultas em linguagem natural', 'Análises epidemiológicas', 'Gráficos e mapas estáticos', 'Dados DATASUS e Mosqlimate'],
+        },
+        pro: {
+          subtitle: 'Pesquisa epidemiológica profissional',
+          badge: 'Mais popular',
+          cta: 'Assinar Pro',
+          features: ['Tudo do Free', 'Mais capacidade de uso que o Free*', 'Projetos salvos', 'Upload de datasets', 'Exportação PDF e CSV', 'Histórico persistente', 'Mais acesso ao EpidBot'],
+        },
+        max: {
+          subtitle: 'Inteligência epidemiológica avançada',
+          badge: 'Recomendado pela Kwar-AI',
+          cta: 'Assinar Max',
+          features: ['Tudo do Pro', '5x mais capacidade de uso que o Pro*', 'Dados internacionais', 'Sandbox Python', 'Processamento prioritário', 'Exportações avançadas', 'Uso intensivo para pesquisa'],
+        },
+        team: {
+          subtitle: 'Colaboração organizacional',
+          cta: 'Falar com vendas',
+          priceNote: 'Até 10 usuários incluídos',
+          features: ['Tudo do Max', '10x mais capacidade de uso que o Max*', 'Workspace compartilhado', 'Projetos colaborativos', 'Dashboards internos', 'Relatórios compartilhados', 'Suporte prioritário'],
+        },
+      },
     },
     final: {
       title: 'Antecipar é proteger.',
@@ -85,7 +114,14 @@ const copy = {
     footer: {
       text: 'IA aplicada à saúde pública brasileira para impulsionar análises, vigilância e decisões baseadas em evidências.',
       rights: 'Todos os direitos reservados.',
+      product: 'Produto',
+      company: 'Empresa',
+      legal: 'Legal',
+      productLinks: ['Visão geral', 'Preços', 'Documentação', 'Web Summit'],
+      companyLinks: ['Conheça a Kwar-AI'],
+      legalLinks: ['Termos de uso', 'Privacidade', 'LGPD', 'Limites de uso'],
     },
+
     contact: {
       title: 'Entre em contato',
       subtitle: 'Fale com a equipe da Kwar-AI para dúvidas, parcerias, demonstrações ou soluções institucionais.',
@@ -116,6 +152,8 @@ const copy = {
       title: 'Compare os planos',
       subtitle: 'Escolha o nível ideal de inteligência epidemiológica para sua pesquisa ou equipe.',
       feature: 'Funcionalidade',
+      columns: ['Free', 'Pro', 'Max'],
+      rows: ['Dados públicos', 'Dados Mosqlimate', 'Projetos salvos', 'Histórico persistente', 'Upload CSV/Excel', 'Exportação PDF', 'Exportação CSV', 'Dados internacionais', 'Sandbox Python', 'Processamento prioritário', 'Suporte prioritário'],
     },
     bottomCta: {
       title: 'Pronto para transformar dados em inteligência epidemiológica?',
@@ -138,7 +176,7 @@ const copy = {
       solucoes: 'Who is EpidBot for?',
       solucoesItems: ['Epidemiological surveillance professionals', 'Researchers & universities', 'Hospitals & laboratories', 'Global health organizations', 'Journalists & media'],
       precos: 'Pricing',
-      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
       platform: 'Platform',
@@ -147,6 +185,7 @@ const copy = {
       research: 'Research',
       pilots: 'Pilots',
       login: 'Login',
+      signup: 'Create account',
       requestDemo: 'Request demo',
       try: 'Try EpidBot',
     },
@@ -186,21 +225,47 @@ const copy = {
       description: 'While generic tools require long prompts and technical adaptation, EpidBot was designed for the reality of public health work.',
     },
     pricing: {
-      badge: 'Launch promotion -30%',
-      title: 'Choose the right plan for you',
-      subtitle: 'Special conditions for early users during the EpidBot launch.',
+      badge: 'Early access',
+      title: 'Choose the ideal plan',
+      subtitle: 'From first contact to institutional collaboration.',
+      promo: 'Special launch pricing for the first 100 users • Use coupon',
+      promoCode: 'EARLY100',
       monthly: 'Monthly',
       annual: 'Annual',
-      free: 'To get started',
-      pro: 'For professionals',
-      team: 'For teams and institutions',
-      promo: 'Launch promotional price',
-      subscribe: 'Subscribe Pro',
-      start: 'Start for free',
-      contact: 'Talk to the team',
-      earlyTitle: 'Early adopter access',
-      earlyText: 'Early users will have special conditions during the initial platform phase.',
-      learnMore: 'Learn more',
+      discountLabel: '-30%',
+      priceFree: 'Free',
+      pricePerMonth: '/mo',
+      firstMonth: 'First month for',
+      chargedAnnual: 'Charged annually at',
+      enterpriseBadge: 'Enterprise',
+      disclaimerStart: '* ',
+      disclaimerLink: 'How usage limits work',
+      disclaimerEnd: '. Values and availability may vary by country, currency and applicable taxes. Prices and plans are subject to change by Kwar-AI without prior notice.',
+      plans: {
+        free: {
+          subtitle: 'Explore the platform',
+          cta: 'Try for free',
+          features: ['Included usage*', 'Public health data', 'Natural language queries', 'Epidemiological analyses', 'Static charts and maps', 'DATASUS and Mosqlimate data'],
+        },
+        pro: {
+          subtitle: 'Professional epidemiological research',
+          badge: 'Most popular',
+          cta: 'Subscribe Pro',
+          features: ['Everything in Free', 'More usage capacity than Free*', 'Saved projects', 'Dataset upload', 'PDF and CSV export', 'Persistent history', 'More EpidBot access'],
+        },
+        max: {
+          subtitle: 'Advanced epidemiological intelligence',
+          badge: 'Recommended by Kwar-AI',
+          cta: 'Subscribe Max',
+          features: ['Everything in Pro', '5x more usage capacity than Pro*', 'International data', 'Python Sandbox', 'Priority processing', 'Advanced exports', 'Intensive research use'],
+        },
+        team: {
+          subtitle: 'Organizational collaboration',
+          cta: 'Contact Sales',
+          priceNote: 'Up to 10 users included',
+          features: ['Everything in Max', '10x more usage capacity than Max*', 'Shared workspace', 'Collaborative projects', 'Internal dashboards', 'Shared reports', 'Priority support'],
+        },
+      },
     },
     final: {
       title: 'Anticipation protects.',
@@ -210,6 +275,12 @@ const copy = {
     footer: {
       text: 'AI applied to public health to accelerate analysis, surveillance and evidence-based decisions.',
       rights: 'All rights reserved.',
+      product: 'Product',
+      company: 'Company',
+      legal: 'Legal',
+      productLinks: ['Overview', 'Pricing', 'Documentation', 'Web Summit'],
+      companyLinks: ['About Kwar-AI'],
+      legalLinks: ['Terms of Use', 'Privacy', 'LGPD', 'Usage Limits'],
     },
     contact: {
       title: 'Contact us',
@@ -241,6 +312,8 @@ const copy = {
       title: 'Compare plans',
       subtitle: 'Choose the ideal level of epidemiological intelligence for your research or team.',
       feature: 'Feature',
+      columns: ['Free', 'Pro', 'Max'],
+      rows: ['Public data', 'Mosqlimate data', 'Saved projects', 'Persistent history', 'CSV/Excel upload', 'PDF export', 'CSV export', 'International data', 'Python Sandbox', 'Priority processing', 'Priority support'],
     },
     bottomCta: {
       title: 'Ready to turn data into epidemiological intelligence?',
@@ -263,7 +336,7 @@ const copy = {
       solucoes: '¿Para quién es EpidBot?',
       solucoesItems: ['Profesionales de vigilancia epidemiológica', 'Investigadores y universidades', 'Hospitales y laboratorios', 'Organizaciones globales de salud', 'Periodistas y medios'],
       precos: 'Precios',
-      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
       platform: 'Plataforma',
@@ -272,6 +345,7 @@ const copy = {
       research: 'Investigación',
       pilots: 'Pilotos',
       login: 'Login',
+      signup: 'Crear cuenta',
       requestDemo: 'Solicitar demo',
       try: 'Probar EpidBot',
     },
@@ -311,21 +385,47 @@ const copy = {
       description: 'Mientras las herramientas genéricas exigen prompts extensos y adaptación técnica, EpidBot nació para la realidad de la salud pública.',
     },
     pricing: {
-      badge: 'Promoción de lanzamiento -30%',
-      title: 'Elija el plan ideal para usted',
-      subtitle: 'Condición especial para los primeros usuarios durante el lanzamiento de EpidBot.',
+      badge: 'Early access',
+      title: 'Elija el plan ideal',
+      subtitle: 'Del primer contacto a la colaboración institucional.',
+      promo: 'Precios especiales de lanzamiento para los primeros 100 usuarios • Use el cupón',
+      promoCode: 'EARLY100',
       monthly: 'Mensual',
       annual: 'Anual',
-      free: 'Para empezar',
-      pro: 'Para profesionales',
-      team: 'Para equipos e instituciones',
-      promo: 'Precio promocional de lanzamiento',
-      subscribe: 'Suscribirse Pro',
-      start: 'Empezar gratis',
-      contact: 'Hablar con el equipo',
-      earlyTitle: 'Acceso early adopter',
-      earlyText: 'Los primeros usuarios tendrán condiciones especiales durante la fase inicial de la plataforma.',
-      learnMore: 'Más información',
+      discountLabel: '-30%',
+      priceFree: 'Gratis',
+      pricePerMonth: '/mes',
+      firstMonth: 'Primer mes por',
+      chargedAnnual: 'Facturado anualmente en',
+      enterpriseBadge: 'Enterprise',
+      disclaimerStart: '* ',
+      disclaimerLink: 'Cómo funcionan los límites de uso',
+      disclaimerEnd: '. Los valores y la disponibilidad pueden variar según el país, la moneda y los impuestos aplicables. Kwar-AI puede modificar los precios y planes sin previo aviso.',
+      plans: {
+        free: {
+          subtitle: 'Explore la plataforma',
+          cta: 'Probar gratis',
+          features: ['Uso incluido*', 'Datos públicos de salud', 'Consultas en lenguaje natural', 'Análisis epidemiológicos', 'Gráficos y mapas estáticos', 'Datos DATASUS y Mosqlimate'],
+        },
+        pro: {
+          subtitle: 'Investigación epidemiológica profesional',
+          badge: 'Más popular',
+          cta: 'Suscribirse a Pro',
+          features: ['Todo de Free', 'Más capacidad de uso que Free*', 'Proyectos guardados', 'Carga de datasets', 'Exportación PDF y CSV', 'Historial persistente', 'Más acceso a EpidBot'],
+        },
+        max: {
+          subtitle: 'Inteligencia epidemiológica avanzada',
+          badge: 'Recomendado por Kwar-AI',
+          cta: 'Suscribirse a Max',
+          features: ['Todo de Pro', '5 veces más capacidad de uso que Pro*', 'Datos internacionales', 'Python Sandbox', 'Procesamiento prioritario', 'Exportaciones avanzadas', 'Uso intensivo para investigación'],
+        },
+        team: {
+          subtitle: 'Colaboración organizacional',
+          cta: 'Hablar con Ventas',
+          priceNote: 'Hasta 10 usuarios incluidos',
+          features: ['Todo de Max', '10 veces más capacidad de uso que Max*', 'Espacio de trabajo compartido', 'Proyectos colaborativos', 'Dashboards internos', 'Informes compartidos', 'Soporte prioritario'],
+        },
+      },
     },
     final: {
       title: 'Anticipar es proteger.',
@@ -335,6 +435,12 @@ const copy = {
     footer: {
       text: 'IA aplicada a la salud pública para impulsar análisis, vigilancia y decisiones basadas en evidencia.',
       rights: 'Todos los derechos reservados.',
+      product: 'Producto',
+      company: 'Empresa',
+      legal: 'Legal',
+      productLinks: ['Visión general', 'Precios', 'Documentación', 'Web Summit'],
+      companyLinks: ['Conozca Kwar-AI'],
+      legalLinks: ['Términos de uso', 'Privacidad', 'LGPD', 'Límites de uso'],
     },
     contact: {
       title: 'Contáctenos',
@@ -366,6 +472,8 @@ const copy = {
       title: 'Compare los planes',
       subtitle: 'Elija el nivel ideal de inteligencia epidemiológica para su investigación o equipo.',
       feature: 'Funcionalidad',
+      columns: ['Free', 'Pro', 'Max'],
+      rows: ['Datos públicos', 'Datos Mosqlimate', 'Proyectos guardados', 'Historial persistente', 'Carga CSV/Excel', 'Exportación PDF', 'Exportación CSV', 'Datos internacionales', 'Python Sandbox', 'Procesamiento prioritario', 'Soporte prioritario'],
     },
     bottomCta: {
       title: '¿Listo para transformar datos en inteligencia epidemiológica?',
@@ -417,6 +525,7 @@ function useScrollReveal(threshold = 0.1) {
 // ============================================================================
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t, i18n, lng } = useEpidbotCopy();
 
   useEffect(() => {
@@ -424,6 +533,16 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    if (isMobileMenuOpen) {
+      window.addEventListener('keydown', handleEscape);
+    }
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
 
   const menuGroups = [
     {
@@ -437,6 +556,7 @@ function Navbar() {
       action: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
     },
     {
+      label: t.menu.solucoes,
       items: [
         { label: t.menu.solucoesItems[0], href: '/#/epidbot-landing' },
         { label: t.menu.solucoesItems[1], href: '/#/pesquisa' },
@@ -487,7 +607,7 @@ function Navbar() {
             return (
               <div key={idx} className="relative group">
                 <button className="text-[13px] text-kwar-gray group-hover:text-kwar-white transition-colors flex items-center gap-1">
-                  {group.items[0].label}
+                  {group.label}
                   <svg className="w-3 h-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 <div className="absolute left-0 pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-20">
@@ -546,16 +666,121 @@ function Navbar() {
             rel="noopener noreferrer"
             className="hidden md:inline-flex text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
           >
-            Login
+            {t.nav.login}
           </a>
           <a
             href="https://epidbot.kwar-ai.com.br/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-kwar-electric px-4 py-2 text-[13px] font-semibold text-kwar-deep transition-all duration-300 hover:bg-kwar-electric/90 hover:shadow-glow"
+            className="hidden md:inline-flex rounded-full bg-kwar-electric px-4 py-2 text-[13px] font-semibold text-kwar-deep transition-all duration-300 hover:bg-kwar-electric/90 hover:shadow-glow"
           >
-            Fazer cadastro
+            {t.nav.signup}
           </a>
+          {/* Hamburger */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-kwar-gray hover:text-kwar-white transition-colors"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        id="mobile-menu"
+        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="bg-kwar-deep/95 backdrop-blur-2xl border-t border-white/[0.08] px-5 py-4 space-y-1">
+          {menuGroups.map((group, idx) => {
+            if ('items' in group && group.items) {
+              return (
+                <div key={idx}>
+                  <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/30 px-2 py-2">{group.label}</p>
+                  {group.items.map((item) => {
+                    if (item.href.startsWith('#')) {
+                      return (
+                        <button
+                          key={item.label}
+                          onClick={() => {
+                            const el = document.querySelector(item.href);
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            setIsMobileMenuOpen(false);
+                          }}
+                          className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
+                        >
+                          {item.label}
+                        </button>
+                      );
+                    }
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              );
+            }
+            return (
+              <button
+                key={idx}
+                onClick={() => {
+                  if (group.action) group.action();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
+              >
+                {group.label}
+              </button>
+            );
+          })}
+          <hr className="border-white/[0.06] my-3" />
+          <div className="flex items-center gap-2 px-2 py-2">
+            {(['pt-BR', 'en', 'es'] as LocaleKey[]).map((locale, i) => (
+              <span key={locale} className="flex items-center">
+                {i > 0 && <span className="text-white/10 mx-1">/</span>}
+                <button
+                  onClick={() => { i18n.changeLanguage(locale); setIsMobileMenuOpen(false); }}
+                  className={`text-xs transition-all ${lng === locale ? 'text-kwar-electric font-medium' : 'text-white/30 hover:text-white/60'}`}
+                >
+                  {locale === 'pt-BR' ? 'PT' : locale.toUpperCase()}
+                </button>
+              </span>
+            ))}
+          </div>
+          <div className="flex gap-3 px-2 pt-1">
+            <a
+              href="https://epidbot.kwar-ai.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex-1 text-center rounded-full border border-white/[0.08] px-4 py-2 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
+            >
+              {t.nav.login}
+            </a>
+            <a
+              href="https://epidbot.kwar-ai.com.br/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex-1 text-center rounded-full bg-kwar-electric px-4 py-2 text-sm font-semibold text-kwar-deep transition-all hover:bg-kwar-electric/90"
+            >
+              {t.nav.signup}
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -604,10 +829,12 @@ function Hero() {
 
                 <div className="space-y-3.5">
                   <div>
-                    <input className="h-10 w-full rounded-xl border border-white/[0.06] bg-kwar-deep/40 px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30" placeholder={t.hero.username} />
+                    <label htmlFor="login-username" className="sr-only">{t.hero.username}</label>
+                    <input id="login-username" autoComplete="username" className="h-10 w-full rounded-xl border border-white/[0.06] bg-kwar-deep/40 px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30" placeholder={t.hero.username} />
                   </div>
                   <div>
-                    <input type="password" className="h-10 w-full rounded-xl border border-white/[0.06] bg-kwar-deep/40 px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30" placeholder={t.hero.password} />
+                    <label htmlFor="login-password" className="sr-only">{t.hero.password}</label>
+                    <input id="login-password" type="password" autoComplete="current-password" className="h-10 w-full rounded-xl border border-white/[0.06] bg-kwar-deep/40 px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30" placeholder={t.hero.password} />
                   </div>
                   <div className="flex items-center justify-between">
                     <a href="https://epidbot.kwar-ai.com.br/forgot-password" target="_blank" rel="noopener noreferrer" className="text-[11px] text-kwar-electric/60 hover:text-kwar-electric transition-colors">
@@ -735,79 +962,49 @@ function Pricing() {
     }
   };
 
+  const p = t.pricing.plans;
   const plans = [
     {
       name: 'Free',
-      subtitle: 'Explore a plataforma',
+      subtitle: p.free.subtitle,
       monthlyPrice: 0,
-      cta: 'Experimentar grátis',
+      cta: p.free.cta,
       accent: 'neutral',
-      features: [
-        'Uso incluído*',
-        'Dados públicos de saúde',
-        'Consultas em linguagem natural',
-        'Análises epidemiológicas',
-        'Gráficos e mapas estáticos',
-        'Dados DATASUS e Mosqlimate',
-      ],
+      features: p.free.features,
     },
     {
       name: 'Pro',
-      subtitle: 'Pesquisa epidemiológica profissional',
-      badge: 'Mais popular',
+      subtitle: p.pro.subtitle,
+      badge: p.pro.badge,
       monthlyPrice: 97,
       annualPrice: 804,
       launchPrice: 67,
-      cta: 'Assinar Pro',
+      cta: p.pro.cta,
       accent: 'cyan',
       highlight: true,
-      features: [
-        'Tudo do Free',
-        'Mais capacidade de uso que o Free*',
-        'Projetos salvos',
-        'Upload de datasets',
-        'Exportação PDF e CSV',
-        'Histórico persistente',
-        'Mais acesso ao EpidBot',
-      ],
+      features: p.pro.features,
     },
     {
       name: 'Max',
-      subtitle: 'Inteligência epidemiológica avançada',
-      badge: 'Recomendado pela Kwar-AI',
+      subtitle: p.max.subtitle,
+      badge: p.max.badge,
       monthlyPrice: 197,
       annualPrice: 1644,
       launchPrice: 137,
-      cta: 'Assinar Max',
+      cta: p.max.cta,
       accent: 'gold',
-      features: [
-        'Tudo do Pro',
-        '5x mais capacidade de uso que o Pro*',
-        'Dados internacionais',
-        'Sandbox Python',
-        'Processamento prioritário',
-        'Exportações avançadas',
-        'Uso intensivo para pesquisa',
-      ],
+      features: p.max.features,
     },
     {
       name: 'Research Team',
-      subtitle: 'Colaboração organizacional',
+      subtitle: p.team.subtitle,
       monthlyPrice: 1425,
       annualPrice: 11964,
       launchPrice: 997,
-      priceNote: 'Até 10 usuários incluídos',
-      cta: 'Falar com vendas',
+      priceNote: p.team.priceNote,
+      cta: p.team.cta,
       accent: 'teal',
-      features: [
-        'Tudo do Max',
-        '10x mais capacidade de uso que o Max*',
-        'Workspace compartilhado',
-        'Projetos colaborativos',
-        'Dashboards internos',
-        'Relatórios compartilhados',
-        'Suporte prioritário',
-      ],
+      features: p.team.features,
     },
   ];
 
@@ -838,18 +1035,19 @@ function Pricing() {
     },
   };
 
+  const rows = t.compare.rows;
   const comparisonRows = [
-    { feature: 'Dados públicos', free: true, pro: true, max: true },
-    { feature: 'Dados Mosqlimate', free: true, pro: true, max: true },
-    { feature: 'Projetos salvos', free: false, pro: true, max: true },
-    { feature: 'Histórico persistente', free: false, pro: true, max: true },
-    { feature: 'Upload CSV/Excel', free: false, pro: true, max: true },
-    { feature: 'Exportação PDF', free: false, pro: true, max: true },
-    { feature: 'Exportação CSV', free: false, pro: true, max: true },
-    { feature: 'Dados internacionais', free: false, pro: false, max: true },
-    { feature: 'Sandbox Python', free: false, pro: false, max: true },
-    { feature: 'Processamento prioritário', free: false, pro: false, max: true },
-    { feature: 'Suporte prioritário', free: false, pro: true, max: true },
+    { feature: rows[0], free: true, pro: true, max: true },
+    { feature: rows[1], free: true, pro: true, max: true },
+    { feature: rows[2], free: false, pro: true, max: true },
+    { feature: rows[3], free: false, pro: true, max: true },
+    { feature: rows[4], free: false, pro: true, max: true },
+    { feature: rows[5], free: false, pro: true, max: true },
+    { feature: rows[6], free: false, pro: true, max: true },
+    { feature: rows[7], free: false, pro: false, max: true },
+    { feature: rows[8], free: false, pro: false, max: true },
+    { feature: rows[9], free: false, pro: false, max: true },
+    { feature: rows[10], free: false, pro: true, max: true },
   ];
 
   return (
@@ -863,19 +1061,19 @@ function Pricing() {
         <div className="text-center mb-8">
           <div className={`inline-flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1 mb-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <span className="w-1.5 h-1.5 rounded-full bg-kwar-gold" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/40">Early access</span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/40">{t.pricing.badge}</span>
           </div>
 
           <h2 className={`font-display text-3xl sm:text-4xl font-bold text-white transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            Escolha o plano ideal
+            {t.pricing.title}
           </h2>
 
           <p className={`text-white/40 text-sm mt-2 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            Do primeiro contato à colaboração institucional.
+            {t.pricing.subtitle}
           </p>
 
           <p className={`text-xs text-white/30 mt-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            Preços especiais de lançamento para os primeiros 100 usuários • Use o cupom <span className="font-semibold tracking-wider text-white/60">EARLY100</span>
+            {t.pricing.promo} <span className="font-semibold tracking-wider text-white/60">{t.pricing.promoCode}</span>
           </p>
         </div>
 
@@ -888,7 +1086,7 @@ function Pricing() {
                 !isAnnual ? 'bg-white/10 text-white' : 'text-white/30 hover:text-white/60'
               }`}
             >
-              Mensal
+                {t.pricing.monthly}
             </button>
             <button
               onClick={() => setIsAnnual(true)}
@@ -896,8 +1094,8 @@ function Pricing() {
                 isAnnual ? 'bg-white/10 text-white' : 'text-white/30 hover:text-white/60'
               }`}
             >
-              Anual
-              <span className="text-[9px] font-semibold text-kwar-electric">-30%</span>
+              {t.pricing.annual}
+              <span className="text-[9px] font-semibold text-kwar-electric">{t.pricing.discountLabel}</span>
             </button>
           </div>
         </div>
@@ -937,24 +1135,24 @@ function Pricing() {
                   <div className="space-y-1">
                     <div className="flex items-baseline gap-2">
                       <span className={`font-bold text-white ${plan.monthlyPrice === 0 ? 'text-2xl' : 'text-3xl'}`}>
-                        {plan.monthlyPrice === 0 ? 'Grátis' : `R$ ${isAnnual && plan.launchPrice ? plan.launchPrice : plan.monthlyPrice}`}
+                        {plan.monthlyPrice === 0 ? t.pricing.priceFree : `R$ ${isAnnual && plan.launchPrice ? plan.launchPrice : plan.monthlyPrice}`}
                       </span>
                       {plan.monthlyPrice > 0 && (
-                        <span className="text-white/30 text-sm">/mês</span>
+                        <span className="text-white/30 text-sm">{t.pricing.pricePerMonth}</span>
                       )}
                     </div>
                     {!isAnnual && plan.launchPrice && (
                       <div className="text-xs text-white/40">
-                        Primeiro mês por R$ {plan.launchPrice} • <span className={`font-medium ${plan.accent === 'cyan' ? 'text-kwar-electric/70' : plan.accent === 'gold' ? 'text-amber-400/70' : plan.accent === 'teal' ? 'text-amber-400/70' : 'text-white/60'}`}>EARLY100</span>
+                        {t.pricing.firstMonth} R$ {plan.launchPrice} • <span className={`font-medium ${plan.accent === 'cyan' ? 'text-kwar-electric/70' : plan.accent === 'gold' ? 'text-amber-400/70' : plan.accent === 'teal' ? 'text-amber-400/70' : 'text-white/60'}`}>{t.pricing.promoCode}</span>
                       </div>
                     )}
                     {isAnnual && plan.launchPrice && (
                       <>
                         <div className="text-xs text-white/40">
-                          Cobrado anualmente em R$ {plan.annualPrice}
+                          {t.pricing.chargedAnnual} R$ {plan.annualPrice}
                         </div>
                         <div className="text-[11px] text-white/25 line-through">
-                          R$ {plan.monthlyPrice}/mês
+                          R$ {plan.monthlyPrice}{t.pricing.pricePerMonth}
                         </div>
                       </>
                     )}
@@ -966,12 +1164,8 @@ function Pricing() {
               </div>
 
               {/* CTA */}
-              {plan.cta.includes('vendas') || plan.cta.includes('demonstração') || plan.cta.includes('sales') || plan.cta.includes('demo') ? (
+              {plan.name === 'Research Team' ? (
                 <a href="#contact" className={`w-full py-3 rounded-xl text-sm font-semibold transition-all mb-8 text-center block ${acct.btn}`}>
-                  {plan.cta}
-                </a>
-              ) : plan.name === 'Free' ? (
-                <a href="https://epidbot.kwar-ai.com.br/register" target="_blank" rel="noopener noreferrer" className={`w-full py-3 rounded-xl text-sm font-semibold transition-all mb-8 text-center block ${acct.btn}`}>
                   {plan.cta}
                 </a>
               ) : (
@@ -1001,7 +1195,7 @@ function Pricing() {
 
         {/* Disclaimer */}
         <p className={`text-center text-[11px] text-white/15 leading-relaxed max-w-2xl mx-auto mt-10 tracking-wide transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          * <a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="text-kwar-gold/70 hover:text-kwar-gold transition-colors">Como funcionam os limites de uso</a>. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.
+          {t.pricing.disclaimerStart}<a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="text-kwar-gold/70 hover:text-kwar-gold transition-colors">{t.pricing.disclaimerLink}</a>{t.pricing.disclaimerEnd}
         </p>
 
         {/* Enterprise — Premium Section */}
@@ -1014,6 +1208,7 @@ function Pricing() {
             <img
               src="/images/enterprise preços.png"
               alt="Enterprise epidemiological intelligence platform"
+              loading="lazy"
               className="w-full h-full object-cover opacity-30 saturate-[0.8]"
             />
             {/* Fade mask: invisible left (behind text) → visible right */}
@@ -1068,10 +1263,10 @@ function Pricing() {
               <thead>
                 <tr>
                   <th className="text-left px-6 py-4 text-xs font-semibold text-white/30 uppercase tracking-[0.12em] bg-white/[0.01]">{t.compare.feature}</th>
-                  <th className="text-center px-5 py-4 text-xs font-semibold text-white/25 uppercase tracking-[0.12em]">Free</th>
-                  <th className="text-center px-5 py-4 text-xs font-semibold text-kwar-electric uppercase tracking-[0.12em] bg-kwar-electric/[0.025]">Pro</th>
+                  <th className="text-center px-5 py-4 text-xs font-semibold text-white/25 uppercase tracking-[0.12em]">{t.compare.columns[0]}</th>
+                  <th className="text-center px-5 py-4 text-xs font-semibold text-kwar-electric uppercase tracking-[0.12em] bg-kwar-electric/[0.025]">{t.compare.columns[1]}</th>
                   <th className="relative text-center px-5 py-4 text-xs font-semibold text-amber-400 uppercase tracking-[0.12em] bg-amber-500/[0.02]">
-                    Max
+                    {t.compare.columns[2]}
                     <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
                   </th>
                 </tr>
@@ -1147,6 +1342,7 @@ function Pricing() {
 // FOOTER
 // ============================================================================
 function Footer() {
+  const { t } = useEpidbotCopy();
   return (
     <footer className="relative py-16 overflow-hidden border-t border-white/[0.04]">
       <div className="absolute inset-0 bg-gradient-to-t from-kwar-deep to-transparent" />
@@ -1162,59 +1358,58 @@ function Footer() {
               </span>
             </a>
             <p className="text-kwar-gray text-sm leading-relaxed mb-4 max-w-sm">
-              IA aplicada à saúde pública brasileira para impulsionar análises, vigilância e decisões baseadas em evidências.
+              {t.footer.text}
             </p>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Produto</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.product}</h4>
             <ul className="space-y-2.5">
-              {[
-                { label: 'Visão geral', href: 'https://kwar-ai.com.br/#/epidbot' },
-                { label: 'Preços', href: '#pricing' },
-                { label: 'Documentação', href: '/files/EpiDBot_User_Manual.pdf' },
-                { label: 'Web Summit', href: 'https://kwar-ai.com.br/#/epidbot-websummit' },
-              ].map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith('#') ? (
-                    <button onClick={() => { const el = document.querySelector(link.href); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</button>
-                  ) : (
-                    <a href={link.href} target={link.href.startsWith('/files') ? '_blank' : link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
-                  )}
+              {t.footer.productLinks.map((label: string, idx: number) => {
+                const hrefs = ['https://kwar-ai.com.br/#/epidbot', '#pricing', '/files/EpiDBot_User_Manual.pdf', 'https://kwar-ai.com.br/#/epidbot-websummit'];
+                const href = hrefs[idx] || '#';
+                return (
+                  <li key={label}>
+                    {href.startsWith('#') ? (
+                      <button onClick={() => { const el = document.querySelector(href); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{label}</button>
+                    ) : (
+                      <a href={href} target={href.startsWith('/files') ? '_blank' : href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{label}</a>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.company}</h4>
+            <ul className="space-y-2.5">
+              {t.footer.companyLinks.map((label: string) => (
+                <li key={label}>
+                  <a href="https://kwar-ai.com.br/" target="_blank" rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{label}</a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Empresa</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.legal}</h4>
             <ul className="space-y-2.5">
-              <li>
-                <a href="https://kwar-ai.com.br/" target="_blank" rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">Conheça a Kwar-AI</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm">Legal</h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'Termos de uso', href: '/#/termos' },
-                { label: 'Privacidade', href: '/#/privacy' },
-                { label: 'LGPD', href: '/#/lgpd' },
-                { label: 'Limites de uso', href: '/#/limites-de-uso' },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
-                </li>
-              ))}
+              {t.footer.legalLinks.map((label: string, idx: number) => {
+                const hrefs = ['/#/termos', '/#/privacy', '/#/lgpd', '/#/limites-de-uso'];
+                return (
+                  <li key={label}>
+                    <a href={hrefs[idx] || '#'} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{label}</a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-kwar-gray text-sm">
-            © {new Date().getFullYear()} Kwar-AI. Todos os direitos reservados.
+            © {new Date().getFullYear()} Kwar-AI. {t.footer.rights}
           </p>
           <div className="flex items-center gap-6">
             <a href="https://linkedin.com/company/kwar-ai" target="_blank" rel="noopener noreferrer" className="text-kwar-gray hover:text-kwar-electric transition-colors">
@@ -1380,6 +1575,17 @@ function ContactSection() {
   const { t } = useEpidbotCopy();
   const [form, setForm] = useState({ name: '', email: '', institution: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const successRef = useRef<HTMLDivElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (status === 'success') {
+      successRef.current?.focus();
+    } else if (status === 'error') {
+      errorRef.current?.focus();
+    }
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1470,7 +1676,7 @@ function ContactSection() {
           {/* Right — form */}
           <div>
             {status === 'success' ? (
-              <div className="rounded-2xl border border-kwar-electric/20 bg-kwar-electric/[0.03] p-8 text-center">
+              <div ref={successRef} tabIndex={-1} role="status" aria-live="polite" className="rounded-2xl border border-kwar-electric/20 bg-kwar-electric/[0.03] p-8 text-center outline-none">
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-kwar-electric/10 border border-kwar-electric/20">
                   <Check className="h-6 w-6 text-kwar-electric" />
                 </div>
@@ -1481,23 +1687,27 @@ function ContactSection() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <label className="block">
+                  <label className="block" htmlFor="epidbot-name">
                     <span className="mb-2 block text-xs font-medium text-white/40">{t.contact.nameLabel} *</span>
                     <input
+                      id="epidbot-name"
                       required
+                      autoComplete="name"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className="w-full h-11 rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30 focus:shadow-[0_0_0_3px_rgba(0,240,255,0.04)]"
                       placeholder={t.contact.namePlaceholder}
                     />
                   </label>
-                  <label className="block">
+                  <label className="block" htmlFor="epidbot-email">
                     <span className="mb-2 block text-xs font-medium text-white/40">{t.contact.emailLabel} *</span>
                     <input
+                      id="epidbot-email"
                       required
                       type="email"
+                      autoComplete="email"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="w-full h-11 rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30 focus:shadow-[0_0_0_3px_rgba(0,240,255,0.04)]"
@@ -1505,29 +1715,34 @@ function ContactSection() {
                     />
                   </label>
                 </div>
-                <label className="block">
+                <label className="block" htmlFor="epidbot-institution">
                   <span className="mb-2 block text-xs font-medium text-white/40">{t.contact.institutionLabel}</span>
                   <input
+                    id="epidbot-institution"
+                    autoComplete="organization"
                     value={form.institution}
                     onChange={(e) => setForm({ ...form, institution: e.target.value })}
                     className="w-full h-11 rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30 focus:shadow-[0_0_0_3px_rgba(0,240,255,0.04)]"
                     placeholder={t.contact.institutionPlaceholder}
                   />
                 </label>
-                <label className="block">
+                <label className="block" htmlFor="epidbot-subject">
                   <span className="mb-2 block text-xs font-medium text-white/40">{t.contact.subjectLabel}</span>
                   <input
+                    id="epidbot-subject"
                     value={form.subject}
                     onChange={(e) => setForm({ ...form, subject: e.target.value })}
                     className="w-full h-11 rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30 focus:shadow-[0_0_0_3px_rgba(0,240,255,0.04)]"
                     placeholder={t.contact.subjectPlaceholder}
                   />
                 </label>
-                <label className="block">
+                <label className="block" htmlFor="epidbot-message">
                   <span className="mb-2 block text-xs font-medium text-white/40">{t.contact.messageLabel} *</span>
                   <textarea
+                    id="epidbot-message"
                     required
                     rows={4}
+                    autoComplete="off"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-white/15 focus:border-kwar-electric/30 focus:shadow-[0_0_0_3px_rgba(0,240,255,0.04)] resize-none"
@@ -1542,7 +1757,7 @@ function ContactSection() {
                   {status === 'loading' ? t.contact.sending : t.contact.sendButton}
                 </button>
                 {status === 'error' && (
-                  <p className="text-red-400/70 text-xs text-center">{t.contact.error}</p>
+                  <p ref={errorRef} tabIndex={-1} role="alert" aria-live="polite" className="text-red-400/70 text-xs text-center outline-none">{t.contact.error}</p>
                 )}
                 <p className="text-white/15 text-[11px] text-center mt-4">
                   <a href="/#/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">
@@ -1564,12 +1779,21 @@ function ContactSection() {
 export default function EpidbotPage() {
   return (
     <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
+      <SEO
+        title="EpidBot - Inteligência Epidemiológica com IA"
+        description="EpidBot é uma plataforma de inteligência epidemiológica com IA para pesquisadores, hospitais e organizações de saúde. Análise de dados, vigilância e decisões baseadas em evidências."
+        path="/epidbot"
+        ogType="product"
+      />
+      <SkipToContent />
       <Navbar />
-      <Hero />
-      <Pricing />
-      <FAQ />
-      <ContactSection />
-      <Footer />
+      <div id="main-content">
+        <Hero />
+        <Pricing />
+        <FAQ />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 }

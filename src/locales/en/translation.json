@@ -801,9 +801,9 @@
         "cta": "Subscribe to Pro"
       },
       "proPlus": {
-        "name": "Pro+",
+        "name": "Max",
         "description": "For teams and more advanced analysis",
-        "cta": "Subscribe to Pro+"
+        "cta": "Subscribe to Max"
       },
       "enterprise": {
         "name": "Enterprise",

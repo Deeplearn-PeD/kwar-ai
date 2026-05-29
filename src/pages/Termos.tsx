@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
+import SkipToContent from '@/components/SkipToContent';
 
 const content: Record<string, { title: string; body: string; disclaimer?: string }> = {
   'pt-BR': {
@@ -700,7 +702,14 @@ export default function Termos() {
     });
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
+    <>
+      <SEO
+        title={t.title}
+        description={`${t.title} - Kwar-AI EpidBot. Leia nossos termos de uso e condições de serviço.`}
+        path="/termos"
+      />
+      <SkipToContent />
+      <div id="main-content" className="min-h-screen bg-[#080c14] text-white font-body antialiased">
       <div className="pt-24 pb-4 border-b border-white/[0.04]">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <nav className="flex items-center gap-2 text-sm text-white/30">
@@ -763,5 +772,6 @@ export default function Termos() {
         </div>
       </div>
     </div>
+    </>
   );
 }

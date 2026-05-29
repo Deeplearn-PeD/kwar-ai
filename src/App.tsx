@@ -1,5 +1,6 @@
 import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { SEO } from '@/components/SEO';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/sections/Hero';
 import { OurStory } from '@/sections/OurStory';
@@ -13,6 +14,7 @@ import { EquipeSection } from '@/sections/EquipeSection';
 import { CTAFinalSection } from '@/sections/CTAFinalSection';
 import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
+import SkipToContent from '@/components/SkipToContent';
 import EpidbotLanding from '@/pages/EpidbotLanding';
 import EpidbotWebSummit from '@/pages/EpidbotWebSummit';
 import EpidbotIndividual from '@/pages/EpidbotIndividual';
@@ -50,11 +52,17 @@ function HomePage() {
 
   return (
     <>
+      <SEO
+        title="Kwar-AI - Inteligência Epidemiológica"
+        description="Inteligência epidemiológica com IA para pesquisadores, hospitais e organizações globais de saúde. Antecipe surtos, automatize análises e transforme dados em decisões."
+        path="/"
+      />
+      <SkipToContent />
       {/* Navigation */}
       <Navbar />
       
       {/* Main Content */}
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         {/* 1) Hero */}
         <Hero />
 

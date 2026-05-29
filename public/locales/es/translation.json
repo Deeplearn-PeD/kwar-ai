@@ -800,9 +800,9 @@
         "cta": "Suscribirse a Pro"
       },
       "proPlus": {
-        "name": "Pro+",
+        "name": "Max",
         "description": "Para equipos y análisis más avanzados",
-        "cta": "Suscribirse a Pro+"
+        "cta": "Suscribirse a Max"
       },
       "enterprise": {
         "name": "Enterprise",

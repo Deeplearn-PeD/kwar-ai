@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import SkipToContent from '@/components/SkipToContent';
 import { 
   ArrowRight, 
   AlertCircle,
@@ -1167,52 +1168,52 @@ function PricingSection() {
 
   const plans = [
     {
-      name: 'Free',
-      description: 'Experimente o EpidBot e veja como transformar dados em insights',
+      name: t('epidbotLanding.pricing.free.name', { defaultValue: 'Free' }),
+      description: t('epidbotLanding.pricing.free.description', { defaultValue: 'Experimente o EpidBot e veja como transformar dados em insights' }),
       features: [
-        'At├® 5 an├ílises por m├¬s',
-        'Upload de dados pequenos',
-        'Respostas b├ísicas',
-        'Sem exporta├º├úo de relat├│rios',
+        t('epidbotLanding.pricing.features.free.0', { defaultValue: 'Até 5 análises por mês' }),
+        t('epidbotLanding.pricing.features.free.1', { defaultValue: 'Upload de dados pequenos' }),
+        t('epidbotLanding.pricing.features.free.2', { defaultValue: 'Respostas básicas' }),
+        t('epidbotLanding.pricing.features.free.3', { defaultValue: 'Sem exportação de relatórios' }),
       ],
-      cta: 'Come├ºar gr├ítis',
+      cta: t('epidbotLanding.pricing.free.cta', { defaultValue: 'Começar grátis' }),
       popular: false,
     },
     {
-      name: 'Pro',
-      description: 'Ideal para uso frequente e an├ílises cont├¡nuas',
+      name: t('epidbotLanding.pricing.pro.name', { defaultValue: 'Pro' }),
+      description: t('epidbotLanding.pricing.pro.description', { defaultValue: 'Ideal para uso frequente e análises contínuas' }),
       features: [
-        'At├® 100 an├ílises por m├¬s',
-        'Upload de conjunto de dados',
-        'Gera├º├úo de relat├│rios b├ísicos',
-        'Hist├│rico de an├ílises',
+        t('epidbotLanding.pricing.features.pro.0', { defaultValue: 'Até 100 análises por mês' }),
+        t('epidbotLanding.pricing.features.pro.1', { defaultValue: 'Upload de conjunto de dados' }),
+        t('epidbotLanding.pricing.features.pro.2', { defaultValue: 'Geração de relatórios básicos' }),
+        t('epidbotLanding.pricing.features.pro.3', { defaultValue: 'Histórico de análises' }),
       ],
-      cta: 'Tenho interesse',
+      cta: t('epidbotLanding.pricing.pro.cta', { defaultValue: 'Tenho interesse' }),
       popular: true,
     },
     {
-      name: 'Pro+',
-      description: 'Para equipes e an├ílises mais avan├ºadas',
+      name: t('epidbotLanding.pricing.proPlus.name', { defaultValue: 'Pro+' }),
+      description: t('epidbotLanding.pricing.proPlus.description', { defaultValue: 'Para equipes e análises mais avançadas' }),
       features: [
-        'At├® 300 an├ílises por m├¬s',
-        'Relat├│rios completos em PDF',
-        'Melhor performance',
-        'Prioridade no processamento',
+        t('epidbotLanding.pricing.features.proPlus.0', { defaultValue: 'Até 300 análises por mês' }),
+        t('epidbotLanding.pricing.features.proPlus.1', { defaultValue: 'Relatórios completos em PDF' }),
+        t('epidbotLanding.pricing.features.proPlus.2', { defaultValue: 'Melhor performance' }),
+        t('epidbotLanding.pricing.features.proPlus.3', { defaultValue: 'Prioridade no processamento' }),
       ],
-      cta: 'Tenho interesse',
+      cta: t('epidbotLanding.pricing.proPlus.cta', { defaultValue: 'Tenho interesse' }),
       popular: false,
     },
     {
-      name: 'Enterprise',
-      description: 'Solu├º├úo estrat├®gica para institui├º├Áes e projetos maiores',
+      name: t('epidbotLanding.pricing.enterprise.name', { defaultValue: 'Enterprise' }),
+      description: t('epidbotLanding.pricing.enterprise.description', { defaultValue: 'Solução estratégica para instituições e projetos maiores' }),
       features: [
-        'Alto volume de an├ílises (uso sob medida)',
-        'Integra├º├úo com bases de dados locais',
-        'Customiza├º├Áes sob demanda',
-        'Suporte priorit├írio',
+        t('epidbotLanding.pricing.features.enterprise.0', { defaultValue: 'Alto volume de análises (uso sob medida)' }),
+        t('epidbotLanding.pricing.features.enterprise.1', { defaultValue: 'Integração com bases de dados locais' }),
+        t('epidbotLanding.pricing.features.enterprise.2', { defaultValue: 'Customizações sob demanda' }),
+        t('epidbotLanding.pricing.features.enterprise.3', { defaultValue: 'Suporte prioritário' }),
       ],
-      note: 'Customiza├º├Áes e projetos especiais podem ser contratados ├á parte',
-      cta: 'Falar com especialista',
+      note: t('epidbotLanding.pricing.enterprise.note', { defaultValue: 'Customizações e projetos especiais podem ser contratados à parte' }),
+      cta: t('epidbotLanding.pricing.enterprise.cta', { defaultValue: 'Falar com especialista' }),
       popular: false,
       enterprise: true,
     },
@@ -1352,23 +1353,38 @@ function FinalCTASection() {
             <input type="hidden" name="subject" value="Nova mensagem - EpidBot Landing Page" />
             <input type="hidden" name="from_name" value="EpidBot Website" />
             <div className="space-y-4">
+              <label htmlFor="contact-name" className="sr-only">
+                {t('epidbotLanding.final.form.nameLabel', { defaultValue: 'Nome completo' })}
+              </label>
               <Input
+                id="contact-name"
                 type="text"
                 name="name"
+                autoComplete="name"
                 placeholder={t('epidbotLanding.final.form.namePlaceholder', { defaultValue: 'Seu nome' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
               />
+              <label htmlFor="contact-email" className="sr-only">
+                {t('epidbotLanding.final.form.emailLabel', { defaultValue: 'E-mail' })}
+              </label>
               <Input
+                id="contact-email"
                 type="email"
                 name="email"
+                autoComplete="email"
                 placeholder={t('epidbotLanding.final.form.emailPlaceholder', { defaultValue: 'Seu email' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
               />
+              <label htmlFor="contact-org" className="sr-only">
+                {t('epidbotLanding.final.form.organizationLabel', { defaultValue: 'Organização' })}
+              </label>
               <Input
+                id="contact-org"
                 type="text"
                 name="organization"
+                autoComplete="organization"
                 placeholder={t('epidbotLanding.final.form.organizationPlaceholder', { defaultValue: 'Nome da secretaria ou munic├¡pio' })}
                 className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
                 required
@@ -1462,9 +1478,10 @@ function LandingFooter() {
 export default function EpidbotLanding() {
   return (
     <div className="relative min-h-screen bg-kwar-deep">
+      <SkipToContent />
       <LandingNavbar />
       
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         <HeroSection />
         <ProblemSection />
         <ValidationSection />

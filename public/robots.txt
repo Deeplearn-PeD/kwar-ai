@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kwar-ai.com.br/sitemap.xml
+
+# Disallow admin paths
+Disallow: /#/admin
+Disallow: /#/login

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
+import SkipToContent from '@/components/SkipToContent';
 
 const content: Record<string, { title: string; subtitle: string; body: string; disclaimer?: string }> = {
   'pt-BR': {
@@ -680,7 +682,14 @@ export default function Privacy() {
     });
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
+    <>
+      <SEO
+        title={t.title}
+        description={t.subtitle}
+        path="/privacy"
+      />
+      <SkipToContent />
+      <div id="main-content" className="min-h-screen bg-[#080c14] text-white font-body antialiased">
       {/* Breadcrumb */}
       <div className="pt-24 pb-4 border-b border-white/[0.04]">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
@@ -749,5 +758,6 @@ export default function Privacy() {
         </div>
       </div>
     </div>
+    </>
   );
 }
