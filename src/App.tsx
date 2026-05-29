@@ -24,6 +24,7 @@ import Privacy from '@/pages/Privacy';
 import Documentacao from '@/pages/Documentacao';
 import Termos from '@/pages/Termos';
 import LGPD from '@/pages/LGPD';
+import LimitesDeUso from '@/pages/LimitesDeUso';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -107,6 +108,7 @@ function App() {
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/termos" element={<Termos />} />
       <Route path="/lgpd" element={<LGPD />} />
+      <Route path="/limites-de-uso" element={<LimitesDeUso />} />
       <Route path="/documentacao" element={<Documentacao />} />
     </Routes>
   );

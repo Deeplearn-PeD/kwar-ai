@@ -569,7 +569,8 @@
       "legal": {
         "terms": "Termos de Uso",
         "privacy": "Privacidade",
-        "lgpd": "LGPD"
+        "lgpd": "LGPD",
+        "limits": "Limites de uso"
       }
     },
     "copyright": "© {{year}} Kwar-AI",

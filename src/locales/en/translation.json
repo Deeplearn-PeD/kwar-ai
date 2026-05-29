@@ -570,7 +570,8 @@
       "legal": {
         "terms": "Terms of Use",
         "privacy": "Privacy",
-        "lgpd": "LGPD"
+        "lgpd": "LGPD",
+        "limits": "Usage limits"
       }
     },
     "copyright": "© {{year}} Kwar-AI",

@@ -698,7 +698,7 @@ function Pricing() {
       cta: 'Experimentar grátis',
       accent: 'neutral',
       features: [
-        'Consultas limitadas*',
+        'Uso incluído*',
         'Dados públicos de saúde',
         'Consultas em linguagem natural',
         'Análises epidemiológicas',
@@ -718,7 +718,7 @@ function Pricing() {
       highlight: true,
       features: [
         'Tudo do Free',
-        'Mais consultas do que o Free*',
+        'Mais capacidade de uso que o Free*',
         'Projetos salvos',
         'Upload de datasets',
         'Exportação PDF e CSV',
@@ -737,7 +737,7 @@ function Pricing() {
       accent: 'gold',
       features: [
         'Tudo do Pro',
-        '5x mais consultas que o Pro*',
+        '5x mais capacidade de uso que o Pro*',
         'Dados internacionais',
         'Sandbox Python',
         'Processamento prioritário',
@@ -756,7 +756,7 @@ function Pricing() {
       accent: 'teal',
       features: [
         'Tudo do Max',
-        '10x mais consultas que o Max*',
+        '10x mais capacidade de uso que o Max*',
         'Workspace compartilhado',
         'Projetos colaborativos',
         'Dashboards internos',
@@ -956,7 +956,7 @@ function Pricing() {
 
         {/* Disclaimer */}
         <p className={`text-center text-[11px] text-white/15 leading-relaxed max-w-2xl mx-auto mt-10 tracking-wide transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          *Limites de uso se aplicam. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.
+          * <a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">Como funcionam os limites de uso</a>. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.
         </p>
 
         {/* Enterprise — Premium Section */}
@@ -1165,6 +1165,7 @@ function Footer() {
                 { label: 'Termos de uso', href: '/#/termos' },
                 { label: 'Privacidade', href: '/#/privacy' },
                 { label: 'LGPD', href: '/#/lgpd' },
+                { label: 'Limites de uso', href: '/#/limites-de-uso' },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
