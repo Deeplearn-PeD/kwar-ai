@@ -397,18 +397,14 @@ function Navbar() {
 
   const menuGroups = [
     {
-      items: [
-        { label: t.menu.kwaraiItems[0], href: 'https://kwar-ai.com.br/' },
-        { label: t.menu.kwaraiItems[1], href: 'https://kwar-ai.com.br/' },
-        { label: t.menu.kwaraiItems[2], href: 'https://kwar-ai.com.br/' },
-        { label: t.menu.kwaraiItems[3], href: 'https://kwar-ai.com.br/' },
-      ],
+      label: t.menu.kwarai,
+      href: 'https://kwar-ai.com.br/',
+      action: () => window.open('https://kwar-ai.com.br/', '_blank', 'noopener,noreferrer'),
     },
     {
-      items: [
-        { label: 'Documentação', href: '/files/EpiDBot_User_Manual.pdf' },
-        { label: 'Preços', href: '#pricing' },
-      ],
+      label: t.menu.epidbot,
+      href: '#',
+      action: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
     },
     {
       items: [
@@ -419,16 +415,14 @@ function Navbar() {
       ],
     },
     {
-      items: [
-        { label: t.menu.precosItems[0], href: '#pricing' },
-        { label: t.menu.precosItems[1], href: '#pricing' },
-        { label: t.menu.precosItems[2], href: '#pricing' },
-        { label: t.menu.precosItems[3], href: '#pricing' },
-      ],
+      label: t.menu.precos,
+      href: '#pricing',
+      action: () => {
+        const el = document.querySelector('#pricing');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
     },
   ];
-
-  const menuLabels = [t.menu.kwarai, t.menu.epidbot, t.menu.solucoes, t.menu.precos];
 
   return (
     <nav
@@ -447,45 +441,58 @@ function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">
-          {menuGroups.map((group, idx) => (
-            <div key={idx} className="relative group">
-              <button className="text-[13px] text-kwar-gray group-hover:text-kwar-white transition-colors flex items-center gap-1">
-                {menuLabels[idx]}
-                <svg className="w-3 h-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              </button>
-              <div className="absolute left-0 pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-20">
-                <div className="w-56 rounded-2xl border border-white/[0.08] bg-kwar-deep/95 backdrop-blur-2xl py-3 shadow-2xl shadow-black/40">
-                  {group.items.map((item) => {
-                    if (item.href.startsWith('#')) {
+          {menuGroups.map((group, idx) => {
+            if ('action' in group && group.action) {
+              return (
+                <button
+                  key={idx}
+                  onClick={group.action}
+                  className="text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
+                >
+                  {group.label}
+                </button>
+              );
+            }
+            return (
+              <div key={idx} className="relative group">
+                <button className="text-[13px] text-kwar-gray group-hover:text-kwar-white transition-colors flex items-center gap-1">
+                  {group.items[0].label}
+                  <svg className="w-3 h-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className="absolute left-0 pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-20">
+                  <div className="w-56 rounded-2xl border border-white/[0.08] bg-kwar-deep/95 backdrop-blur-2xl py-3 shadow-2xl shadow-black/40">
+                    {group.items.map((item) => {
+                      if (item.href.startsWith('#')) {
+                        return (
+                          <button
+                            key={item.label}
+                            onClick={() => {
+                              const el = document.querySelector(item.href);
+                              if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="block w-full text-left px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
+                          >
+                            {item.label}
+                          </button>
+                        );
+                      }
                       return (
-                        <button
+                        <a
                           key={item.label}
-                          onClick={() => {
-                            const el = document.querySelector(item.href);
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="block w-full text-left px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
                         >
                           {item.label}
-                        </button>
+                        </a>
                       );
-                    }
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
-                      >
-                        {item.label}
-                      </a>
-                    );
-                  })}
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-3">
@@ -956,7 +963,7 @@ function Pricing() {
 
         {/* Disclaimer */}
         <p className={`text-center text-[11px] text-white/15 leading-relaxed max-w-2xl mx-auto mt-10 tracking-wide transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          * <a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">Como funcionam os limites de uso</a>. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.
+          * <a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="text-kwar-gold/70 hover:text-kwar-gold transition-colors">Como funcionam os limites de uso</a>. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.
         </p>
 
         {/* Enterprise — Premium Section */}
