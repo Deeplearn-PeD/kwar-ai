@@ -1167,7 +1167,7 @@ function Footer() {
               {[
                 { label: 'Termos de uso', href: '/#/termos' },
                 { label: 'Privacidade', href: '/#/privacy' },
-                { label: 'LGPD', href: '/#/privacy' },
+                { label: 'LGPD', href: '/#/lgpd' },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
