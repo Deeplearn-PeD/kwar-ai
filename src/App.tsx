@@ -25,6 +25,8 @@ import Documentacao from '@/pages/Documentacao';
 import Termos from '@/pages/Termos';
 import LGPD from '@/pages/LGPD';
 import LimitesDeUso from '@/pages/LimitesDeUso';
+import Jornalistas from '@/pages/Jornalistas';
+import VigilanciaEpidemiologica from '@/pages/VigilanciaEpidemiologica';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -110,6 +112,8 @@ function App() {
       <Route path="/lgpd" element={<LGPD />} />
       <Route path="/limites-de-uso" element={<LimitesDeUso />} />
       <Route path="/documentacao" element={<Documentacao />} />
+      <Route path="/jornalistas" element={<Jornalistas />} />
+      <Route path="/vigilancia-epidemiologica" element={<VigilanciaEpidemiologica />} />
     </Routes>
   );
 }
