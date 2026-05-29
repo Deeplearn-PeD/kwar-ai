@@ -1138,7 +1138,7 @@ function Footer() {
               {[
                 { label: 'Visão geral', href: 'https://kwar-ai.com.br/#/epidbot' },
                 { label: 'Preços', href: '#pricing' },
-                { label: 'Documentação', href: '/#/documentacao' },
+                { label: 'Documentação', href: '/files/EpiDBot_User_Manual.pdf' },
                 { label: 'Web Summit', href: 'https://kwar-ai.com.br/#/epidbot-websummit' },
               ].map((link) => (
                 <li key={link.label}>
@@ -1152,12 +1152,12 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">Empresa</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Nossa História', href: 'https://kwar-ai.com.br/?scroll=our-story' },
-                { label: 'Quem somos', href: 'https://kwar-ai.com.br/?scroll=equipe' },
+                { label: 'Nossa História', href: 'https://kwar-ai.com.br/#/?scroll=our-story' },
+                { label: 'Quem somos', href: 'https://kwar-ai.com.br/#/?scroll=equipe' },
                 { label: 'Contato', href: '#contact' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
+                  <a href={link.href} target={link.href.startsWith('#') ? undefined : '_blank'} rel="noopener noreferrer" className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{link.label}</a>
                 </li>
               ))}
             </ul>
