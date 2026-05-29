@@ -780,8 +780,8 @@ function Footer() {
           <span className="text-white/30 text-xs">EpidBot by Kwar-AI &copy; {new Date().getFullYear()}</span>
         </div>
         <div className="flex items-center gap-6">
-          <a href="#" className="text-white/30 hover:text-white/50 text-xs transition-colors">Termos</a>
-          <a href="#" className="text-white/30 hover:text-white/50 text-xs transition-colors">Privacidade</a>
+          <a href="/#/termos" className="text-white/30 hover:text-white/50 text-xs transition-colors">Termos</a>
+          <a href="/#/privacy" className="text-white/30 hover:text-white/50 text-xs transition-colors">Privacidade</a>
         </div>
       </div>
     </footer>

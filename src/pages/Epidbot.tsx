@@ -1509,7 +1509,9 @@ function ContactSection() {
                   <p className="text-red-400/70 text-xs text-center">{t.contact.error}</p>
                 )}
                 <p className="text-white/15 text-[11px] text-center mt-4">
-                  {t.contact.privacy}
+                  <a href="/#/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">
+                    {t.contact.privacy}
+                  </a>
                 </p>
               </form>
             )}
