@@ -13,7 +13,7 @@ const copy = {
       solucoes: 'Soluções',
       solucoesItems: ['Vigilância municipal', 'Hospital e laboratórios', 'Pesquisa e universidades', 'Saúde global e organizações internacionais'],
       precos: 'Preços',
-      precosItems: ['Pro', 'Pro+', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
     },
     nav: {
       platform: 'Plataforma',
@@ -128,7 +128,7 @@ const copy = {
       solucoes: 'Solutions',
       solucoesItems: ['Municipal Surveillance', 'Hospitals & Laboratories', 'Research & Universities', 'Global Health & International Organizations'],
       precos: 'Pricing',
-      precosItems: ['Pro', 'Pro+', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
     },
     nav: {
       platform: 'Platform',
@@ -243,7 +243,7 @@ const copy = {
       solucoes: 'Soluciones',
       solucoesItems: ['Vigilancia municipal', 'Hospitales y laboratorios', 'Investigación y universidades', 'Salud global y organizaciones internacionales'],
       precos: 'Precios',
-      precosItems: ['Pro', 'Pro+', 'Team', 'Enterprise'],
+      precosItems: ['Pro', 'Max', 'Team', 'Enterprise'],
     },
     nav: {
       platform: 'Plataforma',
@@ -423,10 +423,10 @@ function Navbar() {
     },
     {
       items: [
-        { label: t.menu.precosItems[0], href: '/#/epidbot#pricing' },
-        { label: t.menu.precosItems[1], href: '/#/epidbot#pricing' },
-        { label: t.menu.precosItems[2], href: '/#/epidbot#pricing' },
-        { label: t.menu.precosItems[3], href: '/#/epidbot#pricing' },
+        { label: t.menu.precosItems[0], href: '#pricing' },
+        { label: t.menu.precosItems[1], href: '#pricing' },
+        { label: t.menu.precosItems[2], href: '#pricing' },
+        { label: t.menu.precosItems[3], href: '#pricing' },
       ],
     },
   ];
@@ -458,17 +458,33 @@ function Navbar() {
               </button>
               <div className="absolute left-0 pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-20">
                 <div className="w-56 rounded-2xl border border-white/[0.08] bg-kwar-deep/95 backdrop-blur-2xl py-3 shadow-2xl shadow-black/40">
-                  {group.items.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {group.items.map((item) => {
+                    if (item.href.startsWith('#')) {
+                      return (
+                        <button
+                          key={item.label}
+                          onClick={() => {
+                            const el = document.querySelector(item.href);
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                          className="block w-full text-left px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
+                        >
+                          {item.label}
+                        </button>
+                      );
+                    }
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
