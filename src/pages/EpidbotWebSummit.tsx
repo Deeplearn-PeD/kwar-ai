@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { EquipeSection } from '@/sections/EquipeSection';
+import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
 import {
   ArrowRight,
   Menu,
@@ -17,7 +19,6 @@ import {
   Brain,
   Activity,
   Users,
-  Play,
   Bug,
   Eye,
   Sparkles,
@@ -290,7 +291,6 @@ function HeroSection() {
   );
 }
 
-// ============================================================================
 // 1. THE PROBLEM
 // ============================================================================
 function ProblemSection() {
@@ -402,6 +402,21 @@ function ProblemSection() {
 }
 
 // ============================================================================
+// 2. THE OPPORTUNITY
+// ============================================================================
+function OpportunitySection() {
+  return (
+    <section id="opportunity" className="relative overflow-hidden bg-[#040914]">
+      <img
+        src="/images/the opportunity.png"
+        alt="The Opportunity"
+        className="w-full h-auto"
+      />
+    </section>
+  );
+}
+
+// ============================================================================
 // 2. THE SOLUTION
 // ============================================================================
 function SolutionSection() {
@@ -508,10 +523,70 @@ function SolutionSection() {
                 />
               </div>
 
-              {/* Overlay top-left — Colera analysis */}
+              {/* Overlay top-left — Dengue RJ SP Summary */}
               <div
-                className="absolute top-2 left-0 sm:-left-2 w-[52%] sm:w-[48%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                className="absolute top-1 left-0 sm:-left-1 w-[52%] sm:w-[48%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
                 style={{ transform: 'rotate(-3deg)' }}
+              >
+                <img
+                  src="/images/dengue_rj_sp_summary.png"
+                  alt="EpidBot analysis — Dengue summary for Rio de Janeiro and São Paulo"
+                  className="w-full h-auto rounded-xl border border-white/[0.08]"
+                  style={{
+                    boxShadow: '0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(0,140,255,0.05)',
+                  }}
+                />
+              </div>
+
+              {/* Overlay top-right — Conversation Dengue */}
+              <div
+                className="absolute top-3 right-0 sm:-right-2 w-[48%] sm:w-[44%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                style={{ transform: 'rotate(2.5deg)' }}
+              >
+                <img
+                  src="/images/conversation_dengue_rj_sp.png"
+                  alt="EpidBot conversation — Dengue analysis for RJ and SP"
+                  className="w-full h-auto rounded-xl border border-white/[0.08]"
+                  style={{
+                    boxShadow: '0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(0,140,255,0.05)',
+                  }}
+                />
+              </div>
+
+              {/* Overlay bottom-left — Cholera Risk Factors */}
+              <div
+                className="absolute bottom-6 left-0 sm:-left-3 w-[46%] sm:w-[42%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                style={{ transform: 'rotate(-1.5deg)' }}
+              >
+                <img
+                  src="/images/cholera_risk_factors.png"
+                  alt="EpidBot analysis — Cholera risk factors"
+                  className="w-full h-auto rounded-xl border border-white/[0.08]"
+                  style={{
+                    boxShadow: '0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(0,140,255,0.05)',
+                  }}
+                />
+              </div>
+
+              {/* Overlay bottom-right — Insigths Colera */}
+              <div
+                className="absolute bottom-4 right-0 sm:-right-2 w-[50%] sm:w-[46%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                style={{ transform: 'rotate(2.5deg)' }}
+              >
+                <img
+                  src="/images/insights colera.png"
+                  alt="EpidBot-generated strategic insights — Resource allocation priorities"
+                  className="w-full h-auto rounded-xl border border-white/[0.08]"
+                  style={{
+                    boxShadow: '0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(0,140,255,0.05)',
+                  }}
+                />
+              </div>
+
+              {/* Overlay mid-left — Colera analysis */}
+              <div
+                className="absolute top-[42%] -left-4 sm:-left-8 w-[40%] sm:w-[36%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                style={{ transform: 'rotate(-4deg)' }}
               >
                 <img
                   src="/images/colera.png"
@@ -523,14 +598,14 @@ function SolutionSection() {
                 />
               </div>
 
-              {/* Overlay bottom-right — Insights Colera */}
+              {/* Overlay mid-right — Ebola Model Structure */}
               <div
-                className="absolute bottom-4 right-0 sm:-right-2 w-[50%] sm:w-[46%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
-                style={{ transform: 'rotate(2.5deg)' }}
+                className="absolute top-[44%] -right-4 sm:-right-8 w-[40%] sm:w-[36%] z-20 transition-transform duration-500 hover:scale-[1.03] hover:z-30"
+                style={{ transform: 'rotate(3deg)' }}
               >
                 <img
-                  src="/images/insights colera.png"
-                  alt="EpidBot-generated strategic insights — Resource allocation priorities"
+                  src="/images/ebola_model_structure.png"
+                  alt="EpidBot analysis — Ebola model structure"
                   className="w-full h-auto rounded-xl border border-white/[0.08]"
                   style={{
                     boxShadow: '0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(0,140,255,0.05)',
@@ -894,95 +969,7 @@ function MarketSection() {
 }
 
 // ============================================================================
-// 5. TEAM
-// ============================================================================
-function TeamSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const founders = [
-    {
-      name: 'Founder Name',
-      role: 'CEO & Epidemiologist',
-      bio: 'Deep expertise in epidemiological modeling, public health surveillance and outbreak analytics.',
-    },
-    {
-      name: 'Founder Name',
-      role: 'CTO & AI Research',
-      bio: 'Background in conversational AI, machine learning and health data infrastructure.',
-    },
-  ];
-
-  const advisors = [
-    'Epidemiological modeling',
-    'Climate & health research',
-    'Global health policy',
-    'AI/ML systems',
-  ];
-
-  return (
-    <section ref={ref} id="team" className="relative py-20 lg:py-28 bg-[#050a10] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div
-        className="absolute top-1/2 right-0 w-[500px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,160,255,0.03) 0%, transparent 60%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Team
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            Built by scientists, engineers and public health researchers.
-          </h2>
-        </div>
-
-        {/* Founders */}
-        <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto mb-12">
-          {founders.map((f, index) => (
-            <div
-              key={f.name + index}
-              className={`group p-6 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.10] hover:bg-white/[0.025] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-            >
-              <div className="w-14 h-14 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-5">
-                <Users className="w-6 h-6 text-white/20" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-white font-semibold text-base mb-0.5">{f.name}</h3>
-              <p className="text-kwar-electric/70 text-xs tracking-wide uppercase mb-3">{f.role}</p>
-              <p className="text-white/40 text-sm leading-relaxed">{f.bio}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Advisor tags */}
-        <div
-          className={`flex flex-wrap justify-center gap-3 transition-all duration-1000 delay-400 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {advisors.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 rounded-full border border-white/[0.05] bg-white/[0.015] text-white/40 text-xs hover:border-kwar-electric/15 hover:text-white/60 transition-colors"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 6. COMPETITIVE EDGE
+// 5. COMPETITIVE EDGE
 // ============================================================================
 function CompetitiveEdgeSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -1169,7 +1156,7 @@ function ProductSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* LEFT — Demo placeholder */}
+          {/* LEFT — Product demo video */}
           <div
             className={`relative order-2 lg:order-1 transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1178,7 +1165,7 @@ function ProductSection() {
             {/* Glow */}
             <div className="absolute -inset-4 bg-kwar-electric/5 rounded-3xl blur-3xl -z-10" />
 
-            <div className="relative aspect-[4/3] rounded-2xl border border-white/[0.06] bg-[#070d14] overflow-hidden shadow-2xl shadow-black/50">
+            <div className="relative aspect-video rounded-2xl border border-white/[0.06] bg-[#070d14] overflow-hidden shadow-2xl shadow-black/50">
               {/* Browser chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.04] bg-white/[0.02]">
                 <div className="flex gap-1.5">
@@ -1189,37 +1176,15 @@ function ProductSection() {
                 <span className="text-[10px] text-white/30 ml-2 tracking-wide">EpidBot Intelligence Platform</span>
               </div>
 
-              {/* Screen content */}
-              <div className="relative h-full min-h-[280px] flex items-center justify-center">
-                <div className="absolute inset-0 grid-bg opacity-5" />
-
-                {/* Subtle data lines */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/20 to-transparent" />
-                  <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/10 to-transparent" />
-                  <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/20 to-transparent" />
-                </div>
-
-                {/* Central pulse */}
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-kwar-electric/5 animate-ping" style={{ animationDuration: '3s' }} />
-                  <div className="absolute inset-0 rounded-full bg-kwar-electric/10 animate-ping" style={{ animationDuration: '3s', animationDelay: '0.6s' }} />
-                  <div className="relative w-16 h-16 rounded-full border border-kwar-electric/20 bg-kwar-electric/5 flex items-center justify-center cursor-pointer hover:bg-kwar-electric/10 transition-colors">
-                    <Play className="w-6 h-6 text-kwar-electric ml-0.5" fill="currentColor" />
-                  </div>
-                </div>
-
-                {/* Corner brackets */}
-                <div className="absolute top-4 left-4 w-6 h-px bg-kwar-electric/20" />
-                <div className="absolute top-4 left-4 w-px h-6 bg-kwar-electric/20" />
-                <div className="absolute bottom-4 right-4 w-6 h-px bg-kwar-electric/20" />
-                <div className="absolute bottom-4 right-4 w-px h-6 bg-kwar-electric/20" />
-
-                {/* Status indicators */}
-                <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-kwar-electric/60 animate-pulse" />
-                  <span className="text-[9px] text-white/30 tracking-wider uppercase">Live Analysis</span>
-                </div>
+              {/* Video */}
+              <div className="relative h-[calc(100%-45px)] min-h-[260px] bg-black">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube.com/embed/00ATrjxTgsU?rel=0&modestbranding=1"
+                  title="EpidBot product demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
@@ -1878,10 +1843,10 @@ export default function EpidbotWebSummit() {
       <main>
         <HeroSection />
         <ProblemSection />
+        <OpportunitySection />
         <SolutionSection />
         <TractionSection />
         <MarketSection />
-        <TeamSection />
         <CompetitiveEdgeSection />
         <ProductSection />
         <WhyNowSection />
@@ -1889,6 +1854,8 @@ export default function EpidbotWebSummit() {
         <CredibilitySection />
         <VisionSection />
         <FinalCTASection />
+        <EquipeSection />
+        <EquipeRedeSection />
         <ContactSection />
       </main>
       <LandingFooter />
