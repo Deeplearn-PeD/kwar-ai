@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { EquipeSection } from '@/sections/EquipeSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
 import {
   ArrowRight,
   Menu,
@@ -22,7 +28,9 @@ import {
   Bug,
   Eye,
   Sparkles,
-  Landmark
+  Landmark,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 // ============================================================================
@@ -79,7 +87,7 @@ function Navbar() {
     { label: t('websummit.nav.problem'), href: '#problem' },
     { label: t('websummit.nav.solution'), href: '#solution' },
     { label: t('websummit.nav.product'), href: '#product' },
-    { label: t('websummit.nav.vision'), href: '#vision' },
+    { label: t('websummit.nav.team'), href: '#equipe' },
     { label: t('websummit.nav.contact'), href: '#contact' },
   ];
 
@@ -291,6 +299,98 @@ function HeroSection() {
   );
 }
 
+// ============================================================================
+// PITCH DECK
+// ============================================================================
+function PitchDeckSection() {
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const { ref, isVisible } = useScrollReveal(0.05);
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
+
+  return (
+    <section ref={ref} id="pitch-deck" className="relative overflow-hidden bg-[#040914] py-10 lg:py-16">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/20 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,240,255,0.03),transparent_50%)]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-2 sm:px-4">
+        <div
+          className={`mb-6 text-center transition-all duration-700 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+          }`}
+        >
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-kwar-electric/25 bg-kwar-electric/8 px-4 py-2">
+            <Sparkles className="h-3.5 w-3.5 text-kwar-electric" />
+            <span className="text-xs font-semibold tracking-wider text-kwar-electric uppercase">Pitch Deck</span>
+          </div>
+          <h2 className="font-body text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl">
+            EpidBot <span className="text-kwar-electric">Pitch Deck</span>
+          </h2>
+        </div>
+
+        <div
+          className={`rounded-2xl border border-white/[0.06] bg-[#070d14] shadow-2xl shadow-black/60 transition-all duration-1000 delay-150 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}
+        >
+          {/* Toolbar */}
+          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
+            <p className="text-xs text-white/40">
+              {numPages > 0 ? `Page ${pageNumber} of ${numPages}` : 'Loading...'}
+            </p>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
+                disabled={pageNumber <= 1}
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] text-white/50 transition-all hover:border-white/15 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
+                disabled={pageNumber >= numPages}
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] text-white/50 transition-all hover:border-white/15 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* PDF Viewer */}
+          <div className="flex justify-center bg-[#0a1018] p-2 sm:p-4">
+            <Document
+              file="/files/1.EpidBot - PitchDeck.pdf"
+              onLoadSuccess={onDocumentLoadSuccess}
+              loading={
+                <div className="flex items-center justify-center py-32">
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-kwar-electric/30 border-t-kwar-electric" />
+                </div>
+              }
+              error={
+                <div className="py-32 text-center text-white/40">
+                  <p>Failed to load PDF.</p>
+                </div>
+              }
+            >
+              <Page
+                pageNumber={pageNumber}
+                renderTextLayer={true}
+                renderAnnotationLayer={true}
+                className="shadow-lg"
+                width={Math.min(1100, typeof window !== 'undefined' ? window.innerWidth - 48 : 1052)}
+              />
+            </Document>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // 1. THE PROBLEM
 // ============================================================================
 function ProblemSection() {
@@ -397,21 +497,6 @@ function ProblemSection() {
           ))}
         </div>
       </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 2. THE OPPORTUNITY
-// ============================================================================
-function OpportunitySection() {
-  return (
-    <section id="opportunity" className="relative overflow-hidden bg-[#040914]">
-      <img
-        src="/images/the opportunity.png"
-        alt="The Opportunity"
-        className="w-full h-auto"
-      />
     </section>
   );
 }
@@ -690,52 +775,6 @@ function SolutionSection() {
 }
 
 // ============================================================================
-// 3. EPIDBOT INTERFACE
-// ============================================================================
-function EpidbotInterfaceSection() {
-  return (
-    <section id="epidbot-ui" className="relative overflow-hidden bg-[#040914]">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/25 to-transparent" />
-      <img
-        src="/images/epidbot en.png"
-        alt="EpidBot English interface"
-        className="w-full h-auto"
-      />
-    </section>
-  );
-}
-
-// ============================================================================
-// 3b. FROM QUESTION TO ACTION
-// ============================================================================
-function FromQuestionToActionSection() {
-  return (
-    <section id="question-to-action" className="relative overflow-hidden bg-[#040914]">
-      <img
-        src="/images/from question to action.png"
-        alt="From question to action — EpidBot workflow"
-        className="w-full h-auto"
-      />
-    </section>
-  );
-}
-
-// ============================================================================
-// 3c. FROM DATA
-// ============================================================================
-function FromDataSection() {
-  return (
-    <section id="from-data" className="relative overflow-hidden bg-[#040914]">
-      <img
-        src="/images/from data.png"
-        alt="From data — EpidBot data pipeline"
-        className="w-full h-auto"
-      />
-    </section>
-  );
-}
-
-// ============================================================================
 // 4. TRACTION
 // ============================================================================
 function TractionSection() {
@@ -954,221 +993,6 @@ function TractionSection() {
 }
 
 // ============================================================================
-// 4. MARKET OPPORTUNITY
-// ============================================================================
-function MarketSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const tiers = [
-    { label: 'TAM', desc: 'Global public health intelligence & disease surveillance', size: '$XXB' },
-    { label: 'SAM', desc: 'AI-assisted epidemiological analysis platforms', size: '$XB' },
-    { label: 'SOM', desc: 'Pilot expansion across Brazilian & LATAM health systems', size: '$XXM' },
-  ];
-
-  return (
-    <section ref={ref} id="market" className="relative py-20 lg:py-28 bg-[#050a10] border-y border-white/[0.04] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <div>
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Market Opportunity
-            </span></div>
-            <h2
-              className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-            >
-              A growing market demanding smarter intelligence.
-            </h2>
-            <p
-              className={`text-base text-white/50 leading-relaxed transition-all duration-1000 delay-200 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
-            >
-              Public health agencies, municipalities and global organizations are investing heavily in AI-driven surveillance and outbreak analytics. The need for contextual, conversational epidemiological intelligence has never been greater.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {tiers.map((tier, index) => (
-              <div
-                key={tier.label}
-                className={`group relative p-6 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.10] ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 150 + 200}ms` }}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] text-kwar-electric/70 font-medium tracking-[0.15em] uppercase">{tier.label}</span>
-                  <span className="text-xl font-body text-white">{tier.size}</span>
-                </div>
-                <p className="text-sm text-white/40">{tier.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 5. COMPETITIVE EDGE
-// ============================================================================
-function CompetitiveEdgeSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const edges = [
-    {
-      icon: MessageSquare,
-      title: 'Conversational by design',
-      description: 'Unlike static dashboards, EpidBot understands natural epidemiological questions and reasons through complex scenarios.',
-    },
-    {
-      icon: Shield,
-      title: 'Scientifically grounded',
-      description: 'Every insight is built on established epidemiological methodologies — not black-box predictions.',
-    },
-    {
-      icon: CloudSun,
-      title: 'Climate-epidemiology fusion',
-      description: 'Native integration of climate and environmental data into disease risk models, not an afterthought.',
-    },
-    {
-      icon: Database,
-      title: 'SINAN-native architecture',
-      description: 'Deep integration with Brazilian health surveillance systems and proven data pipelines from InfoDengue.',
-    },
-  ];
-
-  return (
-    <section ref={ref} id="edge" className="relative py-20 lg:py-28 bg-[#050a10] border-y border-white/[0.04] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Competitive Edge
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            Why EpidBot wins.
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-5">
-          {edges.map((item, index) => (
-            <div
-              key={item.title}
-              className={`group p-6 lg:p-8 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.10] hover:bg-white/[0.025] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 120}ms` }}
-            >
-              <div className="w-10 h-10 rounded-lg border border-kwar-electric/20 bg-kwar-electric/5 flex items-center justify-center mb-5">
-                <item.icon className="w-5 h-5 text-kwar-electric" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-white font-semibold text-base mb-2">{item.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 7. ROADMAP
-// ============================================================================
-function RoadmapSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const milestones = [
-    {
-      phase: 'Now',
-      title: 'Pilot validation',
-      items: ['Active pilots with Brazilian municipalities', 'InfoDengue & SINAN integration', 'Core conversational analysis skills'],
-      active: true,
-    },
-    {
-      phase: 'Q3 2026',
-      title: 'Platform expansion',
-      items: ['Multi-disease support', 'Advanced climate-epidemiology models', 'API access for health systems'],
-      active: false,
-    },
-    {
-      phase: '2027',
-      title: 'Regional scale',
-      items: ['LATAM health system partnerships', 'Real-time surveillance modules', 'Institutional research collaborations'],
-      active: false,
-    },
-  ];
-
-  return (
-    <section ref={ref} id="roadmap" className="relative py-20 lg:py-28 bg-[#050a10] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[140px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,160,255,0.03) 0%, transparent 60%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Roadmap
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            From pilots to global scale.
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {milestones.map((m, index) => (
-            <div
-              key={m.phase}
-              className={`relative p-6 rounded-2xl border backdrop-blur-sm transition-all duration-700 ${
-                m.active
-                  ? 'border-kwar-electric/20 bg-kwar-electric/[0.03]'
-                  : 'border-white/[0.05] bg-white/[0.015] hover:border-white/[0.10]'
-              } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-            >
-              {m.active && (
-                <div className="absolute -top-3 left-6 px-3 py-1 rounded-full bg-kwar-electric/10 border border-kwar-electric/20">
-                  <span className="text-[10px] text-kwar-electric font-medium tracking-wider uppercase">Active</span>
-                </div>
-              )}
-              <div className="mb-4">
-                <span className="text-[10px] text-white/30 tracking-wider uppercase">{m.phase}</span>
-                <h3 className="text-white font-semibold text-lg mt-1">{m.title}</h3>
-              </div>
-              <ul className="space-y-2">
-                {m.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-white/40 leading-relaxed">
-                    <div className={`w-1 h-1 rounded-full mt-2 shrink-0 ${m.active ? 'bg-kwar-electric' : 'bg-white/20'}`} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
 // 8. PRODUCT DEMO
 // ============================================================================
 function ProductSection() {
@@ -1278,347 +1102,6 @@ function ProductSection() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 4. WHY NOW
-// ============================================================================
-function WhyNowSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const reasons = [
-    {
-      icon: CloudSun,
-      title: 'Climate change',
-      description: 'Disease dynamics are becoming more unpredictable worldwide.',
-    },
-    {
-      icon: Database,
-      title: 'Data complexity',
-      description: 'Public health systems struggle with fragmented information and growing analytical complexity.',
-    },
-    {
-      icon: Brain,
-      title: 'AI maturity',
-      description: 'Conversational intelligence is transforming analytical workflows and decision-making.',
-    },
-  ];
-
-  return (
-    <section ref={ref} id="why-now" className="relative py-24 lg:py-32 bg-[#050a10] border-y border-white/[0.04] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div
-        className="absolute top-1/2 right-0 w-[500px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,160,255,0.03) 0%, transparent 60%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Why Now
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            Why epidemic intelligence needs AI now.
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-5">
-          {reasons.map((item, index) => (
-            <div
-              key={item.title}
-              className={`group relative p-8 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm transition-all duration-700 hover:border-white/[0.10] hover:bg-white/[0.025] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-            >
-              <div className="w-12 h-12 rounded-xl border border-kwar-electric/20 bg-kwar-electric/5 flex items-center justify-center mb-6">
-                <item.icon className="w-6 h-6 text-kwar-electric" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-white font-semibold text-lg mb-3">{item.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 5. CREDIBILITY
-// ============================================================================
-function CredibilitySection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const expertise = [
-    'Epidemiological expertise',
-    'Mathematical modeling',
-    'Climate intelligence',
-    'Public health research',
-    'Global collaboration',
-    'AI-assisted analysis',
-    'Surveillance systems',
-    'Statistical forecasting',
-  ];
-
-  return (
-    <section ref={ref} id="credibility" className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Credibility
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            Built on science, modeling and public health research.
-          </h2>
-        </div>
-
-        {/* Logo / affiliation placeholders */}
-        <div
-          className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {[
-            'Research partner',
-            'Institution',
-            'Collaboration',
-            'Publication',
-            'Data partner',
-            'Health authority',
-          ].map((label, i) => (
-            <div
-              key={label + i}
-              className="group aspect-[3/2] rounded-xl border border-white/[0.05] bg-white/[0.015] flex flex-col items-center justify-center gap-2 hover:border-white/[0.10] hover:bg-white/[0.025] transition-all"
-            >
-              <Globe className="w-6 h-6 text-white/10 group-hover:text-kwar-electric/20 transition-colors" strokeWidth={1} />
-              <span className="text-[9px] text-white/20 tracking-wider uppercase">{label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Expertise tags */}
-        <div
-          className={`flex flex-wrap justify-center gap-3 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {expertise.map((tag) => (
-            <span
-              key={tag}
-              className="px-4 py-2 rounded-full border border-white/[0.05] bg-white/[0.015] text-white/40 text-xs hover:border-kwar-electric/15 hover:text-white/60 transition-colors"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 6. VISION
-// ============================================================================
-function VisionSection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  const floatingCards = [
-    { label: 'Predictive intelligence', position: 'top-6 left-6' },
-    { label: 'Contextual analysis', position: 'top-6 right-6' },
-    { label: 'Global surveillance support', position: 'bottom-6 left-6' },
-    { label: 'Strategic decision support', position: 'bottom-6 right-6' },
-  ];
-
-  return (
-    <section ref={ref} id="vision" className="relative py-24 lg:py-32 bg-[#050a10] border-y border-white/[0.04] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full blur-[140px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,100,255,0.04) 0%, rgba(60,40,180,0.03) 40%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-2xl mb-12 lg:mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}><Sparkles className="w-4 h-4 text-kwar-electric" /><span className="text-sm font-medium text-kwar-electric">Vision
-          </span></div>
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            The future of public health intelligence is AI-native.
-          </h2>
-          <p
-            className={`text-base text-white/50 leading-relaxed transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            A world where epidemiological intelligence becomes more contextual, connected and accessible through AI-assisted analysis.
-          </p>
-        </div>
-
-        {/* Cinematic map placeholder */}
-        <div
-          className={`relative mb-8 lg:mb-12 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="relative aspect-[21/9] lg:aspect-[2.5/1] rounded-2xl border border-white/[0.05] bg-[#060b12] overflow-hidden">
-            <div className="absolute inset-0 grid-bg opacity-10" />
-
-            {/* Atmospheric gradient */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'radial-gradient(ellipse at 30% 50%, rgba(0,160,255,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 50%, rgba(100,60,255,0.03) 0%, transparent 50%)',
-              }}
-            />
-
-            {/* Global node dots */}
-            <div className="absolute inset-0">
-              {[
-                [12,25],[28,35],[35,30],[42,45],[48,55],[55,40],[62,50],[68,35],[75,45],[82,30],
-                [88,55],[15,60],[22,65],[38,70],[52,75],[58,65],[72,60],[78,75],[85,65],[45,60],
-                [32,40],[60,55],[25,50],[70,40]
-              ].map(([x, y], i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 rounded-full bg-kwar-electric/25"
-                  style={{ left: `${x}%`, top: `${y}%` }}
-                />
-              ))}
-            </div>
-
-            {/* Network lines */}
-            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-              <line x1="20%" y1="30%" x2="48%" y2="45%" stroke="rgba(0,240,255,0.05)" strokeWidth="0.5" />
-              <line x1="48%" y1="45%" x2="75%" y2="35%" stroke="rgba(0,240,255,0.05)" strokeWidth="0.5" />
-              <line x1="35%" y1="65%" x2="55%" y2="55%" stroke="rgba(0,240,255,0.05)" strokeWidth="0.5" />
-              <line x1="55%" y1="55%" x2="78%" y2="60%" stroke="rgba(0,240,255,0.05)" strokeWidth="0.5" />
-              <line x1="28%" y1="50%" x2="42%" y2="40%" stroke="rgba(0,240,255,0.04)" strokeWidth="0.5" />
-              <line x1="62%" y1="40%" x2="72%" y2="48%" stroke="rgba(0,240,255,0.04)" strokeWidth="0.5" />
-              <line x1="15%" y1="60%" x2="35%" y2="65%" stroke="rgba(0,240,255,0.03)" strokeWidth="0.5" />
-            </svg>
-
-            {/* Floating cards — desktop only */}
-            <div className="hidden lg:block">
-              {floatingCards.map((card) => (
-                <div
-                  key={card.label}
-                  className={`absolute ${card.position} px-4 py-2.5 rounded-lg border border-white/[0.06] bg-[#0a1120]/80 backdrop-blur-md`}
-                >
-                  <span className="text-[11px] text-white/70 whitespace-nowrap">{card.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile floating cards */}
-        <div className="lg:hidden grid grid-cols-2 gap-3">
-          {floatingCards.map((card) => (
-            <div
-              key={card.label}
-              className="px-4 py-3 rounded-lg border border-white/[0.06] bg-white/[0.015] text-center"
-            >
-              <span className="text-xs text-white/60">{card.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// 12. FINAL CTA
-// ============================================================================
-function FinalCTASection() {
-  const { ref, isVisible } = useScrollReveal();
-
-  return (
-    <section ref={ref} id="final-cta" className="relative py-24 lg:py-32 bg-[#050a10] overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,140,255,0.05) 0%, transparent 60%)' }}
-      />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          <img
-            src="/images/RIO26_Impact badge.png"
-            alt="Web Summit Rio 2026 Impact Startup"
-            className="h-12 w-auto mx-auto mb-8 object-contain opacity-70"
-          />
-
-          <h2
-            className={`font-body text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-5 transition-all duration-1000 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-            style={{ letterSpacing: '-0.02em', lineHeight: '1.4' }}
-          >
-            Transform epidemiological data into strategic action.
-          </h2>
-
-          <p
-            className={`text-base text-white/50 max-w-xl mx-auto mb-8 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            Raising $XXXK seed to expand pilot programs, grow the team and scale EpidBot across LATAM health systems.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={() => {
-                const el = document.querySelector('#product');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              size="lg"
-              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12 text-sm group"
-            >
-              See EpidBot in Action
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              onClick={() => {
-                const el = document.querySelector('#contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              size="lg"
-              variant="outline"
-              className="border-white/10 text-white hover:bg-white/[0.04] px-8 h-12 text-sm"
-            >
-              Request Demo
-            </Button>
-          </div>
-
-          <p className="text-white/30 text-xs mt-10">
-            Meet us at the Alpha & Impact Startup area — Web Summit Rio 2026
-          </p>
         </div>
       </div>
     </section>
@@ -1888,21 +1371,11 @@ export default function EpidbotWebSummit() {
       <Navbar />
       <main>
         <HeroSection />
-        <ProblemSection />
-        <OpportunitySection />
-        <SolutionSection />
-        <EpidbotInterfaceSection />
-        <FromQuestionToActionSection />
-        <FromDataSection />
-        <TractionSection />
-        <MarketSection />
-        <CompetitiveEdgeSection />
         <ProductSection />
-        <WhyNowSection />
-        <RoadmapSection />
-        <CredibilitySection />
-        <VisionSection />
-        <FinalCTASection />
+        <ProblemSection />
+        <SolutionSection />
+        <TractionSection />
+        <PitchDeckSection />
         <EquipeSection />
         <EquipeRedeSection />
         <ContactSection />
