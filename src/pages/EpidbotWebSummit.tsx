@@ -690,7 +690,53 @@ function SolutionSection() {
 }
 
 // ============================================================================
-// 3. TRACTION
+// 3. EPIDBOT INTERFACE
+// ============================================================================
+function EpidbotInterfaceSection() {
+  return (
+    <section id="epidbot-ui" className="relative overflow-hidden bg-[#040914]">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/25 to-transparent" />
+      <img
+        src="/images/epidbot en.png"
+        alt="EpidBot English interface"
+        className="w-full h-auto"
+      />
+    </section>
+  );
+}
+
+// ============================================================================
+// 3b. FROM QUESTION TO ACTION
+// ============================================================================
+function FromQuestionToActionSection() {
+  return (
+    <section id="question-to-action" className="relative overflow-hidden bg-[#040914]">
+      <img
+        src="/images/from question to action.png"
+        alt="From question to action — EpidBot workflow"
+        className="w-full h-auto"
+      />
+    </section>
+  );
+}
+
+// ============================================================================
+// 3c. FROM DATA
+// ============================================================================
+function FromDataSection() {
+  return (
+    <section id="from-data" className="relative overflow-hidden bg-[#040914]">
+      <img
+        src="/images/from data.png"
+        alt="From data — EpidBot data pipeline"
+        className="w-full h-auto"
+      />
+    </section>
+  );
+}
+
+// ============================================================================
+// 4. TRACTION
 // ============================================================================
 function TractionSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -1845,6 +1891,9 @@ export default function EpidbotWebSummit() {
         <ProblemSection />
         <OpportunitySection />
         <SolutionSection />
+        <EpidbotInterfaceSection />
+        <FromQuestionToActionSection />
+        <FromDataSection />
         <TractionSection />
         <MarketSection />
         <CompetitiveEdgeSection />
