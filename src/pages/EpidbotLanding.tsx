@@ -28,7 +28,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 // NAVIGATION
 // ============================================================================
 function LandingNavbar() {
-  const { i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -38,10 +37,6 @@ function LandingNavbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -49,12 +44,6 @@ function LandingNavbar() {
     }
     setIsMobileMenuOpen(false);
   };
-
-  const languages = [
-    { code: 'pt-BR', label: 'PT', flag: '\uD83C\uDDE7\uD83C\uDDF7' },
-    { code: 'en', label: 'EN', flag: '\uD83C\uDDEC\uD83C\uDDE7' },
-    { code: 'es', label: 'ES', flag: '\uD83C\uDDEA\uD83C\uDDF8' },
-  ];
 
   return (
     <nav
@@ -82,23 +71,6 @@ function LandingNavbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-            {/* Language Selector */}
-            <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
-              {languages.map((lng) => (
-                <button
-                  key={lng.code}
-                  onClick={() => changeLanguage(lng.code)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
-                    i18n.language === lng.code
-                      ? 'bg-kwar-electric text-kwar-deep'
-                      : 'text-kwar-gray hover:text-white'
-                  }`}
-                >
-                  {lng.label}
-                </button>
-              ))}
-            </div>
-
             <Button
               onClick={() => scrollToSection('#final-cta')}
               className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
@@ -121,21 +93,6 @@ function LandingNavbar() {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-kwar-deep/98 border-b border-kwar-electric/20">
           <div className="px-4 py-6 space-y-4">
-            <div className="flex flex-wrap gap-2 pt-2">
-              {languages.map((lng) => (
-                <button
-                  key={lng.code}
-                  onClick={() => changeLanguage(lng.code)}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg flex-1 ${
-                    i18n.language === lng.code
-                      ? 'bg-kwar-electric text-kwar-deep'
-                      : 'bg-white/5 text-kwar-gray'
-                  }`}
-                >
-                  {lng.flag} {lng.label}
-                </button>
-              ))}
-            </div>
             <Button
               onClick={() => { scrollToSection('#final-cta'); }}
               className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
