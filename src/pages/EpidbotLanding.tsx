@@ -303,7 +303,7 @@ function AboutEpidbotSection() {
             </h2>
             
             <p className="text-lg text-kwar-gray mb-8">
-              O EpidBot é um analista epidemiológico baseado em IA, treinado com bases de dados oficiais da saúde pública brasileira. Ele transforma perguntas em linguagem natural em análises completas \u2014 com dados, gráficos e recomendações para ação.
+              O EpidBot é uma plataforma de inteligência para saúde pública que reúne informações de diferentes bases oficiais e as transforma em análises, relatórios, visualizações e evidências para apoiar decisões de gestores, hospitais, fundações estatais e secretarias de saúde.
             </p>
 
             <div className="flex flex-wrap gap-3">
