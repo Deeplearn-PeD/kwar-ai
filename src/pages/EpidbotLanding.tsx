@@ -304,6 +304,7 @@ function AboutEpidbotSection() {
 // ============================================================================
 function HowEpidbotHelpsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -313,52 +314,61 @@ function HowEpidbotHelpsSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
-
-    const element = document.getElementById('how-epidbot-helps');
-    if (element) observer.observe(element);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   const steps = [
-    { emoji: '\u{1F4AC}', title: 'Faça uma pergunta', description: 'Em linguagem natural, como faria a um analista.' },
-    { emoji: '\u{1F9E0}', title: 'O EpidBot trabalha por você', description: 'Processa dados de múltiplas fontes em segundos.' },
-    { emoji: '\u{1F4CA}', title: 'Receba respostas para agir', description: 'Com insights acionáveis em minutos, não dias.' },
+    { emoji: '\u{1F4C1}', title: 'Dados espalhados', desc: 'Informações distribuídas entre diferentes sistemas, planilhas e bases oficiais.' },
+    { emoji: '\u{1F9E0}', title: 'O EpidBot analisa', desc: 'Integra diferentes fontes, identifica padrões e realiza análises automaticamente.' },
+    { emoji: '\u{1F4CA}', title: 'Decisão apoiada por evidências', desc: 'Relatórios, gráficos, mapas e recomendações para apoiar decisões mais rápidas e bem fundamentadas.' },
   ];
 
   return (
-    <section id="how-epidbot-helps" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <span className="text-sm font-medium text-kwar-electric">COMO O EPIDBOT AJUDA</span>
+    <section ref={sectionRef} id="how-epidbot-helps" className="relative overflow-hidden bg-[#050a10] py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          className={`mb-14 max-w-2xl text-left transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}
+        >
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-kwar-electric/25 bg-kwar-electric/8 px-4 py-1.5">
+            <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">COMO O EPIDBOT AJUDA</span>
           </div>
-          
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Da pergunta... à decisão.
+          <h2 className="mb-6 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+            Menos tempo procurando dados.
+            <br />
+            <span className="text-kwar-electric">Mais tempo tomando decisões.</span>
           </h2>
+          <p className="max-w-xl text-base leading-relaxed text-white/55">
+            Depois de reunir informações de diferentes bases oficiais, o EpidBot identifica padrões, organiza evidências e transforma dados complexos em respostas claras para apoiar decisões.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-start">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-0">
           {steps.map((step, index) => (
-            <div key={step.title} className="relative">
+            <div key={step.title} className="flex flex-1 flex-col items-center lg:flex-row">
               <div
-                className={`card-glass p-8 text-center hover:border-kwar-electric/30 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                className={`group w-full rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 backdrop-blur-sm transition-all duration-700 hover:border-kwar-electric/15 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}
-                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="text-5xl mb-6">{step.emoji}</div>
-                <h3 className="text-white font-semibold text-xl mb-3">{step.title}</h3>
-                <p className="text-kwar-gray">{step.description}</p>
+                <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.02] text-2xl">
+                  {step.emoji}
+                </span>
+                <h3 className="mb-2 text-lg font-semibold text-white">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-white/50">{step.desc}</p>
               </div>
+
               {index < steps.length - 1 && (
-                <div className="hidden md:flex absolute top-1/2 -right-6 transform translate-x-0 -translate-y-1/2 z-10">
-                  <ArrowRight className="w-6 h-6 text-kwar-electric" />
+                <div className="flex items-center justify-center py-2 lg:px-4 lg:py-0">
+                  <ArrowRight className="h-5 w-5 rotate-90 text-white/20 lg:rotate-0" strokeWidth={1.5} />
                 </div>
               )}
             </div>
@@ -372,8 +382,11 @@ function HowEpidbotHelpsSection() {
 // ============================================================================
 // REAL EXAMPLE SECTION
 // ============================================================================
+// REAL EXAMPLE SECTION
+// ============================================================================
 function RealExampleSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -383,121 +396,137 @@ function RealExampleSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
-
-    const element = document.getElementById('real-example');
-    if (element) observer.observe(element);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   const steps = [
-    { label: 'Pergunta', image: '/images/prompt.png', alt: 'Exemplo de pergunta feita ao EpidBot' },
-    { label: 'Insight', image: '/images/analise.png', alt: 'Insight gerado pelo EpidBot', highlighted: true },
-    { label: 'Resultado', image: '/images/recomendacao.png', alt: 'Resultado da análise' },
-    { label: 'Impacto', image: '/images/analise.png', alt: 'Impacto da decisão' },
-    { label: 'Decisão', image: '/images/recomendacao.png', alt: 'Decisão baseada em dados' },
+    {
+      num: '01', title: 'A pergunta',
+      desc: 'O gestor faz uma pergunta em linguagem natural sobre um problema de saúde pública.',
+      img: '/images/pergunta.png', alt: 'Pergunta enviada ao EpidBot',
+    },
+    {
+      num: '02', title: 'Bases consultadas',
+      desc: 'O EpidBot identifica automaticamente quais bases oficiais precisam ser consultadas para responder à pergunta.',
+      img: '/images/base de dados.png', alt: 'Bases de dados consultadas pelo EpidBot',
+    },
+    {
+      num: '03', title: 'Análise integrada',
+      desc: 'Os dados são cruzados e analisados automaticamente para identificar padrões e inconsistências.',
+      img: '/images/resultados.png', alt: 'Resultado da análise do EpidBot',
+    },
+    {
+      num: '04', title: 'Impacto identificado',
+      desc: 'O EpidBot explica por que o resultado importa para a gestão e quais riscos ou oportunidades foram encontrados.',
+      img: '/images/beneficios 1.png', alt: 'Impacto identificado pelo EpidBot',
+    },
+    {
+      num: '05', title: 'Decisão apoiada por evidências',
+      desc: 'A plataforma entrega um relatório claro para apoiar a tomada de decisão do gestor.',
+    },
   ];
 
   return (
-    <section id="real-example" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep/95 to-kwar-deep">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <span className="text-sm font-medium text-kwar-electric">EXEMPLO REAL</span>
+    <section ref={sectionRef} id="real-example" className="relative overflow-hidden bg-[#050a10] py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* HEADER */}
+        <div
+          className={`mx-auto mb-20 max-w-3xl text-center transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}
+        >
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-kwar-electric/25 bg-kwar-electric/8 px-4 py-1.5">
+            <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">EXEMPLO REAL</span>
           </div>
-          
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Veja como o EpidBot transforma dados em decisões.
+          <h2 className="mb-5 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+            Da pergunta<span className="text-kwar-electric">...</span><br />
+            <span className="text-kwar-electric">à decisão.</span>
           </h2>
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-white/55">
+            Veja como o EpidBot transforma uma pergunta em uma análise completa utilizando dados oficiais da saúde pública.
+          </p>
         </div>
 
-        <div className="space-y-6">
-          {steps.map((step, index) => (
-            <div key={step.label}>
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 200}ms` }}
-              >
-                <div className="text-center mb-3">
-                  <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${
-                    step.highlighted 
-                      ? 'bg-kwar-electric text-kwar-deep' 
-                      : 'bg-white/10 text-white border border-white/20'
-                  }`}>
-                    {step.label}
-                  </span>
-                </div>
-                
-                <div className={`relative ${step.highlighted ? 'scale-[1.02]' : ''} transition-transform duration-500`}>
-                  <div className={`absolute -inset-2 rounded-2xl blur-xl ${
-                    step.highlighted ? 'bg-kwar-electric/20' : 'bg-kwar-electric/5'
-                  }`} />
-                  <div className={`relative card-glass p-4 rounded-xl overflow-hidden ${
-                    step.highlighted ? 'border-kwar-electric/50' : 'border-white/10'
-                  }`}>
-                    <img
-                      src={step.image}
-                      alt={step.alt}
-                      className="w-full h-auto rounded-lg shadow-lg"
-                      onError={(e) => {
-                        e.currentTarget.src = '/images/epidbot.png';
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-              
-              {index < steps.length - 1 && (
-                <div className="flex justify-center py-3">
-                  <div className="flex flex-col items-center">
-                    <div className="w-0.5 h-6 bg-kwar-electric/30"></div>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-kwar-electric">
-                      <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+        {/* STEPS — zig-zag */}
+        {steps.map((step, index) => {
+          const isLeft = index % 2 === 0;
+          const hasImage = !!step.img;
+          return (
+            <div
+              key={step.num}
+              className={`mb-24 last:mb-0 ${
+                hasImage
+                  ? `grid items-center gap-8 lg:gap-16 ${isLeft ? 'lg:grid-cols-[1fr_1.1fr]' : 'lg:grid-cols-[1.1fr_1fr]'}`
+                  : 'mx-auto max-w-2xl text-center'
+              }`}
+            >
+              {hasImage && (
+                <div
+                  className={`order-1 transition-all duration-1000 delay-150 ${
+                    isLeft ? 'lg:order-2' : 'lg:order-1'
+                  } ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                >
+                  <div className="overflow-hidden rounded-2xl border border-white/[0.06] shadow-2xl shadow-black/60">
+                    <img src={step.img} alt={step.alt} className="w-full h-auto" />
                   </div>
                 </div>
               )}
-            </div>
-          ))}
-        </div>
 
-        {/* Highlight block */}
+              <div
+                className={`transition-all duration-1000 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: '250ms' }}
+              >
+                <span className="mb-4 block text-6xl font-bold leading-none text-white/10 sm:text-7xl">
+                  {step.num}
+                </span>
+                <h3 className="mb-3 text-2xl font-semibold text-white sm:text-3xl">{step.title}</h3>
+                <p className={`text-base leading-relaxed text-white/50 ${hasImage ? 'max-w-md' : 'mx-auto max-w-lg'}`}>{step.desc}</p>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* CLOSING BLOCK */}
         <div
-          className={`mt-12 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mx-auto mt-24 max-w-3xl rounded-2xl border border-kwar-electric/10 bg-gradient-to-r from-kwar-electric/[0.03] to-transparent p-8 text-center transition-all duration-1000 delay-300 sm:p-10 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
-          style={{ transitionDelay: '1200ms' }}
         >
-          <div className="card-glass p-8 lg:p-10 rounded-2xl border-kwar-electric/20 text-center">
-            <p className="text-xl text-kwar-gray italic mb-6">
-              &ldquo;Nenhum sistema sozinho mostra a história completa.&rdquo;
-            </p>
-            <Button
-              size="lg"
-              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 text-base group"
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/files/relatorio-exemplo.pdf';
-                link.download = 'relatorio-epidbot.pdf';
-                link.click();
-              }}
-            >
-              Ver análise completa
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
+          <h3 className="mb-4 text-xl font-semibold text-white sm:text-2xl">
+            Quer ver a análise completa?
+          </h3>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/55">
+            Baixe o relatório completo gerado pelo EpidBot e acompanhe toda a investigação apresentada neste exemplo, desde a pergunta inicial até as conclusões e recomendações.
+          </p>
+
+          <Button
+            size="lg"
+            className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12 text-sm shadow-lg shadow-kwar-electric/25"
+            onClick={() => {
+              const a = document.createElement('a');
+              a.href = '/files/secao_subnotificacao.pdf';
+              a.download = 'EpidBot - Análise de Subnotificação.pdf';
+              a.click();
+            }}
+          >
+            {'\uD83D\uDCC4'} Baixar relatório completo
+          </Button>
         </div>
       </div>
     </section>
   );
 }
 
+// ============================================================================
+// MORE USE CASES SECTION
 // ============================================================================
 // MORE USE CASES SECTION
 // ============================================================================
@@ -548,8 +577,12 @@ function MoreUseCasesSection() {
               Descubra outras formas de usar o EpidBot.
             </h2>
             
-            <p className="text-lg text-kwar-gray mb-8">
-              O EpidBot pode ser aplicado em diferentes contextos da gestão em saúde pública. Explore as possibilidades.
+            <p className="text-lg text-kwar-gray mb-4">
+              O EpidBot pode ser aplicado em diferentes contextos da gestão em saúde pública.
+            </p>
+
+            <p className="text-base text-kwar-gray mb-8">
+              Preparamos um relatório com 10 casos reais de uso, incluindo aplicações em vigilância epidemiológica, planejamento, prestação de contas, alocação de recursos, avaliação de políticas públicas e muito mais. O relatório apresenta apenas alguns exemplos. O EpidBot pode apoiar centenas de outras análises utilizando diferentes bases oficiais da saúde.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-10">
@@ -598,7 +631,7 @@ function MoreUseCasesSection() {
                   loading={<div className="flex items-center justify-center h-96 text-kwar-gray">Carregando PDF...</div>}
                   error={<div className="flex items-center justify-center h-96 text-kwar-gray">Erro ao carregar PDF</div>}
                 >
-                  <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false} className="mx-auto" />
+                  <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false} className="mx-auto" width={Math.min(520, typeof window !== 'undefined' ? window.innerWidth - 48 : 500)} />
                 </Document>
               </div>
               {numPages && (
@@ -769,7 +802,7 @@ function DemoVideoSection() {
           </div>
           
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Veja como o EpidBot funciona na pr├ítica
+            Veja como o EpidBot funciona na prática
           </h2>
           
           <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
@@ -820,7 +853,7 @@ function DemoVideoSection() {
             className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-10 py-6 text-lg group shadow-lg shadow-kwar-electric/25"
           >
             <a href="https://epidbot.kwar-ai.com.br" target="_blank" rel="noopener noreferrer">
-              {t('epidbotLanding.demo.accessApp', { defaultValue: 'Experimente o EpidBot!' })}
+              {t('epidbotLanding.demo.accessApp', { defaultValue: 'Agendar demonstração' })}
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
@@ -1284,7 +1317,7 @@ function ValidationSection() {
       title: 'Rio Saúde',
       subtitle: 'Secretaria Municipal de Saúde do Rio de Janeiro',
       description: 'Análise de dados epidemiológicos para tomada de decisão.',
-      image: '/images/rio-saude.png',
+      image: '/images/rio saude.png',
     },
     {
       title: 'Joinville',
@@ -1296,13 +1329,13 @@ function ValidationSection() {
       title: 'InfoDengue',
       subtitle: 'Fiocruz',
       description: 'Parceria técnica para análises de arboviroses.',
-      image: '/images/infodengue.png',
+      image: '/images/infodengue.jpeg',
     },
     {
       title: 'Fiocruz',
       subtitle: 'Fundação Oswaldo Cruz',
-      description: 'Projeto de vigil\u00e2ncia epidemiológica.',
-      image: '/images/fiocruz.png',
+      description: 'Projeto de vigilância epidemiológica.',
+      image: '/images/fiocruz.jpg',
     },
   ];
 
@@ -1310,20 +1343,20 @@ function ValidationSection() {
     {
       title: 'OMS EMRO',
       subtitle: 'Organização Mundial da Saúde',
-      description: 'Early pilot initiative connected to the WHO EMRO innovation ecosystem.',
+      description: 'Iniciativa piloto desenvolvida junto ao ecossistema de inovação da OMS EMRO.',
       image: '/images/who-emro.png',
     },
     {
       title: 'Web Summit Rio 2026',
       subtitle: 'Impact Startup',
-      description: 'Selected as an impact-driven startup within the Web Summit ecosystem.',
+      description: 'Selecionada como Startup de Impacto no Web Summit Rio 2026.',
       image: '/images/RIO26_Impact badge.png',
       link: 'https://rio.websummit.com/pt-br/startups/impact-startups/search/KWAR-AI/',
     },
     {
       title: '80+',
       subtitle: 'Usuários qualificados',
-      description: 'Epidemiologistas, profissionais de vigil\u00e2ncia e pesquisadores em saúde pública no Brasil.',
+      description: 'Médicos, epidemiologistas, pesquisadores e profissionais da saúde já utilizaram ou avaliaram o EpidBot.',
       icon: Users,
     },
   ];
