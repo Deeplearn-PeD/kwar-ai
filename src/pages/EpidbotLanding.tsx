@@ -908,7 +908,7 @@ function KwarAICredibilitySection() {
             </h3>
             
             <p className="text-kwar-gray mb-6 max-w-xl mx-auto">
-              {t('epidbotLanding.credibility.description', { defaultValue: 'Tecnologia baseada em anos de pesquisa e projetos reais em sa├║de p├║blica no Brasil.' })}
+              {t('epidbotLanding.credibility.description', { defaultValue: 'Tecnologia baseada em anos de pesquisa e projetos reais em saúde pública no Brasil.' })}
             </p>
 
             <a 
@@ -919,7 +919,7 @@ function KwarAICredibilitySection() {
             >
               <span dangerouslySetInnerHTML={{
                 __html: t('epidbotLanding.credibility.cta', {
-                  defaultValue: 'Conhe├ºa a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>'
+                  defaultValue: 'Conheça a <strong className=\"bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]\">Kwar-AI</strong>'
                 })
               }} />
               <ArrowRight className="w-4 h-4" />
