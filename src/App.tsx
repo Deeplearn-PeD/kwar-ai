@@ -103,10 +103,23 @@ function HomePage() {
   );
 }
 
+function HashRedirect() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith('#/')) {
+      const cleanPath = hash.slice(1);
+      window.location.replace(cleanPath);
+    }
+  }, []);
+  return null;
+}
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
+    <>
+      <HashRedirect />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
       <Route path="/epidbot" element={<Epidbot />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
@@ -122,7 +135,8 @@ function App() {
       <Route path="/documentacao" element={<Documentacao />} />
       <Route path="/jornalistas" element={<Jornalistas />} />
       <Route path="/vigilancia-epidemiologica" element={<VigilanciaEpidemiologica />} />
-    </Routes>
+      </Routes>
+    </>
   );
 }
 
