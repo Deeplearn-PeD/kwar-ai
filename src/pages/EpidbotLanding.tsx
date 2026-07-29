@@ -171,27 +171,19 @@ function HeroSection() {
             Enquanto isso, o tempo continua passando.
           </p>
 
-          {/* Two CTAs */}
+          {/* CTA */}
           <div
             className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             <Button
-              onClick={() => scrollToSection('#final-cta')}
+              onClick={() => scrollToSection('#problem')}
               size="lg"
               className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12 text-sm shadow-lg shadow-kwar-electric/25 group"
             >
-              Descubra uma nova forma de trabalhar
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              onClick={() => scrollToSection('#demo')}
-              size="lg"
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/[0.06] hover:border-white/30 px-8 h-12 text-sm"
-            >
               Veja como funciona
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
         </div>
@@ -249,14 +241,14 @@ function AboutEpidbotSection() {
             }`}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-              <span className="text-sm font-medium text-kwar-electric">CONHEÇA O EPIDBOT</span>
+              <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">CONHEÇA O EPIDBOT</span>
             </div>
             
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
               Inteligência para transformar dados em decisões.
             </h2>
             
-            <p className="text-lg text-kwar-gray mb-8">
+            <p className="text-lg text-kwar-gray leading-relaxed mb-8">
               O EpidBot é uma plataforma de inteligência para saúde pública que reúne informações de diferentes bases oficiais e as transforma em análises, relatórios, visualizações e evidências para apoiar decisões de gestores, hospitais, fundações estatais e secretarias de saúde.
             </p>
 
@@ -423,6 +415,7 @@ function RealExampleSection() {
     {
       num: '05', title: 'Decisão apoiada por evidências',
       desc: 'A plataforma entrega um relatório claro para apoiar a tomada de decisão do gestor.',
+      img: '/images/resultado_gestao.png', alt: 'Decisão apoiada pelo EpidBot',
     },
   ];
 
@@ -549,11 +542,6 @@ function MoreUseCasesSection() {
     return () => observer.disconnect();
   }, []);
 
-  const chips = [
-    'Prestação de contas', 'Dengue', 'Sala de situação',
-    'planejamento', 'Avaliação', 'Comparação', 'Respostas',
-  ];
-
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
   }
@@ -570,30 +558,26 @@ function MoreUseCasesSection() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
               Descubra outras formas de usar o EpidBot.
             </h2>
             
-            <p className="text-lg text-kwar-gray mb-4">
+            <p className="text-lg text-kwar-gray leading-relaxed mb-4">
               O EpidBot pode ser aplicado em diferentes contextos da gestão em saúde pública.
             </p>
 
-            <p className="text-base text-kwar-gray mb-8">
-              Preparamos um relatório com 10 casos reais de uso, incluindo aplicações em vigilância epidemiológica, planejamento, prestação de contas, alocação de recursos, avaliação de políticas públicas e muito mais. O relatório apresenta apenas alguns exemplos. O EpidBot pode apoiar centenas de outras análises utilizando diferentes bases oficiais da saúde.
+            <p className="text-base text-kwar-gray leading-relaxed mb-8">
+              Preparamos um relatório com 10 casos reais de uso, mostrando como a plataforma apoia gestores em análises estratégicas, planejamento, vigilância epidemiológica e tomada de decisão.
             </p>
 
-            <div className="flex flex-wrap gap-3 mb-10">
-              {chips.map((chip) => (
-                <span key={chip} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-kwar-electric/10 hover:border-kwar-electric/30 transition-colors cursor-default">
-                  {chip}
-                </span>
-              ))}
-            </div>
+            <p className="text-sm text-kwar-gray mb-10">
+              Este material apresenta apenas alguns exemplos. As possibilidades de aplicação são muito maiores.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 text-base group"
+                className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 group"
               >
                 Explorar relatório completo
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -601,7 +585,7 @@ function MoreUseCasesSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-kwar-electric/30 text-kwar-electric hover:bg-kwar-electric/10 px-8 py-6 text-base"
+                className="border-kwar-electric/30 text-kwar-electric hover:bg-kwar-electric/10 px-8 py-6"
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = '/files/epidbot para gestores.pdf';
@@ -705,16 +689,12 @@ function ProblemSection() {
                 OS DESAFIOS DA GESTÃO EM SAÚDE
               </span>
             </div>
-            <h2 className="mb-6 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.5rem]">
+            <h2 className="mb-6 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
               Por que tomar decisões ainda é{' '}
               <span className="text-kwar-electric">tão difícil?</span>
             </h2>
             <p className="mb-10 text-base leading-relaxed text-white/55">
               Os dados existem, mas estão distribuídos entre diferentes sistemas. Transformar essas informações em decisões ainda exige muito tempo e trabalho manual.
-            </p>
-
-            <p className="text-lg font-semibold leading-snug text-white/80">
-              Nenhum sistema sozinho mostra a história completa.
             </p>
 
             <div className="mt-8 overflow-hidden rounded-2xl border border-white/[0.06] shadow-2xl shadow-black/50">
@@ -743,13 +723,31 @@ function ProblemSection() {
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
                     </span>
                     <div>
-                      <h3 className="mb-1 text-sm font-semibold text-white">{item.title}</h3>
-                      <p className="text-xs leading-relaxed text-white/45">{item.desc}</p>
+                      <h3 className="mb-1 text-base font-semibold text-white">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/50">{item.desc}</p>
                     </div>
                   </div>
                 </div>
               );
             })}
+
+            {/* Highlighted conclusion card */}
+            <div
+              className={`rounded-2xl border border-kwar-electric/20 bg-gradient-to-br from-kwar-electric/[0.06] to-transparent p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-kwar-electric/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.25)] sm:p-7 ${
+                isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
+              }`}
+              style={{ transitionDelay: '600ms' }}
+            >
+              <div className="flex items-start gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-kwar-electric/30 bg-kwar-electric/[0.08] text-kwar-electric">
+                  <BarChart3 className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div>
+                  <h3 className="mb-1 text-base font-semibold text-white">Nenhum sistema sozinho mostra a história completa.</h3>
+                  <p className="text-sm leading-relaxed text-white/50">Tomar boas decisões exige conectar diferentes bases de dados e transformar informações dispersas em evidências.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -793,16 +791,16 @@ function DemoVideoSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
             <Play className="w-4 h-4 text-kwar-electric" />
-            <span className="text-sm font-medium text-kwar-electric">
+            <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">
               {t('epidbotLanding.demo.badge', { defaultValue: 'Demonstra├º├úo' })}
             </span>
           </div>
           
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
             Veja como o EpidBot funciona na prática
           </h2>
           
-          <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
+          <p className="text-xl text-kwar-gray leading-relaxed max-w-2xl mx-auto">
             {t('epidbotLanding.demo.subtitle', { defaultValue: 'Em poucos minutos, voc├¬ entende como transformar dados em decis├Áes.' })}
           </p>
         </div>
@@ -844,16 +842,16 @@ function DemoVideoSection() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <Button
-            asChild
-            size="lg"
-            className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-10 py-6 text-lg group shadow-lg shadow-kwar-electric/25"
-          >
-            <a href="https://epidbot.kwar-ai.com.br" target="_blank" rel="noopener noreferrer">
-              {t('epidbotLanding.demo.accessApp', { defaultValue: 'Agendar demonstração' })}
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
+            <Button
+              asChild
+              size="lg"
+              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-10 py-6 group shadow-lg shadow-kwar-electric/25"
+            >
+              <a href="https://epidbot.kwar-ai.com.br" target="_blank" rel="noopener noreferrer">
+                {t('epidbotLanding.demo.accessApp', { defaultValue: 'Agendar demonstração' })}
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
         </div>
       </div>
     </section>
@@ -907,7 +905,7 @@ function KwarAICredibilitySection() {
               {t('epidbotLanding.credibility.title', { defaultValue: 'Desenvolvido pela' })} <span className="bg-gradient-to-r from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] bg-clip-text text-transparent font-bold drop-shadow-[0_0_16px_rgba(250,204,21,0.3)]">Kwar-AI</span>
             </h3>
             
-            <p className="text-kwar-gray mb-6 max-w-xl mx-auto">
+            <p className="text-kwar-gray text-base leading-relaxed mb-6 max-w-xl mx-auto">
               {t('epidbotLanding.credibility.description', { defaultValue: 'Tecnologia baseada em anos de pesquisa e projetos reais em saúde pública no Brasil.' })}
             </p>
 
@@ -964,7 +962,7 @@ function AboutKwarAISection() {
           <p className="mx-auto mb-4 max-w-2xl text-base leading-relaxed text-white/55">
             O EpidBot é desenvolvido pela KWAR-AI, uma startup brasileira especializada em Inteligência Artificial aplicada à Saúde Pública.
           </p>
-          <p className="mx-auto mb-10 max-w-2xl text-sm leading-relaxed text-white/40">
+          <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-white/55">
             Nossa missão é transformar dados em evidências para apoiar gestores, hospitais, pesquisadores e organizações de saúde na tomada de decisões mais rápidas e bem fundamentadas.
           </p>
 
@@ -1015,12 +1013,12 @@ function FinalCTASection() {
       
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Agende uma demonstração
-          </h2>
-          <p className="text-xl text-kwar-gray mb-10">
-            Preencha o formulário abaixo e nossa equipe entrará em contato.
-          </p>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
+              Agende uma demonstração
+            </h2>
+            <p className="text-xl text-kwar-gray leading-relaxed mb-10">
+              Preencha o formulário abaixo e nossa equipe entrará em contato.
+            </p>
           
           <form action="https://api.web3forms.com/submit" method="POST" className="max-w-2xl mx-auto text-left">
             <input type="hidden" name="access_key" value="b065c0bd-51d6-44df-b315-48aaa195103e" />
@@ -1182,10 +1180,10 @@ function ValidationSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-            <span className="text-sm font-medium text-kwar-electric">Credibilidade</span>
+            <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">Credibilidade</span>
           </div>
           <h2
-            className={`font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 transition-all duration-1000 delay-100 ${
+            className={`font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4 transition-all duration-1000 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -1208,7 +1206,7 @@ function ValidationSection() {
               </div>
               <h3 className="text-white font-semibold text-lg mb-0.5">{card.title}</h3>
               <p className="text-kwar-electric text-xs tracking-wide uppercase mb-3">{card.subtitle}</p>
-              <p className="text-white/40 text-sm leading-relaxed">{card.description}</p>
+              <p className="text-white/50 text-sm leading-relaxed">{card.description}</p>
             </div>
           ))}
         </div>
@@ -1240,7 +1238,7 @@ function ValidationSection() {
               ) : null}
               <h3 className="text-white font-semibold text-lg mb-0.5">{card.title}</h3>
               <p className="text-kwar-electric text-xs tracking-wide uppercase mb-3">{card.subtitle}</p>
-              <p className="text-white/40 text-sm leading-relaxed">{card.description}</p>
+              <p className="text-white/50 text-sm leading-relaxed">{card.description}</p>
             </div>
           ))}
         </div>
@@ -1265,7 +1263,6 @@ function LandingFooter() {
 
   const links = [
     { label: t('epidbotLanding.footer.links.product', { defaultValue: 'Produto' }), href: '#about-epidbot' },
-    { label: t('epidbotLanding.footer.links.pricing', { defaultValue: 'Pre├ºos' }), href: '#pricing' },
     { label: t('epidbotLanding.footer.links.contact', { defaultValue: 'Contato' }), href: '#final-cta' },
   ];
 
