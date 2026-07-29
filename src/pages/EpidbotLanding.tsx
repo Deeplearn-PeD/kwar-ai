@@ -4,14 +4,11 @@ import SkipToContent from '@/components/SkipToContent';
 import { 
   ArrowRight, 
   Users,
-  Check,
   Menu,
   X,
   Play,
   BarChart3,
   Clock,
-  Award,
-  Target,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -864,87 +861,6 @@ function DemoVideoSection() {
 }
 
 
-// ============================================================================
-// BENEFITS SECTION
-// ============================================================================
-function BenefitsSection() {
-  const { t } = useTranslation();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const element = document.getElementById('benefits');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  const benefits = [
-    {
-      icon: Clock,
-      title: t('epidbotLanding.benefits.items.time.title', { defaultValue: 'Ganhe tempo' }),
-      description: t('epidbotLanding.benefits.items.time.description', { defaultValue: 'An├ílises que levavam dias agora levam minutos. Sua equipe foca no que realmente importa.' }),
-    },
-    {
-      icon: Target,
-      title: t('epidbotLanding.benefits.items.control.title', { defaultValue: 'Aja no momento certo' }),
-      description: t('epidbotLanding.benefits.items.control.description', { defaultValue: 'Identifique riscos antes que se tornem problemas. Tome decis├Áes com anteced├¬ncia, n├úo na correria.' }),
-    },
-    {
-      icon: Award,
-      title: t('epidbotLanding.benefits.items.peace.title', { defaultValue: 'Tenha confian├ºa' }),
-      description: t('epidbotLanding.benefits.items.peace.description', { defaultValue: 'Chegue ├ás reuni├Áes com dados claros e embasados. Mais credibilidade, menos improviso.' }),
-    },
-  ];
-
-  return (
-    <section id="benefits" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep to-kwar-deep/95">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            {t('epidbotLanding.benefits.title', { defaultValue: 'Trabalhe de forma diferente' })}
-          </h2>
-          <p className="text-xl sm:text-2xl text-kwar-gray max-w-2xl mx-auto">
-            {t('epidbotLanding.benefits.subtitle', { defaultValue: 'Menos correria, mais resultado.' })}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <div
-              key={benefit.title}
-              className={`card-glass p-8 text-center hover:border-kwar-electric/30 transition-all duration-700 group ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-            >
-              <div className="w-16 h-16 rounded-2xl bg-kwar-electric/10 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
-                <benefit.icon className="w-8 h-8 text-kwar-electric" />
-              </div>
-              <h3 className="text-white font-bold text-2xl mb-4">{benefit.title}</h3>
-              <p className="text-kwar-gray text-base leading-relaxed">{benefit.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ============================================================================
 // CREDIBILIDADE KWAR-AI SECTION - Simplificada e no final
@@ -1015,280 +931,178 @@ function KwarAICredibilitySection() {
   );
 }
 
+
 // ============================================================================
-// PRICING SECTION
+// ABOUT KWAR-AI SECTION
 // ============================================================================
-function PricingSection() {
-  const { t } = useTranslation();
+function AboutKwarAISection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
+      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); } },
+      { threshold: 0.15 }
     );
-
-    const element = document.getElementById('pricing');
-    if (element) observer.observe(element);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const plans = [
-    {
-      name: t('epidbotLanding.pricing.free.name', { defaultValue: 'Free' }),
-      description: t('epidbotLanding.pricing.free.description', { defaultValue: 'Experimente o EpidBot e veja como transformar dados em insights' }),
-      features: [
-        t('epidbotLanding.pricing.features.free.0', { defaultValue: 'Até 5 análises por mês' }),
-        t('epidbotLanding.pricing.features.free.1', { defaultValue: 'Upload de dados pequenos' }),
-        t('epidbotLanding.pricing.features.free.2', { defaultValue: 'Respostas básicas' }),
-        t('epidbotLanding.pricing.features.free.3', { defaultValue: 'Sem exportação de relatórios' }),
-      ],
-      cta: t('epidbotLanding.pricing.free.cta', { defaultValue: 'Começar grátis' }),
-      popular: false,
-    },
-    {
-      name: t('epidbotLanding.pricing.pro.name', { defaultValue: 'Pro' }),
-      description: t('epidbotLanding.pricing.pro.description', { defaultValue: 'Ideal para uso frequente e análises contínuas' }),
-      features: [
-        t('epidbotLanding.pricing.features.pro.0', { defaultValue: 'Até 100 análises por mês' }),
-        t('epidbotLanding.pricing.features.pro.1', { defaultValue: 'Upload de conjunto de dados' }),
-        t('epidbotLanding.pricing.features.pro.2', { defaultValue: 'Geração de relatórios básicos' }),
-        t('epidbotLanding.pricing.features.pro.3', { defaultValue: 'Histórico de análises' }),
-      ],
-      cta: t('epidbotLanding.pricing.pro.cta', { defaultValue: 'Tenho interesse' }),
-      popular: true,
-    },
-    {
-      name: t('epidbotLanding.pricing.proPlus.name', { defaultValue: 'Pro+' }),
-      description: t('epidbotLanding.pricing.proPlus.description', { defaultValue: 'Para equipes e análises mais avançadas' }),
-      features: [
-        t('epidbotLanding.pricing.features.proPlus.0', { defaultValue: 'Até 300 análises por mês' }),
-        t('epidbotLanding.pricing.features.proPlus.1', { defaultValue: 'Relatórios completos em PDF' }),
-        t('epidbotLanding.pricing.features.proPlus.2', { defaultValue: 'Melhor performance' }),
-        t('epidbotLanding.pricing.features.proPlus.3', { defaultValue: 'Prioridade no processamento' }),
-      ],
-      cta: t('epidbotLanding.pricing.proPlus.cta', { defaultValue: 'Tenho interesse' }),
-      popular: false,
-    },
-    {
-      name: t('epidbotLanding.pricing.enterprise.name', { defaultValue: 'Enterprise' }),
-      description: t('epidbotLanding.pricing.enterprise.description', { defaultValue: 'Solução estratégica para instituições e projetos maiores' }),
-      features: [
-        t('epidbotLanding.pricing.features.enterprise.0', { defaultValue: 'Alto volume de análises (uso sob medida)' }),
-        t('epidbotLanding.pricing.features.enterprise.1', { defaultValue: 'Integração com bases de dados locais' }),
-        t('epidbotLanding.pricing.features.enterprise.2', { defaultValue: 'Customizações sob demanda' }),
-        t('epidbotLanding.pricing.features.enterprise.3', { defaultValue: 'Suporte prioritário' }),
-      ],
-      note: t('epidbotLanding.pricing.enterprise.note', { defaultValue: 'Customizações e projetos especiais podem ser contratados à parte' }),
-      cta: t('epidbotLanding.pricing.enterprise.cta', { defaultValue: 'Falar com especialista' }),
-      popular: false,
-      enterprise: true,
-    },
-  ];
-
   return (
-    <section id="pricing" className="relative py-24 lg:py-32 bg-gradient-to-b from-kwar-deep/95 to-kwar-deep">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            {t('epidbotLanding.pricing.title', { defaultValue: 'O que est├í incluso' })}
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#050a10] py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-kwar-electric/25 bg-kwar-electric/8 px-4 py-1.5">
+            <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">A KWAR-AI</span>
+          </div>
+          <h2 className="mb-6 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+            Quem desenvolveu o <span className="text-kwar-electric">EpidBot</span>?
           </h2>
-          <p className="text-xl text-kwar-gray max-w-2xl mx-auto">
-            {t('epidbotLanding.pricing.subtitle', { defaultValue: 'Escolha o plano que melhor atende suas necessidades.' })}
+          <p className="mx-auto mb-4 max-w-2xl text-base leading-relaxed text-white/55">
+            O EpidBot é desenvolvido pela KWAR-AI, uma startup brasileira especializada em Inteligência Artificial aplicada à Saúde Pública.
           </p>
-        </div>
+          <p className="mx-auto mb-10 max-w-2xl text-sm leading-relaxed text-white/40">
+            Nossa missão é transformar dados em evidências para apoiar gestores, hospitais, pesquisadores e organizações de saúde na tomada de decisões mais rápidas e bem fundamentadas.
+          </p>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={plan.name}
-              className={`relative card-glass p-6 hover:border-kwar-electric/30 transition-all duration-700 flex flex-col ${
-                plan.popular ? 'border-kwar-electric/50 lg:scale-105' : ''
-              } ${plan.enterprise ? 'border-kwar-gold/30' : ''} ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+          <div className="mb-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+            <Button
+              size="lg"
+              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12 text-sm shadow-lg shadow-kwar-electric/25"
+              onClick={() => window.open('https://kwar-ai.com.br', '_blank')}
             >
-              {/* Badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-kwar-electric text-kwar-deep text-sm font-bold rounded-full">
-                  {t('epidbotLanding.pricing.popular', { defaultValue: 'Mais popular' })}
-                </div>
-              )}
-              
-              {/* Plan Name */}
-              <h3 className={`font-semibold text-xl mb-2 ${plan.enterprise ? 'text-kwar-gold' : 'text-white'}`}>
-                {plan.name}
-              </h3>
-              
-              {/* Description */}
-              <p className="text-kwar-gray text-sm mb-4 min-h-[40px]">{plan.description}</p>
-              
-              {/* Features */}
-              <ul className="space-y-3 mb-6 flex-grow">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-kwar-gray text-sm">
-                    <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.enterprise ? 'text-kwar-gold' : 'text-kwar-electric'}`} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              {/* Note for Enterprise */}
-              {plan.note && (
-                <p className="text-kwar-gray text-xs mb-4 italic">{plan.note}</p>
-              )}
-              
-              {/* CTA Button */}
-              <Button
-                onClick={() => scrollToSection('#final-cta')}
-                className={`w-full mt-auto ${
-                  plan.popular
-                    ? 'bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold'
-                    : plan.enterprise
-                    ? 'bg-kwar-gold hover:bg-kwar-gold/90 text-kwar-deep font-bold'
-                    : 'bg-white/10 hover:bg-white/20 text-white'
-                }`}
-              >
-                {plan.cta}
-              </Button>
-            </div>
-          ))}
+              Conheça a KWAR-AI
+            </Button>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-white/40 sm:gap-6">
+            <a href="https://kwar-ai.com.br" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-kwar-electric">kwar-ai.com.br</a>
+            <span className="text-white/10">|</span>
+            <a href="mailto:contato@kwar-ai.com.br" className="transition-colors hover:text-kwar-electric">contato@kwar-ai.com.br</a>
+            <span className="text-white/10">|</span>
+            <a href="https://linkedin.com/company/kwar-ai" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-kwar-electric">LinkedIn</a>
+          </div>
+        </div>
         </div>
       </div>
     </section>
   );
 }
-
 // ============================================================================
 // FINAL CTA SECTION
 // ============================================================================
 function FinalCTASection() {
-  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
+      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); } },
+      { threshold: 0.15 }
     );
-
-    const element = document.getElementById('final-cta');
-    if (element) observer.observe(element);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="final-cta" className="relative py-24 lg:py-32">
+    <section ref={sectionRef} id="final-cta" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 grid-bg opacity-50" />
-      
-      {/* Gradient orbs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-kwar-electric/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-kwar-gold/10 rounded-full blur-3xl" />
       
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-<h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            {t('epidbotLanding.final.title', { defaultValue: 'Transforme dados em decis├Áes' })}
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            Agende uma demonstração
           </h2>
-
           <p className="text-xl text-kwar-gray mb-10">
-            {t('epidbotLanding.final.subtitle', { defaultValue: 'Fale com nossa equipe e descubra como o EpidBot pode ajudar.' })}
+            Preencha o formulário abaixo e nossa equipe entrará em contato.
           </p>
           
-          {/* Web3Forms Integration */}
-          <form action="https://api.web3forms.com/submit" method="POST" className="max-w-md mx-auto">
+          <form action="https://api.web3forms.com/submit" method="POST" className="max-w-2xl mx-auto text-left">
             <input type="hidden" name="access_key" value="b065c0bd-51d6-44df-b315-48aaa195103e" />
-            <input type="hidden" name="subject" value="Nova mensagem - EpidBot Landing Page" />
+            <input type="hidden" name="subject" value="Nova demonstração solicitada - EpidBot Landing Page" />
             <input type="hidden" name="from_name" value="EpidBot Website" />
-            <div className="space-y-4">
-              <label htmlFor="contact-name" className="sr-only">
-                {t('epidbotLanding.final.form.nameLabel', { defaultValue: 'Nome completo' })}
-              </label>
-              <Input
-                id="contact-name"
-                type="text"
-                name="name"
-                autoComplete="name"
-                placeholder={t('epidbotLanding.final.form.namePlaceholder', { defaultValue: 'Seu nome' })}
-                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
-                required
-              />
-              <label htmlFor="contact-email" className="sr-only">
-                {t('epidbotLanding.final.form.emailLabel', { defaultValue: 'E-mail' })}
-              </label>
-              <Input
-                id="contact-email"
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder={t('epidbotLanding.final.form.emailPlaceholder', { defaultValue: 'Seu email' })}
-                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
-                required
-              />
-              <label htmlFor="contact-org" className="sr-only">
-                {t('epidbotLanding.final.form.organizationLabel', { defaultValue: 'Organização' })}
-              </label>
-              <Input
-                id="contact-org"
-                type="text"
-                name="organization"
-                autoComplete="organization"
-                placeholder={t('epidbotLanding.final.form.organizationPlaceholder', { defaultValue: 'Nome da secretaria ou munic├¡pio' })}
-                className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-12"
-                required
-              />
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12"
-              >
-                {t('epidbotLanding.final.form.submitButton', { defaultValue: 'Quero Conversar' })}
-                <ArrowRight className="w-5 h-5 ml-2" />
+            
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="cta-name" className="block text-xs font-medium text-white/50 mb-1.5">Nome completo *</label>
+                <Input id="cta-name" name="name" autoComplete="name" required placeholder="Seu nome completo" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-email" className="block text-xs font-medium text-white/50 mb-1.5">E-mail *</label>
+                <Input id="cta-email" name="email" type="email" autoComplete="email" required placeholder="seu@email.com" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-phone" className="block text-xs font-medium text-white/50 mb-1.5">Telefone / WhatsApp *</label>
+                <Input id="cta-phone" name="phone" type="tel" autoComplete="tel" required placeholder="(XX) XXXXX-XXXX" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-org" className="block text-xs font-medium text-white/50 mb-1.5">Instituição *</label>
+                <Input id="cta-org" name="organization" autoComplete="organization" required placeholder="Nome da instituição" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-role" className="block text-xs font-medium text-white/50 mb-1.5">Cargo *</label>
+                <Input id="cta-role" name="role" autoComplete="organization-title" required placeholder="Seu cargo" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-city" className="block text-xs font-medium text-white/50 mb-1.5">Cidade</label>
+                <Input id="cta-city" name="city" autoComplete="address-level2" placeholder="Sua cidade" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-state" className="block text-xs font-medium text-white/50 mb-1.5">Estado</label>
+                <Input id="cta-state" name="state" autoComplete="address-level1" placeholder="Seu estado" className="bg-white/5 border-white/10 text-white placeholder:text-kwar-gray h-11" />
+              </div>
+              <div>
+                <label htmlFor="cta-type" className="block text-xs font-medium text-white/50 mb-1.5">Tipo de instituição</label>
+                <select id="cta-type" name="institution_type" className="w-full h-11 rounded-lg border border-white/10 bg-white/5 px-4 text-sm text-white/70 focus:outline-none focus:border-kwar-electric/30">
+                  <option value="">Selecione...</option>
+                  <option>Secretaria Municipal</option>
+                  <option>Secretaria Estadual</option>
+                  <option>Hospital</option>
+                  <option>Fundação</option>
+                  <option>Universidade</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label className="block text-xs font-medium text-white/50 mb-1.5">Principal interesse</label>
+              <div className="grid grid-cols-2 gap-2">
+                {['Vigilância epidemiológica', 'Gestão hospitalar', 'Planejamento', 'Prestação de contas', 'IA para análise de dados', 'Outro'].map((interest) => (
+                  <label key={interest} className="flex items-center gap-2 text-sm text-white/60 cursor-pointer">
+                    <input type="checkbox" name="interests" value={interest} className="rounded border-white/20 bg-white/5 text-kwar-electric focus:ring-kwar-electric/30" />
+                    {interest}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label htmlFor="cta-message" className="block text-xs font-medium text-white/50 mb-1.5">Mensagem</label>
+              <textarea id="cta-message" name="message" rows={3} placeholder="Conte brevemente o desafio que você gostaria de resolver." className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-kwar-gray focus:outline-none focus:border-kwar-electric/30 resize-none" />
+            </div>
+
+            <div className="mt-6">
+              <Button type="submit" size="lg" className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 h-12 text-sm">
+                Agendar demonstração
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </form>
 
           <p className="text-kwar-gray text-sm mt-6">
-            {t('epidbotLanding.final.note', { defaultValue: 'Respondemos em at├® 24 horas. Sem compromisso.' })}
+            Nossa equipe entrará em contato para agendar uma demonstração personalizada conforme o perfil da sua instituição.
           </p>
         </div>
       </div>
     </section>
   );
 }
-
 // ============================================================================
 // VALIDATION SECTION
 // ============================================================================
@@ -1516,8 +1330,7 @@ export default function EpidbotLanding() {
         <MoreUseCasesSection />
         <DemoVideoSection />
         <ValidationSection />
-        <BenefitsSection />
-        <PricingSection />
+        <AboutKwarAISection />
         <FinalCTASection />
         <KwarAICredibilitySection />
       </main>
