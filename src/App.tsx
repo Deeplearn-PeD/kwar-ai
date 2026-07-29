@@ -1,4 +1,4 @@
-import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { Routes, Route, useSearchParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { SEO } from '@/components/SEO';
 import { Navbar } from '@/components/Navbar';
@@ -104,13 +104,23 @@ function HomePage() {
 }
 
 function HashRedirect() {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const redirectPath = sessionStorage.getItem('redirect');
+    if (redirectPath) {
+      sessionStorage.removeItem('redirect');
+      navigate(redirectPath, { replace: true });
+      return;
+    }
+
     const hash = window.location.hash;
     if (hash.startsWith('#/')) {
       const cleanPath = hash.slice(1);
-      window.location.replace(cleanPath);
+      navigate(cleanPath, { replace: true });
     }
   }, []);
+
   return null;
 }
 
