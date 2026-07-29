@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+﻿import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import SkipToContent from '@/components/SkipToContent';
 import { 
@@ -103,7 +103,7 @@ function LandingNavbar() {
               onClick={() => scrollToSection('#final-cta')}
               className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
             >
-              Agendar Demonstra\u00e7\u00e3o
+              Agendar Demonstração
             </Button>
 
             {/* Mobile Menu Button */}
@@ -140,7 +140,7 @@ function LandingNavbar() {
               onClick={() => { scrollToSection('#final-cta'); }}
               className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
             >
-              Agendar Demonstra\u00e7\u00e3o
+              Agendar Demonstração
             </Button>
           </div>
         </div>
@@ -277,7 +277,7 @@ function AboutEpidbotSection() {
   }, []);
 
   const benefits = [
-    { emoji: '\u{1F4CA}', text: 'An\u00e1lises inteligentes' },
+    { emoji: '\u{1F4CA}', text: 'Análises inteligentes' },
     { emoji: '\u{1F5C2}\uFE0F', text: 'Bases oficiais integradas' },
     { emoji: '\u{1F4AC}', text: 'Perguntas em linguagem natural' },
   ];
@@ -295,15 +295,15 @@ function AboutEpidbotSection() {
             }`}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-              <span className="text-sm font-medium text-kwar-electric">CONHE\u00c7A O EPIDBOT</span>
+              <span className="text-sm font-medium text-kwar-electric">CONHEÇA O EPIDBOT</span>
             </div>
             
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-              Intelig\u00eancia para transformar dados em decis\u00f5es.
+              Inteligência para transformar dados em decisões.
             </h2>
             
             <p className="text-lg text-kwar-gray mb-8">
-              O EpidBot \u00e9 um analista epidemiol\u00f3gico baseado em IA, treinado com bases de dados oficiais da sa\u00fade p\u00fablica brasileira. Ele transforma perguntas em linguagem natural em an\u00e1lises completas \u2014 com dados, gr\u00e1ficos e recomenda\u00e7\u00f5es para a\u00e7\u00e3o.
+              O EpidBot é um analista epidemiológico baseado em IA, treinado com bases de dados oficiais da saúde pública brasileira. Ele transforma perguntas em linguagem natural em análises completas \u2014 com dados, gráficos e recomendações para ação.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -332,7 +332,7 @@ function AboutEpidbotSection() {
                 />
               </div>
               <p className="text-center text-kwar-gray text-sm mt-4">
-                Fa\u00e7a perguntas em linguagem natural e receba an\u00e1lises completas.
+                Faça perguntas em linguagem natural e receba análises completas.
               </p>
             </div>
           </div>
@@ -366,9 +366,9 @@ function HowEpidbotHelpsSection() {
   }, []);
 
   const steps = [
-    { emoji: '\u{1F4AC}', title: 'Fa\u00e7a uma pergunta', description: 'Em linguagem natural, como faria a um analista.' },
-    { emoji: '\u{1F9E0}', title: 'O EpidBot trabalha por voc\u00ea', description: 'Processa dados de m\u00faltiplas fontes em segundos.' },
-    { emoji: '\u{1F4CA}', title: 'Receba respostas para agir', description: 'Com insights acion\u00e1veis em minutos, n\u00e3o dias.' },
+    { emoji: '\u{1F4AC}', title: 'Faça uma pergunta', description: 'Em linguagem natural, como faria a um analista.' },
+    { emoji: '\u{1F9E0}', title: 'O EpidBot trabalha por você', description: 'Processa dados de múltiplas fontes em segundos.' },
+    { emoji: '\u{1F4CA}', title: 'Receba respostas para agir', description: 'Com insights acionáveis em minutos, não dias.' },
   ];
 
   return (
@@ -382,7 +382,7 @@ function HowEpidbotHelpsSection() {
           </div>
           
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Da pergunta... \u00e0 decis\u00e3o.
+            Da pergunta... à decisão.
           </h2>
         </div>
 
@@ -438,9 +438,9 @@ function RealExampleSection() {
   const steps = [
     { label: 'Pergunta', image: '/images/prompt.png', alt: 'Exemplo de pergunta feita ao EpidBot' },
     { label: 'Insight', image: '/images/analise.png', alt: 'Insight gerado pelo EpidBot', highlighted: true },
-    { label: 'Resultado', image: '/images/recomendacao.png', alt: 'Resultado da an\u00e1lise' },
-    { label: 'Impacto', image: '/images/analise.png', alt: 'Impacto da decis\u00e3o' },
-    { label: 'Decis\u00e3o', image: '/images/recomendacao.png', alt: 'Decis\u00e3o baseada em dados' },
+    { label: 'Resultado', image: '/images/recomendacao.png', alt: 'Resultado da análise' },
+    { label: 'Impacto', image: '/images/analise.png', alt: 'Impacto da decisão' },
+    { label: 'Decisão', image: '/images/recomendacao.png', alt: 'Decisão baseada em dados' },
   ];
 
   return (
@@ -454,7 +454,7 @@ function RealExampleSection() {
           </div>
           
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Veja como o EpidBot transforma dados em decis\u00f5es.
+            Veja como o EpidBot transforma dados em decisões.
           </h2>
         </div>
 
@@ -519,7 +519,7 @@ function RealExampleSection() {
         >
           <div className="card-glass p-8 lg:p-10 rounded-2xl border-kwar-electric/20 text-center">
             <p className="text-xl text-kwar-gray italic mb-6">
-              &ldquo;Nenhum sistema sozinho mostra a hist\u00f3ria completa.&rdquo;
+              &ldquo;Nenhum sistema sozinho mostra a história completa.&rdquo;
             </p>
             <Button
               size="lg"
@@ -531,7 +531,7 @@ function RealExampleSection() {
                 link.click();
               }}
             >
-              Ver an\u00e1lise completa
+              Ver análise completa
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
@@ -567,8 +567,8 @@ function MoreUseCasesSection() {
   }, []);
 
   const chips = [
-    'Presta\u00e7\u00e3o de contas', 'Dengue', 'Sala de situa\u00e7\u00e3o',
-    'planejamento', 'Avalia\u00e7\u00e3o', 'Compara\u00e7\u00e3o', 'Respostas',
+    'Prestação de contas', 'Dengue', 'Sala de situação',
+    'planejamento', 'Avaliação', 'Comparação', 'Respostas',
   ];
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
@@ -592,7 +592,7 @@ function MoreUseCasesSection() {
             </h2>
             
             <p className="text-lg text-kwar-gray mb-8">
-              O EpidBot pode ser aplicado em diferentes contextos da gest\u00e3o em sa\u00fade p\u00fablica. Explore as possibilidades.
+              O EpidBot pode ser aplicado em diferentes contextos da gestão em saúde pública. Explore as possibilidades.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-10">
@@ -608,7 +608,7 @@ function MoreUseCasesSection() {
                 size="lg"
                 className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-bold px-8 py-6 text-base group"
               >
-                Explorar relat\u00f3rio completo
+                Explorar relatório completo
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
@@ -678,6 +678,7 @@ function MoreUseCasesSection() {
 // ============================================================================
 function ProblemSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -687,92 +688,81 @@ function ProblemSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
-
-    const element = document.getElementById('problem');
-    if (element) observer.observe(element);
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   const problems = [
-    {
-      icon: Users,
-      title: 'Equipe sobrecarregada',
-      description: 'Poucas pessoas tentando dar conta de tudo. Enquanto os dados se acumulam, o tempo para analisar s\u00f3 diminui.',
-    },
-    {
-      icon: BarChart3,
-      title: 'Dados fragmentados',
-      description: 'Cada informa\u00e7\u00e3o est\u00e1 em um sistema diferente. Cruzar manualmente \u00e9 demorado e sujeito a erros.',
-    },
-    {
-      icon: Clock,
-      title: 'Decis\u00e3o atrasada',
-      description: 'Quando o relat\u00f3rio fica pronto, os casos j\u00e1 aumentaram. A decis\u00e3o sempre chega depois do problema.',
-    },
+    { icon: Users, title: 'Equipes enxutas', desc: 'Poucas pessoas para muitas análises.' },
+    { icon: BarChart3, title: 'Dados desconectados', desc: 'Cada sistema mostra apenas parte da realidade.' },
+    { icon: Clock, title: 'O tempo não espera', desc: 'Quando a resposta chega, a situação já mudou.' },
   ];
 
   return (
-    <section id="problem" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content - Texto + Imagem */}
+    <section ref={sectionRef} id="problem" className="relative overflow-hidden bg-[#050a10] py-24 lg:py-32">
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-kwar-electric/15 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-start gap-14 lg:grid-cols-[9fr_11fr] lg:gap-20">
+          {/* LEFT — Content */}
           <div
             className={`transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-electric/10 border border-kwar-electric/30 mb-6">
-              <span className="text-sm font-medium text-kwar-electric">
-                OS DESAFIOS DA GEST\u00c3O EM SA\u00daDE
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-kwar-electric/25 bg-kwar-electric/8 px-4 py-1.5">
+              <span className="text-[11px] font-medium tracking-wide text-kwar-electric uppercase">
+                OS DESAFIOS DA GESTÃO EM SAÚDE
               </span>
             </div>
-            
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-              Tomar decis\u00f5es em sa\u00fade nunca depende de apenas um sistema.
+            <h2 className="mb-6 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.5rem]">
+              Por que tomar decisões ainda é{' '}
+              <span className="text-kwar-electric">tão difícil?</span>
             </h2>
-            
-            <p className="text-lg text-kwar-gray mb-8">
-              Gerir sa\u00fade p\u00fablica com pouca equipe n\u00e3o \u00e9 f\u00e1cil. Voc\u00ea precisa tomar decis\u00f5es sem tempo e sem todas as respostas.
+            <p className="mb-10 text-base leading-relaxed text-white/55">
+              Os dados existem, mas estão distribuídos entre diferentes sistemas. Transformar essas informações em decisões ainda exige muito tempo e trabalho manual.
             </p>
 
-            <div className="relative w-full">
-              <div className="absolute -inset-4 bg-red-500/10 rounded-3xl blur-2xl" />
-              <div className="relative card-glass p-4 rounded-2xl border-red-500/20">
-                <img
-                  src="/images/problema.png"
-                  alt="Profissional de sa\u00fade afundado em planilhas e relat\u00f3rios"
-                  className="w-full h-auto rounded-xl"
-                />
-              </div>
+            <p className="text-lg font-semibold leading-snug text-white/80">
+              Nenhum sistema sozinho mostra a história completa.
+            </p>
+
+            <div className="mt-8 overflow-hidden rounded-2xl border border-white/[0.06] shadow-2xl shadow-black/50">
+              <img
+                src="/images/problema.png"
+                alt="Gestor de saúde sobrecarregado com dados e planilhas"
+                className="w-full h-auto"
+              />
             </div>
           </div>
 
-          {/* Right Content - Problem Cards */}
-          <div className="space-y-6">
-            {problems.map((problem, index) => (
-              <div
-                key={problem.title}
-                className={`card-glass p-8 hover:border-red-500/30 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-              >
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                    <problem.icon className="w-7 h-7 text-red-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-xl mb-3">{problem.title}</h3>
-                    <p className="text-kwar-gray text-base leading-relaxed">{problem.description}</p>
+          {/* RIGHT — Cards */}
+          <div className="space-y-5">
+            {problems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className={`group rounded-2xl border border-white/[0.06] bg-white/[0.015] p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-kwar-electric/15 hover:bg-white/[0.025] hover:shadow-[0_4px_24px_rgba(0,0,0,0.25)] sm:p-7 ${
+                    isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-kwar-electric/20 bg-kwar-electric/[0.06] text-kwar-electric transition-colors group-hover:border-kwar-electric/30 group-hover:bg-kwar-electric/[0.10]">
+                      <Icon className="h-5 w-5" strokeWidth={1.5} />
+                    </span>
+                    <div>
+                      <h3 className="mb-1 text-sm font-semibold text-white">{item.title}</h3>
+                      <p className="text-xs leading-relaxed text-white/45">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -1334,27 +1324,27 @@ function ValidationSection() {
 
   const row1 = [
     {
-      title: 'Rio Sa\u00fade',
-      subtitle: 'Secretaria Municipal de Sa\u00fade do Rio de Janeiro',
-      description: 'An\u00e1lise de dados epidemiol\u00f3gicos para tomada de decis\u00e3o.',
+      title: 'Rio Saúde',
+      subtitle: 'Secretaria Municipal de Saúde do Rio de Janeiro',
+      description: 'Análise de dados epidemiológicos para tomada de decisão.',
       image: '/images/rio-saude.png',
     },
     {
       title: 'Joinville',
       subtitle: 'Prefeitura de Joinville',
-      description: 'Monitoramento e an\u00e1lise de indicadores de sa\u00fade.',
+      description: 'Monitoramento e análise de indicadores de saúde.',
       image: '/images/joinville.png',
     },
     {
       title: 'InfoDengue',
       subtitle: 'Fiocruz',
-      description: 'Parceria t\u00e9cnica para an\u00e1lises de arboviroses.',
+      description: 'Parceria técnica para análises de arboviroses.',
       image: '/images/infodengue.png',
     },
     {
       title: 'Fiocruz',
-      subtitle: 'Funda\u00e7\u00e3o Oswaldo Cruz',
-      description: 'Projeto de vigil\u00e2ncia epidemiol\u00f3gica.',
+      subtitle: 'Fundação Oswaldo Cruz',
+      description: 'Projeto de vigil\u00e2ncia epidemiológica.',
       image: '/images/fiocruz.png',
     },
   ];
@@ -1362,7 +1352,7 @@ function ValidationSection() {
   const row2 = [
     {
       title: 'OMS EMRO',
-      subtitle: 'Organiza\u00e7\u00e3o Mundial da Sa\u00fade',
+      subtitle: 'Organização Mundial da Saúde',
       description: 'Early pilot initiative connected to the WHO EMRO innovation ecosystem.',
       image: '/images/who-emro.png',
     },
@@ -1375,8 +1365,8 @@ function ValidationSection() {
     },
     {
       title: '80+',
-      subtitle: 'Usu\u00e1rios qualificados',
-      description: 'Epidemiologistas, profissionais de vigil\u00e2ncia e pesquisadores em sa\u00fade p\u00fablica no Brasil.',
+      subtitle: 'Usuários qualificados',
+      description: 'Epidemiologistas, profissionais de vigil\u00e2ncia e pesquisadores em saúde pública no Brasil.',
       icon: Users,
     },
   ];
@@ -1395,7 +1385,7 @@ function ValidationSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            J\u00e1 est\u00e1 sendo utilizado e avaliado por profissionais da sa\u00fade.
+            Já está sendo utilizado e avaliado por profissionais da saúde.
           </h2>
         </div>
 
