@@ -558,11 +558,11 @@ function Navbar() {
     {
       label: t.menu.solucoes,
       items: [
-        { label: t.menu.solucoesItems[0], href: '/epidbot-landing' },
-        { label: t.menu.solucoesItems[1], href: '/pesquisa' },
-        { label: t.menu.solucoesItems[2], href: '/hospitais' },
-        { label: t.menu.solucoesItems[3], href: '/saude-global' },
-        { label: t.menu.solucoesItems[4], href: '/jornalistas' },
+        { label: t.menu.solucoesItems[0], href: '/#/epidbot-landing' },
+        { label: t.menu.solucoesItems[1], href: '/#/pesquisa' },
+        { label: t.menu.solucoesItems[2], href: '/#/hospitais' },
+        { label: t.menu.solucoesItems[3], href: '/#/saude-global' },
+        { label: t.menu.solucoesItems[4], href: '/#/jornalistas' },
       ],
     },
     {
@@ -1195,7 +1195,7 @@ function Pricing() {
 
         {/* Disclaimer */}
         <p className={`text-center text-[11px] text-white/15 leading-relaxed max-w-2xl mx-auto mt-10 tracking-wide transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {t.pricing.disclaimerStart}<a href="/limites-de-uso" target="_blank" rel="noopener noreferrer" className="text-kwar-gold/70 hover:text-kwar-gold transition-colors">{t.pricing.disclaimerLink}</a>{t.pricing.disclaimerEnd}
+          {t.pricing.disclaimerStart}<a href="/#/limites-de-uso" target="_blank" rel="noopener noreferrer" className="text-kwar-gold/70 hover:text-kwar-gold transition-colors">{t.pricing.disclaimerLink}</a>{t.pricing.disclaimerEnd}
         </p>
 
         {/* Enterprise — Premium Section */}
@@ -1366,7 +1366,7 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.product}</h4>
             <ul className="space-y-2.5">
               {t.footer.productLinks.map((label: string, idx: number) => {
-                const hrefs = ['https://kwar-ai.com.br/epidbot', '#pricing', '/files/EpiDBot_User_Manual.pdf', 'https://kwar-ai.com.br/epidbot-websummit'];
+                const hrefs = ['https://kwar-ai.com.br/#/epidbot', '#pricing', '/files/EpiDBot_User_Manual.pdf', 'https://kwar-ai.com.br/#/epidbot-websummit'];
                 const href = hrefs[idx] || '#';
                 return (
                   <li key={label}>
@@ -1396,7 +1396,7 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.legal}</h4>
             <ul className="space-y-2.5">
               {t.footer.legalLinks.map((label: string, idx: number) => {
-                const hrefs = ['/termos', '/privacy', '/lgpd', '/limites-de-uso'];
+                const hrefs = ['/#/termos', '/#/privacy', '/#/lgpd', '/#/limites-de-uso'];
                 return (
                   <li key={label}>
                     <a href={hrefs[idx] || '#'} className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors">{label}</a>
@@ -1760,7 +1760,7 @@ function ContactSection() {
                   <p ref={errorRef} tabIndex={-1} role="alert" aria-live="polite" className="text-red-400/70 text-xs text-center outline-none">{t.contact.error}</p>
                 )}
                 <p className="text-white/15 text-[11px] text-center mt-4">
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">
+                  <a href="/#/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white/30 transition-colors">
                     {t.contact.privacy}
                   </a>
                 </p>

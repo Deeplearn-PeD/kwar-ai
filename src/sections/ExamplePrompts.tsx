@@ -78,7 +78,7 @@ export function ExamplePrompts() {
 
         <div className="text-center">
           <a
-            href="/epidbot"
+            href="/#/epidbot"
             className="group inline-flex items-center gap-2 rounded-full bg-kwar-electric px-5 py-2.5 text-sm font-semibold text-kwar-deep transition-all hover:bg-kwar-electric/90 hover:shadow-glow"
           >
             {t.cta}

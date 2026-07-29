@@ -27,10 +27,10 @@ export function Footer() {
       { label: t('footer.links.company.contact'), href: '#contact' },
     ],
     legal: [
-      { label: t('footer.links.legal.terms'), href: '/termos' },
-      { label: t('footer.links.legal.privacy'), href: '/privacy' },
-      { label: t('footer.links.legal.lgpd'), href: '/lgpd' },
-      { label: t('footer.links.legal.limits'), href: '/limites-de-uso' },
+      { label: t('footer.links.legal.terms'), href: '/#/termos' },
+      { label: t('footer.links.legal.privacy'), href: '/#/privacy' },
+      { label: t('footer.links.legal.lgpd'), href: '/#/lgpd' },
+      { label: t('footer.links.legal.limits'), href: '/#/limites-de-uso' },
     ],
   };
 

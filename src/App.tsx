@@ -1,4 +1,4 @@
-import { Routes, Route, useSearchParams, useNavigate } from 'react-router-dom';
+import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { SEO } from '@/components/SEO';
 import { Navbar } from '@/components/Navbar';
@@ -103,33 +103,10 @@ function HomePage() {
   );
 }
 
-function HashRedirect() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const redirectPath = sessionStorage.getItem('redirect');
-    if (redirectPath) {
-      sessionStorage.removeItem('redirect');
-      navigate(redirectPath, { replace: true });
-      return;
-    }
-
-    const hash = window.location.hash;
-    if (hash.startsWith('#/')) {
-      const cleanPath = hash.slice(1);
-      navigate(cleanPath, { replace: true });
-    }
-  }, []);
-
-  return null;
-}
-
 function App() {
   return (
-    <>
-      <HashRedirect />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/epidbot" element={<Epidbot />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
@@ -145,8 +122,7 @@ function App() {
       <Route path="/documentacao" element={<Documentacao />} />
       <Route path="/jornalistas" element={<Jornalistas />} />
       <Route path="/vigilancia-epidemiologica" element={<VigilanciaEpidemiologica />} />
-      </Routes>
-    </>
+    </Routes>
   );
 }
 
