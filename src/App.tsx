@@ -1,4 +1,4 @@
-import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { Routes, Route, useSearchParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { SEO } from '@/components/SEO';
 import { Navbar } from '@/components/Navbar';
@@ -103,9 +103,24 @@ function HomePage() {
   );
 }
 
+function HashRedirect() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith('#/')) {
+      navigate(hash.slice(1), { replace: true });
+    }
+  }, []);
+
+  return null;
+}
+
 function App() {
   return (
-    <Routes>
+    <>
+      <HashRedirect />
+      <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/epidbot" element={<Epidbot />} />
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
@@ -123,6 +138,7 @@ function App() {
       <Route path="/jornalistas" element={<Jornalistas />} />
       <Route path="/vigilancia-epidemiologica" element={<VigilanciaEpidemiologica />} />
     </Routes>
+    </>
   );
 }
 
