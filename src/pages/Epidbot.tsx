@@ -14,7 +14,7 @@ const copy = {
       epidbotItems: ['Visão geral', 'Documentação', 'Termos de uso', 'LGPD', 'Preços'],
       solucoes: 'Para quem é o EpidBot?',
       solucoesItems: ['Profissionais de vigilância epidemiológica', 'Pesquisadores e universidades', 'Hospitais e laboratórios', 'Organizações globais de saúde', 'Jornalistas e mídia'],
-      precos: 'Preços',
+      precos: 'Planos',
       precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
@@ -64,22 +64,15 @@ const copy = {
       description: 'Enquanto ferramentas genéricas exigem prompts extensos e adaptação técnica, o EpidBot já nasceu voltado para a realidade da saúde pública brasileira.',
     },
     pricing: {
-      badge: 'Early access',
+      badge: 'Planos',
       title: 'Escolha o plano ideal',
       subtitle: 'Do primeiro contato à colaboração institucional.',
-      promo: 'Preços especiais de lançamento para os primeiros 100 usuários • Use o cupom',
-      promoCode: 'EARLY100',
-      monthly: 'Mensal',
-      annual: 'Anual',
-      discountLabel: '-30%',
-      priceFree: 'Grátis',
-      pricePerMonth: '/mês',
-      firstMonth: 'Primeiro mês por',
-      chargedAnnual: 'Cobrado anualmente em',
+      pricesCta: 'Ver planos e preços',
+      pricesNote: 'Preços, limites de uso e comparação detalhada estão na página de planos.',
       enterpriseBadge: 'Enterprise',
       disclaimerStart: '* ',
       disclaimerLink: 'Como funcionam os limites de uso',
-      disclaimerEnd: '. Valores e disponibilidade podem variar conforme país, moeda e taxas aplicáveis. Preços e planos podem ser alterados pela Kwar-AI sem aviso prévio.',
+      disclaimerEnd: '. Preços, limites e condições vigentes estão sempre na página de planos.',
       plans: {
         free: {
           subtitle: 'Explore a plataforma',
@@ -175,7 +168,7 @@ const copy = {
       epidbotItems: ['Overview', 'Documentation', 'Terms of Use', 'LGPD', 'Pricing'],
       solucoes: 'Who is EpidBot for?',
       solucoesItems: ['Epidemiological surveillance professionals', 'Researchers & universities', 'Hospitals & laboratories', 'Global health organizations', 'Journalists & media'],
-      precos: 'Pricing',
+      precos: 'Plans',
       precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
@@ -225,22 +218,15 @@ const copy = {
       description: 'While generic tools require long prompts and technical adaptation, EpidBot was designed for the reality of public health work.',
     },
     pricing: {
-      badge: 'Early access',
+      badge: 'Plans',
       title: 'Choose the ideal plan',
       subtitle: 'From first contact to institutional collaboration.',
-      promo: 'Special launch pricing for the first 100 users • Use coupon',
-      promoCode: 'EARLY100',
-      monthly: 'Monthly',
-      annual: 'Annual',
-      discountLabel: '-30%',
-      priceFree: 'Free',
-      pricePerMonth: '/mo',
-      firstMonth: 'First month for',
-      chargedAnnual: 'Charged annually at',
+      pricesCta: 'See plans and pricing',
+      pricesNote: 'Pricing, usage limits and the detailed comparison live on the plans page.',
       enterpriseBadge: 'Enterprise',
       disclaimerStart: '* ',
       disclaimerLink: 'How usage limits work',
-      disclaimerEnd: '. Values and availability may vary by country, currency and applicable taxes. Prices and plans are subject to change by Kwar-AI without prior notice.',
+      disclaimerEnd: '. Current pricing, limits and terms are always on the plans page.',
       plans: {
         free: {
           subtitle: 'Explore the platform',
@@ -335,7 +321,7 @@ const copy = {
       epidbotItems: ['Visión general', 'Documentación', 'Términos de uso', 'LGPD', 'Precios'],
       solucoes: '¿Para quién es EpidBot?',
       solucoesItems: ['Profesionales de vigilancia epidemiológica', 'Investigadores y universidades', 'Hospitales y laboratorios', 'Organizaciones globales de salud', 'Periodistas y medios'],
-      precos: 'Precios',
+      precos: 'Planes',
       precosItems: ['Pro', 'Max', 'Research Team', 'Enterprise'],
     },
     nav: {
@@ -385,22 +371,15 @@ const copy = {
       description: 'Mientras las herramientas genéricas exigen prompts extensos y adaptación técnica, EpidBot nació para la realidad de la salud pública.',
     },
     pricing: {
-      badge: 'Early access',
+      badge: 'Planes',
       title: 'Elija el plan ideal',
       subtitle: 'Del primer contacto a la colaboración institucional.',
-      promo: 'Precios especiales de lanzamiento para los primeros 100 usuarios • Use el cupón',
-      promoCode: 'EARLY100',
-      monthly: 'Mensual',
-      annual: 'Anual',
-      discountLabel: '-30%',
-      priceFree: 'Gratis',
-      pricePerMonth: '/mes',
-      firstMonth: 'Primer mes por',
-      chargedAnnual: 'Facturado anualmente en',
+      pricesCta: 'Ver planes y precios',
+      pricesNote: 'Los precios, los límites de uso y la comparación detallada están en la página de planes.',
       enterpriseBadge: 'Enterprise',
       disclaimerStart: '* ',
       disclaimerLink: 'Cómo funcionan los límites de uso',
-      disclaimerEnd: '. Los valores y la disponibilidad pueden variar según el país, la moneda y los impuestos aplicables. Kwar-AI puede modificar los precios y planes sin previo aviso.',
+      disclaimerEnd: '. Los precios, límites y condiciones vigentes están siempre en la página de planes.',
       plans: {
         free: {
           subtitle: 'Explore la plataforma',
@@ -567,11 +546,7 @@ function Navbar() {
     },
     {
       label: t.menu.precos,
-      href: '#pricing',
-      action: () => {
-        const el = document.querySelector('#pricing');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      },
+      href: '/planos',
     },
   ];
 
@@ -593,6 +568,17 @@ function Navbar() {
 
         <div className="hidden lg:flex items-center gap-6">
           {menuGroups.map((group, idx) => {
+            if ('href' in group && !('items' in group) && !('action' in group) && group.href.startsWith('/')) {
+              return (
+                <Link
+                  key={idx}
+                  to={group.href}
+                  className="text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
+                >
+                  {group.label}
+                </Link>
+              );
+            }
             if ('action' in group && group.action) {
               return (
                 <button
@@ -604,6 +590,7 @@ function Navbar() {
                 </button>
               );
             }
+            if ('items' in group && group.items) {
             return (
               <div key={idx} className="relative group">
                 <button className="text-[13px] text-kwar-gray group-hover:text-kwar-white transition-colors flex items-center gap-1">
@@ -643,6 +630,8 @@ function Navbar() {
                 </div>
               </div>
             );
+            }
+            return null;
           })}
         </div>
 
@@ -698,6 +687,18 @@ function Navbar() {
       >
         <div className="bg-kwar-deep/95 backdrop-blur-2xl border-t border-white/[0.08] px-5 py-4 space-y-1">
           {menuGroups.map((group, idx) => {
+            if ('href' in group && !('items' in group) && !('action' in group) && group.href.startsWith('/')) {
+              return (
+                <Link
+                  key={idx}
+                  to={group.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
+                >
+                  {group.label}
+                </Link>
+              );
+            }
             if ('items' in group && group.items) {
               return (
                 <div key={idx}>
@@ -894,7 +895,6 @@ function Hero() {
 // PRICING
 // ============================================================================
 function Pricing() {
-  const [isAnnual, setIsAnnual] = useState(false);
   const { ref, isVisible } = useScrollReveal(0.1);
   const { t } = useEpidbotCopy();
 
@@ -967,7 +967,6 @@ function Pricing() {
     {
       name: 'Free',
       subtitle: p.free.subtitle,
-      monthlyPrice: 0,
       cta: p.free.cta,
       accent: 'neutral',
       features: p.free.features,
@@ -976,9 +975,6 @@ function Pricing() {
       name: 'Pro',
       subtitle: p.pro.subtitle,
       badge: p.pro.badge,
-      monthlyPrice: 97,
-      annualPrice: 804,
-      launchPrice: 67,
       cta: p.pro.cta,
       accent: 'cyan',
       highlight: true,
@@ -988,9 +984,6 @@ function Pricing() {
       name: 'Max',
       subtitle: p.max.subtitle,
       badge: p.max.badge,
-      monthlyPrice: 197,
-      annualPrice: 1644,
-      launchPrice: 137,
       cta: p.max.cta,
       accent: 'gold',
       features: p.max.features,
@@ -998,9 +991,6 @@ function Pricing() {
     {
       name: 'Research Team',
       subtitle: p.team.subtitle,
-      monthlyPrice: 1425,
-      annualPrice: 11964,
-      launchPrice: 997,
       priceNote: p.team.priceNote,
       cta: p.team.cta,
       accent: 'teal',
@@ -1073,31 +1063,8 @@ function Pricing() {
           </p>
 
           <p className={`text-xs text-white/30 mt-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            {t.pricing.promo} <span className="font-semibold tracking-wider text-white/60">{t.pricing.promoCode}</span>
+            {t.pricing.pricesNote}
           </p>
-        </div>
-
-        {/* Billing toggle */}
-        <div className={`flex justify-center mb-8 transition-all duration-1000 delay-250 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          <div className="inline-flex items-center rounded-full border border-white/[0.06] bg-white/[0.015] p-0.5">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-300 ${
-                !isAnnual ? 'bg-white/10 text-white' : 'text-white/30 hover:text-white/60'
-              }`}
-            >
-                {t.pricing.monthly}
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-300 flex items-center gap-1.5 ${
-                isAnnual ? 'bg-white/10 text-white' : 'text-white/30 hover:text-white/60'
-              }`}
-            >
-              {t.pricing.annual}
-              <span className="text-[9px] font-semibold text-kwar-electric">{t.pricing.discountLabel}</span>
-            </button>
-          </div>
         </div>
 
         {/* Cards */}
@@ -1127,51 +1094,25 @@ function Pricing() {
               </div>
 
               <h3 className="text-white font-semibold text-2xl mb-1.5">{plan.name}</h3>
-              <p className="text-white/35 text-sm leading-relaxed mb-6">{plan.subtitle}</p>
+              <p className="text-white/35 text-sm leading-relaxed mb-4">{plan.subtitle}</p>
 
-              {/* Price */}
-              <div className="mb-6 min-h-[96px]">
-                {'monthlyPrice' in plan ? (
-                  <div className="space-y-1">
-                    <div className="flex items-baseline gap-2">
-                      <span className={`font-bold text-white ${plan.monthlyPrice === 0 ? 'text-2xl' : 'text-3xl'}`}>
-                        {plan.monthlyPrice === 0 ? t.pricing.priceFree : `R$ ${isAnnual && plan.launchPrice ? plan.launchPrice : plan.monthlyPrice}`}
-                      </span>
-                      {plan.monthlyPrice > 0 && (
-                        <span className="text-white/30 text-sm">{t.pricing.pricePerMonth}</span>
-                      )}
-                    </div>
-                    {!isAnnual && plan.launchPrice && (
-                      <div className="text-xs text-white/40">
-                        {t.pricing.firstMonth} R$ {plan.launchPrice} • <span className={`font-medium ${plan.accent === 'cyan' ? 'text-kwar-electric/70' : plan.accent === 'gold' ? 'text-amber-400/70' : plan.accent === 'teal' ? 'text-amber-400/70' : 'text-white/60'}`}>{t.pricing.promoCode}</span>
-                      </div>
-                    )}
-                    {isAnnual && plan.launchPrice && (
-                      <>
-                        <div className="text-xs text-white/40">
-                          {t.pricing.chargedAnnual} R$ {plan.annualPrice}
-                        </div>
-                        <div className="text-[11px] text-white/25 line-through">
-                          R$ {plan.monthlyPrice}{t.pricing.pricePerMonth}
-                        </div>
-                      </>
-                    )}
-                    {plan.priceNote && (
-                      <div className="text-xs text-amber-400/60 mt-1.5 font-medium">{plan.priceNote}</div>
-                    )}
-                  </div>
-                ) : null}
-              </div>
+              {plan.priceNote && (
+                <div className="text-xs text-amber-400/60 mb-6 font-medium">{plan.priceNote}</div>
+              )}
 
               {/* CTA */}
               {plan.name === 'Research Team' ? (
                 <a href="#contact" className={`w-full py-3 rounded-xl text-sm font-semibold transition-all mb-8 text-center block ${acct.btn}`}>
                   {plan.cta}
                 </a>
-              ) : (
+              ) : plan.name === 'Free' ? (
                 <a href="https://epidbot.kwar-ai.com.br/register" target="_blank" rel="noopener noreferrer" className={`w-full py-3 rounded-xl text-sm font-semibold transition-all mb-8 text-center block ${acct.btn}`}>
                   {plan.cta}
                 </a>
+              ) : (
+                <Link to="/planos" className={`w-full py-3 rounded-xl text-sm font-semibold transition-all mb-8 text-center block ${acct.btn}`}>
+                  {plan.cta}
+                </Link>
               )}
 
               {/* Features */}
@@ -1191,6 +1132,16 @@ function Pricing() {
             </div>
             );
           })}
+        </div>
+
+        {/* Plans page link */}
+        <div className={`flex justify-center mt-10 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <Link
+            to="/planos"
+            className="rounded-full border border-kwar-electric/30 bg-kwar-electric/[0.06] px-6 py-2.5 text-sm font-semibold text-kwar-electric transition-all hover:bg-kwar-electric/[0.12]"
+          >
+            {t.pricing.pricesCta}
+          </Link>
         </div>
 
         {/* Disclaimer */}
@@ -1366,7 +1317,7 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">{t.footer.product}</h4>
             <ul className="space-y-2.5">
               {t.footer.productLinks.map((label: string, idx: number) => {
-                const hrefs = ['https://kwar-ai.com.br/epidbot', '#pricing', '/files/EpiDBot_User_Manual.pdf', 'https://kwar-ai.com.br/epidbot-websummit'];
+                const hrefs = ['https://kwar-ai.com.br/epidbot', '/planos', '/files/EpiDBot_User_Manual.pdf', 'https://kwar-ai.com.br/epidbot-websummit'];
                 const href = hrefs[idx] || '#';
                 return (
                   <li key={label}>
@@ -1443,7 +1394,7 @@ const faqEn = [
   { q: 'Does EpidBot work in the browser?', a: 'Yes. EpidBot is accessible directly through your browser, no installation needed. The platform works online and can be used on desktop, tablets and mobile devices.' },
   { q: 'Is my data private?', a: 'Kwar-AI continuously works to protect data and improve platform security. Depending on your plan and deployment, additional governance and institutional control features may be available.' },
   { q: 'How can I request a demo?', a: 'You can contact the Kwar-AI team through the contact section below or via the "Schedule a demo" button in the Enterprise section.' },
-  { q: 'How do I join the early adopter list?', a: 'During the promotional launch period, eligible users can use the EARLY100 coupon. Subject to availability.' },
+  { q: 'Where can I see plans and prices?', a: 'Plans, usage limits and current prices are on the plans page: kwar-ai.com.br/planos.' },
   { q: 'Who developed EpidBot?', a: 'EpidBot is developed by Kwar-AI. The platform was created to transform epidemiological data into actionable intelligence through AI, data analysis and advanced visualization. EpidBot is constantly evolving, with new features, integrations and improvements continuously added.' },
   { q: 'Where are EpidBot servers located?', a: 'The platform infrastructure is currently hosted through Hetzner Cloud, with servers located in Finland. Kwar-AI adopts technical and organizational measures designed to protect platform availability, integrity and security.' },
   { q: 'I still have questions. How can I get in touch?', a: "You can request a demo, contact the team through the form below, use Kwar-AI\'s official channels or follow platform updates." },
@@ -1470,7 +1421,7 @@ const faqEs = [
   { q: '¿EpidBot funciona en el navegador?', a: 'Sí. EpidBot es accesible directamente desde el navegador, sin necesidad de instalación. La plataforma funciona en línea y puede usarse en computadoras, tablets y dispositivos móviles.' },
   { q: '¿Mis datos son privados?', a: 'Kwar-AI trabaja continuamente para proteger los datos y mejorar la seguridad de la plataforma. Según el plan y la implementación, pueden estar disponibles recursos adicionales de gobernanza y control institucional.' },
   { q: '¿Cómo puedo solicitar una demostración?', a: 'Puede comunicarse con el equipo de Kwar-AI a través de la sección de contacto a continuación o mediante el botón "Agendar demostración" en la sección Enterprise.' },
-  { q: '¿Cómo entro en la lista de early adopters?', a: 'Durante el período promocional de lanzamiento, los usuarios elegibles pueden usar el cupón EARLY100. Sujeto a disponibilidad.' },
+  { q: '¿Dónde puedo ver los planes y precios?', a: 'Los planes, los límites de uso y los precios vigentes están en la página de planes: kwar-ai.com.br/planos.' },
   { q: '¿Quién desarrolló EpidBot?', a: 'EpidBot es desarrollado por Kwar-AI. La plataforma fue creada para transformar datos epidemiológicos en inteligencia accionable a través de IA, análisis de datos y visualización avanzada. EpidBot está en constante evolución, con nuevas funcionalidades, integraciones y mejoras agregadas continuamente.' },
   { q: '¿Dónde están ubicados los servidores de EpidBot?', a: 'La infraestructura de la plataforma se encuentra actualmente alojada en Hetzner Cloud, con servidores ubicados en Finlandia. Kwar-AI adopta medidas técnicas y organizativas para proteger la disponibilidad, integridad y seguridad de la plataforma.' },
   { q: '¿Aún tengo dudas. ¿Cómo me comunico?', a: 'Puede solicitar una demostración, contactar al equipo a través del formulario a continuación, utilizar los canales oficiales de Kwar-AI o seguir las actualizaciones de la plataforma.' },
@@ -1505,7 +1456,7 @@ function FAQ() {
     { q: 'O EpidBot funciona no navegador?', a: 'Sim. O EpidBot é acessível diretamente pelo navegador, sem necessidade de instalação. A plataforma funciona online e pode ser utilizada em desktop, tablets e dispositivos móveis.' },
     { q: 'Meus dados ficam privados?', a: 'A Kwar-AI trabalha continuamente para proteger dados e melhorar segurança da plataforma. Dependendo do plano e da implementação, recursos adicionais de governança e controle institucional podem estar disponíveis.' },
     { q: 'Como posso solicitar uma demonstração?', a: 'Você pode entrar em contato com a equipe da Kwar-AI através da seção de contato abaixo ou pelo botão "Agendar demonstração" na seção Enterprise.' },
-    { q: 'Como entro na lista de early adopters?', a: 'Durante o período promocional de lançamento, usuários elegíveis podem utilizar o cupom EARLY100. Sujeito à disponibilidade.' },
+    { q: 'Onde vejo os planos e preços?', a: 'Os planos, limites de uso e preços vigentes estão na página de planos: kwar-ai.com.br/planos.' },
     { q: 'Quem desenvolveu o EpidBot?', a: 'O EpidBot é desenvolvido pela Kwar-AI. A plataforma foi criada para transformar dados epidemiológicos em inteligência acionável através de IA, análise de dados e visualização avançada. O EpidBot está em constante evolução, com novas funcionalidades, integrações e melhorias sendo adicionadas continuamente.' },
     { q: 'Onde estão localizados os servidores do EpidBot?', a: 'Atualmente, a infraestrutura da plataforma é hospedada por meio da Hetzner Cloud, com servidores localizados na Finlândia. A Kwar-AI adota medidas técnicas e organizacionais para proteger a disponibilidade, integridade e segurança da plataforma.' },
     { q: 'Ainda tenho dúvidas. Como entro em contato?', a: 'Você pode solicitar uma demonstração, entrar em contato com a equipe através do formulário abaixo, utilizar os canais oficiais da Kwar-AI ou acompanhar atualizações da plataforma.' },

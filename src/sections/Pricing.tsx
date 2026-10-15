@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { Check, Zap, Building2, Users, ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const apiPlans = [
   {
     name: 'Partner',
     description: 'Para plataformas em operação nacional ou regional',
-    price: '7.500',
-    priceDetail: 'a R$ 10.000/mês',
+    price: 'Sob',
+    priceDetail: 'consulta · por volume de chamadas',
     icon: Zap,
     color: 'kwar-electric',
     features: [
@@ -16,7 +17,7 @@ const apiPlans = [
       'Indicadores e modelos definidos em contrato',
       'Suporte de integração',
       'Monitoramento básico',
-      'Excedente: R$ 0,15 por chamada adicional',
+      'Excedente de chamadas contratado por volume',
     ],
     cta: 'Solicitar Proposta',
     highlighted: false,
@@ -45,8 +46,8 @@ const coursePlans = [
   {
     name: 'Turma Fechada',
     description: 'Para secretarias (até 30 participantes)',
-    price: '35.000',
-    priceDetail: 'por turma',
+    price: 'Sob',
+    priceDetail: 'consulta · por turma',
     icon: Users,
     color: 'kwar-gold',
     features: [
@@ -63,8 +64,8 @@ const coursePlans = [
   {
     name: 'Turma Aberta',
     description: 'Inscrição individual (mín. 20 alunos)',
-    price: '1.500',
-    priceDetail: 'por participante',
+    price: 'Sob',
+    priceDetail: 'consulta · por participante',
     icon: Sparkles,
     color: 'kwar-electric',
     features: [
@@ -83,8 +84,8 @@ const coursePlans = [
 const platformSubscription = {
   title: 'Acesso Continuado à Plataforma',
   description: 'Assinatura semestral para secretarias',
-  price: '9.000',
-  period: 'por semestre',
+  price: 'Sob',
+  period: 'consulta · por semestre',
   features: [
     'Painel de dados de arboviroses',
     'Espaço de experimentação com LLM',
@@ -142,7 +143,7 @@ export function Pricing() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kwar-green/10 border border-kwar-green/30 mb-6">
             <Zap className="w-4 h-4 text-kwar-green" />
-            <span className="text-sm font-medium text-kwar-green">Planos e Preços</span>
+            <span className="text-sm font-medium text-kwar-green">Soluções institucionais</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -152,7 +153,7 @@ export function Pricing() {
 
           <p className="text-kwar-gray max-w-2xl mx-auto text-lg">
             Escolha a solução que melhor se adapta às necessidades da sua instituição.
-            Todos os planos incluem suporte e atualizações.
+            Todos os planos incluem suporte e atualizações. Valores institucionais sob consulta.
           </p>
         </div>
 
@@ -353,7 +354,7 @@ export function Pricing() {
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-kwar-gray">R$</span>
+                          {platformSubscription.price !== 'Sob' && <span className="text-kwar-gray">R$</span>}
                           <span className="text-2xl font-bold text-kwar-purple">
                             {platformSubscription.price}
                           </span>
@@ -373,6 +374,21 @@ export function Pricing() {
               </div>
             </TabsContent>
           </Tabs>
+        </div>
+
+        {/* Link para a página de planos individuais */}
+        <div
+          className={`mt-12 text-center transition-all duration-1000 delay-600 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <Link
+            to="/planos"
+            className="inline-flex items-center gap-2 rounded-full border border-kwar-electric/40 bg-kwar-electric/10 px-6 py-3 text-sm font-semibold text-kwar-electric transition-all hover:bg-kwar-electric/20"
+          >
+            Ver planos e preços do EpidBot
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Trust indicators */}
