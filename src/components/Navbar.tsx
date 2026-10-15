@@ -88,6 +88,12 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <Link
+              to="/planos"
+              className="px-4 py-2 text-sm font-medium text-kwar-gray hover:text-kwar-electric transition-colors duration-300"
+            >
+              Planos
+            </Link>
+            <Link
               to="/epidbot-websummit"
               className="px-4 py-2 text-sm font-medium text-kwar-electric border border-kwar-electric/40 rounded-lg transition-all duration-300 hover:bg-kwar-electric/10 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] hover:border-kwar-electric/60"
             >
@@ -129,6 +135,14 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+          {/* Planos Mobile Link */}
+          <Link
+            to="/planos"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 text-kwar-gray hover:text-kwar-electric transition-colors border-b border-white/5"
+          >
+            Planos
+          </Link>
           {/* Web Summit Mobile Link */}
           <Link
             to="/epidbot-websummit"

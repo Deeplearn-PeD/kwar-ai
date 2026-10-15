@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import SkipToContent from '../components/SkipToContent';
 import {
@@ -771,6 +772,22 @@ function Footer() {
 export default function EpidbotIndividual() {
   return (
     <div className="min-h-screen bg-[#0a0e1a] text-white font-body">
+      <Helmet>
+        <html lang="pt-BR" />
+        <title>Planos do EpidBot | Kwar-AI</title>
+        <meta
+          name="description"
+          content="Planos individuais do EpidBot: Free (R$ 0), Pro (R$ 97/mês) e Max (R$ 197/mês). Dados oficiais do DATASUS e da OMS em todos os planos; fontes internacionais a partir do Pro."
+        />
+        <link rel="canonical" href="https://kwar-ai.com.br/planos" />
+        <meta property="og:title" content="Planos do EpidBot | Kwar-AI" />
+        <meta
+          property="og:description"
+          content="Free, Pro e Max: escolha o plano do EpidBot conforme o seu uso."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kwar-ai.com.br/planos" />
+      </Helmet>
       <SkipToContent />
       <Navbar />
       <main id="main-content">

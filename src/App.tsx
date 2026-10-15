@@ -126,6 +126,7 @@ function App() {
       <Route path="/epidbot-landing" element={<EpidbotLanding />} />
       <Route path="/epidbot-websummit" element={<EpidbotWebSummit />} />
       <Route path="/epidbot_individual" element={<EpidbotIndividual />} />
+      <Route path="/planos" element={<EpidbotIndividual />} />
       <Route path="/hub" element={<HubPage />} />
       <Route path="/hospitais" element={<Hospitais />} />
       <Route path="/pesquisa" element={<Pesquisa />} />
