@@ -37,13 +37,23 @@ function Navbar() {
           >
             Planos Institucionais
           </Link>
-          <button className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1.5">
+          <a
+            href="https://epidbot.kwar-ai.com.br/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1.5"
+          >
             <Users className="w-4 h-4" />
             Entrar
-          </button>
-          <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+          </a>
+          <a
+            href="https://epidbot.kwar-ai.com.br/register"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+          >
             Começar gratuitamente
-          </button>
+          </a>
         </div>
       </div>
     </nav>
@@ -75,14 +85,16 @@ function Hero() {
             </h1>
 
             <p className="text-white/50 text-base mb-8 max-w-md">
-              Todos os planos possuem acesso completo às capacidades analíticas do EpidBot.
+              Comece grátis e evolua conforme o seu uso. Dados oficiais do DATASUS (SINAN, SIM,
+              SINASC, SIH/SIA, CNES) e da OMS em todos os planos; fontes internacionais a partir do
+              Pro.
             </p>
 
             <div className="space-y-3 mb-8">
               {[
-                'Dados públicos integrados',
-                'IA especializada em epidemiologia',
-                'Análises temporais, espaciais e demográficas',
+                'Dados de fontes oficiais, sem intermediários',
+                'Script Python reproduzível ao final da análise',
+                'Referências validadas em PubMed, ORCID e Google Scholar',
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm text-white/60">
                   <div className="w-5 h-5 rounded-full bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
@@ -94,14 +106,24 @@ function Hero() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+              <a
+                href="https://epidbot.kwar-ai.com.br/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+              >
                 Começar gratuitamente
-              </button>
+              </a>
               <span className="text-sm text-white/40">
                 Já tem conta?{' '}
-                <button className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                <a
+                  href="https://epidbot.kwar-ai.com.br/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                >
                   Entrar
-                </button>
+                </a>
               </span>
             </div>
           </div>
@@ -185,61 +207,23 @@ function Hero() {
 }
 
 // ============================================================
-// 3. PRICING TOGGLE
+// 3. PRICING CARDS
 // ============================================================
-function PricingToggle({ isAnnual, onChange }: { isAnnual: boolean; onChange: (v: boolean) => void }) {
-  return (
-    <div className="flex justify-center mb-12">
-      <div className="inline-flex items-center bg-white/[0.03] rounded-full p-1 border border-white/[0.06]">
-        <button
-          onClick={() => onChange(false)}
-          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-            !isAnnual
-              ? 'bg-white/10 text-white'
-              : 'text-white/40 hover:text-white/60'
-          }`}
-        >
-          Mensal
-        </button>
-        <button
-          onClick={() => onChange(true)}
-          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-            isAnnual
-              ? 'bg-cyan-400 text-[#0a0e1a]'
-              : 'text-white/40 hover:text-white/60'
-          }`}
-        >
-          Anual
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-            isAnnual ? 'bg-[#0a0e1a]/20 text-[#0a0e1a]' : 'bg-green-500/20 text-green-400'
-          }`}>
-            -17%
-          </span>
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
-// 4. PRICING CARDS
-// ============================================================
-function PricingCards({ isAnnual }: { isAnnual: boolean }) {
+function PricingCards() {
   const plans = [
     {
       id: 'free',
       name: 'Free',
       badge: null,
-      description: 'Para estudantes e primeiro contato',
-      monthlyPrice: '0',
-      annualPrice: '0',
+      description: 'Para começar e para uso ocasional',
+      price: '0',
       features: [
-        '10 consultas/dia',
-        'Todos os bancos públicos',
-        'Mosqlimate',
-        'Análises completas',
-        'Mapas estáticos',
-        'Sessão temporária',
+        'Cota diária de 50 mil tokens (~1 consulta)',
+        'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES) e OMS',
+        'Análises completas com gráficos, mapas e script em Python',
+        '3 relatórios por mês (com marca d’água)',
+        'IDE no navegador e grafo de conhecimento',
+        'Projetos e comunidade Blipper',
       ],
       cta: 'Começar grátis',
       highlighted: false,
@@ -251,17 +235,14 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
       name: 'Pro',
       badge: 'MAIS POPULAR',
       description: 'Para profissionais e pesquisadores',
-      monthlyNormal: '97',
-      monthlyPromo: '49',
-      annualPrice: '970',
-      annualEquiv: '80',
+      price: '97',
       features: [
-        '20 consultas/dia',
-        'Histórico persistente',
-        'Upload de dados privados',
-        'Exportação PDF + CSV',
-        'Projetos pessoais',
-        'Suporte por e-mail',
+        'Cota diária de 500 mil tokens (~10 consultas)',
+        'Fontes internacionais: ECDC, PAHO, World Bank, Eurostat, ANVISA',
+        'Relatórios ilimitados, sem marca d’água',
+        '2 relatórios agendados',
+        '10 datasets privados (até 5 GB)',
+        'Ferramentas avançadas de análise, Zotero e integrações Git',
       ],
       cta: 'Assinar Pro',
       highlighted: true,
@@ -272,19 +253,15 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
       id: 'proplus',
       name: 'Max',
       badge: 'USO INTENSIVO',
-      description: 'Para pesquisadores avançados',
-      monthlyNormal: '197',
-      monthlyPromo: '99',
-      annualPrice: '1.970',
-      annualEquiv: '164',
+      description: 'Para uso intensivo e publicação científica',
+      price: '197',
       features: [
-        '50 consultas/dia',
-        'Dados internacionais',
-        'Sandbox Python',
-        'Upload até 3 GB',
-        'Exportações avançadas',
-        'Processamento prioritário',
-        'E-mail + chat',
+        'Cota diária de 1,5 milhão de tokens (~30 consultas)',
+        'Tudo do Pro, com limites ampliados',
+        '10 relatórios agendados',
+        '50 datasets privados (até 25 GB)',
+        'Exportação LaTeX, Overleaf e DOI no Zenodo',
+        'Agente de manuscrito científico, API e agentes externos',
       ],
       cta: 'Assinar Max',
       highlighted: false,
@@ -334,46 +311,13 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
 
             {/* Price */}
             <div className="mb-6">
-              {isFree ? (
-                <div>
-                  <div className="text-4xl font-bold text-white">R$ 0</div>
-                  <div className="text-sm text-white/40 mt-1">Grátis para sempre</div>
-                </div>
-              ) : isAnnual ? (
-                <div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-white">
-                      R$ {plan.annualPrice}
-                    </span>
-                    <span className="text-white/40 text-sm">/ano</span>
-                  </div>
-                  <div className="mt-2 space-y-1">
-                    <div className="text-sm text-cyan-400 font-medium">
-                      Equivalente a R$ {plan.annualEquiv}/mês
-                    </div>
-                    <div className="text-xs text-white/30">
-                      {isPro ? 'Melhor custo-benefício' : 'Maior economia'}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-white">
-                      R$ {plan.monthlyNormal}
-                    </span>
-                    <span className="text-white/40 text-sm">/mês</span>
-                  </div>
-                  <div className="mt-2">
-                    <div className="text-sm text-cyan-400 font-medium">
-                      R$ {plan.monthlyPromo}/mês nos 3 primeiros meses
-                    </div>
-                    <div className="text-xs text-white/30 mt-1">
-                      Após o período promocional, retorna para R$ {plan.monthlyNormal}/mês
-                    </div>
-                  </div>
-                </div>
-              )}
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-white">R$ {plan.price}</span>
+                {!isFree && <span className="text-white/40 text-sm">/mês</span>}
+              </div>
+              <div className="text-sm text-white/40 mt-1">
+                {isFree ? 'Grátis para sempre' : 'Cobrança mensal · PIX ou cartão'}
+              </div>
             </div>
 
             {/* Divider */}
@@ -394,11 +338,14 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
             </ul>
 
             {/* CTA */}
-            <button
-              className={`w-full py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${plan.btnClass}`}
+            <a
+              href="https://epidbot.kwar-ai.com.br/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block text-center w-full py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${plan.btnClass}`}
             >
               {plan.cta}
-            </button>
+            </a>
           </div>
         );
       })}
@@ -411,14 +358,23 @@ function PricingCards({ isAnnual }: { isAnnual: boolean }) {
 // ============================================================
 function ComparisonTable() {
   const rows = [
-    { feature: 'Consultas por dia', free: '10', pro: '20', proplus: '50' },
-    { feature: 'Todos os bancos públicos', free: true, pro: true, proplus: true },
-    { feature: 'Dados internacionais', free: false, pro: false, proplus: true },
-    { feature: 'Upload de dados privados', free: false, pro: true, proplus: true },
-    { feature: 'Sandbox Python', free: false, pro: false, proplus: true },
-    { feature: 'Exportação PDF', free: true, pro: true, proplus: true },
-    { feature: 'Exportação CSV', free: false, pro: true, proplus: true },
-    { feature: 'Suporte', free: 'FAQ', pro: 'E-mail', proplus: 'E-mail + Chat' },
+    {
+      feature: 'Cota de IA por dia',
+      free: '50 mil tokens (~1 consulta)',
+      pro: '500 mil (~10 consultas)',
+      proplus: '1,5 milhão (~30)',
+    },
+    { feature: 'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES) + OMS', free: true, pro: true, proplus: true },
+    { feature: 'Fontes internacionais (ECDC, PAHO, World Bank, Eurostat, ANVISA)', free: false, pro: true, proplus: true },
+    { feature: 'Relatórios por mês', free: '3 (com marca d’água)', pro: 'Ilimitados', proplus: 'Ilimitados' },
+    { feature: 'Relatórios agendados', free: '—', pro: '2', proplus: '10' },
+    { feature: 'Datasets privados', free: '1 (100 MB)', pro: '10 (5 GB)', proplus: '50 (25 GB)' },
+    { feature: 'Ferramentas avançadas de análise', free: false, pro: true, proplus: true },
+    { feature: 'Zotero e integrações Git', free: false, pro: true, proplus: true },
+    { feature: 'Exportação LaTeX / Overleaf / DOI no Zenodo', free: false, pro: false, proplus: true },
+    { feature: 'Agente de manuscrito científico, API e agentes externos', free: false, pro: false, proplus: true },
+    { feature: 'Projetos, Blipper e grafo de conhecimento', free: true, pro: true, proplus: true },
+    { feature: 'Cotas diárias acumulam entre dias?', free: 'Não', pro: 'Não', proplus: 'Não' },
   ];
 
   return (
@@ -428,7 +384,8 @@ function ComparisonTable() {
           Compare os planos
         </h3>
 
-        <div className="rounded-xl border border-white/[0.06] overflow-hidden">
+        <div className="overflow-x-auto">
+        <div className="rounded-xl border border-white/[0.06] overflow-hidden min-w-[760px]">
           {/* Header */}
           <div className="grid grid-cols-4 text-sm">
             <div className="p-4 text-white/40 font-medium bg-white/[0.02]">Recurso</div>
@@ -479,6 +436,7 @@ function ComparisonTable() {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>
@@ -649,36 +607,44 @@ function FAQ() {
 
   const items = [
     {
-      q: 'Todos os planos possuem as mesmas capacidades analíticas?',
-      a: 'Sim. A diferença entre os planos está no volume de uso, persistência de dados, dados avançados e recursos operacionais.',
+      q: 'Uso R e Python no dia a dia. Isso serve para mim?',
+      a: 'Serve. O EpidBot gera o script que você revisa, versiona e publica — ele acelera a parte repetitiva, não esconde a parte técnica. Se preferir, escreva seu próprio código no IDE integrado.',
     },
     {
-      q: 'Qual a diferença entre Pro e Max?',
-      a: 'O Max inclui dados internacionais, Sandbox Python, maior capacidade de upload e recursos avançados para uso intensivo.',
+      q: 'Preciso saber programar?',
+      a: 'Não. Você pergunta em linguagem natural e recebe a análise pronta. Mas se souber programar, sai com o código Python documentado.',
     },
     {
-      q: 'Posso cancelar quando quiser?',
-      a: 'Sim. Os planos mensais podem ser cancelados a qualquer momento.',
+      q: 'Quanto é 1 consulta?',
+      a: 'Cerca de 50 mil tokens de processamento. Uma análise normal cabe em uma consulta; análises com várias etapas podem consumir mais. Se passar da cota do dia, os pacotes de consultas avulsas cobrem o restante.',
     },
     {
-      q: 'O que acontece após os 3 primeiros meses promocionais?',
-      a: 'O plano retorna automaticamente ao valor mensal padrão.',
+      q: 'O que muda do Free para o Pro?',
+      a: 'O Pro amplia a cota diária de 50 mil para 500 mil tokens, abre as fontes internacionais (ECDC, PAHO, World Bank, Eurostat, ANVISA e outras), remove a marca d’água dos relatórios e libera agendamentos, mais datasets privados e ferramentas avançadas de análise.',
     },
     {
-      q: 'Posso usar meus próprios dados?',
-      a: 'Sim. Os planos Pro e Max permitem upload de dados privados.',
+      q: 'O que o Max acrescenta?',
+      a: 'Cota diária de 1,5 milhão de tokens, 10 relatórios agendados, 50 datasets privados, exportação LaTeX/Overleaf, DOI no Zenodo, agente de manuscrito científico e acesso por API e agentes externos.',
     },
     {
-      q: 'O EpidBot substitui softwares estatísticos?',
-      a: 'O EpidBot complementa ferramentas tradicionais oferecendo IA especializada, consultas naturais e workflows epidemiológicos integrados.',
+      q: 'Quais fontes de dados estão disponíveis?',
+      a: 'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES, PNI) e WHO GHO em todos os planos; ANVISA, ECDC, PAHO, World Bank, Eurostat, GBIF, Mosqlimate e outras a partir do Pro. Somente fontes abertas e não pagas.',
     },
     {
-      q: 'Existe plano para equipes ou instituições?',
-      a: 'Sim. O EpidBot possui planos institucionais voltados para colaboração, multiusuário e operações em escala.',
+      q: 'Funciona fora do Brasil?',
+      a: 'Sim, a partir do Pro: OMS, PAHO, ECDC, World Bank, Eurostat e outras fontes internacionais, com interface em português, inglês, espanhol, chinês e árabe.',
     },
     {
-      q: 'Meus dados privados ficam seguros?',
-      a: 'Sim. Os dados enviados permanecem privados e são utilizados apenas dentro do seu ambiente de análise.',
+      q: 'Meus dados e perguntas ficam públicos?',
+      a: 'Não. Os datasets que você envia ficam privados na sua conta e os projetos são isolados, com proveniência dos artefatos a partir do plano Pro.',
+    },
+    {
+      q: 'O EpidBot substitui ferramentas estatísticas?',
+      a: 'Não. Ele complementa o seu ferramental: o LLM que você já confia é o motor de raciocínio, e o EpidBot acrescenta dados oficiais, método e auditoria.',
+    },
+    {
+      q: 'Minha secretaria quer comprar para a equipe.',
+      a: 'Existe plano Team, com workspaces compartilhados, revisão por pares e comandos de incidente. Secretarias e ministérios são atendidos pelo plano institucional — fale com a equipe.',
     },
   ];
 
@@ -712,7 +678,7 @@ function FAQ() {
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                    isOpen ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
                   <p className="px-4 pb-4 text-sm text-white/40 leading-relaxed">
@@ -722,66 +688,6 @@ function FAQ() {
               </div>
             );
           })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================
-// 8. DISCOUNTS
-// ============================================================
-function Discounts() {
-  const discounts = [
-    {
-      audience: 'Estudante',
-      discount: '50%',
-      scope: 'no Pro/Max',
-      condition: 'Com comprovante de matrícula',
-    },
-    {
-      audience: 'Servidor público SUS',
-      discount: '30%',
-      scope: 'no Pro/Max',
-      condition: 'Com comprovante',
-    },
-    {
-      audience: 'ONGs de saúde',
-      discount: '40%',
-      scope: 'no Pro/Max',
-      condition: 'Com comprovante',
-    },
-  ];
-
-  return (
-    <section className="py-12">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <h3 className="font-display text-lg font-bold text-white text-center mb-6">
-          Descontos especiais
-        </h3>
-
-        <div className="rounded-xl border border-white/[0.06] overflow-hidden">
-          {/* Header */}
-          <div className="grid grid-cols-3 text-xs font-medium">
-            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Público</div>
-            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Desconto</div>
-            <div className="p-3 sm:p-4 text-white/40 bg-white/[0.02]">Condição</div>
-          </div>
-
-          {/* Rows */}
-          {discounts.map((row, i) => (
-            <div
-              key={row.audience}
-              className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
-            >
-              <div className="p-3 sm:p-4 text-white/70">{row.audience}</div>
-              <div className="p-3 sm:p-4">
-                <span className="text-cyan-400 font-bold">{row.discount}</span>
-                <span className="text-white/50 text-xs ml-1">{row.scope}</span>
-              </div>
-              <div className="p-3 sm:p-4 text-white/40 text-xs sm:text-sm">{row.condition}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -805,20 +711,30 @@ function FinalCTA() {
                 Comece gratuitamente.
               </h3>
               <p className="text-white/40 text-sm">
-                Crie sua conta e explore o poder dos dados em saúde com IA especializada.
+                Crie sua conta gratuita e faça a primeira pergunta — não é preciso convite.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 flex-shrink-0">
-            <button className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+            <a
+              href="https://epidbot.kwar-ai.com.br/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            >
               Criar conta gratuita
-            </button>
+            </a>
             <span className="text-sm text-white/40">
               Já tem conta?{' '}
-              <button className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+              <a
+                href="https://epidbot.kwar-ai.com.br/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+              >
                 Entrar
-              </button>
+              </a>
             </span>
           </div>
         </div>
@@ -853,8 +769,6 @@ function Footer() {
 // PAGE
 // ============================================================
 export default function EpidbotIndividual() {
-  const [isAnnual, setIsAnnual] = useState(true);
-
   return (
     <div className="min-h-screen bg-[#0a0e1a] text-white font-body">
       <SkipToContent />
@@ -865,15 +779,19 @@ export default function EpidbotIndividual() {
       {/* Pricing Section */}
       <section id="pricing" className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
-          <PricingCards isAnnual={isAnnual} />
+          <PricingCards />
+          <p className="mt-8 max-w-3xl mx-auto text-center text-xs text-white/30 leading-relaxed">
+            1 consulta ≈ 50 mil tokens de processamento. As cotas diárias são renovadas todo dia e
+            não acumulam. Os pacotes de consultas avulsas (compra única, sem validade) cobrem o dia
+            em que você passar da cota. O upgrade é imediato após a confirmação do pagamento. Plano
+            expirado tem 7 dias de cortesia antes de voltar ao Free.
+          </p>
         </div>
       </section>
 
       <ComparisonTable />
       <InstitutionalCard />
       <FAQ />
-      <Discounts />
       <FinalCTA />
       <Footer />
       </main>
