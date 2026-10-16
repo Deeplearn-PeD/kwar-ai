@@ -89,7 +89,7 @@ const copy = {
           subtitle: 'Inteligência epidemiológica avançada',
           badge: 'Recomendado pela Kwar-AI',
           cta: 'Assinar Max',
-          features: ['Tudo do Pro', '5x mais capacidade de uso que o Pro*', 'Dados internacionais', 'Sandbox Python', 'Processamento prioritário', 'Exportações avançadas', 'Uso intensivo para pesquisa'],
+          features: ['Tudo do Pro', '3x mais consultas por dia que o Pro*', 'Dados internacionais', 'Sandbox Python', 'Processamento prioritário', 'Exportações avançadas', 'Uso intensivo para pesquisa'],
         },
         team: {
           subtitle: 'Colaboração organizacional',
@@ -243,7 +243,7 @@ const copy = {
           subtitle: 'Advanced epidemiological intelligence',
           badge: 'Recommended by Kwar-AI',
           cta: 'Subscribe Max',
-          features: ['Everything in Pro', '5x more usage capacity than Pro*', 'International data', 'Python Sandbox', 'Priority processing', 'Advanced exports', 'Intensive research use'],
+          features: ['Everything in Pro', '3x more queries per day than Pro*', 'International data', 'Python Sandbox', 'Priority processing', 'Advanced exports', 'Intensive research use'],
         },
         team: {
           subtitle: 'Organizational collaboration',
@@ -396,7 +396,7 @@ const copy = {
           subtitle: 'Inteligencia epidemiológica avanzada',
           badge: 'Recomendado por Kwar-AI',
           cta: 'Suscribirse a Max',
-          features: ['Todo de Pro', '5 veces más capacidad de uso que Pro*', 'Datos internacionales', 'Python Sandbox', 'Procesamiento prioritario', 'Exportaciones avanzadas', 'Uso intensivo para investigación'],
+          features: ['Todo de Pro', '3x más consultas por día que Pro*', 'Datos internacionales', 'Python Sandbox', 'Procesamiento prioritario', 'Exportaciones avanzadas', 'Uso intensivo para investigación'],
         },
         team: {
           subtitle: 'Colaboración organizacional',
