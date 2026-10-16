@@ -697,7 +697,7 @@ function FAQ() {
     },
     {
       q: 'Tem desconto?',
-      a: 'Sim, por dois caminhos — e eles não são cumulativos. Acadêmico: 50% por 6 meses para estudantes e residentes, com comprovação de vínculo acadêmico. Compromisso anual: 30% para quem assume pelo menos 1 ano (Pro fica R$ 67,90/mês e Max, R$ 137,90/mês). Os descontos são liberados por código promocional, após avaliação do pedido — peça o seu falando com a equipe.',
+      a: 'Sim, por dois caminhos — e eles não são cumulativos. Acadêmico: 50% por 6 meses para estudantes e residentes, com comprovação de vínculo acadêmico. Compromisso anual: 30% para quem assume pelo menos 1 ano (Pro fica R$ 67,90/mês e Max, R$ 137,90/mês); cancelar antes dos 12 meses é permitido e sem multa — apenas encerra o desconto e a renovação, sem devolução do que já foi pago. Os descontos são liberados por código promocional, após avaliação do pedido — peça o seu falando com a equipe.',
     },
     {
       q: 'Posso cancelar quando quiser?',
@@ -861,7 +861,8 @@ export default function EpidbotIndividual() {
             50% por 6 meses para estudantes e residentes (verificação acadêmica) ou 30% no
             compromisso anual — liberados por código promocional, após avaliação do pedido.
             Cancelamento sem multa, com reembolso integral nos primeiros 7 dias ou em até 30 dias
-            se o plano não tiver sido usado.
+            se o plano não tiver sido usado; no compromisso anual, cancelar antes dos 12 meses é
+            permitido e sem devolução do que já foi pago.
           </p>
         </div>
       </section>
