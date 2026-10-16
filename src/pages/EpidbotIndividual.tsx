@@ -227,6 +227,7 @@ function PricingCards() {
         'Projetos e comunidade Blipper',
       ],
       cta: 'Começar grátis',
+      href: 'https://epidbot.kwar-ai.com.br/register',
       highlighted: false,
       borderColor: 'border-white/[0.06]',
       btnClass: 'border border-white/10 text-white hover:bg-white/5',
@@ -246,6 +247,7 @@ function PricingCards() {
         'Ferramentas avançadas de análise, Zotero e integrações Git',
       ],
       cta: 'Assinar Pro',
+      href: 'https://epidbot.kwar-ai.com.br/register',
       highlighted: true,
       borderColor: 'border-violet-500/30',
       btnClass: 'bg-violet-500 hover:bg-violet-400 text-white shadow-lg shadow-violet-500/25',
@@ -265,18 +267,41 @@ function PricingCards() {
         'Agente de manuscrito científico, API e agentes externos',
       ],
       cta: 'Assinar Max',
+      href: 'https://epidbot.kwar-ai.com.br/register',
       highlighted: false,
       borderColor: 'border-amber-500/20',
       btnClass: 'bg-amber-500 hover:bg-amber-400 text-[#0a0e1a] shadow-lg shadow-amber-500/20',
     },
+    {
+      id: 'team',
+      name: 'Team',
+      badge: 'EQUIPES',
+      description: 'Para equipes e grupos de pesquisa',
+      price: '1.425',
+      features: [
+        'Até 10 usuários incluídos',
+        'Cota de uso ilimitada (relatórios, datasets e agendamentos)',
+        'Tudo do Max: LaTeX/Overleaf, DOI no Zenodo, API e agentes externos',
+        'Workspace compartilhado e projetos colaborativos',
+        'Dashboards internos e relatórios compartilhados',
+        'Revisão por pares e sala de incidentes (outbreak war-room)',
+        'Suporte prioritário',
+      ],
+      cta: 'Falar com vendas',
+      href: '#institucional',
+      highlighted: false,
+      borderColor: 'border-cyan-400/20',
+      btnClass: 'border border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/10',
+    },
   ];
 
   return (
-    <div className="grid lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
       {plans.map((plan) => {
         const isPro = plan.id === 'pro';
         const isProPlus = plan.id === 'proplus';
         const isFree = plan.id === 'free';
+        const isTeam = plan.id === 'team';
 
         return (
           <div
@@ -286,6 +311,8 @@ function PricingCards() {
                 ? 'bg-gradient-to-b from-violet-500/5 to-transparent border-violet-500/30 shadow-[0_0_40px_rgba(139,92,246,0.08)]'
                 : isProPlus
                 ? 'bg-gradient-to-b from-amber-500/5 to-transparent border-amber-500/20'
+                : isTeam
+                ? 'bg-gradient-to-b from-cyan-400/5 to-transparent border-cyan-400/20'
                 : 'bg-white/[0.02] border-white/[0.06]'
             }`}
           >
@@ -295,7 +322,9 @@ function PricingCards() {
                 className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider ${
                   isPro
                     ? 'bg-violet-500 text-white shadow-lg shadow-violet-500/30'
-                    : 'bg-amber-500 text-[#0a0e1a] shadow-lg shadow-amber-500/20'
+                    : isProPlus
+                    ? 'bg-amber-500 text-[#0a0e1a] shadow-lg shadow-amber-500/20'
+                    : 'bg-cyan-400 text-[#0a0e1a] shadow-lg shadow-cyan-400/20'
                 }`}
               >
                 {plan.badge}
@@ -340,9 +369,9 @@ function PricingCards() {
 
             {/* CTA */}
             <a
-              href="https://epidbot.kwar-ai.com.br/register"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={plan.href}
+              target={plan.href.startsWith('#') ? undefined : '_blank'}
+              rel={plan.href.startsWith('#') ? undefined : 'noopener noreferrer'}
               className={`block text-center w-full py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${plan.btnClass}`}
             >
               {plan.cta}
@@ -363,19 +392,22 @@ function ComparisonTable() {
       feature: 'Cota de IA por dia',
       free: '50 mil tokens (~1 consulta)',
       pro: '500 mil (~10 consultas)',
-      proplus: '1,5 milhão (~30)',
+      proplus: '1,5 milhão (~30 consultas)',
+      team: 'Ilimitada',
     },
-    { feature: 'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES) + OMS', free: true, pro: true, proplus: true },
-    { feature: 'Fontes internacionais (ECDC, PAHO, World Bank, Eurostat, ANVISA)', free: false, pro: true, proplus: true },
-    { feature: 'Relatórios por mês', free: '3 (com marca d’água)', pro: 'Ilimitados', proplus: 'Ilimitados' },
-    { feature: 'Relatórios agendados', free: '—', pro: '2', proplus: '10' },
-    { feature: 'Datasets privados', free: '1 (100 MB)', pro: '10 (5 GB)', proplus: '50 (25 GB)' },
-    { feature: 'Ferramentas avançadas de análise', free: false, pro: true, proplus: true },
-    { feature: 'Zotero e integrações Git', free: false, pro: true, proplus: true },
-    { feature: 'Exportação LaTeX / Overleaf / DOI no Zenodo', free: false, pro: false, proplus: true },
-    { feature: 'Agente de manuscrito científico, API e agentes externos', free: false, pro: false, proplus: true },
-    { feature: 'Projetos, Blipper e grafo de conhecimento', free: true, pro: true, proplus: true },
-    { feature: 'Cotas diárias acumulam entre dias?', free: 'Não', pro: 'Não', proplus: 'Não' },
+    { feature: 'Usuários incluídos', free: '1', pro: '1', proplus: '1', team: 'Até 10' },
+    { feature: 'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES) + OMS', free: true, pro: true, proplus: true, team: true },
+    { feature: 'Fontes internacionais (ECDC, PAHO, World Bank, Eurostat, ANVISA)', free: false, pro: true, proplus: true, team: true },
+    { feature: 'Relatórios por mês', free: '3 (com marca d’água)', pro: 'Ilimitados', proplus: 'Ilimitados', team: 'Ilimitados' },
+    { feature: 'Relatórios agendados', free: '—', pro: '2', proplus: '10', team: 'Ilimitados' },
+    { feature: 'Datasets privados', free: '1 (100 MB)', pro: '10 (5 GB)', proplus: '50 (25 GB)', team: 'Ilimitados' },
+    { feature: 'Ferramentas avançadas de análise', free: false, pro: true, proplus: true, team: true },
+    { feature: 'Zotero e integrações Git', free: false, pro: true, proplus: true, team: true },
+    { feature: 'Exportação LaTeX / Overleaf / DOI no Zenodo', free: false, pro: false, proplus: true, team: true },
+    { feature: 'Agente de manuscrito científico, API e agentes externos', free: false, pro: false, proplus: true, team: true },
+    { feature: 'Projetos, Blipper e grafo de conhecimento', free: true, pro: true, proplus: true, team: true },
+    { feature: 'Colaboração (workspace, revisão por pares, sala de incidentes)', free: false, pro: false, proplus: false, team: true },
+    { feature: 'Cotas diárias acumulam entre dias?', free: 'Não', pro: 'Não', proplus: 'Não', team: 'Não' },
   ];
 
   return (
@@ -386,20 +418,21 @@ function ComparisonTable() {
         </h3>
 
         <div className="overflow-x-auto">
-        <div className="rounded-xl border border-white/[0.06] overflow-hidden min-w-[760px]">
+        <div className="rounded-xl border border-white/[0.06] overflow-hidden min-w-[940px]">
           {/* Header */}
-          <div className="grid grid-cols-4 text-sm">
+          <div className="grid grid-cols-5 text-sm">
             <div className="p-4 text-white/40 font-medium bg-white/[0.02]">Recurso</div>
             <div className="p-4 text-center text-white/40 font-medium bg-white/[0.02]">Free</div>
             <div className="p-4 text-center text-violet-400 font-medium bg-violet-500/5">Pro</div>
             <div className="p-4 text-center text-amber-400 font-medium bg-amber-500/5">Max</div>
+            <div className="p-4 text-center text-cyan-400 font-medium bg-cyan-400/5">Team</div>
           </div>
 
           {/* Rows */}
           {rows.map((row, i) => (
             <div
               key={row.feature}
-              className={`grid grid-cols-4 text-sm ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
+              className={`grid grid-cols-5 text-sm ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
             >
               <div className="p-4 text-white/60">{row.feature}</div>
               <div className="p-4 flex items-center justify-center">
@@ -433,6 +466,17 @@ function ComparisonTable() {
                   )
                 ) : (
                   <span className="text-white/50">{row.proplus}</span>
+                )}
+              </div>
+              <div className="p-4 flex items-center justify-center bg-cyan-400/[0.02]">
+                {typeof row.team === 'boolean' ? (
+                  row.team ? (
+                    <Check className="w-4 h-4 text-cyan-400" />
+                  ) : (
+                    <span className="text-white/20">—</span>
+                  )
+                ) : (
+                  <span className="text-white/50">{row.team}</span>
                 )}
               </div>
             </div>
@@ -474,7 +518,7 @@ function InstitutionalCard() {
   };
 
   return (
-    <section className="py-16">
+    <section id="institucional" className="py-16 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -493,6 +537,10 @@ function InstitutionalCard() {
 
           <p className="text-white/40 text-sm mb-6 max-w-lg">
             {t('epidbotIndividual.institutional.description', { defaultValue: 'Recursos avançados para colaboração, dashboards institucionais e operações em escala.' })}
+          </p>
+
+          <p className="text-white/50 text-sm mb-6 max-w-lg">
+            Equipes de até 10 pessoas podem assinar o plano <span className="text-cyan-400 font-medium">Team (R$ 1.425/mês)</span> direto nesta página. Acima disso, ou para secretarias e ministérios, o atendimento é sob consulta pelo formulário abaixo.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
@@ -645,7 +693,7 @@ function FAQ() {
     },
     {
       q: 'Minha secretaria quer comprar para a equipe.',
-      a: 'Existe plano Team, com workspaces compartilhados, revisão por pares e comandos de incidente. Secretarias e ministérios são atendidos pelo plano institucional — fale com a equipe.',
+      a: 'O plano Team custa R$ 1.425/mês e cobre até 10 usuários, com cota de uso ilimitada, workspaces compartilhados, revisão por pares e sala de incidentes. Secretarias e ministérios são atendidos pelo plano institucional — fale com a equipe.',
     },
   ];
 
@@ -777,13 +825,13 @@ export default function EpidbotIndividual() {
         <title>Planos do EpidBot | Kwar-AI</title>
         <meta
           name="description"
-          content="Planos individuais do EpidBot: Free (R$ 0), Pro (R$ 97/mês) e Max (R$ 197/mês). Dados oficiais do DATASUS e da OMS em todos os planos; fontes internacionais a partir do Pro."
+          content="Planos do EpidBot: Free (R$ 0), Pro (R$ 97/mês), Max (R$ 197/mês) e Team (R$ 1.425/mês para até 10 usuários). Dados oficiais do DATASUS e da OMS em todos os planos; fontes internacionais a partir do Pro."
         />
         <link rel="canonical" href="https://kwar-ai.com.br/planos" />
         <meta property="og:title" content="Planos do EpidBot | Kwar-AI" />
         <meta
           property="og:description"
-          content="Free, Pro e Max: escolha o plano do EpidBot conforme o seu uso."
+          content="Free, Pro, Max e Team: escolha o plano do EpidBot conforme o seu uso."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kwar-ai.com.br/planos" />
