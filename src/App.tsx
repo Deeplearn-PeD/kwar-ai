@@ -29,6 +29,7 @@ import LGPD from '@/pages/LGPD';
 import LimitesDeUso from '@/pages/LimitesDeUso';
 import Jornalistas from '@/pages/Jornalistas';
 import VigilanciaEpidemiologica from '@/pages/VigilanciaEpidemiologica';
+import EpiDash from '@/pages/EpiDash';
 import { HubPage } from '@/pages/HubPage';
 
 // HomePage component containing all existing sections
@@ -138,6 +139,7 @@ function App() {
       <Route path="/documentacao" element={<Documentacao />} />
       <Route path="/jornalistas" element={<Jornalistas />} />
       <Route path="/vigilancia-epidemiologica" element={<VigilanciaEpidemiologica />} />
+      <Route path="/epidash" element={<EpiDash />} />
     </Routes>
     </>
   );

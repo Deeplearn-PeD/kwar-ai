@@ -551,6 +551,7 @@
       "products": {
         "title": "Soluciones",
         "epidbot": "EpidBot",
+        "epidash": "EpiDash",
         "solutions": "Soluciones",
         "webSummit": "Web Summit Rio 2026"
       },
@@ -873,6 +874,136 @@
       "title": "Inteligencia para decisiones de salud pública más rápidas.",
       "subtitle": "La plataforma de inteligencia conversacional de KWAR-AI transforma datos epidemiológicos, climáticos y de movilidad en insights estratégicos en tiempo real para detección de brotes y respuesta en salud pública.",
       "cta": "Ver EpidBot en Acción"
+    }
+  },
+  "epidash": {
+    "seo": {
+      "title": "EpiDash — dashboards publicados por EpidBot",
+      "description": "Publique en un enlace público los dashboards que EpidBot arma a partir de fuentes oficiales. Quien lo recibe abre en el navegador, pregunta y pide ajustes sin cuenta."
+    },
+    "nav": {
+      "cta": "Empezar gratis"
+    },
+    "hero": {
+      "badge": "Producto · EpiDash",
+      "titleLine1": "Sus paneles, publicados",
+      "titleGradient": "en un enlace",
+      "subtitle": "EpiDash publica los dashboards que EpidBot arma a partir de fuentes oficiales. Quien recibe el enlace lo abre en el navegador, sin instalar nada ni crear cuenta — y puede preguntar o pedir ajustes al propio panel.",
+      "ctaPrimary": "Abrir la demostración",
+      "ctaSecondary": "Crear panel con EpidBot",
+      "note": "Datos de fuentes abiertas oficiales, sujetos a retraso de notificación. Cada panel registra la fuente y la fecha de acceso."
+    },
+    "how": {
+      "title": "Del pedido al enlace publicado",
+      "subtitle": "Cuatro pasos, sin un proyecto de BI en el medio.",
+      "stepLabel": "Paso {{number}}",
+      "s1": {
+        "title": "Pida en lenguaje natural",
+        "text": "“Casos de dengue por estado en los últimos cinco años, con el promedio semanal.” EpidBot resuelve la fuente, la consulta y el recorte."
+      },
+      "s2": {
+        "title": "El agente arma el panel",
+        "text": "Gráficos, indicadores y mapas son creados y ajustados por EpidBot, que controla EpiDash por MCP."
+      },
+      "s3": {
+        "title": "Comparta el enlace",
+        "text": "Quien lo recibe lo abre en el celular o en el escritorio, sin cuenta y sin instalación."
+      },
+      "s4": {
+        "title": "El panel sigue vivo",
+        "text": "El visitante pregunta y pide ajustes desde el propio panel; EpidBot responde y actualiza, con todo registrado."
+      }
+    },
+    "features": {
+      "title": "Lo que trae cada panel",
+      "subtitle": "Lo suficiente para responder la pregunta del día — y para sostener la respuesta semanas después.",
+      "f1": {
+        "title": "Los gráficos esenciales",
+        "text": "Línea, barras, torta, tabla, indicador y mapa por estado, con zoom y control de posición."
+      },
+      "f2": {
+        "title": "Preguntas del visitante",
+        "text": "Una caja de preguntas en el panel: “¿por qué subieron los casos en marzo?” se responde solo con los datos de ese panel."
+      },
+      "f3": {
+        "title": "Ajustes desde el navegador",
+        "text": "“Muestre solo el Sudeste a partir de 2020.” El pedido se convierte en una nueva configuración del panel, sin salir de la página."
+      },
+      "f4": {
+        "title": "Exportación",
+        "text": "PNG con el diseño fiel, PDF para impresión y JSON reimportable — el panel es un artefacto, no una pantalla."
+      },
+      "f5": {
+        "title": "Galería con búsqueda",
+        "text": "Todos los paneles publicados en un solo lugar, con búsqueda y enlace permanente para cada uno."
+      },
+      "f6": {
+        "title": "Control y auditoría",
+        "text": "Publicar y editar exige clave de control; cada cambio queda en el registro de auditoría."
+      }
+    },
+    "cases": {
+      "title": "Dónde cambia el día",
+      "subtitle": "El mismo mecanismo, cuatro rutinas distintas.",
+      "c1": {
+        "title": "Vigilancia municipal",
+        "text": "Un panel semanal que el equipo actualiza conversando con EpidBot — y que la secretaría abre en el celular."
+      },
+      "c2": {
+        "title": "Sala de situación hospitalaria",
+        "text": "Demanda y síndromes respiratorios en un solo lugar, actualizados durante la semana."
+      },
+      "c3": {
+        "title": "Investigación",
+        "text": "Figuras que siguen válidas después del envío, con la versión de los datos al lado."
+      },
+      "c4": {
+        "title": "Comunicación pública",
+        "text": "Un enlace con números oficiales para la prensa y el consejo de salud, sin planilla en el camino."
+      }
+    },
+    "tech": {
+      "t1": {
+        "title": "MCP por debajo",
+        "text": "EpidBot controla EpiDash mediante herramientas MCP — el mismo protocolo que ya conecta datos y literatura."
+      },
+      "t2": {
+        "title": "Código abierto",
+        "text": "Licencia MIT. Corre en nuestra infraestructura o en la suya, en un solo contenedor."
+      },
+      "t3": {
+        "title": "Trazable",
+        "text": "Clave por panel, registro de auditoría y exportación en JSON para reconstruir cualquier versión."
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": {
+        "q": "¿Necesito cuenta para ver un panel?",
+        "a": "No. El enlace es público: cualquiera lo abre en el navegador. La cuenta solo es necesaria para crear y publicar paneles, con EpidBot."
+      },
+      "q2": {
+        "q": "¿Cómo publico uno?",
+        "a": "Dentro de EpidBot: usted describe el panel, él consulta las fuentes oficiales y publica en EpiDash con una clave de control."
+      },
+      "q3": {
+        "q": "¿Quién puede modificar el panel?",
+        "a": "Los cambios del responsable usan la clave de control. Los pedidos de quien visualiza pasan por EpidBot y quedan registrados, con límite de uso por panel."
+      },
+      "q4": {
+        "q": "¿EpiDash reemplaza el informe?",
+        "a": "No. El informe registra lo concluido; el panel acompaña lo que sigue cambiando. Uno no deja obsoleto al otro."
+      },
+      "q5": {
+        "q": "¿EpiDash está incluido en los planes?",
+        "a": "Hable con nuestro equipo para evaluar el volumen de paneles y el formato de acceso."
+      }
+    },
+    "cta": {
+      "title": "Empiece por EpidBot",
+      "text": "EpiDash viene después: usted pide el panel, revisa los números y publica el enlace.",
+      "primary": "Crear cuenta gratis",
+      "secondary": "Ver los planes"
     }
   }
 }

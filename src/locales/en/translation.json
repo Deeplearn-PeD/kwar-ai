@@ -551,6 +551,7 @@
       "products": {
         "title": "Solutions",
         "epidbot": "EpidBot",
+        "epidash": "EpiDash",
         "solutions": "Solutions",
         "webSummit": "Web Summit Rio 2026"
       },
@@ -873,6 +874,136 @@
       "title": "Intelligence for faster public health decisions.",
       "subtitle": "KWAR-AI's conversational intelligence platform, transforms epidemiological, climate and mobility data into real-time strategic insights for outbreak detection and public health response.",
       "cta": "See EpidBot in Action"
+    }
+  },
+  "epidash": {
+    "seo": {
+      "title": "EpiDash — dashboards published by EpidBot",
+      "description": "Publish the dashboards EpidBot builds on official sources at a public link. Viewers open it in the browser, ask questions and request changes without an account."
+    },
+    "nav": {
+      "cta": "Start free"
+    },
+    "hero": {
+      "badge": "Product · EpiDash",
+      "titleLine1": "Your dashboards, published",
+      "titleGradient": "as a link",
+      "subtitle": "EpiDash publishes the dashboards EpidBot builds from official sources. Whoever receives the link opens it in the browser — no install, no account — and can ask questions or request changes to the dashboard itself.",
+      "ctaPrimary": "Open the demo",
+      "ctaSecondary": "Build one with EpidBot",
+      "note": "Data from official open sources, subject to reporting delay. Every dashboard records its source and date of access."
+    },
+    "how": {
+      "title": "From request to published link",
+      "subtitle": "Four steps, with no BI project in between.",
+      "stepLabel": "Step {{number}}",
+      "s1": {
+        "title": "Ask in plain language",
+        "text": "“Dengue cases by state for the last five years, with the weekly average.” EpidBot resolves the source, the query and the window."
+      },
+      "s2": {
+        "title": "The agent builds it",
+        "text": "Charts, KPIs and maps are created and adjusted by EpidBot, which controls EpiDash over MCP."
+      },
+      "s3": {
+        "title": "Share the link",
+        "text": "Whoever receives it opens it on a phone or a desktop, with no account and nothing to install."
+      },
+      "s4": {
+        "title": "The dashboard stays alive",
+        "text": "Viewers ask and request changes from the dashboard itself; EpidBot answers and updates it, with everything logged."
+      }
+    },
+    "features": {
+      "title": "What every dashboard ships with",
+      "subtitle": "Enough to answer today's question — and to defend the answer weeks later.",
+      "f1": {
+        "title": "The charts that matter",
+        "text": "Line, bar, pie, table, KPI and a state-level map, with zoom and position control."
+      },
+      "f2": {
+        "title": "Viewer questions",
+        "text": "A question box on the dashboard: “why did cases spike in March?” is answered from that dashboard's data alone."
+      },
+      "f3": {
+        "title": "Changes from the browser",
+        "text": "“Show only the Southeast after 2020.” The request becomes a new dashboard configuration, without leaving the page."
+      },
+      "f4": {
+        "title": "Export",
+        "text": "PNG with the exact layout, print-ready PDF and re-importable JSON — the dashboard is an artifact, not a screen."
+      },
+      "f5": {
+        "title": "Searchable gallery",
+        "text": "Every published dashboard in one place, with search and a permalink for each."
+      },
+      "f6": {
+        "title": "Control and audit",
+        "text": "Publishing and editing require a control key; every change lands in the audit log."
+      }
+    },
+    "cases": {
+      "title": "Where it changes the day",
+      "subtitle": "The same mechanism, four different routines.",
+      "c1": {
+        "title": "Municipal surveillance",
+        "text": "A weekly dashboard the team updates by talking to EpidBot — and the health department opens on a phone."
+      },
+      "c2": {
+        "title": "Hospital situation room",
+        "text": "Demand and respiratory syndromes in one place, refreshed through the week."
+      },
+      "c3": {
+        "title": "Research",
+        "text": "Figures that stay valid after submission, with the data version right next to them."
+      },
+      "c4": {
+        "title": "Public communication",
+        "text": "One link with official numbers for press and health council, with no spreadsheet in between."
+      }
+    },
+    "tech": {
+      "t1": {
+        "title": "MCP underneath",
+        "text": "EpidBot controls EpiDash through MCP tools — the same protocol that already connects data and literature."
+      },
+      "t2": {
+        "title": "Open source",
+        "text": "MIT licensed. Runs on our infrastructure or yours, in a single container."
+      },
+      "t3": {
+        "title": "Traceable",
+        "text": "A key per dashboard, an audit log and JSON export to rebuild any version."
+      }
+    },
+    "faq": {
+      "title": "Frequent questions",
+      "q1": {
+        "q": "Do I need an account to view a dashboard?",
+        "a": "No. The link is public: anyone can open it in a browser. An account is only needed to create and publish dashboards, through EpidBot."
+      },
+      "q2": {
+        "q": "How do I publish one?",
+        "a": "Inside EpidBot: you describe the dashboard, it queries the official sources and publishes to EpiDash with a control key."
+      },
+      "q3": {
+        "q": "Who can change a dashboard?",
+        "a": "Changes by the owner use the control key. Requests from viewers go through EpidBot and are recorded, with a per-dashboard usage limit."
+      },
+      "q4": {
+        "q": "Does EpiDash replace the report?",
+        "a": "No. The report records what was concluded; the dashboard tracks what is still moving. One does not make the other stale."
+      },
+      "q5": {
+        "q": "Is EpiDash included in the plans?",
+        "a": "Talk to our team so we can size the number of dashboards and the access model."
+      }
+    },
+    "cta": {
+      "title": "Start with EpidBot",
+      "text": "EpiDash comes after: you ask for the dashboard, review the numbers and publish the link.",
+      "primary": "Create free account",
+      "secondary": "See the plans"
     }
   }
 }

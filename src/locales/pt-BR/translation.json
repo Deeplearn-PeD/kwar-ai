@@ -550,6 +550,7 @@
       "products": {
         "title": "Soluções",
         "epidbot": "EpidBot",
+        "epidash": "EpiDash",
         "solutions": "Soluções",
         "webSummit": "Web Summit Rio 2026"
       },
@@ -839,6 +840,136 @@
       "title": "Inteligência para decisões de saúde pública mais rápidas.",
       "subtitle": "A plataforma de inteligência conversacional da KWAR-AI transforma dados epidemiológicos, climáticos e de mobilidade em insights estratégicos em tempo real para detecção de surtos e resposta em saúde pública.",
       "cta": "Ver EpidBot em Ação"
+    }
+  },
+  "epidash": {
+    "seo": {
+      "title": "EpiDash — dashboards publicados pelo EpidBot",
+      "description": "Publique em um link público os dashboards que o EpidBot monta a partir de fontes oficiais. Quem recebe abre no navegador, pergunta e pede ajustes sem criar conta."
+    },
+    "nav": {
+      "cta": "Começar grátis"
+    },
+    "hero": {
+      "badge": "Produto · EpiDash",
+      "titleLine1": "Seus painéis, publicados",
+      "titleGradient": "em um link",
+      "subtitle": "O EpiDash publica os dashboards que o EpidBot monta a partir de fontes oficiais. Quem recebe abre no navegador, sem instalar nada nem criar conta — e pode perguntar ou pedir ajustes ao próprio painel.",
+      "ctaPrimary": "Abrir demonstração",
+      "ctaSecondary": "Criar painel com o EpidBot",
+      "note": "Dados de fontes abertas oficiais, sujeitos a atraso de notificação. Cada painel registra a fonte e a data de acesso."
+    },
+    "how": {
+      "title": "Do pedido ao link publicado",
+      "subtitle": "Quatro passos, sem uma etapa de BI no meio.",
+      "stepLabel": "Passo {{number}}",
+      "s1": {
+        "title": "Peça em linguagem natural",
+        "text": "“Casos de dengue por UF nos últimos cinco anos, com a média semanal.” O EpidBot resolve a fonte, a consulta e o recorte."
+      },
+      "s2": {
+        "title": "O agente monta o painel",
+        "text": "Gráficos, indicadores e mapas são criados e ajustados pelo EpidBot, que controla o EpiDash por MCP."
+      },
+      "s3": {
+        "title": "Compartilhe o link",
+        "text": "Quem recebe abre no celular ou no desktop, sem conta e sem instalação."
+      },
+      "s4": {
+        "title": "O painel continua vivo",
+        "text": "O visitante pergunta e pede ajustes pelo próprio painel; o EpidBot responde e atualiza, com tudo registrado."
+      }
+    },
+    "features": {
+      "title": "O que vem em cada painel",
+      "subtitle": "O suficiente para responder à pergunta do dia — e para sustentar a resposta semanas depois.",
+      "f1": {
+        "title": "Gráficos essenciais",
+        "text": "Linha, barra, pizza, tabela, indicador e mapa por UF, com zoom e controle de posição."
+      },
+      "f2": {
+        "title": "Perguntas do visitante",
+        "text": "Uma caixa de perguntas no painel: “por que os casos subiram em março?” é respondida só com os dados daquele painel."
+      },
+      "f3": {
+        "title": "Ajuste pelo navegador",
+        "text": "“Mostre só o Sudeste a partir de 2020.” O pedido vira uma nova configuração do painel, sem sair da página."
+      },
+      "f4": {
+        "title": "Exportação",
+        "text": "PNG com o layout fiel, PDF para impressão e JSON reimportável — o painel é um artefato, não uma tela."
+      },
+      "f5": {
+        "title": "Galeria com busca",
+        "text": "Todos os painéis publicados em um só lugar, com busca e permalink para cada um."
+      },
+      "f6": {
+        "title": "Controle e auditoria",
+        "text": "Publicar e alterar exige chave de controle; cada mudança fica no log de auditoria."
+      }
+    },
+    "cases": {
+      "title": "Onde isso muda o dia",
+      "subtitle": "O mesmo mecanismo, quatro rotinas diferentes.",
+      "c1": {
+        "title": "Vigilância municipal",
+        "text": "Um painel semanal que a equipe atualiza conversando com o EpidBot — e que a secretaria abre no celular."
+      },
+      "c2": {
+        "title": "Sala de situação hospitalar",
+        "text": "Demanda e síndromes respiratórias no mesmo lugar, atualizados ao longo da semana."
+      },
+      "c3": {
+        "title": "Pesquisa",
+        "text": "Figuras que continuam válidas depois da submissão, com a versão dos dados ao lado."
+      },
+      "c4": {
+        "title": "Comunicação pública",
+        "text": "Um link com números oficiais para a imprensa e para o conselho de saúde, sem planilha no caminho."
+      }
+    },
+    "tech": {
+      "t1": {
+        "title": "MCP por baixo",
+        "text": "O EpidBot controla o EpiDash por ferramentas MCP — o mesmo protocolo que já conecta dados e literatura."
+      },
+      "t2": {
+        "title": "Código aberto",
+        "text": "Licença MIT. Roda na nossa infraestrutura ou na sua, em um único contêiner."
+      },
+      "t3": {
+        "title": "Rastreável",
+        "text": "Chave por painel, log de auditoria e exportação em JSON para reconstruir qualquer versão."
+      }
+    },
+    "faq": {
+      "title": "Perguntas frequentes",
+      "q1": {
+        "q": "Preciso de conta para ver um painel?",
+        "a": "Não. O link é público: qualquer pessoa abre no navegador. Conta só é necessária para criar e publicar painéis, pelo EpidBot."
+      },
+      "q2": {
+        "q": "Como publico um painel?",
+        "a": "Dentro do EpidBot: você descreve o painel, ele consulta as fontes oficiais e publica no EpiDash com uma chave de controle."
+      },
+      "q3": {
+        "q": "Quem pode alterar o painel?",
+        "a": "Alterações do responsável usam a chave de controle. Pedidos de quem visualiza passam pelo EpidBot e ficam registrados, com limite de uso por painel."
+      },
+      "q4": {
+        "q": "O EpiDash substitui o relatório?",
+        "a": "Não. O relatório é o registro do que foi concluído; o painel acompanha o que continua mudando. Um não desatualiza o outro."
+      },
+      "q5": {
+        "q": "O EpiDash está incluído nos planos?",
+        "a": "Fale com a nossa equipe para avaliar o volume de painéis e o formato de acesso."
+      }
+    },
+    "cta": {
+      "title": "Comece pelo EpidBot",
+      "text": "O EpiDash entra depois: você pede o painel, revisa os números e publica o link.",
+      "primary": "Criar conta grátis",
+      "secondary": "Ver os planos"
     }
   }
 }
