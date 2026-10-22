@@ -88,6 +88,12 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <Link
+              to="/epidash"
+              className="hidden xl:block px-4 py-2 text-sm font-medium text-kwar-gray hover:text-kwar-electric transition-colors duration-300"
+            >
+              EpiDash
+            </Link>
+            <Link
               to="/planos"
               className="px-4 py-2 text-sm font-medium text-kwar-gray hover:text-kwar-electric transition-colors duration-300"
             >
@@ -135,6 +141,14 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+          {/* Planos Mobile Link */}
+          <Link
+            to="/epidash"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 text-kwar-gray hover:text-kwar-electric transition-colors border-b border-white/5"
+          >
+            EpiDash
+          </Link>
           {/* Planos Mobile Link */}
           <Link
             to="/planos"

@@ -9,6 +9,7 @@ import { DesafioSection } from '@/sections/DesafioSection';
 import { SolutionsSection } from '@/sections/SolutionsSection';
 import { EpidBotTransitionSection } from '@/sections/EpidBotTransitionSection';
 import { EpidBotVisualSection } from '@/sections/EpidBotVisualSection';
+import { EpiDashSection } from '@/sections/EpiDashSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
 import { EquipeSection } from '@/sections/EquipeSection';
 import { CTAFinalSection } from '@/sections/CTAFinalSection';
@@ -81,6 +82,9 @@ function HomePage() {
 
         {/* 6) EpidBot Visual Presentation */}
         <EpidBotVisualSection />
+
+        {/* 7) EpiDash — dashboards published from EpidBot */}
+        <EpiDashSection />
 
         {/* 7) Solutions */}
         <SolutionsSection />

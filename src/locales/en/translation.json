@@ -877,6 +877,24 @@
     }
   },
   "epidash": {
+    "home": {
+      "badge": "New product",
+      "title": "From the finished dashboard to the published link",
+      "text": "EpiDash publishes the dashboards EpidBot builds. Whoever receives it opens it in the browser — no account, no install — and can ask questions or request changes to the dashboard itself.",
+      "b1": "A public link: the health secretary opens it on a phone, the researcher opens it in the lab.",
+      "b2": "Viewers ask, and EpidBot answers using only that dashboard's data.",
+      "b3": "Exports to PNG, PDF and re-importable JSON — the dashboard is an artifact, not a screen.",
+      "cta": "Explore EpiDash",
+      "demo": "See the demo",
+      "mock": {
+        "url": "dash.kwar-ai.com.br/dengue-rj",
+        "title": "Dengue · probable cases per week",
+        "kpi1": "Cases this year",
+        "kpi2": "4-week change",
+        "kpi3": "Municipalities",
+        "ask": "Ask EpidBot about this dashboard…"
+      }
+    },
     "seo": {
       "title": "EpiDash — dashboards published by EpidBot",
       "description": "Publish the dashboards EpidBot builds on official sources at a public link. Viewers open it in the browser, ask questions and request changes without an account."

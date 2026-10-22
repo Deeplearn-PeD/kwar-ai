@@ -843,6 +843,24 @@
     }
   },
   "epidash": {
+    "home": {
+      "badge": "Novo produto",
+      "title": "Do painel montado ao link publicado",
+      "text": "O EpiDash publica os dashboards que o EpidBot monta. Quem recebe abre no navegador — sem conta, sem instalação — e pode perguntar ou pedir ajustes ao próprio painel.",
+      "b1": "Link público: o secretário abre no celular, o pesquisador abre no laboratório.",
+      "b2": "O visitante pergunta e o EpidBot responde apenas com os dados daquele painel.",
+      "b3": "Exporta em PNG, PDF e JSON reimportável — o painel é um artefato, não uma tela.",
+      "cta": "Conhecer o EpiDash",
+      "demo": "Ver demonstração",
+      "mock": {
+        "url": "dash.kwar-ai.com.br/dengue-rj",
+        "title": "Dengue · casos prováveis por semana",
+        "kpi1": "Casos no ano",
+        "kpi2": "Variação 4 sem.",
+        "kpi3": "Municípios",
+        "ask": "Pergunte ao EpidBot sobre este painel…"
+      }
+    },
     "seo": {
       "title": "EpiDash — dashboards publicados pelo EpidBot",
       "description": "Publique em um link público os dashboards que o EpidBot monta a partir de fontes oficiais. Quem recebe abre no navegador, pergunta e pede ajustes sem criar conta."
