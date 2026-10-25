@@ -697,7 +697,7 @@ function FAQ() {
     },
     {
       q: 'Tem desconto?',
-      a: 'Sim, por dois caminhos — e eles não são cumulativos. Acadêmico: 50% por 6 meses para estudantes e residentes, pedido dentro do app em Configurações → Plano — com e-mail institucional em domínio acadêmico a validação é automática; nos outros casos o pedido é analisado pela equipe e você recebe um e-mail quando for aprovado. Compromisso anual: 30% para quem assume pelo menos 1 ano (Pro fica R$ 67,90/mês e Max, R$ 137,90/mês); cancelar antes dos 12 meses é permitido e sem multa — apenas encerra o desconto e a renovação, sem devolução do que já foi pago.',
+      a: 'Sim, por dois caminhos — e eles não são cumulativos. Acadêmico: 50% para estudantes e residentes, válido até ser revogado, pedido dentro do app em Configurações → Plano — com e-mail institucional em domínio acadêmico a validação é automática; nos outros casos o pedido é analisado pela equipe e você recebe um e-mail quando for aprovado. Compromisso anual: 30% para quem assume pelo menos 1 ano (Pro fica R$ 67,90/mês e Max, R$ 137,90/mês); cancelar antes dos 12 meses é permitido e sem multa — apenas encerra o desconto e a renovação, sem devolução do que já foi pago.',
     },
     {
       q: 'Posso cancelar quando quiser?',
@@ -858,8 +858,8 @@ export default function EpidbotIndividual() {
             não acumulam. Os pacotes de consultas avulsas (compra única, sem validade) cobrem o dia
             em que você passar da cota. O upgrade é imediato após a confirmação do pagamento. Plano
             expirado tem 7 dias de cortesia antes de voltar ao Free. Descontos não cumulativos:
-            50% por 6 meses para estudantes e residentes (pedido no app, com validação acadêmica) ou
-            30% no compromisso anual.
+            50% para estudantes e residentes (pedido no app, com validação acadêmica, válido até ser
+            revogado) ou 30% no compromisso anual.
             Cancelamento sem multa, com reembolso integral nos primeiros 7 dias ou em até 30 dias
             se o plano não tiver sido usado; no compromisso anual, cancelar antes dos 12 meses é
             permitido e sem devolução do que já foi pago.
