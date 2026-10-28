@@ -622,6 +622,12 @@
         "title": "Web Summit Rio 2026",
         "description": "Startup de impacto presentando soluciones de inteligencia epidemiológica.",
         "cta": "Ver presentación"
+      },
+      "qgis": {
+        "category": "Integración SIG · QGIS",
+        "title": "EpidBot dentro de QGIS",
+        "description": "Plugin oficial en el repositorio de complementos de QGIS: pregunte por las capas, la extensión y la selección de su proyecto y reciba el resultado de vuelta como capa en el mapa. Instale en Complementos > Administrar e instalar complementos.",
+        "cta": "Ver en el repositorio de QGIS"
       }
     },
     "credibility": {

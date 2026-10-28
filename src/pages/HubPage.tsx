@@ -348,6 +348,48 @@ export function HubPage() {
               );
             })}
           </div>
+
+          {/* ─── QGIS INTEGRATION ─── */}
+          <div
+            className={`mt-5 transition-all duration-700 delay-500 ${
+              cardsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <a
+              href="https://plugins.qgis.org/plugins/epidbot/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block"
+            >
+              <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-kwar-electric/20 hover:shadow-[0_0_40px_rgba(0,240,255,0.06)]">
+                <div className="absolute inset-0">
+                  <img
+                    src="/images/qgis-plugin.svg"
+                    alt=""
+                    className="w-full h-full object-cover opacity-35 transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#050a10] via-[#050a10]/92 to-[#050a10]/35" />
+                </div>
+                <div className="relative z-10 p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+                  <div className="flex-1">
+                    <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-kwar-electric/80 mb-3 block">
+                      {t('hub.cards.qgis.category')}
+                    </span>
+                    <h3 className="font-display text-lg font-bold text-white mb-2">
+                      {t('hub.cards.qgis.title')}
+                    </h3>
+                    <p className="text-white/45 text-sm leading-relaxed max-w-2xl">
+                      {t('hub.cards.qgis.description')}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-xs font-medium text-kwar-electric group-hover:gap-3 transition-all shrink-0">
+                    {t('hub.cards.qgis.cta')}
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 

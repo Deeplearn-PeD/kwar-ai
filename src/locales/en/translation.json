@@ -622,6 +622,12 @@
         "title": "Web Summit Rio 2026",
         "description": "Impact startup presenting epidemiological intelligence solutions.",
         "cta": "View presentation"
+      },
+      "qgis": {
+        "category": "GIS integration · QGIS",
+        "title": "EpidBot inside QGIS",
+        "description": "Official plugin in the QGIS plugin repository: ask about your project's layers, extent and selection, and get results back as layers on the map. Install from Plugins > Manage and Install Plugins.",
+        "cta": "Open in the QGIS repository"
       }
     },
     "credibility": {
