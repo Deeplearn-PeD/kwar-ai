@@ -264,7 +264,7 @@ function PricingCards() {
         '10 relatórios agendados',
         '50 datasets privados (até 25 GB)',
         'Exportação LaTeX, Overleaf e DOI no Zenodo',
-        'Agente de manuscrito científico, API e agentes externos',
+        'Agente de manuscrito científico, API, agentes externos e plugin QGIS',
       ],
       cta: 'Assinar Max',
       href: 'https://epidbot.kwar-ai.com.br/register',
@@ -281,7 +281,7 @@ function PricingCards() {
       features: [
         'Até 10 usuários incluídos',
         'Cota de uso ilimitada (relatórios, datasets e agendamentos)',
-        'Tudo do Max: LaTeX/Overleaf, DOI no Zenodo, API e agentes externos',
+        'Tudo do Max: LaTeX/Overleaf, DOI no Zenodo, API, agentes externos e plugin QGIS',
         'Workspace compartilhado e projetos colaborativos',
         'Dashboards internos e relatórios compartilhados',
         'Revisão por pares e sala de incidentes (outbreak war-room)',
@@ -404,7 +404,7 @@ function ComparisonTable() {
     { feature: 'Ferramentas avançadas de análise', free: false, pro: true, proplus: true, team: true },
     { feature: 'Zotero e integrações Git', free: false, pro: true, proplus: true, team: true },
     { feature: 'Exportação LaTeX / Overleaf / DOI no Zenodo', free: false, pro: false, proplus: true, team: true },
-    { feature: 'Agente de manuscrito científico, API e agentes externos', free: false, pro: false, proplus: true, team: true },
+    { feature: 'Agente de manuscrito científico, API, agentes externos e plugin QGIS', free: false, pro: false, proplus: true, team: true },
     { feature: 'Projetos, Blipper e grafo de conhecimento', free: true, pro: true, proplus: true, team: true },
     { feature: 'Colaboração (workspace, revisão por pares, sala de incidentes)', free: false, pro: false, proplus: false, team: true },
     { feature: 'Cotas diárias acumulam entre dias?', free: 'Não', pro: 'Não', proplus: 'Não', team: 'Não' },
@@ -673,7 +673,7 @@ function FAQ() {
     },
     {
       q: 'O que o Max acrescenta?',
-      a: 'Cota diária de 1,5 milhão de tokens, 10 relatórios agendados, 50 datasets privados, exportação LaTeX/Overleaf, DOI no Zenodo, agente de manuscrito científico e acesso por API e agentes externos.',
+      a: 'Cota diária de 1,5 milhão de tokens, 10 relatórios agendados, 50 datasets privados, exportação LaTeX/Overleaf, DOI no Zenodo, agente de manuscrito científico, acesso por API, agentes externos e plugin QGIS.',
     },
     {
       q: 'Quais fontes de dados estão disponíveis?',
