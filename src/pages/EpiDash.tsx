@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { SEO } from '@/components/SEO';
 import { StatsBand } from '@/components/StatsBand';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Footer } from '@/sections/Footer';
 
 const DEMO_URL = 'https://dash.kwar-ai.com.br';
@@ -108,38 +107,6 @@ export default function EpiDash() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(0,240,255,0.07),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(255,184,0,0.05),transparent_50%)]" />
       </div>
-
-      {/* ─── NAVBAR ─── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-kwar-deep/85 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <img
-                src="/images/kwar-ai.png"
-                alt="Kwar-AI"
-                className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
-              />
-              <span className="font-display font-bold text-xl tracking-wider text-white">
-                KWAR<span className="text-kwar-electric">-</span>AI
-              </span>
-            </Link>
-
-            <div className="flex items-center gap-3">
-              <div className="hidden sm:block">
-                <LanguageSwitcher />
-              </div>
-              <a
-                href={REGISTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-sm"
-              >
-                {t('epidash.nav.cta')}
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* ─── HERO ─── */}
       <section

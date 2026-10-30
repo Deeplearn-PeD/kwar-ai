@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Menu, X, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { Footer } from '@/sections/Footer';
 import { StatsBand } from '@/components/StatsBand';
 
@@ -34,26 +34,10 @@ const platformCards = [
 ];
 
 export function HubPage() {
-  const { t, i18n } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const heroReveal = useScrollReveal(0.2);
   const cardsReveal = useScrollReveal(0.1);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
-
-  const languages = [
-    { code: 'en', label: 'EN' },
-    { code: 'pt-BR', label: 'PT' },
-    { code: 'es', label: 'ES' },
-  ];
 
   return (
     <div className="min-h-screen bg-[#050a10] text-white relative">
@@ -66,89 +50,6 @@ export function HubPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050a10]/50 to-[#050a10]" />
       </div>
-
-      {/* ─── NAVBAR ─── */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-kwar-deep/90 backdrop-blur-xl border-b border-white/5'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <img
-                src="/images/kwar-ai.png"
-                alt="Kwar-AI"
-                className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
-              />
-              <span className="font-display font-bold text-xl tracking-wider text-white">
-                KWAR<span className="text-kwar-electric">-</span>AI
-              </span>
-            </Link>
-
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                {languages.map((lng) => (
-                  <button
-                    key={lng.code}
-                    onClick={() => changeLanguage(lng.code)}
-                    className={`text-xs font-medium px-2 py-1 rounded transition-colors ${
-                      i18n.language?.startsWith(lng.code.split('-')[0])
-                        ? 'text-kwar-electric bg-kwar-electric/10'
-                        : 'text-kwar-gray hover:text-white'
-                    }`}
-                  >
-                    {lng.label}
-                  </button>
-                ))}
-              </div>
-              <Link to="/" className="btn-primary text-sm">
-                {t('common.faleConosco')}
-              </Link>
-            </div>
-
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-kwar-gray hover:text-kwar-electric transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-
-        <div
-          className={`lg:hidden transition-all duration-300 overflow-hidden ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="bg-kwar-deep/95 backdrop-blur-xl border-t border-white/5 px-4 py-4 space-y-3">
-            <div className="flex items-center gap-1.5 pt-2 pb-1">
-              {languages.map((lng) => (
-                <button
-                  key={lng.code}
-                  onClick={() => changeLanguage(lng.code)}
-                  className={`text-xs font-medium px-2 py-1 rounded transition-colors ${
-                    i18n.language?.startsWith(lng.code.split('-')[0])
-                      ? 'text-kwar-electric bg-kwar-electric/10'
-                      : 'text-kwar-gray hover:text-white'
-                  }`}
-                >
-                  {lng.label}
-                </button>
-              ))}
-            </div>
-            <Link
-              to="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-primary text-sm w-full text-center block mt-2"
-            >
-              {t('common.faleConosco')}
-            </Link>
-          </div>
-        </div>
-      </nav>
 
       {/* ─── HERO ─── */}
       <section

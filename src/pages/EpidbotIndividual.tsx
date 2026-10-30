@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
 import SkipToContent from '../components/SkipToContent';
 import {
   Check,
@@ -16,57 +15,11 @@ import {
 } from 'lucide-react';
 
 // ============================================================
-// 1. NAVBAR
-// ============================================================
-function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-xl border-b border-white/[0.04]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center">
-            <Zap className="w-4 h-4 text-white" />
-          </div>
-          <span className="font-display font-bold text-lg text-white">
-            Epid<span className="text-cyan-400">Bot</span>
-          </span>
-        </Link>
-
-        <div className="flex items-center gap-4">
-          <Link
-            to="/"
-            className="hidden sm:inline-flex text-sm text-white/50 hover:text-white transition-colors"
-          >
-            Planos Institucionais
-          </Link>
-          <a
-            href="https://epidbot.kwar-ai.com.br/login"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1.5"
-          >
-            <Users className="w-4 h-4" />
-            Entrar
-          </a>
-          <a
-            href="https://epidbot.kwar-ai.com.br/register"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-cyan-400 hover:bg-cyan-300 text-[#0a0e1a] text-sm font-semibold px-5 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
-          >
-            Começar gratuitamente
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-// ============================================================
 // 2. HERO
 // ============================================================
 function Hero() {
   return (
-    <section className="relative pt-12 pb-8 overflow-hidden">
+    <section className="relative pt-24 pb-8 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
@@ -847,7 +800,6 @@ export default function EpidbotIndividual() {
         <meta property="og:url" content="https://kwar-ai.com.br/planos" />
       </Helmet>
       <SkipToContent />
-      <Navbar />
       <main id="main-content">
         <Hero />
 

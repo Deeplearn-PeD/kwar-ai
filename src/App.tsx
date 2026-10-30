@@ -60,9 +60,7 @@ function HomePage() {
         path="/"
       />
       <SkipToContent />
-      {/* Navigation */}
-      <Navbar />
-      
+
       {/* Main Content */}
       <main id="main-content" className="relative z-10">
         {/* 1) Hero */}
@@ -125,6 +123,8 @@ function App() {
   return (
     <>
       <HashRedirect />
+      {/* Main navigation — shared by every route */}
+      <Navbar />
       <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/epidbot" element={<Epidbot />} />

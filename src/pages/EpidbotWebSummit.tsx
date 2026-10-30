@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { EquipeSection } from '@/sections/EquipeSection';
 import { EquipeRedeSection } from '@/sections/EquipeRedeSection';
@@ -12,8 +11,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 
 import {
   ArrowRight,
-  Menu,
-  X,
   Database,
   MessageSquare,
   BarChart3,
@@ -56,115 +53,6 @@ function useScrollReveal(threshold = 0.15) {
   }, [ref, threshold]);
 
   return { ref: setRef, isVisible };
-}
-
-// ============================================================================
-// NAVBAR
-// ============================================================================
-function Navbar() {
-  const { t, i18n } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Force English on this page
-    i18n.changeLanguage('en');
-  }, [i18n]);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
-
-  const navLinks = [
-    { label: t('websummit.nav.problem'), href: '#problem' },
-    { label: t('websummit.nav.solution'), href: '#solution' },
-    { label: t('websummit.nav.product'), href: '#product' },
-    { label: t('websummit.nav.team'), href: '#equipe' },
-    { label: t('websummit.nav.contact'), href: '#contact' },
-  ];
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-kwar-deep/90 backdrop-blur-xl border-b border-white/5'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <img
-              src="/images/logo-oficial.png"
-              alt="Kwar-AI"
-              className="w-8 h-8 object-contain transition-transform group-hover:scale-105"
-            />
-            <span className="font-display font-bold text-lg text-white tracking-tight">
-              KWAR<span className="text-kwar-electric">-</span>AI
-            </span>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm text-kwar-gray hover:text-white transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={() => scrollToSection('#contact')}
-              size="sm"
-              className="hidden sm:inline-flex bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold text-sm h-9"
-            >
-              {t('websummit.nav.schedule', { defaultValue: 'Schedule a Meeting' })}
-            </Button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white"
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-kwar-deep/98 border-b border-white/5">
-          <div className="px-4 py-5 space-y-3">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left py-2 text-white text-sm font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              onClick={() => scrollToSection('#contact')}
-              className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold mt-2"
-            >
-              Schedule a Meeting
-            </Button>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
 }
 
 // ============================================================================
@@ -1368,7 +1256,6 @@ function LandingFooter() {
 export default function EpidbotWebSummit() {
   return (
     <div className="relative min-h-screen bg-kwar-deep">
-      <Navbar />
       <main>
         <HeroSection />
         <ProductSection />

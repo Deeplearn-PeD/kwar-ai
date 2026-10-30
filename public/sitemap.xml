@@ -26,6 +26,41 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://kwar-ai.com.br/hub</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/hospitais</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/pesquisa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/saude-global</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/vigilancia-epidemiologica</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/documentacao</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kwar-ai.com.br/jornalistas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://kwar-ai.com.br/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

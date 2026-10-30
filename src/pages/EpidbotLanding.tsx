@@ -5,8 +5,6 @@ import { StatsBand } from '@/components/StatsBand';
 import { 
   ArrowRight, 
   Users,
-  Menu,
-  X,
   Play,
   BarChart3,
   Clock,
@@ -21,88 +19,6 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
-
-// ============================================================================
-// NAVIGATION
-// ============================================================================
-function LandingNavbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-kwar-deep/95 backdrop-blur-xl border-b border-kwar-electric/20'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10">
-              <img 
-                src="/images/logo-oficial.png" 
-                alt="Kwar-AI" 
-                className="w-full h-full object-contain transition-transform group-hover:scale-110"
-              />
-            </div>
-            <span className="font-display font-bold text-xl text-white">
-              KWAR<span className="text-kwar-electric">-</span>AI
-            </span>
-          </Link>
-
-          {/* Right Side */}
-          <div className="flex items-center gap-4">
-            <Button
-              onClick={() => scrollToSection('#final-cta')}
-              className="bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
-            >
-              Agendar Demonstração
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-kwar-deep/98 border-b border-kwar-electric/20">
-          <div className="px-4 py-6 space-y-4">
-            <Button
-              onClick={() => { scrollToSection('#final-cta'); }}
-              className="w-full bg-kwar-electric hover:bg-kwar-electric/90 text-kwar-deep font-semibold"
-            >
-              Agendar Demonstração
-            </Button>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-}
 
 // ============================================================================
 // HERO SECTION
@@ -1110,7 +1026,7 @@ const statsCopy = {
     kicker: 'O EpidBot em números',
     items: [
       { value: '321', label: 'ferramentas que o agente pode chamar', note: 'dados, análise, mapas, relatórios e literatura' },
-      { value: '41', label: 'fontes de dados oficiais integradas', note: 'DATASUS, OMS, OPAS, ECDC, CDC e outras' },
+      { value: '41', label: 'fontes de dados abertas (biblioteca epidatasets)', note: 'DATASUS, OMS, OPAS, ECDC, CDC, GBIF + PubMed, OpenAlex, Crossref' },
       { value: '6', label: 'bases do DATASUS abrangidas', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES e PNI' },
       { value: '22', label: 'países no piloto com a OMS EMRO', note: 'Escritório Regional do Mediterrâneo Oriental' },
     ],
@@ -1121,7 +1037,7 @@ const statsCopy = {
     kicker: 'EpidBot in numbers',
     items: [
       { value: '321', label: 'tools the agent can call', note: 'data, analysis, maps, reports and literature' },
-      { value: '41', label: 'official data sources integrated', note: 'DATASUS, WHO, PAHO, ECDC, CDC and others' },
+      { value: '41', label: 'open data sources (epidatasets library)', note: 'DATASUS, WHO, PAHO, ECDC, CDC, GBIF + PubMed, OpenAlex, Crossref' },
       { value: '6', label: 'DATASUS systems covered', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES and PNI' },
       { value: '22', label: 'countries in the WHO EMRO pilot', note: 'Eastern Mediterranean Regional Office' },
     ],
@@ -1132,7 +1048,7 @@ const statsCopy = {
     kicker: 'EpidBot en números',
     items: [
       { value: '321', label: 'herramientas que el agente puede llamar', note: 'datos, análisis, mapas, informes y literatura' },
-      { value: '41', label: 'fuentes de datos oficiales integradas', note: 'DATASUS, OMS, OPS, ECDC, CDC y otras' },
+      { value: '41', label: 'fuentes de datos abiertas (biblioteca epidatasets)', note: 'DATASUS, OMS, OPS, ECDC, CDC, GBIF + PubMed, OpenAlex, Crossref' },
       { value: '6', label: 'bases del DATASUS abarcadas', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES y PNI' },
       { value: '22', label: 'países en el piloto con la OMS EMRO', note: 'Oficina Regional del Mediterráneo Oriental' },
     ],
@@ -1371,7 +1287,6 @@ export default function EpidbotLanding() {
   return (
     <div className="relative min-h-screen bg-kwar-deep">
       <SkipToContent />
-      <LandingNavbar />
       
       <main id="main-content" className="relative z-10">
         <HeroSection />

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, Menu, X } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { SEO } from '@/components/SEO';
 import { StatsBand } from '@/components/StatsBand';
 import SkipToContent from '@/components/SkipToContent';
@@ -47,7 +47,7 @@ const copy = {
       kicker: 'O EpidBot em números',
       items: [
         { value: '321', label: 'ferramentas que o agente pode chamar', note: 'dados, análise, mapas, relatórios e literatura' },
-        { value: '41', label: 'fontes de dados oficiais integradas', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPAS, ECDC, CDC' },
+        { value: '41', label: 'fontes de dados abertas (biblioteca epidatasets)', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPAS, ECDC, CDC + PubMed, OpenAlex, Crossref' },
         { value: '22', label: 'países no piloto com a OMS EMRO', note: 'Escritório Regional do Mediterrâneo Oriental' },
         { value: '76%', label: 'no EpiBench 1.0 — 418 de 550 pontos', note: 'benchmark público, 21 tarefas (jun/2026)' },
       ],
@@ -211,7 +211,7 @@ const copy = {
       kicker: 'EpidBot in numbers',
       items: [
         { value: '321', label: 'tools the agent can call', note: 'data, analysis, maps, reports and literature' },
-        { value: '41', label: 'official data sources integrated', note: 'DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC, CDC' },
+        { value: '41', label: 'open data sources (epidatasets library)', note: 'DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC, CDC + PubMed, OpenAlex, Crossref' },
         { value: '22', label: 'countries in the WHO EMRO pilot', note: 'Eastern Mediterranean Regional Office' },
         { value: '76%', label: 'on EpiBench 1.0 — 418 of 550 points', note: 'public benchmark, 21 tasks (Jun 2026)' },
       ],
@@ -374,7 +374,7 @@ const copy = {
       kicker: 'EpidBot en números',
       items: [
         { value: '321', label: 'herramientas que el agente puede llamar', note: 'datos, análisis, mapas, informes y literatura' },
-        { value: '41', label: 'fuentes de datos oficiales integradas', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPS, ECDC, CDC' },
+        { value: '41', label: 'fuentes de datos abiertas (biblioteca epidatasets)', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPS, ECDC, CDC + PubMed, OpenAlex, Crossref' },
         { value: '22', label: 'países en el piloto con la OMS EMRO', note: 'Oficina Regional del Mediterráneo Oriental' },
         { value: '76%', label: 'en EpiBench 1.0 — 418 de 550 puntos', note: 'benchmark público, 21 tareas (jun/2026)' },
       ],
@@ -528,295 +528,6 @@ function useScrollReveal(threshold = 0.1) {
   }, [threshold]);
 
   return { ref, isVisible };
-}
-
-// ============================================================================
-// NAVBAR
-// ============================================================================
-function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t, i18n, lng } = useEpidbotCopy();
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false);
-    };
-    if (isMobileMenuOpen) {
-      window.addEventListener('keydown', handleEscape);
-    }
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [isMobileMenuOpen]);
-
-  const menuGroups = [
-    {
-      label: t.menu.kwarai,
-      href: 'https://kwar-ai.com.br/',
-      action: () => window.open('https://kwar-ai.com.br/', '_blank', 'noopener,noreferrer'),
-    },
-    {
-      label: t.menu.epidbot,
-      href: '#',
-      action: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
-    },
-    {
-      label: t.menu.solucoes,
-      items: [
-        { label: t.menu.solucoesItems[0], href: '/epidbot-landing' },
-        { label: t.menu.solucoesItems[1], href: '/pesquisa' },
-        { label: t.menu.solucoesItems[2], href: '/hospitais' },
-        { label: t.menu.solucoesItems[3], href: '/saude-global' },
-        { label: t.menu.solucoesItems[4], href: '/jornalistas' },
-      ],
-    },
-    {
-      label: t.menu.precos,
-      href: '/planos',
-    },
-  ];
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-kwar-deep/75 backdrop-blur-2xl border-b border-white/[0.08]' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <img src="/images/logo-oficial.png" alt="Kwar-AI" className="w-8 h-8 object-contain opacity-95" />
-          <div className="flex items-center gap-2 text-sm font-semibold tracking-tight text-kwar-white">
-            <span>Kwar-AI</span>
-            <span className="h-4 w-px bg-white/15" />
-            <span className="text-kwar-gray group-hover:text-white transition-colors">EpidBot</span>
-          </div>
-        </Link>
-
-        <div className="hidden lg:flex items-center gap-6">
-          {menuGroups.map((group, idx) => {
-            if ('href' in group && !('items' in group) && !('action' in group) && group.href.startsWith('/')) {
-              return (
-                <Link
-                  key={idx}
-                  to={group.href}
-                  className="text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
-                >
-                  {group.label}
-                </Link>
-              );
-            }
-            if ('action' in group && group.action) {
-              return (
-                <button
-                  key={idx}
-                  onClick={group.action}
-                  className="text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
-                >
-                  {group.label}
-                </button>
-              );
-            }
-            if ('items' in group && group.items) {
-            return (
-              <div key={idx} className="relative group">
-                <button className="text-[13px] text-kwar-gray group-hover:text-kwar-white transition-colors flex items-center gap-1">
-                  {group.label}
-                  <svg className="w-3 h-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                </button>
-                <div className="absolute left-0 pt-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-20">
-                  <div className="w-56 rounded-2xl border border-white/[0.08] bg-kwar-deep/95 backdrop-blur-2xl py-3 shadow-2xl shadow-black/40">
-                    {group.items.map((item) => {
-                      if (item.href.startsWith('#')) {
-                        return (
-                          <button
-                            key={item.label}
-                            onClick={() => {
-                              const el = document.querySelector(item.href);
-                              if (el) el.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                            className="block w-full text-left px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
-                          >
-                            {item.label}
-                          </button>
-                        );
-                      }
-                      return (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block px-5 py-2.5 text-[13px] text-kwar-gray hover:text-kwar-white hover:bg-white/[0.04] transition-all"
-                        >
-                          {item.label}
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            );
-            }
-            return null;
-          })}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 text-[11px]">
-            {(['pt-BR', 'en', 'es'] as LocaleKey[]).map((locale, i) => (
-              <span key={locale} className="flex items-center">
-                {i > 0 && <span className="text-white/10 mx-1">/</span>}
-                <button
-                  onClick={() => i18n.changeLanguage(locale)}
-                  className={`transition-all ${lng === locale ? 'text-kwar-electric font-medium' : 'text-white/30 hover:text-white/60'}`}
-                >
-                  {locale === 'pt-BR' ? 'PT' : locale.toUpperCase()}
-                </button>
-              </span>
-            ))}
-          </div>
-          <a
-            href="https://epidbot.kwar-ai.com.br/login"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex text-[13px] text-kwar-gray hover:text-kwar-white transition-colors"
-          >
-            {t.nav.login}
-          </a>
-          <a
-            href="https://epidbot.kwar-ai.com.br/register"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex rounded-full bg-kwar-electric px-4 py-2 text-[13px] font-semibold text-kwar-deep transition-all duration-300 hover:bg-kwar-electric/90 hover:shadow-glow"
-          >
-            {t.nav.signup}
-          </a>
-          {/* Hamburger */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-kwar-gray hover:text-kwar-white transition-colors"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        id="mobile-menu"
-        className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="bg-kwar-deep/95 backdrop-blur-2xl border-t border-white/[0.08] px-5 py-4 space-y-1">
-          {menuGroups.map((group, idx) => {
-            if ('href' in group && !('items' in group) && !('action' in group) && group.href.startsWith('/')) {
-              return (
-                <Link
-                  key={idx}
-                  to={group.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
-                >
-                  {group.label}
-                </Link>
-              );
-            }
-            if ('items' in group && group.items) {
-              return (
-                <div key={idx}>
-                  <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/30 px-2 py-2">{group.label}</p>
-                  {group.items.map((item) => {
-                    if (item.href.startsWith('#')) {
-                      return (
-                        <button
-                          key={item.label}
-                          onClick={() => {
-                            const el = document.querySelector(item.href);
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                            setIsMobileMenuOpen(false);
-                          }}
-                          className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
-                        >
-                          {item.label}
-                        </button>
-                      );
-                    }
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
-                      >
-                        {item.label}
-                      </a>
-                    );
-                  })}
-                </div>
-              );
-            }
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  if (group.action) group.action();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="block w-full text-left px-2 py-2.5 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
-              >
-                {group.label}
-              </button>
-            );
-          })}
-          <hr className="border-white/[0.06] my-3" />
-          <div className="flex items-center gap-2 px-2 py-2">
-            {(['pt-BR', 'en', 'es'] as LocaleKey[]).map((locale, i) => (
-              <span key={locale} className="flex items-center">
-                {i > 0 && <span className="text-white/10 mx-1">/</span>}
-                <button
-                  onClick={() => { i18n.changeLanguage(locale); setIsMobileMenuOpen(false); }}
-                  className={`text-xs transition-all ${lng === locale ? 'text-kwar-electric font-medium' : 'text-white/30 hover:text-white/60'}`}
-                >
-                  {locale === 'pt-BR' ? 'PT' : locale.toUpperCase()}
-                </button>
-              </span>
-            ))}
-          </div>
-          <div className="flex gap-3 px-2 pt-1">
-            <a
-              href="https://epidbot.kwar-ai.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex-1 text-center rounded-full border border-white/[0.08] px-4 py-2 text-sm text-kwar-gray hover:text-kwar-white transition-colors"
-            >
-              {t.nav.login}
-            </a>
-            <a
-              href="https://epidbot.kwar-ai.com.br/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex-1 text-center rounded-full bg-kwar-electric px-4 py-2 text-sm font-semibold text-kwar-deep transition-all hover:bg-kwar-electric/90"
-            >
-              {t.nav.signup}
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
 }
 
 // ============================================================================
@@ -1783,7 +1494,7 @@ export default function EpidbotPage() {
     <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
       <SEO
         title="EpidBot - Inteligência Epidemiológica com IA"
-        description="EpidBot é uma plataforma de inteligência epidemiológica com IA: 321 ferramentas, 41 fontes de dados oficiais e piloto com a OMS EMRO em 22 países."
+        description="EpidBot é uma plataforma de inteligência epidemiológica com IA: 321 ferramentas, 41 fontes de dados abertas e piloto com a OMS EMRO em 22 países."
         path="/epidbot"
         ogType="product"
         jsonLd={{
@@ -1800,7 +1511,7 @@ export default function EpidbotPage() {
           isAccessibleForFree: true,
           featureList: [
             '321 agent tools covering data access, analysis, mapping, reports and literature',
-            '41 official open data sources including DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC and CDC',
+            '41 open data sources including DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC and CDC',
             'Repository-linked statistical and epidemic modelling code in Python and SQL',
             'Real-time reference validation against PubMed, ORCID and Google Scholar',
             'Consolidated reproducible script for every analysis',
@@ -1815,7 +1526,6 @@ export default function EpidbotPage() {
         }}
       />
       <SkipToContent />
-      <Navbar />
       <div id="main-content">
         <Hero />
         <Stats />
