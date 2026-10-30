@@ -233,7 +233,7 @@ function PricingCards() {
       description: 'Para equipes e grupos de pesquisa',
       price: '1.425',
       features: [
-        'Até 10 usuários incluídos',
+        'Licença por usuário · até 10 usuários por conta',
         'Cota de uso ilimitada (relatórios, datasets e agendamentos)',
         'Tudo do Max: LaTeX/Overleaf, DOI no Zenodo, agente de manuscrito e agentes externos',
         'Workspace compartilhado e projetos colaborativos',
@@ -297,10 +297,16 @@ function PricingCards() {
             <div className="mb-6">
               <div className="flex items-baseline gap-1">
                 <span className="text-4xl font-bold text-white">R$ {plan.price}</span>
-                {!isFree && <span className="text-white/40 text-sm">/mês</span>}
+                {!isFree && (
+                  <span className="text-white/40 text-sm">{isTeam ? '/usuário·mês' : '/mês'}</span>
+                )}
               </div>
               <div className="text-sm text-white/40 mt-1">
-                {isFree ? 'Grátis para sempre' : 'Cobrança mensal · PIX ou cartão'}
+                {isFree
+                  ? 'Grátis para sempre'
+                  : isTeam
+                  ? 'Cobrança mensal por usuário · PIX ou cartão'
+                  : 'Cobrança mensal · PIX ou cartão'}
               </div>
             </div>
 
@@ -349,7 +355,8 @@ function ComparisonTable() {
       proplus: '1,5 milhão (~30 consultas)',
       team: 'Ilimitada',
     },
-    { feature: 'Usuários incluídos', free: '1', pro: '1', proplus: '1', team: 'Até 10' },
+    { feature: 'Preço mensal', free: 'R$ 0', pro: 'R$ 97', proplus: 'R$ 197', team: 'R$ 1.425 por usuário' },
+    { feature: 'Usuários por conta', free: '1', pro: '1', proplus: '1', team: 'Até 10' },
     { feature: 'DATASUS (SINAN, SIM, SINASC, SIH/SIA, CNES) + OMS', free: true, pro: true, proplus: true, team: true },
     { feature: 'Fontes internacionais (ECDC, PAHO, World Bank, Eurostat, ANVISA)', free: false, pro: true, proplus: true, team: true },
     { feature: 'Relatórios por mês', free: '3 (com marca d’água)', pro: 'Ilimitados', proplus: 'Ilimitados', team: 'Ilimitados' },
@@ -495,7 +502,7 @@ function InstitutionalCard() {
           </p>
 
           <p className="text-white/50 text-sm mb-6 max-w-lg">
-            Equipes de até 10 pessoas podem assinar o plano <span className="text-cyan-400 font-medium">Team (R$ 1.425/mês)</span> direto nesta página. Acima disso, ou para secretarias e ministérios, o atendimento é sob consulta pelo formulário abaixo.
+            Equipes de até 10 pessoas podem assinar o plano <span className="text-cyan-400 font-medium">Team (R$ 1.425 por usuário/mês)</span> direto nesta página. Acima disso, ou para secretarias e ministérios, o atendimento é sob consulta pelo formulário abaixo.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
@@ -648,7 +655,7 @@ function FAQ() {
     },
     {
       q: 'Minha secretaria quer comprar para a equipe.',
-      a: 'O plano Team custa R$ 1.425/mês e cobre até 10 usuários, com cota de uso ilimitada, workspaces compartilhados, revisão por pares e sala de incidentes. Secretarias e ministérios são atendidos pelo plano institucional — fale com a equipe.',
+      a: 'O plano Team custa R$ 1.425 por usuário/mês e cobre até 10 usuários por conta, com cota de uso ilimitada, workspaces compartilhados, revisão por pares e sala de incidentes. Secretarias e ministérios são atendidos pelo plano institucional — fale com a equipe.',
     },
     {
       q: 'Tem desconto?',
@@ -788,7 +795,7 @@ export default function EpidbotIndividual() {
         <title>Planos do EpidBot | Kwar-AI</title>
         <meta
           name="description"
-          content="Planos do EpidBot: Free (R$ 0), Pro (R$ 97/mês), Max (R$ 197/mês) e Team (R$ 1.425/mês para até 10 usuários). Dados oficiais do DATASUS e da OMS em todos os planos; fontes internacionais a partir do Pro."
+          content="Planos do EpidBot: Free (R$ 0), Pro (R$ 97/mês), Max (R$ 197/mês) e Team (R$ 1.425 por usuário/mês, até 10 usuários por conta). Dados oficiais do DATASUS e da OMS em todos os planos; fontes internacionais a partir do Pro."
         />
         <link rel="canonical" href="https://kwar-ai.com.br/planos" />
         <meta property="og:title" content="Planos do EpidBot | Kwar-AI" />
