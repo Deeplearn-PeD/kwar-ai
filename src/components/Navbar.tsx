@@ -103,7 +103,11 @@ export function Navbar() {
           {/* Desktop navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {primaryItems.map((item) => (
-              <Link key={item.to} to={item.to} className={linkClass(item.to)}>
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`${linkClass(item.to)} ${item.to === '/epidash' ? 'hidden xl:inline-block' : ''}`}
+              >
                 {item.label}
                 <span
                   className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-kwar-electric transition-all duration-300 ${
