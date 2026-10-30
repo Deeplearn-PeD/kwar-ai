@@ -592,6 +592,18 @@
       "titleGradient": "data into decisions",
       "subtitle": "Kwar-AI brings artificial intelligence to the center of epidemiological surveillance. We help hospitals, researchers and global health organizations anticipate outbreaks, automate analyses and transform complex data into strategic intelligence."
     },
+    "stats": {
+      "kicker": "The platform in numbers",
+      "i1v": "321",
+      "i1l": "tools the agent can call",
+      "i2v": "41",
+      "i2l": "official data sources integrated",
+      "i3v": "22",
+      "i3l": "countries in the WHO EMRO pilot",
+      "i4v": "76%",
+      "i4l": "on EpiBench 1.0 — 418 of 550 points",
+      "footnote": "EpiBench 1.0 public benchmark, June 2026. Usage measured on the platform from April to October 2026: 2,600+ consultations and 2.5 billion tokens processed. Open sources, subject to reporting delay."
+    },
     "cards": {
       "municipal": {
         "category": "EpidBot",
@@ -627,6 +639,7 @@
         "category": "GIS integration · QGIS",
         "title": "EpidBot inside QGIS",
         "description": "Official plugin in the QGIS plugin repository: ask about your project's layers, extent and selection, and get results back as layers on the map. Install from Plugins > Manage and Install Plugins.",
+        "chips": ["v0.3.1", "GPL-2.0", "QGIS ≥ 3.28", "6 map features"],
         "cta": "Open in the QGIS repository"
       }
     },
@@ -903,7 +916,7 @@
     },
     "seo": {
       "title": "EpiDash — dashboards published by EpidBot",
-      "description": "Publish the dashboards EpidBot builds on official sources at a public link. Viewers open it in the browser, ask questions and request changes without an account."
+      "description": "Publish the dashboards EpidBot builds on official sources at a public link. 6 chart types, export to PNG, PDF and JSON, no account needed to view."
     },
     "nav": {
       "cta": "Start free"
@@ -916,6 +929,17 @@
       "ctaPrimary": "Open the demo",
       "ctaSecondary": "Build one with EpidBot",
       "note": "Data from official open sources, subject to reporting delay. Every dashboard records its source and date of access."
+    },
+    "stats": {
+      "i1v": "6",
+      "i1l": "chart types: line, bar, pie, table, KPI and a state-level map",
+      "i2v": "3",
+      "i2l": "export formats: PNG, PDF and re-importable JSON",
+      "i3v": "0",
+      "i3l": "accounts needed to open a published dashboard",
+      "i4v": "1",
+      "i4l": "Docker container — runs on your own infrastructure, MIT licence",
+      "footnote": "EpidBot drives EpiDash through 9 MCP tools. Every dashboard records its data source and date of access."
     },
     "how": {
       "title": "From request to published link",

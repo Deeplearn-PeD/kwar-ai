@@ -592,6 +592,18 @@
       "titleGradient": "datos en decisión",
       "subtitle": "Kwar-AI lleva la inteligencia artificial al centro de la vigilancia epidemiológica. Ayudamos a hospitales, investigadores y organizaciones globales de salud a anticipar brotes, automatizar análisis y transformar datos complejos en inteligencia estratégica."
     },
+    "stats": {
+      "kicker": "La plataforma en números",
+      "i1v": "321",
+      "i1l": "herramientas que el agente puede llamar",
+      "i2v": "41",
+      "i2l": "fuentes de datos oficiales integradas",
+      "i3v": "22",
+      "i3l": "países en el piloto con la OMS EMRO",
+      "i4v": "76%",
+      "i4l": "en EpiBench 1.0 — 418 de 550 puntos",
+      "footnote": "Benchmark público EpiBench 1.0, junio de 2026. Uso medido en la plataforma de abril a octubre de 2026: 2.600+ consultas y 2,5 mil millones de tokens procesados. Fuentes abiertas, sujetas a retraso de notificación."
+    },
     "cards": {
       "municipal": {
         "category": "EpidBot",
@@ -627,6 +639,7 @@
         "category": "Integración SIG · QGIS",
         "title": "EpidBot dentro de QGIS",
         "description": "Plugin oficial en el repositorio de complementos de QGIS: pregunte por las capas, la extensión y la selección de su proyecto y reciba el resultado de vuelta como capa en el mapa. Instale en Complementos > Administrar e instalar complementos.",
+        "chips": ["v0.3.1", "GPL-2.0", "QGIS ≥ 3.28", "6 recursos de mapa"],
         "cta": "Ver en el repositorio de QGIS"
       }
     },
@@ -903,7 +916,7 @@
     },
     "seo": {
       "title": "EpiDash — dashboards publicados por EpidBot",
-      "description": "Publique en un enlace público los dashboards que EpidBot arma a partir de fuentes oficiales. Quien lo recibe abre en el navegador, pregunta y pide ajustes sin cuenta."
+      "description": "Publique en un enlace público los dashboards que EpidBot arma a partir de fuentes oficiales. 6 tipos de gráfico, exportación a PNG, PDF y JSON, sin cuenta para quien lo ve."
     },
     "nav": {
       "cta": "Empezar gratis"
@@ -916,6 +929,17 @@
       "ctaPrimary": "Abrir la demostración",
       "ctaSecondary": "Crear panel con EpidBot",
       "note": "Datos de fuentes abiertas oficiales, sujetos a retraso de notificación. Cada panel registra la fuente y la fecha de acceso."
+    },
+    "stats": {
+      "i1v": "6",
+      "i1l": "tipos de gráfico: línea, barra, torta, tabla, indicador y mapa por estado",
+      "i2v": "3",
+      "i2l": "formatos de exportación: PNG, PDF y JSON reimportable",
+      "i3v": "0",
+      "i3l": "cuentas necesarias para abrir un panel publicado",
+      "i4v": "1",
+      "i4l": "contenedor Docker — corre en su infraestructura, licencia MIT",
+      "footnote": "EpidBot controla EpiDash mediante 9 herramientas MCP. Cada panel registra la fuente y la fecha de acceso a los datos."
     },
     "how": {
       "title": "Del pedido al enlace publicado",

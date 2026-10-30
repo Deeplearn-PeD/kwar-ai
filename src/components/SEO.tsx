@@ -9,11 +9,13 @@ interface SEOProps {
   path?: string;
   ogImage?: string;
   ogType?: string;
+  /** Optional JSON-LD structured data (e.g. SoftwareApplication) */
+  jsonLd?: Record<string, unknown>;
 }
 
 const defaultDescription = 'Inteligência epidemiológica com IA para pesquisadores, hospitais e organizações globais de saúde.';
 
-export function SEO({ title, description, path = '', ogImage, ogType = 'website' }: SEOProps) {
+export function SEO({ title, description, path = '', ogImage, ogType = 'website', jsonLd }: SEOProps) {
   const fullPath = `${SITE_URL}/#${path}`;
   const fullTitle = `${title} | Kwar-AI`;
   const image = ogImage || DEFAULT_OG_IMAGE;
@@ -45,6 +47,10 @@ export function SEO({ title, description, path = '', ogImage, ogType = 'website'
       <link rel="alternate" href={`${SITE_URL}/en/#${path}`} hrefLang="en" />
       <link rel="alternate" href={`${SITE_URL}/es/#${path}`} hrefLang="es" />
       <link rel="alternate" href={`${SITE_URL}/#${path}`} hrefLang="x-default" />
+
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
     </Helmet>
   );
 }

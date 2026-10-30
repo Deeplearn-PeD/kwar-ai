@@ -1,6 +1,7 @@
 ﻿import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import SkipToContent from '@/components/SkipToContent';
+import { StatsBand } from '@/components/StatsBand';
 import { 
   ArrowRight, 
   Users,
@@ -1104,6 +1105,60 @@ function FinalCTASection() {
 // ============================================================================
 // VALIDATION SECTION
 // ============================================================================
+const statsCopy = {
+  'pt-BR': {
+    kicker: 'O EpidBot em números',
+    items: [
+      { value: '321', label: 'ferramentas que o agente pode chamar', note: 'dados, análise, mapas, relatórios e literatura' },
+      { value: '41', label: 'fontes de dados oficiais integradas', note: 'DATASUS, OMS, OPAS, ECDC, CDC e outras' },
+      { value: '6', label: 'bases do DATASUS abrangidas', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES e PNI' },
+      { value: '22', label: 'países no piloto com a OMS EMRO', note: 'Escritório Regional do Mediterrâneo Oriental' },
+    ],
+    footnote:
+      'Uso medido na plataforma de abril a outubro de 2026: 2.600+ consultas e 2,5 bilhões de tokens processados. Fontes abertas, sujeitas a atraso de notificação.',
+  },
+  en: {
+    kicker: 'EpidBot in numbers',
+    items: [
+      { value: '321', label: 'tools the agent can call', note: 'data, analysis, maps, reports and literature' },
+      { value: '41', label: 'official data sources integrated', note: 'DATASUS, WHO, PAHO, ECDC, CDC and others' },
+      { value: '6', label: 'DATASUS systems covered', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES and PNI' },
+      { value: '22', label: 'countries in the WHO EMRO pilot', note: 'Eastern Mediterranean Regional Office' },
+    ],
+    footnote:
+      'Measured on the platform from April to October 2026: 2,600+ consultations and 2.5 billion tokens processed. Open sources, subject to reporting delay.',
+  },
+  es: {
+    kicker: 'EpidBot en números',
+    items: [
+      { value: '321', label: 'herramientas que el agente puede llamar', note: 'datos, análisis, mapas, informes y literatura' },
+      { value: '41', label: 'fuentes de datos oficiales integradas', note: 'DATASUS, OMS, OPS, ECDC, CDC y otras' },
+      { value: '6', label: 'bases del DATASUS abarcadas', note: 'SINAN, SIM, SINASC, SIH/SIA, CNES y PNI' },
+      { value: '22', label: 'países en el piloto con la OMS EMRO', note: 'Oficina Regional del Mediterráneo Oriental' },
+    ],
+    footnote:
+      'Uso medido en la plataforma de abril a octubre de 2026: 2.600+ consultas y 2,5 mil millones de tokens procesados. Fuentes abiertas, sujetas a retraso de notificación.',
+  },
+};
+
+function LandingStatsSection() {
+  const { i18n } = useTranslation();
+  const lang = (i18n?.language || 'pt-BR') as string;
+  const lng = lang.startsWith('en') ? 'en' : lang.startsWith('es') ? 'es' : 'pt-BR';
+  const c = statsCopy[lng as keyof typeof statsCopy];
+
+  return (
+    <section className="relative py-12 lg:py-16 bg-white/[0.015] border-y border-white/5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/35">
+          {c.kicker}
+        </p>
+        <StatsBand items={c.items} footnote={c.footnote} />
+      </div>
+    </section>
+  );
+}
+
 function ValidationSection() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -1320,6 +1375,7 @@ export default function EpidbotLanding() {
       
       <main id="main-content" className="relative z-10">
         <HeroSection />
+        <LandingStatsSection />
         <ProblemSection />
         <AboutEpidbotSection />
         <HowEpidbotHelpsSection />

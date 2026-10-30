@@ -17,6 +17,7 @@ import {
   Share2,
 } from 'lucide-react';
 import { SEO } from '@/components/SEO';
+import { StatsBand } from '@/components/StatsBand';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Footer } from '@/sections/Footer';
 
@@ -74,6 +75,32 @@ export default function EpiDash() {
         title={t('epidash.seo.title')}
         description={t('epidash.seo.description')}
         path="/epidash"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'EpiDash',
+          applicationCategory: 'BusinessApplication',
+          applicationSubCategory: 'Data visualisation',
+          operatingSystem: 'Web',
+          softwareVersion: '0.2.0',
+          license: 'https://opensource.org/licenses/MIT',
+          url: DEMO_URL,
+          description: t('epidash.seo.description'),
+          isAccessibleForFree: true,
+          featureList: [
+            'Line, bar, pie, table and KPI charts plus a Brazil-by-state choropleth map',
+            'Visitor-submitted questions answered from the panel data only',
+            'In-browser chart adjustment without a BI step',
+            'Export to PNG, PDF and re-importable JSON',
+            'Searchable public gallery with a permalink per panel',
+            'Control key per panel and audit log of every change',
+          ],
+          publisher: {
+            '@type': 'Organization',
+            name: 'Kwar-AI',
+            url: 'https://kwar-ai.com.br',
+          },
+        }}
       />
 
       {/* Background */}
@@ -180,6 +207,21 @@ export default function EpiDash() {
           <p className="mt-6 text-xs text-white/30 max-w-xl mx-auto leading-relaxed">
             {t('epidash.hero.note')}
           </p>
+        </div>
+      </section>
+
+      {/* ─── NUMBERS ─── */}
+      <section className="relative pb-4 lg:pb-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StatsBand
+            items={[
+              { value: t('epidash.stats.i1v'), label: t('epidash.stats.i1l') },
+              { value: t('epidash.stats.i2v'), label: t('epidash.stats.i2l') },
+              { value: t('epidash.stats.i3v'), label: t('epidash.stats.i3l') },
+              { value: t('epidash.stats.i4v'), label: t('epidash.stats.i4l') },
+            ]}
+            footnote={t('epidash.stats.footnote')}
+          />
         </div>
       </section>
 

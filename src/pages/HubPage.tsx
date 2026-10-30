@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Menu, X, ExternalLink, Sparkles } from 'lucide-react';
 import { Footer } from '@/sections/Footer';
+import { StatsBand } from '@/components/StatsBand';
 
 function useScrollReveal(threshold = 0.15) {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,6 +201,22 @@ export function HubPage() {
         className="pb-20 lg:pb-28"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* ─── PLATFORM NUMBERS ─── */}
+          <div className="mb-10">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/30">
+              {t('hub.stats.kicker')}
+            </p>
+            <StatsBand
+              items={[
+                { value: t('hub.stats.i1v'), label: t('hub.stats.i1l') },
+                { value: t('hub.stats.i2v'), label: t('hub.stats.i2l') },
+                { value: t('hub.stats.i3v'), label: t('hub.stats.i3l') },
+                { value: t('hub.stats.i4v'), label: t('hub.stats.i4l') },
+              ]}
+              footnote={t('hub.stats.footnote')}
+            />
+          </div>
+
           {/* Featured row — Municipal + Kwar-AI */}
           <div
             className={`mb-6 transition-all duration-700 ${
@@ -381,6 +398,18 @@ export function HubPage() {
                     <p className="text-white/45 text-sm leading-relaxed max-w-2xl">
                       {t('hub.cards.qgis.description')}
                     </p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {(t('hub.cards.qgis.chips', { returnObjects: true }) as string[]).map(
+                        (chip: string) => (
+                          <li
+                            key={chip}
+                            className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-white/55"
+                          >
+                            {chip}
+                          </li>
+                        )
+                      )}
+                    </ul>
                   </div>
                   <span className="inline-flex items-center gap-2 text-xs font-medium text-kwar-electric group-hover:gap-3 transition-all shrink-0">
                     {t('hub.cards.qgis.cta')}

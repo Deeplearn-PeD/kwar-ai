@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Check, Menu, X } from 'lucide-react';
 import { SEO } from '@/components/SEO';
+import { StatsBand } from '@/components/StatsBand';
 import SkipToContent from '@/components/SkipToContent';
 
 const copy = {
@@ -41,6 +42,16 @@ const copy = {
       create: 'Criar conta',
       powered: 'Powered by Kwar-AI',
       orLabel: 'ou',
+    },
+    stats: {
+      kicker: 'O EpidBot em números',
+      items: [
+        { value: '321', label: 'ferramentas que o agente pode chamar', note: 'dados, análise, mapas, relatórios e literatura' },
+        { value: '41', label: 'fontes de dados oficiais integradas', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPAS, ECDC, CDC' },
+        { value: '22', label: 'países no piloto com a OMS EMRO', note: 'Escritório Regional do Mediterrâneo Oriental' },
+        { value: '76%', label: 'no EpiBench 1.0 — 418 de 550 pontos', note: 'benchmark público, 21 tarefas (jun/2026)' },
+      ],
+      footnote: 'Uso medido na plataforma de abril a outubro de 2026: 2.600+ consultas e 2,5 bilhões de tokens processados, com 5.900 chamadas de ferramenta nos últimos 30 dias. Fontes abertas, sujeitas a atraso de notificação.',
     },
     trust: 'Confiança de quem usa e apoia',
     features: {
@@ -196,6 +207,16 @@ const copy = {
       powered: 'Powered by Kwar-AI',
       orLabel: 'or',
     },
+    stats: {
+      kicker: 'EpidBot in numbers',
+      items: [
+        { value: '321', label: 'tools the agent can call', note: 'data, analysis, maps, reports and literature' },
+        { value: '41', label: 'official data sources integrated', note: 'DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC, CDC' },
+        { value: '22', label: 'countries in the WHO EMRO pilot', note: 'Eastern Mediterranean Regional Office' },
+        { value: '76%', label: 'on EpiBench 1.0 — 418 of 550 points', note: 'public benchmark, 21 tasks (Jun 2026)' },
+      ],
+      footnote: 'Measured on the platform from April to October 2026: 2,600+ consultations and 2.5 billion tokens processed, with 5,900 tool calls in the last 30 days. Open sources, subject to reporting delay.',
+    },
     trust: 'Trusted by users and supporters',
     features: {
       title: 'Built for real epidemiological work',
@@ -348,6 +369,16 @@ const copy = {
       create: 'Crear cuenta',
       powered: 'Powered by Kwar-AI',
       orLabel: 'o',
+    },
+    stats: {
+      kicker: 'EpidBot en números',
+      items: [
+        { value: '321', label: 'herramientas que el agente puede llamar', note: 'datos, análisis, mapas, informes y literatura' },
+        { value: '41', label: 'fuentes de datos oficiales integradas', note: 'DATASUS, SINAN, SIM, SIH, OMS, OPS, ECDC, CDC' },
+        { value: '22', label: 'países en el piloto con la OMS EMRO', note: 'Oficina Regional del Mediterráneo Oriental' },
+        { value: '76%', label: 'en EpiBench 1.0 — 418 de 550 puntos', note: 'benchmark público, 21 tareas (jun/2026)' },
+      ],
+      footnote: 'Uso medido en la plataforma de abril a octubre de 2026: 2.600+ consultas y 2,5 mil millones de tokens procesados, con 5.900 llamadas a herramientas en los últimos 30 días. Fuentes abiertas, sujetas a retraso de notificación.',
     },
     trust: 'Confianza de usuarios y aliados',
     features: {
@@ -894,6 +925,26 @@ function Hero() {
 // ============================================================================
 // PRICING
 // ============================================================================
+function Stats() {
+  const { ref, isVisible } = useScrollReveal(0.1);
+  const { t } = useEpidbotCopy();
+
+  return (
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#030712] py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <p
+          className={`mb-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/30 transition-all duration-700 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {t.stats.kicker}
+        </p>
+        <StatsBand items={t.stats.items} footnote={t.stats.footnote} />
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   const { ref, isVisible } = useScrollReveal(0.1);
   const { t } = useEpidbotCopy();
@@ -1732,14 +1783,42 @@ export default function EpidbotPage() {
     <div className="min-h-screen bg-[#080c14] text-white font-body antialiased">
       <SEO
         title="EpidBot - Inteligência Epidemiológica com IA"
-        description="EpidBot é uma plataforma de inteligência epidemiológica com IA para pesquisadores, hospitais e organizações de saúde. Análise de dados, vigilância e decisões baseadas em evidências."
+        description="EpidBot é uma plataforma de inteligência epidemiológica com IA: 321 ferramentas, 41 fontes de dados oficiais e piloto com a OMS EMRO em 22 países."
         path="/epidbot"
         ogType="product"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'EpidBot',
+          applicationCategory: 'HealthApplication',
+          applicationSubCategory: 'Epidemiological intelligence',
+          operatingSystem: 'Web',
+          softwareVersion: '2.8.0',
+          url: 'https://epidbot.kwar-ai.com.br',
+          description:
+            'AI harness for public health: natural-language analysis of official epidemiological data with a traceable, reproducible method.',
+          isAccessibleForFree: true,
+          featureList: [
+            '321 agent tools covering data access, analysis, mapping, reports and literature',
+            '41 official open data sources including DATASUS, SINAN, SIM, SIH, WHO, PAHO, ECDC and CDC',
+            'Repository-linked statistical and epidemic modelling code in Python and SQL',
+            'Real-time reference validation against PubMed, ORCID and Google Scholar',
+            'Consolidated reproducible script for every analysis',
+            'Scheduled reports, shared team workspaces and outbreak incident rooms',
+            'Public benchmark: EpiBench 1.0, 418 of 550 points (76%)',
+          ],
+          publisher: {
+            '@type': 'Organization',
+            name: 'Kwar-AI',
+            url: 'https://kwar-ai.com.br',
+          },
+        }}
       />
       <SkipToContent />
       <Navbar />
       <div id="main-content">
         <Hero />
+        <Stats />
         <Pricing />
         <FAQ />
         <ContactSection />
