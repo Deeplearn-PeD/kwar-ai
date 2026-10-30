@@ -1,10 +1,12 @@
+import SolutionPage from './solucoes/SolutionPage';
+import { hospitaisContent } from './solucoes/hospitais.content';
+
 export default function Hospitais() {
   return (
-    <div className="min-h-screen bg-kwar-deep pt-24 px-8">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="font-display text-4xl font-bold text-white">Hospital e Laboratórios</h1>
-        <p className="mt-4 text-kwar-gray">Em breve.</p>
-      </div>
-    </div>
+    <SolutionPage
+      path="/hospitais"
+      serviceName="EpidBot for Hospitals and Laboratories"
+      content={hospitaisContent}
+    />
   );
 }

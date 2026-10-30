@@ -19,7 +19,19 @@
     "epidbot": "EpidBot",
     "solutions": "Soluções",
     "webSummit": "Web Summit Rio 2026",
-    "contact": "Contato"
+    "contact": "Contato",
+    "hub": "Hub",
+    "epidash": "EpiDash",
+    "plans": "Planos",
+    "login": "Entrar",
+    "startFree": "Começar grátis",
+    "solutionsMenu": {
+      "hospitals": "Hospitais",
+      "research": "Pesquisa",
+      "globalHealth": "Saúde Global",
+      "surveillance": "Vigilância Epidemiológica",
+      "docs": "Documentação"
+    }
   },
   "hero": {
     "badge": "Kwar-AI",
@@ -552,14 +564,16 @@
         "epidbot": "EpidBot",
         "epidash": "EpiDash",
         "solutions": "Soluções",
-        "webSummit": "Web Summit Rio 2026"
+        "webSummit": "Web Summit Rio 2026",
+        "docs": "Documentação"
       },
       "company": {
         "title": "Empresa",
         "home": "Início",
         "about": "Nossa História",
         "team": "Equipe",
-        "contact": "Contato"
+        "contact": "Contato",
+        "press": "Imprensa"
       },
       "resources": {
         "title": "Projetos",

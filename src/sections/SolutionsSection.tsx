@@ -31,25 +31,21 @@ export function SolutionsSection() {
       key: 'municipal',
       image: '/images/municipais.png',
       href: '/epidbot-landing',
-      comingSoon: false,
     },
     {
       key: 'hospitals',
       image: '/images/hospitais.png',
-      href: '#',
-      comingSoon: true,
+      href: '/hospitais',
     },
     {
       key: 'research',
       image: '/images/pesquisa.png',
-      href: '#',
-      comingSoon: true,
+      href: '/pesquisa',
     },
     {
       key: 'global',
       image: '/images/global.png',
-      href: '#',
-      comingSoon: true,
+      href: '/saude-global',
     },
   ];
 
@@ -163,28 +159,14 @@ export function SolutionsSection() {
 
                   {/* CTA */}
                   <div>
-                    {card.comingSoon ? (
-                      <span className="text-[11px] text-white/30 tracking-wider uppercase">
-                        {t('solutions.comingSoon')}
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-2 text-xs text-kwar-electric group-hover:gap-3 transition-all">
-                        {t('common.learnMore')}
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    )}
+                    <span className="inline-flex items-center gap-2 text-xs text-kwar-electric group-hover:gap-3 transition-all">
+                      {t('common.learnMore')}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
               </div>
             );
-
-            if (card.comingSoon) {
-              return (
-                <div key={card.key} className="cursor-default">
-                  {CardInner}
-                </div>
-              );
-            }
 
             return (
               <Link key={card.key} to={card.href} className="block">

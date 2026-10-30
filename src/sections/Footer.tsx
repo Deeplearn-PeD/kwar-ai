@@ -4,28 +4,25 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   const { t } = useTranslation();
-  
-  const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+
+  // Anchors live on the home page, so they are expressed as a scroll query
+  // parameter — that keeps them working from every route.
+  const scrollToSection = (id: string) => `/?scroll=${id}`;
 
   const footerLinks = {
     produtos: [
-      { label: t('footer.links.products.epidbot'), href: '#epidbot-visual' },
-      { label: t('footer.links.products.epidash'), href: '/epidash', isLanding: true },
-      { label: t('footer.links.products.solutions'), href: '#solutions' },
-      { label: t('footer.links.products.webSummit'), href: '/epidbot-websummit', isLanding: true },
+      { label: t('footer.links.products.epidbot'), href: scrollToSection('epidbot-visual') },
+      { label: t('footer.links.products.epidash'), href: '/epidash' },
+      { label: t('footer.links.products.solutions'), href: scrollToSection('solutions') },
+      { label: t('footer.links.products.docs'), href: '/documentacao' },
+      { label: t('footer.links.products.webSummit'), href: '/epidbot-websummit' },
     ],
     empresa: [
-      { label: t('footer.links.company.home'), href: '#hero' },
-      { label: t('footer.links.company.about'), href: '#our-story' },
-      { label: t('footer.links.company.team'), href: '#equipe' },
-      { label: t('footer.links.company.contact'), href: '#contact' },
+      { label: t('footer.links.company.home'), href: scrollToSection('hero') },
+      { label: t('footer.links.company.about'), href: scrollToSection('our-story') },
+      { label: t('footer.links.company.team'), href: scrollToSection('equipe') },
+      { label: t('footer.links.company.contact'), href: scrollToSection('contact') },
+      { label: t('footer.links.company.press'), href: '/jornalistas' },
     ],
     legal: [
       { label: t('footer.links.legal.terms'), href: '/termos' },
@@ -45,7 +42,7 @@ export function Footer() {
         <div className="grid lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#hero" className="flex items-center gap-3 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4">
               <img 
                 src="/images/logo-oficial.png" 
                 alt="Kwar-AI Logo" 
@@ -54,7 +51,7 @@ export function Footer() {
               <span className="font-display font-bold text-xl tracking-wider text-white">
                 KWAR<span className="text-kwar-electric">-</span>AI
               </span>
-            </a>
+            </Link>
             <p className="text-kwar-gray text-sm leading-relaxed mb-6 max-w-sm">
               {t('footer.description')}
             </p>
@@ -71,25 +68,12 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.produtos.map((link) => (
                 <li key={link.label}>
-                  {link.isLanding ? (
-                    <Link
-                      to={link.href}
-                      className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(link.href);
-                      }}
-                      className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  )}
+                  <Link
+                    to={link.href}
+                    className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,16 +84,12 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.empresa.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
+                  <Link
+                    to={link.href}
                     className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -124,13 +104,13 @@ export function Footer() {
 
           <div className="flex items-center gap-6">
             {footerLinks.legal.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-kwar-gray text-sm hover:text-kwar-electric transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

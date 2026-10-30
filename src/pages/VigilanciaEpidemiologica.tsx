@@ -1,10 +1,12 @@
+import SolutionPage from './solucoes/SolutionPage';
+import { vigilanciaContent } from './solucoes/vigilancia.content';
+
 export default function VigilanciaEpidemiologica() {
   return (
-    <div className="min-h-screen bg-kwar-deep pt-24 px-8">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="font-display text-4xl font-bold text-white">Profissionais de Vigilância Epidemiológica</h1>
-        <p className="mt-4 text-kwar-gray">Em breve.</p>
-      </div>
-    </div>
+    <SolutionPage
+      path="/vigilancia-epidemiologica"
+      serviceName="EpidBot for Epidemiological Surveillance"
+      content={vigilanciaContent}
+    />
   );
 }
